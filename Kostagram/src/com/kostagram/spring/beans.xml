@@ -8,6 +8,6 @@
    <bean class="kr.or.kosta.control.EmployeeController"></bean> -->
 
    
-   <bean class="kr.or.kosta.service.dao.PersonDAOImpl"></bean>
+   <bean class="com.kostagram.service.dao.PersonDAOImpl"></bean>
    <!-- 각자 필요한 DAO에 대한 객체를 사용하기 위해 이곳에 bean으로 선언해주면 됨 -->
 </beans>

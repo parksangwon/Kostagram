@@ -39,10 +39,7 @@
      <property name="dataSource" ref="dataSource"/>
      
      <property name="mapperLocations"
-                  value="classpath:kr/or/kosta/mybatis/*.xml"/>
-                  <!--kr/or/kosta/mybatis/
-                  	 여기에 각자 맡은부분 DB 쿼리문 namspace 틀리게 해서 넣으면됨
-                  	 person.xml 복사붙어넣기해서 고쳐서 쓰면 될듯-->
+                  value="classpath:com/kostagram/mybatis/*.xml"/>
   </bean>
   
   <!-- SqlSession객체생성 -->
@@ -55,8 +52,6 @@
         id="transactionManager">
      <property name="dataSource" ref="dataSource"/> 
   </bean>
-  
-  
   
 </beans>
 
