@@ -16,19 +16,19 @@
   
   <!-- 뷰객체를 생성 -->
   <mvc:view-resolvers>
-     <mvc:jsp prefix="/WEB-INF/view/web/"/>
+     <mvc:jsp prefix="/WEB-INF/view/"/>
      
      <!-- /WEB-INF/view/  컨트롤러에서 전달된 문자열  .jsp-->
   </mvc:view-resolvers>
   
   <!-- 컨트롤러 스캔 -->
-  <context:component-scan base-package="com.kostagram.control"/>
+  <context:component-scan base-package="kr.or.kosta.control"/>
   
   <!-- DataSource설정(DB연결) -->
   <bean class="org.apache.tomcat.dbcp.dbcp.BasicDataSource"
         id="dataSource">
     <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-    <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/><!-- 각자고쳐줄것 -->
+    <property name="url" value="jdbc:oracle:thin:@192.168.0.48:1521:XE"/><!-- 각자고쳐줄것 -->
     <property name="username" value="day"/>
     <property name="password" value="day1234"/>
   </bean>
@@ -39,7 +39,10 @@
      <property name="dataSource" ref="dataSource"/>
      
      <property name="mapperLocations"
-                  value="classpath:com/kostagram/mybatis/*.xml"/>
+                  value="classpath:kr/or/kosta/mybatis/*.xml"/>
+                  <!--kr/or/kosta/mybatis/
+                  	 여기에 각자 맡은부분 DB 쿼리문 namspace 틀리게 해서 넣으면됨
+                  	 person.xml 복사붙어넣기해서 고쳐서 쓰면 될듯-->
   </bean>
   
   <!-- SqlSession객체생성 -->
@@ -52,6 +55,8 @@
         id="transactionManager">
      <property name="dataSource" ref="dataSource"/> 
   </bean>
+  
+  
   
 </beans>
 

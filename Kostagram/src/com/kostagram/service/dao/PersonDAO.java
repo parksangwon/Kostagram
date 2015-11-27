@@ -2,7 +2,7 @@ package com.kostagram.service.dao;
 
 import java.util.List;
 
-import com.kosta.service.beans.PersonVO;
+import com.kostagram.service.beans.PersonVO;
 
 public interface PersonDAO {    
 	public boolean insert(PersonVO person);

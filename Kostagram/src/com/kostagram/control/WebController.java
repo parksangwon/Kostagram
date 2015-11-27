@@ -8,11 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kosta.service.beans.PersonVO;
+import com.kostagram.service.beans.PersonVO;
 import com.kostagram.service.dao.PersonDAO;
 
 @Controller
-public class MemberController {
+public class WebController {
     
 	@Autowired
 	private PersonDAO dao;
@@ -22,7 +22,7 @@ public class MemberController {
 	//간단한 JSP포워딩
 	@RequestMapping("/hello")
 	public String hello(){
-	   return "hi";
+	   return "timeline";
 	}
 	
 	@RequestMapping("/hello2")

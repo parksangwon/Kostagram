@@ -6,7 +6,7 @@
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
   http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
   id="WebApp_ID" version="3.0">
-  <display-name>SpringMVC</display-name>
+  <display-name>Kostagram</display-name>
   
   <!-- 서블릿클래스 등록 -->
   
@@ -16,8 +16,8 @@
     <init-param>
        <param-name>contextConfigLocation</param-name>
        <param-value>
-           classpath:kr/or/kosta/spring/config.xml
-           classpath:kr/or/kosta/spring/beans.xml
+           classpath:com/kostagram/spring/config.xml
+           classpath:com/kostagram/spring/beans.xml
           <!-- /WEB-INF/a/b/beans2.xml -->
        </param-value>
     </init-param> 
@@ -47,10 +47,5 @@
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
