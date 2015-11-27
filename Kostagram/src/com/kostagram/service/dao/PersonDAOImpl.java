@@ -1,11 +1,11 @@
-package kr.or.kosta.service.dao;
+package com.kostagram.service.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import kr.or.kosta.service.beans.PersonVO;
+import com.kosta.service.beans.PersonVO;
 
 public class PersonDAOImpl implements PersonDAO{
 

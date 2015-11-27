@@ -1,4 +1,4 @@
-package kr.or.kosta.service.beans;
+package com.kosta.service.beans;
 
 public class PersonVO {
    private int no;
