@@ -22,7 +22,7 @@ public class WebController {
 	//간단한 JSP포워딩
 	@RequestMapping("/hello")
 	public String hello(){
-	   return "timeline";
+	   return "web/timeline";
 	}
 	
 	@RequestMapping("/hello2")

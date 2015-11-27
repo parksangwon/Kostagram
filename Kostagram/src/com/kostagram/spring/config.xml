@@ -16,13 +16,14 @@
   
   <!-- 뷰객체를 생성 -->
   <mvc:view-resolvers>
-     <mvc:jsp prefix="/WEB-INF/view/web/"/>
+     <mvc:jsp prefix="/WEB-INF/view/"/>
      
      <!-- /WEB-INF/view/  컨트롤러에서 전달된 문자열  .jsp-->
   </mvc:view-resolvers>
   
   <!-- 컨트롤러 스캔 -->
   <context:component-scan base-package="com.kostagram.control"/>
+  
   
   <!-- DataSource설정(DB연결) -->
   <bean class="org.apache.tomcat.dbcp.dbcp.BasicDataSource"

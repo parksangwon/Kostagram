@@ -12,6 +12,7 @@ import com.kostagram.service.beans.PersonVO;
 import com.kostagram.service.dao.PersonDAO;
 
 @Controller
+@RequestMapping("/m")
 public class MobileController {
     
 	@Autowired
@@ -22,7 +23,7 @@ public class MobileController {
 	//간단한 JSP포워딩
 	@RequestMapping("/hello")
 	public String hello(){
-	   return "timeline";
+	   return "mobile/timeline";
 	}
 	
 	@RequestMapping("/hello2")
