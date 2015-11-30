@@ -16,6 +16,7 @@
 			
 			<div data-role="header" data-theme="b">
 				<h2>연락처 찾기</h2><a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
+				<a href="./option" data-icon="delete" class="ui-btn-left" data-iconpos="notext"></a>
 			</div>
 			
 			<center><h3>연락처에 있는 사람 중 3명이 Instagram을 <br> 사용 중입니다.</h3><br>
