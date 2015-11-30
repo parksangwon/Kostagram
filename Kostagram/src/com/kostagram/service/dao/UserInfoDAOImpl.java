@@ -1,5 +1,7 @@
 package com.kostagram.service.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,7 +14,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	
 	@Override
 	public boolean insert(UserInfoVO user) {
-		int insert= sqlSession.insert("user.insert",user);
+		int insert= sqlSession.insert("userInfo.insert",user);
 		if(insert==1)return true;
 		
 		return false;
@@ -24,16 +26,12 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	}
 	
 	@Override
-	public boolean login(UserInfoVO user) {
-		return false;
+	public UserInfoVO finduser(String nickname) {
+		return sqlSession.selectOne("userInfo.finduser", nickname);
 	}
 	
 	@Override
-	public boolean select(UserInfoVO user) {
-		return false;
+	public List<UserInfoVO> findList(String token) {
+		return sqlSession.selectList("userInfo.findList",token);
 	}
-	
-	
-	
-
 }

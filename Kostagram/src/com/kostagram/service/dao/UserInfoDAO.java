@@ -7,8 +7,7 @@ import com.kostagram.service.beans.UserInfoVO;
 public interface UserInfoDAO {
 	public boolean insert(UserInfoVO user);
     public boolean update(UserInfoVO user); //프로필수정
-    public boolean login(UserInfoVO user); //로그인
-    public boolean select(UserInfoVO user); //회원 불러오기
-	
+    public UserInfoVO finduser(String nickname); //유저,로그인
+    public List<UserInfoVO> findList(String token); //검색 리스트(%a%)
 
 }
