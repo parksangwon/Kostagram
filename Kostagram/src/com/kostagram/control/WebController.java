@@ -8,15 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kostagram.service.beans.PersonVO;
-import com.kostagram.service.dao.PersonDAO;
-
 @Controller
 public class WebController {
     
-	@Autowired
+	/*@Autowired
 	private PersonDAO dao;
-	
+	*/
 	
 	//요청 매핑
 	//간단한 JSP포워딩
@@ -42,7 +39,7 @@ public class WebController {
 	public String form2(){
 		
 	}*/
-	
+	/*
 	@RequestMapping("/person/insert")
 	public String insert(PersonVO person){
 	   dao.insert(person);
@@ -54,7 +51,7 @@ public class WebController {
 	   List<PersonVO> list= dao.findAll();//모델로부터 데이터 얻어오기	   
 	   model.addAttribute("list",list); //뷰와 공유	   
 	   return "list";
-	}
+	}*/
 }
 
 

@@ -1,23 +1,17 @@
 package com.kostagram.control;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kostagram.service.beans.PersonVO;
-import com.kostagram.service.dao.PersonDAO;
-
 @Controller
 @RequestMapping("/m")
 public class MobileController {
-    
+    /*
 	@Autowired
 	private PersonDAO dao;
-	
+	*/
 	
 	//요청 매핑
 	//간단한 JSP포워딩
@@ -44,18 +38,6 @@ public class MobileController {
 		
 	}*/
 	
-	@RequestMapping("/person/insert")
-	public String insert(PersonVO person){
-	   dao.insert(person);
-	   return "success";
-	}
-	
-	@RequestMapping("/person/list")
-	public String list(Model model){
-	   List<PersonVO> list= dao.findAll();//모델로부터 데이터 얻어오기	   
-	   model.addAttribute("list",list); //뷰와 공유	   
-	   return "list";
-	}
 	
 	@RequestMapping("/login")
 	public String login(){
