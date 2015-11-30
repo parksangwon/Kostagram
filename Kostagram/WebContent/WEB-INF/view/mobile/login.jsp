@@ -10,8 +10,6 @@
 		<script src="js/common.js"></script>
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 	
-		
-		
 	</head>
 	<body>
 		<div id="loginform" data-role="page" data-theme="e">
