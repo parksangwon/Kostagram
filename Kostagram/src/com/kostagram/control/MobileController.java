@@ -86,6 +86,16 @@ public class MobileController {
 	public String profileupdate(){
 	   return "mobile/profileupdate";
 	}
+	
+	@RequestMapping("/findfriend")
+	public String findfriend(){
+	   return "mobile/findfriend";
+	}
+	
+	@RequestMapping("/numbersearch")
+	public String numbersearch(){
+	   return "mobile/numbersearch";
+	}
 }
 
 
