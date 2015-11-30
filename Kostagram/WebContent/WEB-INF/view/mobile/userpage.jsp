@@ -23,7 +23,7 @@
 						<table border="0" width="100%">
 							<tr>
 								<td rowspan="2" width="30%">
-									<image src="./image/park.jpg"/>
+									<image src="image/park.jpg"/>
 								</td>
 								<td align="center">
 									0<br>

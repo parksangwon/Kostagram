@@ -13,7 +13,46 @@
 	</head>
 	<body>
 		<div id="loginform" data-role="page" data-theme="e">
-
+			
+			<script type="text/javascript" >
+				function findfriend() 
+				{
+					var idInputName = $('input:text[name=name]');
+					var idValueName = trim(idInputName.val());
+					if(idValueName === "")
+					{
+						window.alert("이름을 입력해 주세요.");
+						idInputName.select();
+						return false;
+					}
+					
+					var idInputNickName = $('input:text[name=nickname]');
+					var idValueNickName = trim(idInputNickName.val());
+					if(idValueNickName === "")
+					{
+						window.alert("사용자이름(닉네임) 을 입력해 주세요.");
+						idInputNickName.select();
+						return false;
+					}
+					
+					var pw = $('input:password[name=pw]');
+					if(pw.val() == "")
+					{
+						window.alert("비밀번호를 반드시 입력해야 합니다.");
+						pw.focus();
+						return false;
+					}
+					if(pw.val().length < 4 || pw.val().length > 20)
+					{
+						window.alert("비밀번호를 4자 이상 20자 이하 입니다.");
+						pw.select();
+						return false;
+					}
+					
+					$.mobile.changePage("./findfriend");
+				}
+			</script>
+			
 			<center><h1>Kostagram</h1></center>
 			
 			<div data-role="content">
@@ -25,12 +64,12 @@
 						<input id="nickname" type="text" name="nickname" placeholder="사용자 이름(닉네임)"/> 
 					</div>
 					<div data-role="fieldcontain" align="center">
-						<input id="pw" type="text" name="pw" placeholder="비밀번호"/> 
+						<input id="pw" type="password" name="pw" placeholder="비밀번호"/> 
 					</div>				
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" value="다음" data-inline="true"/>
+							<input type="button" value="다음" data-inline="true" onclick="javascript:findfriend()"/>
 						</center>
 					</div>
 				</form>

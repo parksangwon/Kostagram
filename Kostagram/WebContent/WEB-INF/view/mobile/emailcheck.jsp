@@ -15,7 +15,7 @@
 		<div id="loginform" data-role="page" data-theme="e">
 		
 			<script type="text/javascript" >
-				function join2() 
+				function emailcheck() 
 				{
 					var idInput = $('input:text[name=id]');
 					var idValue = trim(idInput.val());
@@ -41,7 +41,7 @@
 						}
 					}
 					
-					$.mobile.changePage("usercheck");
+					$.mobile.changePage("./usercheck");
 				}
 			</script>
 			
@@ -55,7 +55,7 @@
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" value="다음" data-inline="true" onclick="javascript:join2()"/>
+							<input type="button" value="다음" data-inline="true" onclick="emailcheck()"/>
 						</center>
 					</div>
 				</form>
