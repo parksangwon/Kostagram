@@ -33,6 +33,11 @@
 							</tr>
 							<tr>
 								<Td>
+									<h4><a href="./findphonenumber">연락처로 친구 찾기</a></h4>
+								</Td>
+							</tr>
+							<tr>
+								<Td>
 									<h4>비밀번호 변경</h4>
 								</Td>
 							</tr>
