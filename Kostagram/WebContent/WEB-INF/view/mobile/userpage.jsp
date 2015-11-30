@@ -68,7 +68,7 @@
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
 						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="search" data-iconpos="notext"></a></li>
+						<li><a href="./search" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
 						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
 						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
 						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
