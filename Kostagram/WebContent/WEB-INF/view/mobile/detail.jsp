@@ -66,8 +66,21 @@
 					</tr>
 				</table>
 			</div>
+			
 			<div>
 				´ñ±Û ´Þ±â
+			</div>
+			
+			<div data-role="footer" data-theme="b">
+				<div data-role="navbar" class="ui-btn-active">
+					<ul>
+						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
+						<li><a href="./round" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
+						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
+						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
+						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</body>
