@@ -12,56 +12,43 @@
 		
 	</head>
 	<body>
-		<div id="loginform" data-role="page" data-theme="e">
+		<div>
 			<div data-role="header" data-theme="b">
-				<h2>Park.Sang.Won</h2> <a href="./option" data-icon="grid" class="ui-btn-right" data-iconpos="notext"></a>
+				<h2>옵션</h2> <a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
+				<a href="./userpage" data-icon="delete" class="ui-btn-left" data-iconpos="notext"></a>
 			</div>
-			
 			<div data-rol="content" >
 				<ul data-insert="true">
 					<div>
-						<table border="0" width="100%">
+						<table width="90%" border="0">
+							<Tr>
+								<Td>
+									<h3>설정</h3><hr>
+								</Td>
+							</Tr>
 							<tr>
-								<td rowspan="2" width="30%">
-									<image src="image/park.jpg"/>
-								</td>
-								<td align="center">
-									0<br>
-									게시물
-								</td>
-								<td align="center">
-									30<br>
-									팔로잉
-								</td>
-								<td align="center">
-									30<br>
-									팔로워
-								</td>
+								<Td>
+									<h4>프로필 수정</h4>
+								</Td>
 							</tr>
 							<tr>
-								<td align="center" colspan="3">
-									<a href="./profileupdate">프로필 수정</a>
-								</td>
+								<Td>
+									<h4>비밀번호 변경</h4>
+								</Td>
+							</tr>
+							<tr>
+								<Td>
+									<h4>회원님이 좋아한 게시물</h4><hr>
+								</Td>
+							</tr>
+							<tr>
+								<Td>
+									<h4>로그아웃</h4><hr>
+								</Td>
 							</tr>
 						</table>
 					</div>
-				</ul>	
-				<div>
-					<ul data-insert="true">박상원</ul>
-					
-				</div>
-				<div data-role="navbar">
-					<ul>
-						<li><a data-icon="grid">격자형 리스트</a></li>
-						<li><a data-icon="grid">상세보기</a></li>
-						<li><a data-icon="grid">포토맵</a></li>
-						<li><a data-icon="grid">회원님이 나온사진</a></li>
-					</ul>
-				</div>
-				<div>
-					<ul align="center" data-insert="true">소중한 순간을 포착하여 공유해보세요</ul>
-					
-				</div>
+				</ul>
 			</div>
 			
 			<div data-role="footer" data-theme="b">
