@@ -88,6 +88,16 @@ public class MobileController {
 	public String findphonenumber(){
 	   return "mobile/findphonenumber";
 	}
+	
+	@RequestMapping("/round")
+	public String round(){
+	   return "mobile/round";
+	}
+	
+	@RequestMapping("/detail")
+	public String detail(){
+	   return "mobile/detail";
+	}
 }
 
 
