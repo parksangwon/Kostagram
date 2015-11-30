@@ -56,6 +56,36 @@ public class MobileController {
 	   model.addAttribute("list",list); //ºä¿Í °øÀ¯	   
 	   return "list";
 	}
+	
+	@RequestMapping("/login")
+	public String login(){
+	   return "mobile/login";
+	}
+	
+	@RequestMapping("/emailcheck")
+	public String emailcheck(){
+	   return "mobile/emailcheck";
+	}
+	
+	@RequestMapping("/usercheck")
+	public String usercheck(){
+	   return "mobile/usercheck";
+	}
+	
+	@RequestMapping("/userpage")
+	public String userpage(){
+	   return "mobile/userpage";
+	}
+	
+	@RequestMapping("/search")
+	public String search(){
+	   return "mobile/search";
+	}
+	
+	@RequestMapping("/profileupdate")
+	public String profileupdate(){
+	   return "mobile/profileupdate";
+	}
 }
 
 
