@@ -28,7 +28,7 @@
 							</Tr>
 							<tr>
 								<Td>
-									<h4>프로필 수정</h4>
+									<h4><a href="./profileupdate">프로필 수정</a></h4>
 								</Td>
 							</tr>
 							<tr>
