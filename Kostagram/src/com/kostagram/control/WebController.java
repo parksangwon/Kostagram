@@ -1,5 +1,9 @@
 package com.kostagram.control;
 
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kostagram.service.dao.UserInfoDAO;
 
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
+
 
 @Controller
 public class WebController {
-    
+	
 	/*@Autowired
 	private UserInfoDAO dao;
 	*/
@@ -58,11 +64,25 @@ public class WebController {
 	   return "hi2";	
 	}
 	
+	public void asd(Model model)
+	{
+		
+	}
 	
 	@RequestMapping(value="/person/form", method=RequestMethod.GET)
 	public String form(){
 	  return "form";
 	}
+	
+	
+/*	@RequestMapping("/accounts/profileupdate/")
+	public String prifileEdit(HttpSession session)
+	{
+		String nickName = (String) session.getAttribute("nickName");
+		List<UserInfoVO> = userInfoDAO.finduser(nickName);
+		return "profileupdate";
+	}*/
+	
 	/*@RequestMapping(value="/person/form", method=RequestMethod.POST)
 	public String form2(){
 		
