@@ -63,7 +63,7 @@
 						<li><a data-role="button" data-icon="search" data-iconpos="notext"></a></li>
 						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
 						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
 					</ul>
 				</div>
 			</div>
