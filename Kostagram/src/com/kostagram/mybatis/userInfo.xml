@@ -10,7 +10,7 @@
    </update>
    
    <select id="finduser" resultType="com.kostagram.service.beans.UserInfoVO">
-      select * from member where nickname='nickname' </select> 
+      select * from member where nickname=#{nickName} </select> 
    <select id="findList" resultType="com.kostagram.service.beans.UserInfoVO">
       
    </select> 
