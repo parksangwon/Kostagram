@@ -64,11 +64,6 @@ public class MobileController {
 	   return "mobile/search";
 	}
 	
-	@RequestMapping("/profileupdate")
-	public String profileupdate(){
-	   return "mobile/profileupdate";
-	}
-	
 	@RequestMapping("/findfriend")
 	public String findfriend(){
 	   return "mobile/findfriend";
@@ -77,6 +72,16 @@ public class MobileController {
 	@RequestMapping("/numbersearch")
 	public String numbersearch(){
 	   return "mobile/numbersearch";
+	}
+	
+	@RequestMapping("/profileupdate")
+	public String profileupdate(){
+	   return "mobile/profileupdate";
+	}
+	
+	@RequestMapping("/option")
+	public String option(){
+	   return "mobile/option";
 	}
 }
 
