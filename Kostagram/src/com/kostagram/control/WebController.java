@@ -18,13 +18,14 @@ import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 @Controller
 public class WebController {
-	
+	HttpSession session;
 	/*@Autowired
 	private UserInfoDAO dao;
 	*/
 	
 	//요청 매핑
 	//간단한 JSP포워딩
+	
 	@RequestMapping("/hello")
 	public String hello(){
 	   return "web/timeline";
@@ -64,22 +65,62 @@ public class WebController {
 	   return "hi2";	
 	}
 	
-	public void asd(Model model)
-	{
-		
-	}
 	
 	@RequestMapping(value="/person/form", method=RequestMethod.GET)
 	public String form(){
 	  return "form";
 	}
 	
-	
-/*	@RequestMapping("/accounts/profileupdate/")
-	public String prifileEdit(HttpSession session)
+	/*@RequestMapping("/accounts/password/change/")
+	public String pwChange(HttpServletRequest request, Model model)
 	{
-		String nickName = (String) session.getAttribute("nickName");
-		List<UserInfoVO> = userInfoDAO.finduser(nickName);
+		if(request.getMethod().equals("POST") && request.getAttribute("id_old_password")!=null)
+		{
+			int check = userinfodao.pwCheck(request.getAttribute("id_old_password"));
+			String message;
+			if(check>0)
+			{
+				check = userinfodao.pwUpdate(request.getAttribute("new_password1"));
+				if(check>0)
+				{
+					message = "정상적으로 비밀번호를 수정하였습니다.";
+				}
+				else
+				{
+					message = "비밀번호 수정중 오류가 발생 하였습니다.";
+				}
+				
+			}
+			else
+			{
+				message="비밀번호가 일치하지 않습니다.";
+			}
+			model.addAttribute("message", message);
+		}
+		
+		
+		return "pwupdate";
+	}*/
+	/*@RequestMapping(value="/accounts/profileupdate/")
+	public String profileEdit(UserInfoVO vo, HttpSession session, HttpServletRequest reqeuest, Model model)
+	{
+		String method = reqeuest.getMethod();
+		if(method.equals("POST"))
+		{
+			int i = userInfoDAO.update(vo);
+			if(i>0)
+			{
+				model.addAttribute("message", "성공적으로 업데이트 되었습니다.");
+			}
+			else
+			{
+				model.addAttribute("message", "업데이트하는 도중 에러가 발생하였습니다.");
+			}
+		}
+		String nickname = (String) session.getAttribute("nickname");
+		List<UserInfoVO> userinfo= userInfoDAO.finduser(nickname);
+		model.addAttribute("userinfo", userinfo);
+		
 		return "profileupdate";
 	}*/
 	
