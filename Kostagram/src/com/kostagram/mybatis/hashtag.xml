@@ -9,7 +9,7 @@
 		update hashtag set photo_cnt = #{photo_cnt} where hashtag = #{hashtag}
 	</update>
 
-	<select id="findAllByToken" parameterType="com.kostagram.service.beans.HashtagVO" resultType="com.kostagram.service.beans.PersonVO">
+	<select id="findAllByToken" parameterType="com.kostagram.service.beans.HashtagVO" resultType="com.kostagram.service.beans.HashtagVO">
 		select *
 		from hashtag 
 		where hashtag=#{hashtag}
