@@ -3,19 +3,18 @@
 <%@ page import="java.util.*" %>
 
 <%
-	ArrayList timeLineList =(ArrayList)request.getAttribute("timeLineList"); ;
+	ArrayList followingList =(ArrayList)request.getAttribute("followingList"); ;
 %>
+
 <!DOCTYPE html> 
 <html> 
 	<head>
-		<title>jQuery Mobile</title>
+		<title>following</title>
 		<meta charset="euc-kr" /> 	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 		
 		<link rel="shortcut icon" href="../image/icon.png">
 		<link rel="apple-touch-icon" href="../image/icon.png"> 
-		
-		
 		
 		<!-- Include jQuery Mobile stylesheets -->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
@@ -25,35 +24,48 @@
 		
 		<!-- Include the jQuery Mobile library -->
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-			
+		
 		<style>
 			.ui-bar-f {
 			    color:#004879;
 			    background-color: #004879;
 			}
-		</style>
-		
-							
+		</style>					
 	</head> 
-		
-	<body>
-		<div data-role="page" >
+<body>
+	<div data-role="page">
 		
 			<div data-role="header"	data-theme="f" >
-				<font color="white">Kostagram</font>
+				<left><font color="white" size="3">활동</font></left>
 			</div>
-
-
-
-				<% 
-	if (timeLineList == null || timeLineList.size() == 0 ) { 
-%>
-		<center>팔로잉이 없습니다.</center> 
-<%	
-	} else {
-		for ( int i = 0; i < timeLineList.size(); i++ ) { 
-%> 
-
+		
+			<div data-role="content" >
+				<table width="100%">
+					<tr >
+						<td align="left" width="50%">
+							<a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" style="text-decoration:none"><center>팔로잉</center></a>
+							<hr>
+						</td>
+						
+						<td  align="right" width="50%">
+							<a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" style="text-decoration:none"><center>내 게시물</center></a>
+							<hr>
+						</td>
+					</tr>
+				</table>
+				
+					<%
+			if (followingList == null || followingList.size() == 0 ) {
+		%>
+				<center>
+					<h3>내가 팔로우 하는 사람들의 활동</h3>
+					<font size="2">내가 팔로우 하는 사람이 게시물에 댓글을 달거나 좋아요를 클릭하면 표시됩니다.</font>
+				</center>
+				
+		<%	
+			} else {
+				for ( int i = 0; i < followingList.size(); i++ ) {
+		%>
 			<div data-role="content"	 data-theme="d">
 				<ul data-role="listview" data-inset="true">
 					<li >
@@ -114,11 +126,11 @@
 					<h1>댓글 다는 페이지</h1>
 				</div>
 			</div>
-
-<% }
-		} %>			
-	
-			
+		
+		<%}
+				}%>
+		  </div>
+		  
 			<div data-role="footer" data-theme="b"		data-position="fixed">
 				<div data-role="navbar" >
 					<ul data-theme="f">
@@ -130,11 +142,6 @@
 					</ul>
 				</div>
 			</div> 
-
-		</div>
-		
-		
-			
-	</body>
+	</div>
+</body>
 </html>
-
