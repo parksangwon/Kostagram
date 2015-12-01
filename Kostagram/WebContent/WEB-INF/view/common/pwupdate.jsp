@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="ko" class="no-js lt-ie9 lt-ie8 lt-ie7 logged-in "> <![endif]-->
-<!--[if IE 7]>         <html lang="ko" class="no-js lt-ie9 lt-ie8 logged-in "> <![endif]-->
-<!--[if IE 8]>         <html lang="ko" class="no-js lt-ie9 logged-in "> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="ko" class="no-js logged-in "> <!--<![endif]-->
+<html lang="ko" class="no-js logged-in ">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,12 +10,27 @@
         <title>비밀번호 변경 &bull; Instagram</title>
 
         <script type="text/javascript">
-  WebFontConfig = {
-    custom: {
-      families: ['proxima-nova:n3,n4,n6,n7'],
-    }
-  };
-</script>
+		  WebFontConfig = {
+		    custom: {
+		      families: ['proxima-nova:n3,n4,n6,n7'],
+		    }
+		  };
+		  
+		  function pwCheck() {
+			var pw1 = $("#id_new_password1").val();
+			var pw2 = $("#id_new_password2").val();
+			
+			if(pw1=!pw2)
+				{
+					alert("새로설정하는 비밀번호가 틀렸습니다.");
+					return false;
+				}
+			else
+				{
+					$(".adjacent bordered wide").submit();
+				}
+		}
+		</script>
 <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/webfont.js" type="text/javascript" async></script>
 
 <style type="text/css">
@@ -139,7 +151,7 @@
                     
                         <header class="top-bar top-bar-new">
     <div class="top-bar-wrapper">
-        <div class="logo"><a href="/">Instagram</a></div>
+        <div class="logo"><a href="/">Kostagram</a></div>
 
         <div class="top-bar-left">
             <ul class="top-bar-actions">
@@ -157,21 +169,20 @@
                     <li id="link_profile" class="link-profile has-dropdown">
                         <a href="javascript:;">
                             
-    <span class="img img-outset current-user-avatar" style="background-image: url(https://igcdn-photos-f-a.akamaihd.net/hphotos-ak-xtp1/t51.2885-19/s150x150/12317353_778068599005413_920942073_a.jpg);">
-        <img src="https://igcdn-photos-f-a.akamaihd.net/hphotos-ak-xtp1/t51.2885-19/s150x150/12317353_778068599005413_920942073_a.jpg" onerror="imageFallback(this);" alt="" />
+    <span class="img img-outset current-user-avatar" style="background-image: url(${profile_img});">
+        <img src="${profile_img}" onerror="imageFallback(this);" alt="" />
         <b></b>
     </span>
 
-                            <strong>jaewoo18</strong>
+                            <strong>${nickname}</strong>
                         </a>
 
                         <div class="dropdown">
                             <i></i>
 
                             <ul role="navigation">
-                                <li><a href="/jaewoo18/">프로필 보기</a></li>
+                                <li><a href="/???????????????????/">프로필 보기</a></li>
                                 <li><a href="/accounts/edit/">프로필 편집</a></li>
-                                <li><a href="/accounts/badges/">위젯</a></li>
                                 <li><span id='rC0'></span></li>
                             </ul>
                         </div>
@@ -194,7 +205,7 @@
     <h2><i></i>회원님의 계정<span class="separator"> &bull; </span><span class="subtitle"></span></h2>
     <ul>
         <li >
-        <a href="/accounts/edit/">
+        <a href="/accounts/profileupdate/">
             
             프로필 편집
             
@@ -207,36 +218,6 @@
         <a href="/accounts/password/change/">
             
             비밀번호 변경
-            
-            <i class="disclosure"></i>
-            
-        </a>
-        
-    </li>
-        <li >
-        <a href="/accounts/manage_access/">
-            
-            앱 관리
-            
-            <i class="disclosure"></i>
-            
-        </a>
-        
-    </li>
-        <li >
-        <a href="/accounts/badges/">
-            
-            위젯
-            
-            <i class="disclosure"></i>
-            
-        </a>
-        
-    </li>
-        <li >
-        <a href="/emails/settings">
-            
-            이메일 기본 설정
             
             <i class="disclosure"></i>
             
@@ -260,18 +241,26 @@
     <header>
         <h1>비밀번호 변경</h1>
     </header>
-
+    <%
+    if(request.getAttribute("message")!=null)
+    {
+    %>
+	<div id="alerts" class="alerts">
     
+    <p class="alert-red"><%= request.getAttribute("message") %></p>
+    
+	</div>
+	<%
+    }
+	 %>
 
 
-
-    <form method="POST" accept-charset="utf-8" class="adjacent bordered wide">
+    <form method="POST" accept-charset="utf-8" class="adjacent bordered wide" action="/accounts/password/change/">
         <p><label for="id_old_password">기존 비밀번호:</label> <input type="password" name="old_password" id="id_old_password" /></p>
-<p><label for="id_new_password1">새 비밀번호:</label> <input type="password" name="new_password1" id="id_new_password1" /></p>
-<p><label for="id_new_password2">새 비밀번호 확인:</label> <input type="password" name="new_password2" id="id_new_password2" /></p>
-        <input type="hidden" name="csrfmiddlewaretoken" value="6b8b715a6bc8ee8c7076912eaaff7167"/>
+		<p><label for="id_new_password1">새 비밀번호:</label> <input type="password" name="new_password1" id="id_new_password1" /></p>
+		<p><label for="id_new_password2">새 비밀번호 확인:</label> <input type="password" name="new_password2" id="id_new_password2" /></p>
         <p class="form-actions">
-            <input type="submit" class="button-green" value="비밀번호 변경">
+            <input type="button" class="button-green" value="비밀번호 변경" onclick="pwChek()">
         </p>
     </form>
     <script>document.getElementById('id_old_password').focus();</script>
