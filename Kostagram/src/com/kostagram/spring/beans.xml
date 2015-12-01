@@ -14,7 +14,6 @@
    <bean class="com.kostagram.service.dao.HashtagDAOImpl"></bean>
    <bean class="com.kostagram.service.dao.LikeDAOImpl"></bean>
    <bean class="com.kostagram.service.dao.LocationDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.PhotoHashtagDAOImpl"></bean>
    <bean class="com.kostagram.service.dao.PhotoInfoDAOImpl"></bean>
    <bean class="com.kostagram.service.dao.ReportDAOImpl"></bean>
    <bean class="com.kostagram.service.dao.ReportItemDAOImpl"></bean>
