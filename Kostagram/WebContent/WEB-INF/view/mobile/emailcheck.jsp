@@ -12,7 +12,7 @@
 		
 	</head>
 	<body>
-		<div id="loginform" data-role="page" data-theme="e">
+		<div data-role="page" data-theme="e">
 		
 			<script type="text/javascript" >
 				function emailcheck() 
