@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="reportItem">
-  <!--  <insert id="insert" parameterType="com.kostagram.service.beans.PersonVO">
-      insert into person values (person_seq.nextval, #{name}, #{age}, #{job})
-   </insert>
-   
-   <select id="findAll" resultType="com.kostagram.service.beans.PersonVO">
-      select * from person
-   </select> -->
+	<insert id="insert" parameterType="com.kostagram.service.beans.ConversationVO">
+		insert into reportItem values (#{content_id}, #{content},SYSDATE)
+	</insert>
+
+	<delete id="delete" parameterType="com.kostagram.service.beans.ConversationVO">
+		delete from reportItem where content_id=#{content_id}
+	</delete>
+	
+	<update id="update" parameterType="com.kostagram.service.beans.ConversationVO">
+		update reportItem set content where content_id = #{content_id}
+	</update>
+	
 </mapper>
