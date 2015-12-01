@@ -29,7 +29,7 @@
   <bean class="org.apache.tomcat.dbcp.dbcp.BasicDataSource"
         id="dataSource">
     <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-    <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/><!-- 각자고쳐줄것 -->
+    <property name="url" value="jdbc:oracle:thin:@192.168.0.20:1521:XE"/><!-- 각자고쳐줄것 -->
     <property name="username" value="day"/>
     <property name="password" value="day1234"/>
   </bean>
