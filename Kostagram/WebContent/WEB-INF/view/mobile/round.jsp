@@ -8,23 +8,16 @@
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
 		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
 		<script src="js/common.js"></script>
-		<script src="js/search.js"></script>
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
-		<style type="text/css"> 
-		.profileImg { 
-			-webkit-border-radius: 100px; 
-			border-radius: 100px; 
-		} 
-		</style> 
 	</head>
 	<body>
 		<div id="loginform" data-role="page" data-theme="b" >
 		
 			<div data-role="header" data-theme="b">
-				<table class="search">
+				<table onclick="location.href='search'">
 					<tr>
 						<td>
-							<image src="./image/icon/search.png" width="20"/>
+							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
 						</td>
 						<td>
 							<input type="text" placeholder="검색" style="width:300px;
@@ -35,7 +28,9 @@
 							background-color:transparent;
 							border:0px;
 							-webkit-border-radius:0px; 
-							border-radius:0px;">
+							border-radius:0px;
+							box-shadow:0 0 0px;
+							text-shadow: 0px 0px;">
 						</td>
 					</tr>
 				</table>
@@ -46,14 +41,27 @@
 					<table width="100%" align="center">
 						<tr>
 							<td width="50%" align="left">
-								<span>사람찾아보기</span><br>
-								<span>새로 팔로우할 사람을 찾아보세요</span>
+								&nbsp;&nbsp;<span style="font-size:11pt; font-weight:bolder;">사람찾아보기</span><br>
+								&nbsp;&nbsp;<span style="font-size:7pt;">새로 팔로우할 사람을 찾아보세요</span>
 							</td>
 							<td width="50%" align="right">
-								<image src="./image/test.jpg" width="50" class="profileImg"/>
-								<image src="./image/test.jpg" width="50" class="profileImg"/>
-								<image src="./image/test.jpg" width="50" class="profileImg"/>
-								<image src="./image/test.jpg" width="50" class="profileImg"/>
+							<%
+								// 리스트 받아오기 전, 임시로 값 준 것
+								// 이 부분은 리스트가 null 값인 경우가 없어서 null 체크안함
+								ArrayList profilelist = new ArrayList();
+								for(int i=0; i<4; i++)
+								{
+									profilelist.add(i);
+								}
+								
+								for(int i=0; i<profilelist.size(); i++)
+								{
+							%>
+								<a href="./detail"><image src="./image/test.jpg" width="50" style="-webkit-border-radius: 100px; 
+								border-radius: 100px;"/></a>
+							<%
+								}
+							%>
 							</td>
 						</tr>
 					</table>
@@ -102,11 +110,11 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
-						<li><a href="./round" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
 			</div>

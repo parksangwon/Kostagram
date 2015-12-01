@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <html>
@@ -8,12 +9,6 @@
 		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
 		<script src="js/common.js"></script>
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
-		<style type="text/css"> 
-		.profileImg { 
-			-webkit-border-radius: 100px; 
-			border-radius: 100px; 
-		} 
-		</style> 
 	</head>
 	<body>
 		<div id="loginform" data-role="page" data-theme="b" >
@@ -26,7 +21,8 @@
 			<div>
 				<table width="100%">
 					<tr>
-						<td width="60"><image src="./image/test.jpg" width="60" class="profileImg"/></td>
+						<td width="60"><image src="./image/test.jpg" width="60" style="-webkit-border-radius: 100px; 
+								border-radius: 100px;"/></td>
 						<td align="left">이성경존나이뻐요</td>
 						<td align="right"><a href="#"><image src="./image/follow.jpg" width="80"/></a></td>
 					</tr>
@@ -47,23 +43,60 @@
 			<div>
 				<table>
 					<tr>
-						<td>좋아요 몇개</td>
+			<%
+				// 좋아요 부분, 좋아요가 5개 이하이면 아이디를, 초과되면 갯수를
+				ArrayList likelist = new ArrayList();
+				for(int i=0; i<5; i++)
+				{
+					likelist.add(i);
+				}
+				
+				if(likelist.size()<6)
+				{
+			%>			
+						<td>♥ 
+					<%
+						for(int i=0; i<likelist.size(); i++)
+						{
+					%>
+						 <%= likelist.get(i) %>
+					<%
+						} 
+					%> 
+						</td>
+			<%
+				}
+				else
+				{
+			%>
+					<td>♥ <%= likelist.size()%>개</td>
+			<%
+				}
+			%>
 					</tr>
+			<%
+				// 댓글 시작
+				// 임시로 댓글 리스트 추가
+				ArrayList replylist = new ArrayList();
+				for(int i=0; i<4; i++)
+				{
+					replylist.add(i);
+				}
+				
+				if(replylist!=null && replylist.size()>=0)
+				{
+					for(int i=0; i<replylist.size(); i++)
+					{
+			%>
 					<tr>
-						<td>댓글</td>
+						<td><%= replylist.get(i) %></td>
 					</tr>
-					<tr>
-						<td>댓글</td>
-					</tr>
-					<tr>
-						<td>댓글</td>
-					</tr>
-					<tr>
-						<td>댓글</td>
-					</tr>
-					<tr>
-						<td>댓글</td>
-					</tr>
+			<%
+					}
+				}
+				
+				else{}
+			%>
 				</table>
 			</div>
 			
@@ -74,11 +107,11 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
-						<li><a href="./round" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
 			</div>

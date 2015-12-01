@@ -13,9 +13,29 @@
 	</head>
 	<body>
 		<div id="home" data-role="page" data-theme="d">
-			<div data-role="header" data-theme="c">
-				<input type="search" name="search" placeholder="검색" data-inline="true"/>
-			</div>  
+			
+			<div data-role="header" data-theme="b">
+				<table class="search">
+					<tr>
+						<td>
+							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
+						</td>
+						<td>
+							<input type="text" placeholder="검색" style="width:300px;
+							height:35px;
+							font-size:15px;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							-webkit-border-radius:0px; 
+							border-radius:0px;
+							box-shadow:0 0 0px;
+							text-shadow: 0px 0px;">
+						</td>
+					</tr>
+				</table>
+			</div>
 			
 			<div data-role="content">
 				<div data-role="navbar">
@@ -36,20 +56,40 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
-						<li><a href="./round" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		
 		<div id="people" data-role="page" data-theme="a">
-			<div data-role="header">
-				<input type="search" name="search" placeholder="사람 검색"/>
-			</div>  
+			
+			<div data-role="header" data-theme="b">
+				<table class="search">
+					<tr>
+						<td>
+							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
+						</td>
+						<td>
+							<input type="text" placeholder="사람 검색" style="width:300px;
+							height:35px;
+							font-size:15px;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							-webkit-border-radius:0px; 
+							border-radius:0px;
+							box-shadow:0 0 0px;
+							text-shadow: 0px 0px;">
+						</td>
+					</tr>
+				</table>
+			</div> 
 			
 			<div data-role="content">
 				<div data-role="navbar">
@@ -70,19 +110,39 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
-						<li><a href="./round" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		
 		<div id="hashtag" data-role="page" data-theme="c">
-			<div data-role="header">
-				<input type="search" name="search" placeholder="해시태그 검색"/>
+			
+			<div data-role="header" data-theme="b">
+				<table class="search">
+					<tr>
+						<td>
+							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
+						</td>
+						<td>
+							<input type="text" placeholder="해시태그 검색" style="width:300px;
+							height:35px;
+							font-size:15px;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							-webkit-border-radius:0px; 
+							border-radius:0px;
+							box-shadow:0 0 0px;
+							text-shadow: 0px 0px;">
+						</td>
+					</tr>
+				</table>
 			</div>  
 			
 			<div data-role="content">
@@ -104,19 +164,39 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
-						<li><a href="./round" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
 		<div id="place" data-role="page" data-theme="e">
-			<div data-role="header">
-				<input type="search" name="search" placeholder="장소검색"/>
+			
+			<div data-role="header" data-theme="b">
+				<table class="search">
+					<tr>
+						<td>
+							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
+						</td>
+						<td>
+							<input type="text" placeholder="장소 검색" style="width:300px;
+							height:35px;
+							font-size:15px;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							-webkit-border-radius:0px; 
+							border-radius:0px;
+							box-shadow:0 0 0px;
+							text-shadow: 0px 0px;">
+						</td>
+					</tr>
+				</table>
 			</div>  
 			
 			<div data-role="content">
@@ -138,11 +218,11 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
-						<li><a href="./round" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
 			</div>
