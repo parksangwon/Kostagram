@@ -2900,7 +2900,7 @@ transform
 			data-reactid=".0.1.0.1">
 			<div class="-cx-PRIVATE-LandingActionsColumn__box"
 				data-reactid=".0.1.0.1.0">
-				<div><img src="./img/index.jpg" ></div>
+				<div><img src="img/web/index.png" ></div>
 					
 				<div class="-cx-PRIVATE-SlimLoginForm__root"
 					data-reactid=".0.1.0.1.0.1">
