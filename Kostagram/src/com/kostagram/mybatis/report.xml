@@ -4,4 +4,8 @@
    <insert id="insert" parameterType="com.kostagram.service.beans.ReportVO">
       insert into report values (#{seq_report}, #{seq_photo}, #{comment_id},SYSDATE, #{email})
    </insert>
+   	    
+   <select id="select" resultType="com.kostagram.service.beans.ReportVO">
+   	  select * from report a, reportItem b where a.content_id = b.content_id
+   </select>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 </mapper>

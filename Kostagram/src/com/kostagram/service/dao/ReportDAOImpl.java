@@ -1,5 +1,7 @@
 package com.kostagram.service.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,5 +19,8 @@ public class ReportDAOImpl implements ReportDAO {
 		return false;
 	}
 	
-	
+	@Override
+	public List<ReportVO> findList(ReportVO report) {
+		return sqlSession.selectList("report.findList",report);
+	}
 }
