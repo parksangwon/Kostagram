@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="hashtag">
-	<insert id="insert" parameterType="com.kostagram.service.beans.HashtagVO">
-		insert into hashtag values (#{hashtag}, #{photo_cnt}, #{reg_date})
+	<insert id="insert"
+		parameterType="com.kostagram.service.beans.HashtagVO">
+		insert into hashtag values
+		(#{hashtag}, #{photo_cnt}, #{reg_date})
 	</insert>
-	
-	<update id="update" parameterType="com.kostagram.service.beans.HashtagVO">
-		update hashtag set photo_cnt = #{photo_cnt} where hashtag = #{hashtag}
+
+	<update id="update"
+		parameterType="com.kostagram.service.beans.HashtagVO">
+		update hashtag
+		set photo_cnt = #{photo_cnt}
+		where hashtag = #{hashtag}
 	</update>
 
-	<select id="findAllByToken" parameterType="com.kostagram.service.beans.HashtagVO" resultType="com.kostagram.service.beans.HashtagVO">
+	<select id="findAllByToken" parameterType="com.kostagram.service.beans.HashtagVO"
+		resultType="com.kostagram.service.beans.HashtagVO">
 		select *
-		from hashtag 
+		from hashtag
 		where hashtag=#{hashtag}
 	</select>
 </mapper>
