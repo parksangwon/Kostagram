@@ -1,24 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ page import="java.util.*" %>
+	
+<%
+	String gender = request.getParameter("gender"); 
+	if(request.getParameter("gender")==null){
+		gender = "3";
+	}
+%>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="ko" class="no-js lt-ie9 lt-ie8 lt-ie7 logged-in "> <![endif]-->
-<!--[if IE 7]>         <html lang="ko" class="no-js lt-ie9 lt-ie8 logged-in "> <![endif]-->
-<!--[if IE 8]>         <html lang="ko" class="no-js lt-ie9 logged-in "> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="ko" class="no-js logged-in "> <!--<![endif]-->
+
+<html lang="ko" class="no-js logged-in ">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <title>프로필 편집 &bull; Kostagram</title>
 
-        <script type="text/javascript">
-  WebFontConfig = {
-    custom: {
-      families: ['proxima-nova:n3,n4,n6,n7'],
-    }
-  };
-</script>
+		<script type="text/javascript">
+				<%
+					if(session.getAttribute("nickname")==null)
+					{
+				%>
+					alert("디진다");
+				<%
+					}
+				%>			
+			  WebFontConfig = {
+			    custom: {
+			      families: ['proxima-nova:n3,n4,n6,n7'],
+			    }
+			  };
+		</script>
 <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/webfont.js" type="text/javascript" async></script>
 
 <style type="text/css">
@@ -107,8 +121,6 @@
         })();
         </script>
 
-        
-    
     
         <link rel="Shortcut Icon" type="image/x-icon" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/favicon.ico"><link rel="mask-icon" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/favicon.svg" color="#125688">
     
@@ -118,11 +130,8 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/apple-touch-icon-114x114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/apple-touch-icon-144x144-precomposed.png">
     
-    
-    <link href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/styles/public/public-main.css" type="text/css" rel="stylesheet"></link>
+    	<link href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/styles/public/public-main.css" type="text/css" rel="stylesheet"></link>
 
-    
-    
     <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/jquery.js" type="text/javascript"></script>
     <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/bluebar.js" type="text/javascript"></script>
     <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/navigation.js" type="text/javascript"></script>
@@ -157,21 +166,20 @@
                     <li id="link_profile" class="link-profile has-dropdown">
                         <a href="javascript:;">
                             
-    <span class="img img-outset current-user-avatar" style="background-image: url(https://igcdn-photos-f-a.akamaihd.net/hphotos-ak-xtp1/t51.2885-19/s150x150/12317353_778068599005413_920942073_a.jpg);">
-        <img src="https://igcdn-photos-f-a.akamaihd.net/hphotos-ak-xtp1/t51.2885-19/s150x150/12317353_778068599005413_920942073_a.jpg" onerror="imageFallback(this);" alt="" />
+    <span class="img img-outset current-user-avatar" style="background-image: url(${profile_img});">
+        <img src="${profile_img}" onerror="imageFallback(this);" alt="" />
         <b></b>
     </span>
 
-                            <strong><%=session.getAttribute("email") %></strong>
+                            <strong>${nickname}</strong>
                         </a>
 
                         <div class="dropdown">
                             <i></i>
 
                             <ul role="navigation">
-                                <li><a href="/jaewoo18/">프로필 보기</a></li>
-                                <li><a href="/accounts/edit/">프로필 편집</a></li>
-                                <li><a href="/accounts/badges/">위젯</a></li>
+                                <li><a href="??????????????????">프로필 보기</a></li>
+                                <li><a href="/accounts/profileupdate/">프로필 편집</a></li>
                                 <li><span id='rC0'></span></li>
                             </ul>
                         </div>
@@ -184,8 +192,6 @@
 </header> <!-- .top-bar -->
                     
                 
-
-                
     <div class="sidebar">
         <div class="wrapper">
             <nav class="sidebar-nav">
@@ -194,12 +200,11 @@
     <h2><i></i>회원님의 계정<span class="separator"> &bull; </span><span class="subtitle"></span></h2>
     <ul>
         <li class="active">
-        <a href="/accounts/edit/">
+        <a href="/accounts/profileupdate/">
             
             프로필 편집
             
             <i class="disclosure"></i>
-            
         </a>
         
     </li>
@@ -230,49 +235,60 @@
     <header>
     <h1>프로필 편집</h1>
     </header>
-
+    <%	
+    	if(request.getParameter("message")!=null)
+    	{
+    %>
+	    <div id="alerts" class="alerts">
+	
+	    <p class="alert-green"><%= request.getParameter("message") %></p>
+	    
+		</div>
+    <%
+    	}
+    %>
     
 
 
 
     
-<form  method="POST" accept-charset="utf-8" class="adjacent bordered">
+<form  method="POST" accept-charset="utf-8" class="adjacent bordered" action="">
 
-    
-   <input type="hidden" name="csrfmiddlewaretoken" value="<%=session.getAttribute("nickName")%>"/>
+
+   
     <p name="first_name_section" class="form-text">
         <label for="first_name">이름</label>
-        <span><input id="first_name" autocorrect="off" type="text" name="first_name" maxlength="30" /></span>
+        <span><input id="first_name" autocorrect="off" type="text" name="name" maxlength="30" value="${name}"/></span>
     </p>
     
     <p name="email_section" class="form-text">
         <label for="email">이메일</label>
-        <span><input type="email" name="email" value="mfaa11@naver.com" id="email" /></span>
+        <span><input type="email" name="email" value="${eamil }" id="email" /></span>
     </p>
     
     <p name="username_section" class="form-text">
         <label for="username">사용자 이름</label>
-        <span><input name="username" maxlength="30" autocapitalize="off" autocorrect="off" type="text" id="username" value="jaewoo18" /></span>
+        <span><input name="nickname" maxlength="30" autocapitalize="off" autocorrect="off" type="text" id="username" value="${nickname}" /></span>
     </p>
  
     <p name="phone_number_section" class="form-text">
         <label for="phone_number">전화번호</label>
-        <span><input type="tel" name="phone_number" id="phone_number" /></span>
+        <span><input type="tel" name="mobile" id="phone_number" value="${mobile}" /></span>
     </p>
 
     <p name="gender_section" class="form-select">
         <label for="gender">성별</label>
         <span><select name="gender" id="gender">
-		<option value="3" selected="selected">--------</option>
-		<option value="1">남성</option>
-		<option value="2">여성</option>
+		<option value="3" "<%if(gender.equals("3")){%>selected=selected<%}%>">--------</option>
+		<option value="1" "<%if(gender.equals("1")){%>selected=selected<%}%>">남성</option>
+		<option value="2" "<%if(gender.equals("2")){%>selected=selected<%}%>">여성</option>
 		</select></span>
     </p>
     
     
     <p name="biography_section" class="form-textarea">
         <label for="biography">소개</label>
-        <span><textarea id="biography" rows="10" cols="40" name="biography"></textarea></span>
+        <span><textarea id="biography" rows="10" cols="40" name="message">${message }</textarea></span>
     </p>    
 
     <p class="form-actions"><input type="submit" class="button-green" value="제출" /></p>
@@ -309,7 +325,7 @@
                         </ul>
                     </nav>
 
-                    <p class="copyright">&copy; 2015 Instagram</p>
+                    <p class="copyright">&copy; 2015 Kostagram</p>
                 </div>
             </footer>
             
