@@ -1,5 +1,7 @@
 package com.kostagram.control;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,11 +48,20 @@ public class MobileController {
 	
 	@RequestMapping("/emailcheck")
 	public String emailcheck(){
+		//System.out.println("emailcheck");
 	   return "mobile/emailcheck";
 	}
 	
 	@RequestMapping("/usercheck")
-	public String usercheck(){
+	public String usercheck(HttpServletRequest request, Model model ){
+		//System.out.println("usercheck");
+		String id = (String)request.getParameter("id");
+		/*String name = (String)request.getParameter("name");
+		String nickname = (String)request.getParameter("nickname");
+		String pw = (String)request.getParameter("pw");
+		
+		System.out.println("id="+ id + " name="+name+ " nickname="+nickname+ " pw="+pw);*/
+		model.addAttribute("id", id);
 	   return "mobile/usercheck";
 	}
 	
@@ -65,7 +76,13 @@ public class MobileController {
 	}
 	
 	@RequestMapping("/findfriend")
-	public String findfriend(){
+	public String findfriend(HttpServletRequest request){
+		String id = (String)request.getParameter("id");
+		String name = (String)request.getParameter("name");
+		String nickname = (String)request.getParameter("nickname");
+		String pw = (String)request.getParameter("pw");
+		
+		System.out.println("id="+ id + " name="+name+ " nickname="+nickname+ " pw="+pw);
 	   return "mobile/findfriend";
 	}
 	
