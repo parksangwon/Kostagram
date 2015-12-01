@@ -1,5 +1,8 @@
 package com.kostagram.service.dao;
 
-public interface ReportDAO {
+import com.kostagram.service.beans.ReportVO;
 
+public interface ReportDAO {
+	public boolean insert(ReportVO report);
+	
 }
