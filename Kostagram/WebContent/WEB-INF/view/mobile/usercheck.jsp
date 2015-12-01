@@ -49,16 +49,21 @@
 						return false;
 					}
 					
-					$.mobile.changePage("./findfriend");
+					//$.mobile.changePage("./findfriend");
 				}
 			</script>
 			
 			<center><h1>Kostagram</h1></center>
-			
+<%
+	String id = (String)request.getParameter("id");
+%>
 			<div data-role="content">
-				<form id="joinForm" method="post" action="#" align="center">
+				<form id="joinForm" method="post" action="usercheck" align="center">
 					<div data-role="fieldcontain" align="center">
-						<input id="id" type="text" name="name" placeholder="이름"/> 
+						<input id="id" type="text" name="id" placeholder="email-id" value="<%= id %>"/> 
+					</div>
+					<div data-role="fieldcontain" align="center">
+						<input id="name" type="text" name="name" placeholder="이름"/> 
 					</div>
 					<div data-role="fieldcontain" align="center">
 						<input id="nickname" type="text" name="nickname" placeholder="사용자 이름(닉네임)"/> 
@@ -69,7 +74,7 @@
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" value="다음" data-inline="true" onclick="javascript:findfriend()"/>
+							<input type="submit" value="다음" data-inline="true" onclick="javascript:findfriend()"/>
 						</center>
 					</div>
 				</form>
