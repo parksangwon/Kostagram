@@ -34,4 +34,15 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	public List<UserInfoVO> findList(String token) {
 		return sqlSession.selectList("userInfo.findList",token);
 	}
+	
+	@Override
+	public boolean pwCheck(String pw){
+		return sqlSession.selectOne("userInfo.pwCheck", pw);
+	}
+
+	@Override
+	public boolean pwUpdate(String pw) {
+		return false;
+	}
+	
 }
