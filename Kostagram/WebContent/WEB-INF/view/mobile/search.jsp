@@ -56,10 +56,10 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
 						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
 						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
-						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
 						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
@@ -110,10 +110,10 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
 						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
 						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
-						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
 						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
@@ -164,10 +164,10 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
 						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
 						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
-						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
 						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
@@ -218,10 +218,10 @@
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
 						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
 						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
-						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
 						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>

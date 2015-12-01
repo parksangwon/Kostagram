@@ -12,18 +12,38 @@
 	</head>
 	<body>
 		<div id="loginform" data-role="page" data-theme="b" >
-		
+			
 			<div data-role="header" data-theme="b">
-				<h1>둘러보기</h1>
-				<a href="#" data-rel="back"><</a>
+				<table onclick="location.href='search'">
+					<tr>
+						<td>
+							<a href="#" data-rel="back"><image src="./image/icon/cross.png" width="20" style="padding-left:10px;"/></a>
+							<span style="height:35px;
+							font-size:20px;
+							color:#ffffff;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							text-shadow: 0px 0px 0px black;
+							padding-left:5px;">
+							둘러보기
+							</span>
+						</td>
+					</tr>
+				</table>
 			</div>
+			
 			
 			<div>
 				<table width="100%">
 					<tr>
 						<td width="60"><image src="./image/test.jpg" width="60" style="-webkit-border-radius: 100px; 
 								border-radius: 100px;"/></td>
-						<td align="left">이성경존나이뻐요</td>
+						<td align="left"><a href="#" style="text-decoration:none;
+							text-shadow: 0px 0px 0px;
+							color: #004879;
+							font-weight: normal;">이성경 존나이뻐요</a></td>
 						<td align="right"><a href="#"><image src="./image/follow.jpg" width="80"/></a></td>
 					</tr>
 				</table>
@@ -54,7 +74,10 @@
 				if(likelist.size()<6)
 				{
 			%>			
-						<td>♥ 
+						<td><a href="#" style="text-decoration:none;
+						text-shadow: 0px 0px 0px;
+						color: #004879;
+						font-weight: normal;">♥ 
 					<%
 						for(int i=0; i<likelist.size(); i++)
 						{
@@ -63,17 +86,30 @@
 					<%
 						} 
 					%> 
-						</td>
+						</a></td>
 			<%
 				}
 				else
 				{
 			%>
-					<td>♥ <%= likelist.size()%>개</td>
+					<td><a href="#" style="text-decoration:none;
+					text-shadow: 0px 0px 0px;
+					color: #004879;
+					font-weight: normal;">♥ <%= likelist.size()%>개</a></td>
 			<%
 				}
 			%>
 					</tr>
+					
+					<tr>
+						<td><a href="#" style="text-decoration:none;
+							text-shadow: 0px 0px 0px;
+							color: #004879;
+							font-weight: normal;">아이디</a>
+							게시글 내용
+							</td>
+						</tr>
+					<tr>
 			<%
 				// 댓글 시작
 				// 임시로 댓글 리스트 추가
@@ -85,11 +121,25 @@
 				
 				if(replylist!=null && replylist.size()>=0)
 				{
-					for(int i=0; i<replylist.size(); i++)
+					if(likelist.size()>3)
 					{
 			%>
 					<tr>
-						<td><%= replylist.get(i) %></td>
+						<td><a href="#" style="text-decoration:none;
+						text-shadow: 0px 0px 0px;
+						color:#353535;
+						font-weight:normal;">댓글 더보기</a></td>
+					</tr>
+			<%
+					}
+					for(int i=0; i<4; i++)
+					{
+			%>
+					<tr>
+						<td><a href="#" style="text-decoration:none;
+						text-shadow: 0px 0px 0px;
+						color: #004879;
+						font-weight: normal;"><%= replylist.get(i) %></a> 댓글</td>
 					</tr>
 			<%
 					}
@@ -101,20 +151,24 @@
 			</div>
 			
 			<div>
-				댓글 달기
+				<a href="#" style="text-decoration:none;
+				text-shadow: 0px 0px 0px;
+				color:#353535;
+				font-weight:normal;">댓글 달기</a>
 			</div>
 			
 			<div data-role="footer" data-theme="b">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a href="#"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
 						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
 						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
-						<li><a href="#"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
 						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
 			</div>
+			
 		</div>
 	</body>
 </html>

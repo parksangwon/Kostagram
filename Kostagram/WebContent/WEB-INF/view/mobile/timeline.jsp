@@ -1,140 +1,206 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.ArrayList" %>
 
 <%
-	ArrayList timeLineList =(ArrayList)request.getAttribute("timeLineList"); ;
+	//ArrayList timeLineList =(ArrayList)request.getAttribute("timeLineList");
+	ArrayList timeLineList = new ArrayList();
+	for(int i=0; i<5; i++)
+	{
+		timeLineList.add(i);
+	}
 %>
-<!DOCTYPE html> 
 <html> 
 	<head>
-		<title>jQuery Mobile</title>
-		<meta charset="euc-kr" /> 	
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-		
-		<link rel="shortcut icon" href="../image/icon.png">
-		<link rel="apple-touch-icon" href="../image/icon.png"> 
-		
-		
-		
-		<!-- Include jQuery Mobile stylesheets -->
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-		
-		<!-- Include the jQuery library -->
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		
-		<!-- Include the jQuery Mobile library -->
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-			
-		<style>
-			.ui-bar-f {
-			    color:#004879;
-			    background-color: #004879;
-			}
-		</style>
-		
-							
+		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<TITLE>Kostagram</TITLE>
+		<script src="jquery-mobile/jquery-1.6.4.js"></script>
+		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
+		<script src="js/common.js"></script>
+		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />					
 	</head> 
 		
 	<body>
 		<div data-role="page" >
 		
-			<div data-role="header"	data-theme="f" >
-				<font color="white">Kostagram</font>
-			</div>
-
-
-
-				<% 
-	if (timeLineList == null || timeLineList.size() == 0 ) { 
-%>
-		<center>팔로잉이 없습니다.</center> 
-<%	
-	} else {
-		for ( int i = 0; i < timeLineList.size(); i++ ) { 
-%> 
-
-			<div data-role="content"	 data-theme="d">
-				<ul data-role="listview" data-inset="true">
-					<li >
-						<table>
-							<tr>
-								<td width="5%">프사</td>
-								<td width="20%"><a href="#" style="text-decoration:none"><font color="#004879">Hihi123</font></a></td>							
-								<td width="70%"	align="right">10분</td>
-							</tr>			
-						</table>
-					</li>
-						<img src="./framework/images/testImage3.jpg"  width="100%">
-					<li>	
-						<table width="100%">
-							<tr>
-								<td>			
-									<input type="image" src="./m/image/icon/heart.png" onclick="#">
-								</td>
-								<td>
-									<input type="image" src="./m/image/icon/chat_bubble.png" onclick="#">
-								</td>
-								<td>
-									<input type="image" src="./m/image/icon/plus.png" onclick="#">
-								</td>
-								<td align="right">
-									<right><a href="#smenu" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all" data-inline="true" >:</a></right>
-								</td>
-							</tr>
-						</table>	
-							    
-							    
-							    <div data-role="popup" id="smenu" data-overlay-theme="b">
-							      <input type="button" value="신고">
-							    </div>
-
-					</li>
-					<li>
-						<p><a href="#" style="text-decoration:none" ><font color="#004879">♥ 좋아요 142개</font></a></p>
-						<br>
-						<p><a href="#" style="text-decoration:none"><font color="#004879">Hihi123</font></a> I see you. 
-						<a href="#" style="text-decoration:none"><font color="#OD37CA">#widewhynot</font></a></p>
-						
-						<p><a href="#" style="text-decoration:none"><font color="gray">댓글 ???개 모두보기</font></a></p>
-						<p><a href="#" style="text-decoration:none"><font color="#004879">borouhhin</font></a>	Fire~</p>
-						<p><a href="#" style="text-decoration:none"><font color="#004879">junhyck</font></a>	Awesome</p>
-						<p><a href="#" style="text-decoration:none"><font color="#004879">rossmansusna</font></a>	Going up or going down1 Great, ILove this pic.</p>
-						<p><a href="#comment" style="text-decoration:none"><font color="gray">댓글 달기</font></a></p>
-					</li>
-				</ul>
+			<div data-role="header" data-theme="b">
+				<table>
+					<tr>
+						<td>
+							<span style="height:35px;
+							font-size:20px;
+							color:#ffffff;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							text-shadow: 0px 0px 0px black;
+							padding-left:5px;">
+							Kostagram
+							</span>
+						</td>
+					</tr>
+				</table>
 			</div>
 			
-			<div id="comment" data-role="page"  data-theme="d">
-				<div data-role="header">
-					<h1>댓글 달기</h1>
-					<a href="#" data-rel="back" data-icon="arrow-1"></a>
-				</div>
-				<div data-role="content">
-					<h1>댓글 다는 페이지</h1>
-				</div>
+		<% 
+			if (timeLineList == null || timeLineList.size() == 0 )
+			{ 
+		%>
+			<div>
+				<center>팔로잉이 없습니다.</center>
+			</div> 
+		<%	
+			}
+			else
+			{
+				for (int i=0; i<timeLineList.size(); i++ )
+				{ 
+		%>
+			<div>
+				<table width="100%">
+					<tr>
+						<td width="60"><image src="./image/test.jpg" width="60" style="-webkit-border-radius: 100px; 
+								border-radius: 100px;"/></td>
+						<td align="left"><a href="#" style="text-decoration:none;
+							text-shadow: 0px 0px 0px;
+							color: #004879;
+							font-weight: normal;">이성경 존나이뻐요</a></td>
+						<td align="right" style="text-decoration:none;
+							text-shadow: 0px 0px 0px;
+							color: #004879;
+							font-weight: normal;">올린시간</td>
+					</tr>
+				</table>
 			</div>
-
-<% }
-		} %>			
+			
+			<div>
+				<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="100%" colspan="2"><image src="./image/test.jpg" width="100%"/></td>
+					</tr>
+					<tr>
+						<td align="left"><a href="#"><image src="./image/icon/heart.png" width="25"/></a>&nbsp;&nbsp;<a href="#"><image src="./image/icon/chat_bubble.png" width="25"/></a></td>
+						<td align="right"><a href="#"><image src="./image/icon/warning.png" width="25"/></a></td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<table>
+					<tr>
+			<%
+				// 좋아요 부분, 좋아요가 5개 이하이면 아이디를, 초과되면 갯수를
+				ArrayList likelist = new ArrayList();
+				for(int j=0; j<5; j++)
+				{
+					likelist.add(j);
+				}
+				
+				if(likelist.size()<6)
+				{
+			%>			
+						<td><a href="#" style="text-decoration:none;
+						text-shadow: 0px 0px 0px;
+						color: #004879;
+						font-weight: normal;">♥ 
+					<%
+						for(int k=0; k<likelist.size(); k++)
+						{
+					%>
+						 <%= likelist.get(k) %>
+					<%
+						} 
+					%> 
+						</a></td>
+			<%
+				}
+				else
+				{
+			%>
+					<td><a href="#" style="text-decoration:none;
+					text-shadow: 0px 0px 0px;
+					color: #004879;
+					font-weight: normal;">♥ <%= likelist.size()%>개</a></td>
+			<%
+				}
+			%>
+					</tr>
+					
+					<tr>
+						<td><a href="#" style="text-decoration:none;
+							text-shadow: 0px 0px 0px;
+							color: #004879;
+							font-weight: normal;">아이디</a>
+							게시글 내용
+							</td>
+						</tr>
+					<tr>
+			<%
+				// 댓글 시작
+				// 임시로 댓글 리스트 추가
+				ArrayList replylist = new ArrayList();
+				for(int n=0; n<4; n++)
+				{
+					replylist.add(n);
+				}
+				
+				if(replylist!=null && replylist.size()>=0)
+				{
+					if(likelist.size()>3)
+					{
+			%>
+					<tr>
+						<td><a href="#" style="text-decoration:none;
+						text-shadow: 0px 0px 0px;
+						color:#353535;
+						font-weight:normal;">댓글 더보기</a></td>
+					</tr>
+			<%
+					}
+					for(int m=0; m<4; m++)
+					{
+			%>
+					<tr>
+						<td><a href="#" style="text-decoration:none;
+						text-shadow: 0px 0px 0px;
+						color: #004879;
+						font-weight: normal;"><%= replylist.get(m) %></a> 댓글</td>
+					</tr>
+			<%
+					}
+				}
+				
+				else{}
+			%>
+				</table>
+			</div>
+			
+			<div>
+				<a href="#" style="text-decoration:none;
+				text-shadow: 0px 0px 0px;
+				color:#353535;
+				font-weight:normal;">댓글 달기</a>
+			</div>
+			<br>
+			<%
+				}
+			}
+			%>			
 	
 			
-			<div data-role="footer" data-theme="b"		data-position="fixed">
-				<div data-role="navbar" >
-					<ul data-theme="f">
-						<li><a data-role="button" data-icon="home" data-iconpos="notext" ></a></li>
-						<li><a data-role="button" data-icon="search" data-iconpos="notext" ></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"	class="ui-btn-active 	ui-state-persist"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="info" data-iconpos="notext" ></a></li>
+			<div data-role="footer" data-theme="b">
+				<div data-role="navbar" class="ui-btn-active">
+					<ul>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
-			</div> 
+			</div>
 
-		</div>
-		
-		
-			
+		</div>	
 	</body>
 </html>
 
