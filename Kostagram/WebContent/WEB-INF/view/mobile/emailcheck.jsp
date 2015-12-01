@@ -41,21 +41,21 @@
 						}
 					}
 					
-					$.mobile.changePage("./usercheck");
+					//$.mobile.changePage("./usercheck");
 				}
 			</script>
 			
 			<center><h1>Kostagram</h1></center>
 	
 			<div data-role="content">
-				<form id="joinForm" method="post" action="#" align="center">
+				<form id="joinForm" method="post" action="usercheck" align="center">
 					<div data-role="fieldcontain" align="center">
-						<input id="id" type="text" name="id" placeholder="이메일"/> 
+						<input id="id" type="text" name="id" placeholder="이메일"/>
 					</div>					
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" value="다음" data-inline="true" onclick="emailcheck()"/>
+							<input type="submit" value="다음" data-inline="true" onclick="emailcheck()"/>
 						</center>
 					</div>
 				</form>
