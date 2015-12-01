@@ -7,16 +7,15 @@
 		#{reg_time}, #{status}, #{seq_cvs})
 	</insert>
 
+	<delete id="delete" parameterType="com.kostagram.service.beans.ConversationReplyVO">
+		delete from conversation_reply
+		where seq_cvsre=#{seq_cvsre}
+	</delete>
+	
 	<select id="findAll"
 		parameterType="com.kostagram.service.beans.ConversationVO"
 		resultType="com.kostagram.service.beans.ConversationReplyVO">
 		select * from conversation_reply where seq_cvs=#{seq_cvs}
 		order by reg_time
 	</select>
-
-	<delete id="delete" parameterType="com.kostagram.service.beans.ConversationReplyVO">
-		delete from conversation_reply
-		where seq_cvsre=#{seq_cvsre}
-	</delete>
-	
 </mapper>
