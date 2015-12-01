@@ -1,5 +1,8 @@
 package com.kostagram.service.dao;
 
-public interface CommentDAO {
+import com.kostagram.service.beans.CommentVO;
 
+public interface CommentDAO {
+	public boolean insert(CommentVO comment);
+	public boolean delete(CommentVO comment);
 }
