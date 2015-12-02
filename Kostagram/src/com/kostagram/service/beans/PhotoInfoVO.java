@@ -5,7 +5,6 @@ import java.util.Date;
 public class PhotoInfoVO {
 	
 	private String seq_photo;
-	private String img_path;
 	private String email;
 	private String location_name;
 	private String content;
@@ -17,11 +16,10 @@ public class PhotoInfoVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PhotoInfoVO(String seq_photo, String img_path, String email, String location_name, String content,
+	public PhotoInfoVO(String seq_photo, String email, String location_name, String content,
 			Date reg_date, Date upd_date, char dispYn) {
 		super();
 		this.seq_photo = seq_photo;
-		this.img_path = img_path;
 		this.email = email;
 		this.location_name = location_name;
 		this.content = content;
@@ -36,14 +34,6 @@ public class PhotoInfoVO {
 
 	public void setSeq_photo(String seq_photo) {
 		this.seq_photo = seq_photo;
-	}
-
-	public String getImg_path() {
-		return img_path;
-	}
-
-	public void setImg_path(String img_path) {
-		this.img_path = img_path;
 	}
 
 	public String getEmail() {
@@ -96,7 +86,7 @@ public class PhotoInfoVO {
 
 	@Override
 	public String toString() {
-		return "PhotoInfoVO [seq_photo=" + seq_photo + ", img_path=" + img_path + ", email=" + email
+		return "PhotoInfoVO [seq_photo=" + seq_photo + ", email=" + email
 				+ ", location_name=" + location_name + ", content=" + content + ", reg_date=" + reg_date + ", upd_date="
 				+ upd_date + ", dispYn=" + dispYn + "]";
 	}
