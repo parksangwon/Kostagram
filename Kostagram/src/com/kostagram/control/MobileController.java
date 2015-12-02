@@ -2,18 +2,22 @@ package com.kostagram.control;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kostagram.service.beans.UserInfoVO;
+import com.kostagram.service.dao.UserInfoDAO;
+
 @Controller
 @RequestMapping("/m")
 public class MobileController {
-    /*
+    
 	@Autowired
-	private UserInfoDAO user;
-	*/
+	private UserInfoDAO userInfoDao;
+	
 	
 	//요청 매핑
 	//간단한 JSP포워딩
@@ -77,14 +81,19 @@ public class MobileController {
 	}
 	
 	@RequestMapping("/findfriend")
-	public String findfriend(HttpServletRequest request){
-		String id = (String)request.getParameter("id");
+	public String findfriend(HttpServletRequest request, UserInfoVO user){
+		/*String id = (String)request.getParameter("id");
 		String name = (String)request.getParameter("name");
 		String nickname = (String)request.getParameter("nickname");
-		String pw = (String)request.getParameter("pw");
-		
-		
-		System.out.println("id="+ id + " name="+name+ " nickname="+nickname+ " pw="+pw);
+		String pass = (String)request.getParameter("pass");
+		*/
+		boolean result = userInfoDao.insert(user);
+		if (result) {
+			
+		} else {
+			
+		}
+		//System.out.println("id="+ id + " name="+name+ " nickname="+nickname+ " pw="+pw);
 	   return "mobile/findfriend";
 	}
 	
