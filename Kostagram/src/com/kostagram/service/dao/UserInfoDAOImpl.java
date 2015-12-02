@@ -27,8 +27,13 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	}
 	
 	@Override
-	public UserInfoVO findUser(String nickname) {
-		return sqlSession.selectOne("userInfo.finduser", nickname);
+	public UserInfoVO findEmail(UserInfoVO user) {
+		return sqlSession.selectOne("userInfo.findEmail", user);
+	}
+	
+	@Override
+	public UserInfoVO findNickname(UserInfoVO user) {
+		return sqlSession.selectOne("userInfo.findNickname", user);
 	}
 	
 	@Override
@@ -37,12 +42,12 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	}
 	
 	@Override
-	public boolean pwCheck(String pw){
-		return sqlSession.selectOne("userInfo.pwCheck", pw);
+	public boolean pwCheck(UserInfoVO user){
+		return sqlSession.selectOne("userInfo.pwCheck", user);
 	}
 
 	@Override
-	public boolean pwUpdate(String pw) {
+	public boolean pwUpdate(UserInfoVO user) {
 		return false;
 	}
 	
