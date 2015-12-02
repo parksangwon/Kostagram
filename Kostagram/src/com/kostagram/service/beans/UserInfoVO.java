@@ -16,6 +16,19 @@ public class UserInfoVO {
 	private Date upd_date;
 	
 	public UserInfoVO() {}
+	
+	public UserInfoVO(String email) {
+	    super();
+	    this.email = email;
+	}
+
+	public UserInfoVO(String email, String name, String nickname, String pass) {
+	    super();
+	    this.email = email;
+	    this.name = name;
+	    this.nickname = nickname;
+	    this.pass = pass;
+	}
 
 	public UserInfoVO(String email, String name, String nickname, String pass, String mobile, String message,
 			String profile_img, char adminYn, char useYn, Date join_date, Date upd_date) {
