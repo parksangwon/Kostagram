@@ -26,7 +26,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	}
 	
 	@Override
-	public UserInfoVO finduser(String nickname) {
+	public UserInfoVO findUser(String nickname) {
 		return sqlSession.selectOne("userInfo.finduser", nickname);
 	}
 	

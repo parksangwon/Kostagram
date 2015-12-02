@@ -33,9 +33,9 @@ public class WebController {
 	if (request.getMethod().equals("POST") && request.getAttribute("id_old_password") != null) {
 	    boolean check = userInfoDao.pwCheck((String)request.getAttribute("id_old_password"));
 	    String message;
-	    if (check == true) {
+	    if (check) {
 		check = userInfoDao.pwUpdate((String)request.getAttribute("new_password1"));
-		if (check == true) {
+		if (check) {
 		    message = "정상적으로 비밀번호를 수정하였습니다.";
 		} else {
 		    message = "비밀번호 수정중 오류가 발생 하였습니다.";
@@ -54,16 +54,16 @@ public class WebController {
     public String profileEdit(UserInfoVO vo, HttpSession session, HttpServletRequest reqeuest, Model model) {
 	String method = reqeuest.getMethod();
 	if (method.equals("POST")) {
-	    boolean i = userInfoDao.update(vo);
-	    if (i==true) {
+	    boolean result = userInfoDao.update(vo);
+	    if ( result ) {
 		model.addAttribute("message", "성공적으로 업데이트 되었습니다.");
 	    } else {
 		model.addAttribute("message", "업데이트하는 도중 에러가 발생하였습니다.");
 	    }
 	}
 	String nickname = (String) session.getAttribute("nickname");
-		UserInfoVO userInfo =  userInfoDao.finduser(nickname);
-		model.addAttribute("userinfo", userInfo);
+	UserInfoVO userinfo = userInfoDao.findUser(nickname);
+	model.addAttribute("userinfo", userinfo);
 
 	return "profileupdate";
     }
