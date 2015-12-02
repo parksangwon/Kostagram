@@ -14,6 +14,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	
 	@Override
 	public boolean insert(UserInfoVO user) {
+		System.out.println("DAO sysout : " + user);
 		int insert= sqlSession.insert("userInfo.insert",user);
 		if(insert==1)return true;
 		
