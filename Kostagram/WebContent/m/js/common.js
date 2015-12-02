@@ -1,4 +1,4 @@
-// ¹®ÀÚ¿­ ¾ÕµÚ °ø¹éÁ¦°Å
+// ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½Õµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 function trim(str)
 {
 	var count = str.length;
@@ -16,7 +16,7 @@ function trim(str)
 	return ((st > 0) || (len < count)) ? str.substring(st, len) : str ;
 }
 
-// ¿µ¹® ¶Ç´Â ¼ýÀÚ Ã¼Å©
+// ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
 function isEngNum(orgNum)
 {
 	var oxEngNum = false;
@@ -35,7 +35,7 @@ function isEngNum(orgNum)
 	return oxEngNum;
 }
 
-// ÀÌ¸ÞÀÏ Æ÷ÇÔ ¹®ÀÚ Ã¼Å©
+// ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
 function isEmailChar(orgChar)
 {
 	var oxEmailChar = false;
@@ -54,7 +54,7 @@ function isEmailChar(orgChar)
 	return oxEmailChar;
 }
 
-// ¼ýÀÚ Ã¼Å©
+// ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
 function isNum(orgNum)
 {
 	var oxNum = true;
