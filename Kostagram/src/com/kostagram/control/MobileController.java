@@ -81,11 +81,11 @@ public class MobileController {
 	
 	@RequestMapping("/findfriend")
 	public String findfriend(HttpServletRequest request, UserInfoVO user){
-		String id = (String)request.getParameter("id");
+		String email = (String)request.getParameter("email");
 		String name = (String)request.getParameter("name");
 		String nickname = (String)request.getParameter("nickname");
 		String pass = (String)request.getParameter("pass");
-		
+		System.out.println("id="+ email + " name="+name+ " nickname="+nickname+ " pass="+pass);
 		boolean result = userInfoDao.insert(user);
 		if (result) 
 		{
@@ -95,7 +95,6 @@ public class MobileController {
 		{
 			System.out.println("회원가입 실패");
 		}
-		System.out.println("id="+ id + " name="+name+ " nickname="+nickname+ " pass="+pass);
 	   return "mobile/findfriend";
 	}
 	
