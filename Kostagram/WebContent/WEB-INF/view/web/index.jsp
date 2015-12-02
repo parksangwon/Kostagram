@@ -2942,7 +2942,7 @@ transform
 			data-reactid=".0.1.0.1">
 			<div class="-cx-PRIVATE-LandingActionsColumn__box"
 				data-reactid=".0.1.0.1.0">
-				<a href="http://localhost/Kostagram/index"><div><img src="img/web/index.png" ></div></a>
+				<a href="http://localhost/Kostagram"><div><img src="img/web/index.png" ></div></a>
 					
 				<div class="-cx-PRIVATE-SlimLoginForm__root"
 					data-reactid=".0.1.0.1.0.1">
