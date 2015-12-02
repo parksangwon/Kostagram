@@ -21,7 +21,7 @@
 				
 				$('#joinbutton').click(function(){
 					
-					var idInput = $('input:text[name=id]');
+					var idInput = $('input:text[name=email]');
 					var idValue = trim(idInput.val());
 					
 					if(idValue === "")
@@ -64,17 +64,17 @@
 						return false;
 					}
 					
-					var pw = $('input:password[name=pw]');
-					if(pw.val() == "")
+					var pass = $('input:password[name=pass]');
+					if(pass.val() == "")
 					{
 						window.alert("비밀번호를 반드시 입력해야 합니다.");
-						pw.focus();
+						pass.focus();
 						return false;
 					}
-					if(pw.val().length < 4 || pw.val().length > 20)
+					if(pass.val().length < 4 || pass.val().length > 20)
 					{
 						window.alert("비밀번호를 4자 이상 20자 이하 입니다.");
-						pw.select();
+						pass.select();
 						return false;
 					}
 					
@@ -91,9 +91,9 @@
 	String id = (String)request.getParameter("id");
 %>
 			<div data-role="content">
-				<form id="joinForm" method="post" action="userpage" align="center">
+				<form id="joinForm" method="post" action="findfriend" align="center">
 					<div data-role="fieldcontain" align="center">
-						<input id="id" type="text" name="id" placeholder="email-id" value="<%= id %>"/> 
+						<input id="email" type="text" name="email" placeholder="email-id" value="<%= id %>"/> 
 					</div>
 					<div data-role="fieldcontain" align="center">
 						<input id="name" type="text" name="name" placeholder="이름"/> 
@@ -102,19 +102,19 @@
 						<input id="nickname" type="text" name="nickname" placeholder="사용자 이름(닉네임)"/> 
 					</div>
 					<div data-role="fieldcontain" align="center">
-						<input id="pw" type="password" name="pw" placeholder="비밀번호"/> 
+						<input id="pass" type="password" name="pass" placeholder="비밀번호"/> 
 					</div>				
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" value="가입하기" data-inline="true" id="joinbutton"/>
+							<input type="button" data-ajax="false" value="가입하기" data-inline="true" id="joinbutton"/>
 						</center>
 					</div>
 				</form>
 			</div>
 			
 			<div data-role="footer" data-theme="b">
-				<center><a href="./login"><h4>이미 계정이 있으신가요? 로그인.</h4></a></center>
+				<center><a href="./login" data-ajax="false"><h4>이미 계정이 있으신가요? 로그인.</h4></a></center>
 			</div>
 		</div>	
 	</body>
