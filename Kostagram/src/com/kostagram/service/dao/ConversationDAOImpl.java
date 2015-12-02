@@ -14,8 +14,8 @@ public class ConversationDAOImpl implements ConversationDAO {
     private SqlSession sqlSession;
 
     @Override
-    public boolean insert(ConversationVO newConversation) {
-	int result = sqlSession.insert("conversation.insert", newConversation);
+    public boolean insert(UserInfoVO user) {
+	int result = sqlSession.insert("conversation.insert", user);
 	if ( result == 1 )
 	    return true;
 	return false;
