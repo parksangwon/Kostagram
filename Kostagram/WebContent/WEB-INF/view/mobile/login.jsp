@@ -61,7 +61,7 @@
 			<center><h1>Kostagram</h1></center>
 			
 			<div data-role="content">
-				<form id="login" method="post" action="#" align="center">
+				<form id="loginForm" method="post" action="#" align="center">
 					<div data-role="fieldcontain" align="center">
 						<input id="id" type="text" name="id" placeholder="¾ÆÀÌµð"/> 
 					</div>					
