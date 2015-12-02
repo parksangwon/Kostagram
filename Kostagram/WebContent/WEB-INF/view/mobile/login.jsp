@@ -8,6 +8,7 @@
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
 		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
 		<script src="js/common.js"></script>
+		<script src="js/emailcheck.js"></script>
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 	
 	</head>
@@ -60,7 +61,7 @@
 			<center><h1>Kostagram</h1></center>
 			
 			<div data-role="content">
-				<form id="joinForm" method="post" action="#" align="center">
+				<form id="login" method="post" action="#" align="center">
 					<div data-role="fieldcontain" align="center">
 						<input id="id" type="text" name="id" placeholder="¾ÆÀÌµð"/> 
 					</div>					
