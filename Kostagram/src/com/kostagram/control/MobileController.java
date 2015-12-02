@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MobileController {
     /*
 	@Autowired
-	private PersonDAO dao;
+	private UserInfoDAO user;
 	*/
 	
 	//요청 매핑
@@ -82,6 +82,7 @@ public class MobileController {
 		String name = (String)request.getParameter("name");
 		String nickname = (String)request.getParameter("nickname");
 		String pw = (String)request.getParameter("pw");
+		
 		
 		System.out.println("id="+ id + " name="+name+ " nickname="+nickname+ " pw="+pw);
 	   return "mobile/findfriend";
