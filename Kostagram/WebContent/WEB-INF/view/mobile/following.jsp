@@ -53,7 +53,9 @@
 						</td>
 					</tr>
 				</table>
-				
+		
+		
+		<div data-role="content"	 data-theme="d">		
 					<%
 			if (followingList == null || followingList.size() == 0 ) {
 		%>
@@ -66,74 +68,63 @@
 			} else {
 				for ( int i = 0; i < followingList.size(); i++ ) {
 		%>
-			<div data-role="content"	 data-theme="d">
-				<ul data-role="listview" data-inset="true">
-					<li >
-						<table>
-							<tr>
-								<td width="5%">프사</td>
-								<td width="20%"><a href="#" style="text-decoration:none"><font color="#004879">Hihi123</font></a></td>							
-								<td width="70%"	align="right">10분</td>
-							</tr>			
-						</table>
-					</li>
-						<img src="./framework/images/testImage3.jpg"  width="100%">
-					<li>	
-						<table width="100%">
-							<tr>
-								<td>			
-									<input type="image" src="./m/image/icon/heart.png" onclick="#">
-								</td>
-								<td>
-									<input type="image" src="./m/image/icon/chat_bubble.png" onclick="#">
-								</td>
-								<td>
-									<input type="image" src="./m/image/icon/plus.png" onclick="#">
-								</td>
-								<td align="right">
-									<right><a href="#smenu" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all" data-inline="true" >:</a></right>
-								</td>
-							</tr>
-						</table>	
-							    
-							    
-							    <div data-role="popup" id="smenu" data-overlay-theme="b">
-							      <input type="button" value="신고">
-							    </div>
-
-					</li>
-					<li>
-						<p><a href="#" style="text-decoration:none" ><font color="#004879">♥ 좋아요 142개</font></a></p>
-						<br>
-						<p><a href="#" style="text-decoration:none"><font color="#004879">Hihi123</font></a> I see you. 
-						<a href="#" style="text-decoration:none"><font color="#OD37CA">#widewhynot</font></a></p>
-						
-						<p><a href="#" style="text-decoration:none"><font color="gray">댓글 ???개 모두보기</font></a></p>
-						<p><a href="#" style="text-decoration:none"><font color="#004879">borouhhin</font></a>	Fire~</p>
-						<p><a href="#" style="text-decoration:none"><font color="#004879">junhyck</font></a>	Awesome</p>
-						<p><a href="#" style="text-decoration:none"><font color="#004879">rossmansusna</font></a>	Going up or going down1 Great, ILove this pic.</p>
-						<p><a href="#comment" style="text-decoration:none"><font color="gray">댓글 달기</font></a></p>
-					</li>
-				</ul>
-			</div>
 			
-			<div id="comment" data-role="page"  data-theme="d">
-				<div data-role="header">
-					<h1>댓글 달기</h1>
-					<a href="#" data-rel="back" data-icon="arrow-1"></a>
-				</div>
-				<div data-role="content">
-					<h1>댓글 다는 페이지</h1>
-				</div>
-			</div>
-		
-		<%}
+				<ul data-role="listview">
+					<li>
+						<a href="./detail"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
+							<table style="word-break:break-all">
+								<tr>
+									<td>qkrwnsgur0605</td>
+								</tr>
+								
+								<tr>
+									<td><font size="1">회원님이 좋아요!</font></td>
+								</tr>
+
+							</table>		
+						</a>
+					</li>
+					
+					<li>
+						<a href="./detail"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
+							<table style="word-break:break-all">
+								<tr>
+									<td >hihi123</td>
+								</tr>
+								
+								<tr>
+									<td><font size="1">회원님이 좋아요!</font></td>
+								</tr>
+							</table>		
+						</a>
+					</li>
+					
+					<li>
+						<a href="./detail"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
+							<table style="word-break:break-all">
+								<tr>
+									<td >ohyegood422 님이 회원님의 게시물을 팔로우 하셨습니다.</td>
+								</tr>
+								
+								<tr>
+									<td><font size="1">회원님의 글이 좋아요!</font></td>
+								</tr>
+							</table>		
+						</a>
+					</li>
+					
+				</ul>
+			<%}
+				
 				}%>
+		</div>
+		
+		
 		  </div>
 		  
 			<div data-role="footer" data-theme="b"		data-position="fixed">
 				<div data-role="navbar" >
-					<ul data-theme="f">
+					<ul>
 						<li><a data-role="button" data-icon="home" data-iconpos="notext" ></a></li>
 						<li><a data-role="button" data-icon="search" data-iconpos="notext" ></a></li>
 						<li><a data-role="button" data-icon="star" data-iconpos="notext"	class="ui-btn-active 	ui-state-persist"></a></li>
