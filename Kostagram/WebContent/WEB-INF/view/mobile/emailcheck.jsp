@@ -14,35 +14,43 @@
 	<body>
 		<div data-role="page" data-theme="e">
 		
-			<script type="text/javascript" >
-				function emailcheck() 
-				{
-					var idInput = $('input:text[name=id]');
-					var idValue = trim(idInput.val());
-					if(idValue === "")
-					{
-						window.alert("E-mail ID를 입력하세요.");
-						idInput.select();
-						return false;
-					}
-					else if(idValue !== "")
-					{
-						if(isEmailChar(idValue))
-						{
-							window.alert("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
-							idInput.select();
-							return false;
-						}
-						if(idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1 || idValue.indexOf(".")<idValue.indexOf("@") || isNum(idValue.charAt(0)))
-						{
-							window.alert("E-mail ID를 확인 하세요.");
-							idInput.select();
-							return false;
-						}
-					}
+			<script>
+				$(function(){
+					var joinForm = $("#joinForm");
 					
-					//$.mobile.changePage("./usercheck");
-				}
+					$('#joinbutton').click(function(){
+						
+						var idInput = $('input:text[name=id]');
+						var idValue = trim(idInput.val());
+						
+						if(idValue === "")
+						{
+							window.alert("E-mail ID를 입력하세요.");
+							idInput.select();
+							return false;
+						}
+						else if(idValue !== "")
+						{
+							if(isEmailChar(idValue))
+							{
+								window.alert("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
+								idInput.select();
+								return false;
+							}
+							else if(idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1 || idValue.indexOf(".")<idValue.indexOf("@") || isNum(idValue.charAt(0)))
+							{
+								window.alert("E-mail ID를 확인 하세요.");
+								idInput.select();
+								return false;
+							}
+							else
+							{
+								joinForm.submit();
+								//$.mobile.changePage("./usercheck");
+							}
+						}
+					});
+				});
 			</script>
 			
 			<center><h1>Kostagram</h1></center>
@@ -55,7 +63,7 @@
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="submit" value="다음" data-inline="true" onclick="emailcheck()"/>
+							<input type="button" id="joinbutton" value="다음" data-inline="true"/>
 						</center>
 					</div>
 				</form>
