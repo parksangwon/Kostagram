@@ -15,11 +15,36 @@
 	<body>
 		<div data-role="page" data-theme="e">
 			
-			<script type="text/javascript">
-			function findfriend() {
+			<script>
+			$(function(){
+				var joinForm = $("#joinForm");
 				
-					var joinForm = $("#joinForm");
-						
+				$('#joinbutton').click(function(){
+					
+					var idInput = $('input:text[name=id]');
+					var idValue = trim(idInput.val());
+					
+					if(idValue === "")
+					{
+						window.alert("E-mail ID를 입력하세요.");
+						idInput.select();
+						return false;
+					}
+					else if(idValue !== "")
+					{
+						if(isEmailChar(idValue))
+						{
+							window.alert("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
+							idInput.select();
+							return false;
+						}
+						else if(idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1 || idValue.indexOf(".")<idValue.indexOf("@") || isNum(idValue.charAt(0)))
+						{
+							window.alert("E-mail ID를 확인 하세요.");
+							idInput.select();
+							return false;
+						}
+					}	
 					var idInputName = $('input:text[name=name]');
 					var idValueName = trim(idInputName.val());
 					
@@ -52,18 +77,21 @@
 						pw.select();
 						return false;
 					}
-				
-				joinForm.submit();
-					//$.mobile.changePage("./findfriend");
-			}
-			</script>
+					
+						
+					joinForm.submit();
+					//$.mobile.changePage("./usercheck");
+								
+				});
+			});
+		</script>
 			
 			<center><h1>Kostagram</h1></center>
 <%
 	String id = (String)request.getParameter("id");
 %>
 			<div data-role="content">
-				<form id="joinForm" method="post" action="numbersearch" align="center">
+				<form id="joinForm" method="post" action="userpage" align="center">
 					<div data-role="fieldcontain" align="center">
 						<input id="id" type="text" name="id" placeholder="email-id" value="<%= id %>"/> 
 					</div>
@@ -79,7 +107,7 @@
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" value="가입하기" data-inline="true" onclick="findfriend()"/>
+							<input type="button" value="가입하기" data-inline="true" id="joinbutton"/>
 						</center>
 					</div>
 				</form>
