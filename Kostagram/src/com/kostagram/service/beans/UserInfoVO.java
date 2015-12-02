@@ -17,9 +17,11 @@ public class UserInfoVO {
 	
 	public UserInfoVO() {}
 	
+	
 	public UserInfoVO(String email) {
 	    super();
 	    this.email = email;
+
 	}
 	
 	public UserInfoVO(String email,String pass) {
