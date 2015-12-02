@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="photoInfo">
-   <insert id="insert" parameterType="com.kostagram.service.beans.PhotoInfoVO">
-      insert into person values (person_seq.nextval, #{name}, #{age}, #{job})
-   </insert>
-   
-   <update id="update" parameterType="com.kostagram.service.beans.PhotoInfoVO">
-      
-   </update>
-   
-   <update id="delete" parameterType="com.kostagram.service.beans.PhotoInfoVO">
-      
-   </update>
-   
-   <select id="findAll" resultType="com.kostagram.service.beans.PhotoInfoVO">
-      select * from photo
-   </select> 
-   
-   
+	<insert id="insert" parameterType="com.kostagram.service.beans.PhotoInfoVO">
+		insert into person values (person_seq.nextval, #{name}, #{age}, #{job})
+	</insert>
+
+	<update id="update" parameterType="com.kostagram.service.beans.PhotoInfoVO">
+
+	</update>
+
+	<update id="delete" parameterType="com.kostagram.service.beans.PhotoInfoVO">
+
+	</update>
+
+	<select id="getTimeline" parameterType="java.lang.String"
+		resultType="com.kostagram.service.beans.PhotoInfoVO">
+		SELECT PHOTO.*
+		FROM PHOTO, (
+			SELECT FOLLOW.TO_EMAIL TO_EMAIL
+			FROM MEMBER, FOLLOW
+			WHERE MEMBER.EMAIL = FOLLOW.FROM_EMAIL AND MEMBER.EMAIL = #{email}
+		) FOLLOWER
+		WHERE PHOTO.EMAIL = FOLLOWER.TO_EMAIL
+		ORDER BY PHOTO.REG_DATE
+	</select>
 </mapper>
