@@ -3,7 +3,7 @@
 <%@ page import="java.util.*" %>
 
 <%
-	ArrayList loveList =(ArrayList)request.getAttribute("loveList"); ;
+	ArrayList likeNoticeList =(ArrayList)request.getAttribute("likeNoticeList"); ;
 %>
 <!DOCTYPE html> 
 <html> 
@@ -54,12 +54,12 @@
 			<div data-role="content"	 data-theme="d">
 				
 		<%
-			if (loveList == null || loveList.size() == 0 ) {
+			if (likeNoticeList == null || likeNoticeList.size() == 0 ) {
 		%>
 				좋아요 한 글이 없습니다.
 		<%	
 			} else {
-				for ( int i = 0; i < loveList.size(); i++ ) {
+				for ( int i = 0; i < likeNoticeList.size(); i++ ) {
 		%>	
 				
 				<table>
