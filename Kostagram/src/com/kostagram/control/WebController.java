@@ -9,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.UserInfoVO;
+import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.UserInfoDAO;
 
 @Controller
@@ -19,12 +20,18 @@ public class WebController {
 
     @Autowired
     private UserInfoDAO userInfoDao;
-
+    private PhotoInfoDAO photoInfoDao;
+    
     @RequestMapping("/")
-    public String goToMainPage(HttpSession session) {
-	if (session == null || session.getAttribute("loginYn") == null || session.getAttribute("loginYn").equals("N")) {
+    public String goToMainPage(HttpSession session, Model model) {
+	
+	if (session == null || session.getAttribute("loginYn") == null || session.getAttribute("loginYn").equals("N") || session.getAttribute("id") == null) {
 	    return "web/index";
 	}
+	
+	List<PhotoInfoVO> timeline = photoInfoDao.getTimeline((String)session.getAttribute("id"));
+	
+	model.addAttribute("timeline", timeline);
 	return "web/timeline";
     }
 
