@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 
+<%
+	ArrayList chattingList =(ArrayList)request.getAttribute("chattingList"); ;
+%>
 
 <!DOCTYPE html> 
 <html> 
@@ -54,6 +57,16 @@
 			
 			
 			<div data-role="content" >
+						
+									<%
+				if (chattingList == null || chattingList.size() == 0 ) {
+			%>
+					<ul align="center" data-insert="true">대화 상대가 없습니다.</ul>
+
+			<%	
+				} else {
+					for ( int i = 0; i < chattingList.size(); i++ ) {
+			%>
 				<ul data-role="listview">
 					<li>
 						<a href="./detail"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
@@ -101,6 +114,9 @@
 						</a>
 					</li>
 				</ul>
+			<% }
+				}		
+					%>
 			</div>
 			
 			
