@@ -5,6 +5,8 @@
 		insert into person values (person_seq.nextval, #{name}, #{age}, #{job})
 	</insert>
 
+	<!-- SELECT * FORM PHOTO WHERE SEQ_PHOTO=(SELECT SEQ_PHOTO FROM LIKEIT WHERE EMAIL=#{???}) DISTINCT REG_DATE DESC -->
+
 	<update id="update" parameterType="com.kostagram.service.beans.PhotoInfoVO">
 
 	</update>
