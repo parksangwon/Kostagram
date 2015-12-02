@@ -17,7 +17,7 @@
 			
 			$('#joinbutton').click(function(){
 		
-				var idInput = $('input:text[name=id]');
+				var idInput = $('input:text[name=email]');
 				var idValue = trim(idInput.val());
 				
 				if(idValue === "")
@@ -59,20 +59,19 @@
 			<div data-role="content">
 				<form id="joinForm" method="post" action="usercheck" align="center">
 					<div data-role="fieldcontain" align="center">
-						<input id="id" type="text" name="id" placeholder="이메일"/>
+						<input id="email" type="text" name="email" placeholder="이메일"/>
 					</div>					
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" id="joinbutton" value="다음" data-inline="true"
-							/>
+							<a data-ajax="false"><input type="button" id="joinbutton" value="다음" data-inline="true"/></a>
 						</center>
 					</div>
 				</form>
 			</div>
 			
 			<div data-role="footer" data-theme="b">
-				<center><a href="./login"><h4>이미 계정이 있으신가요? 로그인.</h4></a></center>
+				<center><a href="./login" data-ajax="false"><h4>이미 계정이 있으신가요? 로그인.</h4></a></center>
 			</div>
 		</div>	
 	</body>
