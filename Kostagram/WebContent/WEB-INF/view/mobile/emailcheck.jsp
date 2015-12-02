@@ -14,7 +14,7 @@
 		<script type="text/javascript">
 		$(function(){
 			var joinForm = $("#joinForm");
-			alert('ch')
+			
 			$('#joinbutton').click(function(){
 		
 				var idInput = $('input:text[name=id]');
@@ -64,7 +64,7 @@
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" id="joinbutton" value="다음2" data-inline="true"
+							<input type="button" id="joinbutton" value="다음" data-inline="true"
 							/>
 						</center>
 					</div>
