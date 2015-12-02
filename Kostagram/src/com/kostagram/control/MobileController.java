@@ -56,6 +56,7 @@ public class MobileController {
 	public String usercheck(HttpServletRequest request, Model model ){
 		//System.out.println("usercheck");
 		String id = (String)request.getParameter("id");
+		System.out.println("aa");
 		/*String name = (String)request.getParameter("name");
 		String nickname = (String)request.getParameter("nickname");
 		String pw = (String)request.getParameter("pw");
