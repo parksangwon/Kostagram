@@ -17,9 +17,10 @@ public class UserInfoVO {
 	
 	public UserInfoVO() {}
 	
-	public UserInfoVO(String email) {
+	public UserInfoVO(String email,String pass) {
 	    super();
 	    this.email = email;
+	    this.pass=pass;
 	}
 
 	public UserInfoVO(String email, String name, String nickname, String pass) {
