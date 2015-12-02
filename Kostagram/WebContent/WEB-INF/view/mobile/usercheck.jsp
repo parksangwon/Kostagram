@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -12,13 +13,16 @@
 		
 	</head>
 	<body>
-		<div id="loginform" data-role="page" data-theme="e">
+		<div data-role="page" data-theme="e">
 			
-			<script type="text/javascript" >
-				function findfriend() 
-				{
+			<script type="text/javascript">
+			function findfriend() {
+				
+					var joinForm = $("#joinForm");
+						
 					var idInputName = $('input:text[name=name]');
 					var idValueName = trim(idInputName.val());
+					
 					if(idValueName === "")
 					{
 						window.alert("이름을 입력해 주세요.");
@@ -48,9 +52,10 @@
 						pw.select();
 						return false;
 					}
-					
+				
+				joinForm.submit();
 					//$.mobile.changePage("./findfriend");
-				}
+			}
 			</script>
 			
 			<center><h1>Kostagram</h1></center>
@@ -58,7 +63,7 @@
 	String id = (String)request.getParameter("id");
 %>
 			<div data-role="content">
-				<form id="joinForm" method="post" action="usercheck" align="center">
+				<form id="joinForm" method="post" action="numbersearch" align="center">
 					<div data-role="fieldcontain" align="center">
 						<input id="id" type="text" name="id" placeholder="email-id" value="<%= id %>"/> 
 					</div>
@@ -74,7 +79,7 @@
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="submit" value="다음" data-inline="true" onclick="javascript:findfriend()"/>
+							<input type="button" value="가입하기" data-inline="true" onclick="findfriend()"/>
 						</center>
 					</div>
 				</form>
