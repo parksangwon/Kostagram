@@ -41,7 +41,7 @@ public class WebController {
 
 	// 파라미터 값 validation 후
 	if ( req == null || req.getParameter("username") == null || req.getParameter("password") == null ) {
-	    model.addAttribute("result", false);
+	    return "web/ajax/loginFailed";
 	}
 	
 	String nickname = (String)req.getParameter("username");
@@ -55,8 +55,7 @@ public class WebController {
 	    return "web/timeline";
 	}
 	
-	model.addAttribute("result", false);
-	return "web/index";
+	return "web/ajax/loginFailed";
     }
 
     @RequestMapping("/accounts/password/change/")
