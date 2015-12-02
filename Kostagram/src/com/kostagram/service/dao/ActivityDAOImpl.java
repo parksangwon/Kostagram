@@ -22,7 +22,7 @@ public class ActivityDAOImpl implements ActivityDAO {
     }
 
     @Override
-    public List<ActivityVO> activitiyList(UserInfoVO user) {
+    public List<ActivityVO> activityList(UserInfoVO user) {
 	List<ActivityVO> activityList = sqlSession.selectList("activity.selectList", user);
 	return activityList;
     }

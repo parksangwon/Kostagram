@@ -7,5 +7,5 @@ import com.kostagram.service.beans.UserInfoVO;
 
 public interface ActivityDAO {
 	public boolean insert(ActivityVO activity);
-	public List<ActivityVO> activitiyList(UserInfoVO user);
+	public List<ActivityVO> activityList(UserInfoVO user);
 }
