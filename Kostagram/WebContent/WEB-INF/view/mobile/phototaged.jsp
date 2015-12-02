@@ -12,16 +12,14 @@
 	</head>
 	<body>
 		<div id="loginform" data-role="page" data-theme="b" >
-		
+			
 			<div data-role="header" data-theme="b">
 				<table onclick="location.href='search'">
 					<tr>
 						<td>
-							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
-						</td>
-						<td>
+							<a href="#" data-rel="back"><image src="./image/icon/back.png" width="20" style="padding-left:10px;"/></a>
 							<span style="height:35px;
-							font-size:15px;
+							font-size:20px;
 							color:#ffffff;
 							line-height:35px;
 							text-align:left;
@@ -29,44 +27,13 @@
 							border:0px;
 							text-shadow: 0px 0px 0px black;
 							padding-left:5px;">
-							검색
+							회원님이 태그된 사진
 							</span>
 						</td>
 					</tr>
 				</table>
 			</div>
 			
-			<div>
-				<center>
-					<table width="100%" align="center">
-						<tr>
-							<td align="left">
-								&nbsp;&nbsp;<span style="font-size:11pt; font-weight:bolder;">사람찾아보기</span><br>
-								&nbsp;&nbsp;<span style="font-size:7pt;">새로 팔로우할 사람을 찾아보세요</span>
-							</td>
-							<td align="right">
-							<%
-								// 리스트 받아오기 전, 임시로 값 준 것
-								// 이 부분은 리스트가 null 값인 경우가 없어서 null 체크안함
-								ArrayList profilelist = new ArrayList();
-								for(int i=0; i<4; i++)
-								{
-									profilelist.add(i);
-								}
-								
-								for(int i=0; i<profilelist.size(); i++)
-								{
-							%>
-								<a href="./detail"><image src="./image/test.jpg" width="45" style="-webkit-border-radius: 100px; 
-								border-radius: 100px;"/></a>
-							<%
-								}
-							%>
-							</td>
-						</tr>
-					</table>
-				</center>
-			</div>
 			<%
 				int count=0;
 				// 리스트 받아오기 전, 임시로 값 준 것

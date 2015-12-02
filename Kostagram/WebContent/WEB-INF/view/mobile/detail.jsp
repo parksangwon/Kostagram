@@ -14,10 +14,10 @@
 		<div id="loginform" data-role="page" data-theme="b" >
 			
 			<div data-role="header" data-theme="b">
-				<table onclick="location.href='search'">
+				<table>
 					<tr>
 						<td>
-							<a href="#" data-rel="back"><image src="./image/icon/cross.png" width="20" style="padding-left:10px;"/></a>
+							<a href="#" data-rel="back"><image src="./image/icon/back.png" width="20" style="padding-left:10px;"/></a>
 							<span style="height:35px;
 							font-size:20px;
 							color:#ffffff;
@@ -27,7 +27,7 @@
 							border:0px;
 							text-shadow: 0px 0px 0px black;
 							padding-left:5px;">
-							둘러보기
+							사진
 							</span>
 						</td>
 					</tr>
