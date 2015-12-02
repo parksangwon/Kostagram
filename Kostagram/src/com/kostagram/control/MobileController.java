@@ -168,7 +168,7 @@ public class MobileController {
 
 	// 로그인을 한 상태면 자신의 아이디를 가져와서 DAO로 보낸 다음 자신의 아이디에 맞는 likeNoticeList를 가져온다.
 	String email = (String) session.getAttribute("email");
-	List<PhotoInfoVO> likePhotoList = likeDao.selectList(new UserInfoVO(email)); // LikeDAO에 selectList 추가
+	List<PhotoInfoVO> likePhotoList = photoInfoDao.selectList(new UserInfoVO(email)); // LikeDAO에 selectList 추가
 
 	// 가져온 likeNoticeList 를 뷰와 공유
 
