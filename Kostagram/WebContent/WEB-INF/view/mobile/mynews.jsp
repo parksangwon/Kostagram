@@ -42,7 +42,6 @@
 					</table>
 				</div>
 				<div>
-					<div>
 				<%
 					// 임시로 활동 리스트 추가
 					ArrayList follwingList = new ArrayList();
@@ -88,12 +87,10 @@
 				<%		
 					}
 				%>
-				
-				</div>	
 				</div>	
 			</div>
 			
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="b" data-position="fixed">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
 						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
@@ -179,11 +176,10 @@
 				<%		
 					}
 				%>
-				
 				</div>	
 			</div>
 			
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="b" data-position="fixed">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
 						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>

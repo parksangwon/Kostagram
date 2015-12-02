@@ -53,7 +53,7 @@
 				</div>	
 			</div>
 			
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="b" data-position="fixed">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
 						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
@@ -107,7 +107,7 @@
 				</div>	
 			</div>
 			
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="b" data-position="fixed">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
 						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
@@ -161,7 +161,7 @@
 				</div>	
 			</div>
 			
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="b" data-position="fixed">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
 						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
@@ -215,7 +215,7 @@
 				</div>	
 			</div>
 			
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="b" data-position="fixed">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
 						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>

@@ -11,7 +11,7 @@
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div id="loginform" data-role="page" data-theme="b" >
+		<div data-role="page" data-theme="b" >
 			
 			<div data-role="header" data-theme="b">
 				<table onclick="location.href='search'">
@@ -74,7 +74,7 @@
 				</center>
 			</div>
 			
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="b" data-position="fixed">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
 						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
