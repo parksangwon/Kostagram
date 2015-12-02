@@ -1,8 +1,11 @@
 package com.kostagram.control;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kostagram.service.beans.PhotoInfoVO;
+import com.kostagram.service.beans.SearchVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.SearchDAO;
@@ -116,5 +120,35 @@ public class WebController {
     public String userPage() {
 	return "web/userpage";
     }
+    
+    @RequestMapping("/searchWordAutoComplete/")
+    public void searchWord(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+    	List<SearchVO> list = searchDao.select((String)request.getParameter("sw"));
+    	
+    	if (list.size() > 0)
+		{
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/xml");
+			response.setHeader("Cache-Control", "no-cache");
+			out.println("<WORDSLIST>");
 
+			for(int i=0; i<list.size(); i++)
+			{
+				SearchVO searchVO = (SearchVO)list.get(i);
+				String word = searchVO.getWord();
+				String count = searchVO.getCount();
+				out.println("<WORD>");
+				out.println("<NAME>" + word + "</NAME>");
+				out.println("<COUNT>" + count + "</COUNT>");
+				out.println("</WORD>");
+			}
+			out.println("</WORDSLIST>");
+			out.close();
+		}
+		else
+		{
+			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+		}
+    }
 }
