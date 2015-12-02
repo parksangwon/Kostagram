@@ -5,6 +5,8 @@
 	class="js not-logged-in wf-proximanova-n3-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n7-active wf-active">
 <!--<![endif]-->
 <head>
+
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -13,6 +15,9 @@
 <script
 	src="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/scripts/webfont.js"
 	type="text/javascript" async=""></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="m/js/common.js"></script>
 
 <style type="text/css">
 
@@ -2875,9 +2880,46 @@ transform
 	z-index: 4
 }
 </style>
+
+<script type="text/javascript">
+		function login() 
+		{
+			var idInput = $('input:text[name=username]');
+			var idValue = trim(idInput.val());
+			var message = $('#check')
+			if(idValue === "")
+			{
+				message.text("닉네임을 입력하세요.");
+				idInput.select();
+				return false;
+			}
+			
+			
+			var pw = $('input:password[name=password]');
+			if(pw.val() == "")
+			{
+				message.text("비밀번호를 반드시 입력해야 합니다.");
+				pw.focus();
+				return false;
+			}
+			if(pw.val().length < 4 || pw.val().length > 20)
+			{
+				message.text("비밀번호는 4자 이상 20자 이하 입니다.");
+				pw.select();
+				return false;
+			}
+			
+			
+		}
+		
+  
+</script>
+
+
+
+
 </head>
 <body class="">
-
 
 	<span id="react-root"><section class="-cx-PRIVATE-Shell__main"
 			data-reactid=".0">
@@ -2900,12 +2942,13 @@ transform
 			data-reactid=".0.1.0.1">
 			<div class="-cx-PRIVATE-LandingActionsColumn__box"
 				data-reactid=".0.1.0.1.0">
-				<div><img src="img/web/index.png" ></div>
+				<a href="http://localhost/Kostagram/index"><div><img src="img/web/index.png" ></div></a>
 					
 				<div class="-cx-PRIVATE-SlimLoginForm__root"
 					data-reactid=".0.1.0.1.0.1">
 					<form class="-cx-PRIVATE-SlimLoginForm__form"
-						data-reactid=".0.1.0.1.0.1.0">
+						data-reactid=".0.1.0.1.0.1.0"
+						id="joinForm" method="post" action="#" align="center">
 						<div
 							class="-cx-PRIVATE-SlimLoginForm__inputField -cx-PRIVATE-SlimTextInput__root"
 							data-reactid=".0.1.0.1.0.1.0.0">
@@ -2932,9 +2975,12 @@ transform
 									data-reactid=".0.1.0.1.0.1.0.1.1.0">비밀번호를 잊으셨나요?</a>
 							</div>
 						</div>
-						<button
+						<div>
+						<input type= "button" value="로그인" onclick="login()"
 							class="-cx-PRIVATE-SlimLoginForm__button -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__solid -cx-PRIVATE-IGButton__sizeLarge -cx-PRIVATE-IGButton__enabled"
-							data-reactid=".0.1.0.1.0.1.0.2">로그인</button>
+							id= >
+						</div>
+						<p align="center" id="check" style="color:red"></p>
 					</form>
 				</div>
 			</div>
