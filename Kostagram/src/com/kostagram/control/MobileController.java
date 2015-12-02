@@ -86,7 +86,11 @@ public class MobileController {
 		String nickname = (String)request.getParameter("nickname");
 		String pass = (String)request.getParameter("pass");
 		System.out.println("id="+ email + " name="+name+ " nickname="+nickname+ " pass="+pass);
-		boolean result = userInfoDao.insert(user);
+		
+		UserInfoVO emailcheck = userInfoDao.findEmail(new UserInfoVO(email));
+		System.out.println(emailcheck);
+		
+		/*boolean result = userInfoDao.insert(user);
 		if (result) 
 		{
 			System.out.println("회원가입 완료");
@@ -94,7 +98,9 @@ public class MobileController {
 		else 
 		{
 			System.out.println("회원가입 실패");
-		}
+		}*/
+		
+		
 	   return "mobile/findfriend";
 	}
 	
