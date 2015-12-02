@@ -77,7 +77,7 @@
 			</div>
 			
 			<div data-role="footer" data-theme="b">
-				<center><a href="./emailcheck"><h4>계정이 없으신가요? 가입하기.</h4></a></center>
+				<center><a href="./emailcheck" data-ajax="false"><h4>계정이 없으신가요? 가입하기.</h4></a></center>
 			</div>
 		</div>	
 	</body>
