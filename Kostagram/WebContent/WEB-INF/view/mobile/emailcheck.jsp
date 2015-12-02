@@ -8,51 +8,52 @@
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
 		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
 		<script src="js/common.js"></script>
+		
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 		
+		<script type="text/javascript">
+		$(function(){
+			var joinForm = $("#joinForm");
+			alert('ch')
+			$('#joinbutton').click(function(){
+		
+				var idInput = $('input:text[name=id]');
+				var idValue = trim(idInput.val());
+				
+				if(idValue === "")
+				{
+					window.alert("E-mail ID를 입력하세요.");
+					idInput.select();
+					return false;
+				}
+				else if(idValue !== "")
+				{
+					if(isEmailChar(idValue))
+					{
+						window.alert("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
+						idInput.select();
+						return false;
+					}
+					else if(idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1 || idValue.indexOf(".")<idValue.indexOf("@") || isNum(idValue.charAt(0)))
+					{
+						window.alert("E-mail ID를 확인 하세요.");
+						idInput.select();
+						return false;
+					}
+					else
+					{
+						joinForm.submit();
+						//$.mobile.changePage("./usercheck");
+					}
+				}
+			});
+		});
+		</script>
 	</head>
 	<body>
 		<div data-role="page" data-theme="e">
 		
-			<script>
-				$(function(){
-					var joinForm = $("#joinForm");
-					
-					$('#joinbutton').click(function(){
-						
-						var idInput = $('input:text[name=id]');
-						var idValue = trim(idInput.val());
-						
-						if(idValue === "")
-						{
-							window.alert("E-mail ID를 입력하세요.");
-							idInput.select();
-							return false;
-						}
-						else if(idValue !== "")
-						{
-							if(isEmailChar(idValue))
-							{
-								window.alert("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
-								idInput.select();
-								return false;
-							}
-							else if(idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1 || idValue.indexOf(".")<idValue.indexOf("@") || isNum(idValue.charAt(0)))
-							{
-								window.alert("E-mail ID를 확인 하세요.");
-								idInput.select();
-								return false;
-							}
-							else
-							{
-								joinForm.submit();
-								//$.mobile.changePage("./usercheck");
-							}
-						}
-					});
-				});
-			</script>
-			
+		
 			<center><h1>Kostagram</h1></center>
 	
 			<div data-role="content">
@@ -63,7 +64,8 @@
 					
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" id="joinbutton" value="다음" data-inline="true"/>
+							<input type="button" id="joinbutton" value="다음2" data-inline="true"
+							/>
 						</center>
 					</div>
 				</form>
