@@ -738,7 +738,7 @@ opacity
 
 .coreSpriteNavigationBrandSmall {
 	background-image:
-		url("./IMAGE/index2.png");
+		url("img/web/kostagram1.png");
 	background-repeat: no-repeat;
 	
 	height: 28px;
