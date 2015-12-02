@@ -14,6 +14,11 @@ public class ActivityVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ActivityVO(String to_email) {
+	    super();
+	    this.to_email = to_email;
+	}
+	
 	public ActivityVO(String from_email, String to_email, String seq_photo, String kind, char readYn, Date reg_date) {
 		super();
 		this.from_email = from_email;
