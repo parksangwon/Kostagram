@@ -9,6 +9,6 @@ public interface PhotoInfoDAO {
 	public boolean insert(PhotoInfoVO photo);
 	public boolean update(PhotoInfoVO photo);
 	public boolean delete(PhotoInfoVO photo);
-	public List<PhotoInfoVO> getTimeline(String email);
+	public List<PhotoInfoVO> getTimeline(UserInfoVO user);
 	public List<PhotoInfoVO> selectList(UserInfoVO user);
 }

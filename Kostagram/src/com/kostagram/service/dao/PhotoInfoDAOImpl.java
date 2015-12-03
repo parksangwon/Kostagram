@@ -31,8 +31,8 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 	
 
 	@Override
-	public List<PhotoInfoVO> getTimeline(String email) {
-		return sqlSession.selectList("photoInfo.getTimeline", email);
+	public List<PhotoInfoVO> getTimeline(UserInfoVO user) {
+		return sqlSession.selectList("photoInfo.getTimeline", user);
 	}
 	
 	@Override
