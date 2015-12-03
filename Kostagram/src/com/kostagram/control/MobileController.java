@@ -108,7 +108,7 @@ public class MobileController {
 	    out.print("existedEmail");
 	} else {
 	    // 사용가능
-	    session.setAttribute("email", findedUser.getEmail());
+	    session.setAttribute("email", user.getEmail());
 	    out.print("availableEmail");
 	}
     }
