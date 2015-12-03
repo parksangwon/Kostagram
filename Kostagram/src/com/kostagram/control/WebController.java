@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.SearchVO;
+import com.kostagram.service.beans.SearchVO2;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.SearchDAO;
@@ -124,7 +125,11 @@ public class WebController {
     @RequestMapping("/searchWordAutoComplete/")
     public void searchWord(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
-    	List<SearchVO> list = searchDao.select((String)request.getParameter("sw"));
+    	String test = (String)request.getParameter("sw");
+    	System.out.println(test);
+    	SearchVO2 searchvo2 = new SearchVO2();
+    	searchvo2.setMessage(test);
+    	List<SearchVO> list = searchDao.select(searchvo2);
     	
     	if (list.size() > 0)
 		{
