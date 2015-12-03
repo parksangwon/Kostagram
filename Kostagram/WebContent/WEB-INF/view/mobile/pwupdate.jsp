@@ -29,7 +29,7 @@
 				<table width="100%">
 					<tr>
 						<td>
-						<!--  뒤로가기  --><img src="./m/image/icon/cross.png" onclick="window.location.href = './userpage.jsp'" >
+						<!--  뒤로가기  --><img src="./m/image/icon/back.png" onclick="window.location.href = './userpage.jsp'" >
 						<font color="white">비밀번호 변경</font>				
 						</td>
 						
