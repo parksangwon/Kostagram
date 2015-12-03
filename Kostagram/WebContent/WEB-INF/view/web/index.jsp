@@ -2918,14 +2918,13 @@ transform
 	    		$.ajax({
 	    			type:'POST',
 	    			url:'login',
-	    			dataType:'json',
+	    			dataType:'text',
 	    			data:{nickname:idValue, pass:pwValue},
-	    			success:function(json){
-	    			  var data = json.login;
-	    			  if ( data === "1" ) {
-	    				  // location = "이동"
-	    			  } else if ( data === "0" ) {
-	    				  // 사용자의 이름과 비밀번호가 정확하지 않습니다.
+	    			success:function(text){
+	    			  if ( text === "loginSuccess" ) {
+	    				  location.href="/timeline"
+	    			  } else if ( text === "loginFail" ) {
+	    				  message.text("사용자의 이름과 비밀번호가 정확하지 않습니다.");
 	    			  }
 	    			},
 	    			error:function() {
