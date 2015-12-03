@@ -127,17 +127,30 @@ public class MobileController {
 	res.setContentType("text/html");
 	res.setHeader("Cache-Control", "no-cache");
 	
-	List<UserInfoVO> findedUserList = userInfoDao.findEmailAndNickname(user);
-	
-	if ( findedUserList != null && findedUserList.size() > 0 ) {
+	UserInfoVO findedUserListByEmail = userInfoDao.findEmail(user);
+	UserInfoVO findedUSerListByNick = userInfoDao.findNickname(user);
+	if ( findedUserListByEmail != null ) {
 	    // 중복되었음
-	    System.out.println("이메일, 닉네임 중복 검사 : 이메일, 닉네임 중복");
+	    System.out.println("이메일 중복 검사 : 이메일 중복");
 	    out.print("existedEmail");
+	    
+	} else if ( findedUSerListByNick != null ) {
+
+	    System.out.println("이메일, 닉네임 중복 검사 : 이메일, 닉네임 중복");
+	    out.print("existedNickname");
+	
 	} else {
 	    // 사용가능
-	    
 	    System.out.println("이메일, 닉네임 중복 검사 : 이메일, 닉네임 사용 가능");
-	    out.print("availableEmail");
+	    boolean result = userInfoDao.insert(user);
+	    if ( result ) {
+		System.out.println("가입완료");
+		out.print("joinSuccess");
+	    }
+	    else {
+		System.out.println("DB에러");
+		out.print("DBerror");
+	    }
 	}
 	
     }
