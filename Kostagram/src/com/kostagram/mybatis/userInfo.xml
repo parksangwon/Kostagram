@@ -8,7 +8,7 @@
 	</insert>
 
 	<update id="update" parameterType="com.kostagram.service.beans.UserInfoVO">
-
+		
 	</update>
 
 	<select id="findEmail" parameterType="com.kostagram.service.beans.UserInfoVO"
@@ -21,11 +21,5 @@
 		select * from member where nickname=#{nickname}
 	</select>
 	
-	<select id="findEmailAndNickname"  parameterType="com.kostagram.service.beans.UserInfoVO"
-		resultType="com.kostagram.service.beans.UserInfoVO">
-		SELECT *
-		FROM MEMBER
-		WHERE NICKNAME = #{nickname} OR EMAIL = #{email}
-	</select>
 
 </mapper>
