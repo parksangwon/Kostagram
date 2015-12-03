@@ -51,14 +51,18 @@ public class WebController {
 	if (req == null || req.getParameter("nickname") == null || req.getParameter("pass") == null) {
 	    return "web/ajax/loginFailed";
 	}
-
+	
 	String nickname = (String) req.getParameter("nickname");
-	String password = (String) req.getParameter("pass");
+	String pass = (String) req.getParameter("pass");
 
+	
+	System.out.println("TEST PRINT");
+	System.out.println("user\n:"+user);
+	System.out.println("nickname : " + nickname + " password : " + pass);
 	// userInfoDao 로 정보가 있는지 확인
 	UserInfoVO findedUser = userInfoDao.findNickname(user);
 
-	if (findedUser != null && findedUser.getPass().equals(password)) {
+	if (findedUser != null && findedUser.getPass().equals(pass)) {
 	    // 로그인 성공
 	    return "web/ajax/loginSuccessed";
 	}
