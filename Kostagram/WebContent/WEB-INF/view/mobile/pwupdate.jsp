@@ -9,7 +9,9 @@
 		<title>jQuery Mobile</title>
 		<meta charset="euc-kr" /> 	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-			
+		
+		
+		
 		
 		<!-- Include jQuery Mobile stylesheets -->
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
@@ -37,12 +39,12 @@
 				<table width="100%">
 					<tr>
 						<td>
-						<!--  뒤로가기  --><input type="image" src="./m/image/icon/cross.png" onclick="#" >
+						<!--  뒤로가기  --><input type="image" src="./m/image/icon/cross.png" onclick="window.location.href = './userpage.jsp'" >
 						<font color="white">비밀번호 변경</font>				
 						</td>
 						
 						<td align="right">
-						<!--  확인 --><input type="image" src="./m/image/icon/tick.png" onclick="#">
+						<!--  확인 --><a href="./detail"><input type="image" src="./m/image/icon/tick.png" ></a>
 						</td>
 					</tr>
 				</table>
