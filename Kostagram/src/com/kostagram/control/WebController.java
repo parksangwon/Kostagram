@@ -52,7 +52,7 @@ public class WebController {
 	PrintWriter out = res.getWriter();
 	
 	res.setCharacterEncoding("utf-8");
-	res.setContentType("text/xml");
+	res.setContentType("text/html");
 	res.setHeader("Cache-Control", "no-cache");
 	
 	if (user == null || user.getNickname() == null || user.getPass() == null ) {

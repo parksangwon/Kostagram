@@ -67,7 +67,7 @@ public class MobileController {
 	PrintWriter out = res.getWriter();
 	
 	res.setCharacterEncoding("utf-8");
-	res.setContentType("text/xml");
+	res.setContentType("text/html");
 	res.setHeader("Cache-Control", "no-cache");
 	
 	if (user == null || user.getNickname() == null || user.getPass() == null ) {
@@ -98,7 +98,7 @@ public class MobileController {
 	PrintWriter out = res.getWriter();
 	
 	res.setCharacterEncoding("utf-8");
-	res.setContentType("text/xml");
+	res.setContentType("text/html");
 	res.setHeader("Cache-Control", "no-cache");
 	
 	UserInfoVO findedUser = userInfoDao.findEmail(user);
@@ -126,7 +126,7 @@ public class MobileController {
 	PrintWriter out = res.getWriter();
 	
 	res.setCharacterEncoding("utf-8");
-	res.setContentType("text/xml");
+	res.setContentType("text/html");
 	res.setHeader("Cache-Control", "no-cache");
 	
 	List<UserInfoVO> findedUserList = userInfoDao.findEmailAndNickname(user);
