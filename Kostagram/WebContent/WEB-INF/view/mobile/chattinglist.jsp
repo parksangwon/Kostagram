@@ -20,19 +20,11 @@
 		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
 		<script src="js/common.js"></script>
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />	
-		
-		<style TYPE="text/css"> 
-			.ui-bar-f {
-			    color:#004879;
-			    background-color: #004879;
-			}
-			
-		</style>
-							
+				
 	</head> 
 <body>
 
-	<div data-role="page">
+	<div data-role="page"  data-theme="d">
 			
 			
 			<div data-role="header" data-theme="b">
@@ -53,7 +45,16 @@
 			
 			<div data-role="content" >
 		     	<input type="text" id="add" placeholder="대화상대 추가"> <input type="submit" value="추가"><br>		
-									
+			
+			
+			<%
+			if (chattingList == null || chattingList.size() == 0 ) {
+			%>
+				
+			<%	
+				} else {
+					for ( int i = 0; i < chattingList.size(); i++ ) {
+			%>						
 				<ul data-role="listview">
 					<li>
 						<a href="./chatting.jsp"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
@@ -101,6 +102,8 @@
 						</a>
 					</li>
 				</ul>
+			<% }
+				}%>
 		
 			</div>
 			

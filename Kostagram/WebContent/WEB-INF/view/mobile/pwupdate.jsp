@@ -13,42 +13,33 @@
 		
 		
 		
-		<!-- Include jQuery Mobile stylesheets -->
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-		
-		<!-- Include the jQuery library -->
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		
-		<!-- Include the jQuery Mobile library -->
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="jquery-mobile/jquery-1.6.4.js"></script>
+		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
+		<script src="js/common.js"></script>
+		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 			
-		<style>
-			.ui-bar-f {
-			    color:#004879;
-			    background-color: #004879;
-			}
-		</style>
 		
 							
 	</head> 
 		
 <body>
-	<div data-role="page">
-		
-			<div data-role="header"	data-theme="f" >
+	<div data-role="page" data-theme="d">
+			
+			<div data-role="header" data-theme="b">
 				<table width="100%">
 					<tr>
 						<td>
-						<!--  뒤로가기  --><input type="image" src="./m/image/icon/cross.png" onclick="window.location.href = './userpage.jsp'" >
+						<!--  뒤로가기  --><img src="./m/image/icon/cross.png" onclick="window.location.href = './userpage.jsp'" >
 						<font color="white">비밀번호 변경</font>				
 						</td>
 						
 						<td align="right">
-						<!--  확인 --><a href="./detail"><input type="image" src="./m/image/icon/tick.png" ></a>
+						<!--  확인 --><a href="./detail"><img src="./m/image/icon/tick.png" ></a>
 						</td>
 					</tr>
 				</table>
 			</div>
+			
 			
 			<div data-role="content"	 data-theme="d">
 				<p><font color="#004879">비밀번호를 잊으셨나요??</font></p>
@@ -62,17 +53,17 @@
 				
 			</div>
 			
-			<div data-role="footer" data-theme="b"		data-position="fixed">
-				<div data-role="navbar" >
-					<ul data-theme="f">
-						<li><a data-role="button" data-icon="home" data-iconpos="notext" ></a></li>
-						<li><a data-role="button" data-icon="search" data-iconpos="notext" ></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"	class="ui-btn-active 	ui-state-persist"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="info" data-iconpos="notext" ></a></li>
+			<div data-role="footer" data-theme="b" data-position="fixed">
+				<div data-role="navbar" class="ui-btn-active">
+					<ul>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
-			</div> 
+			</div>
 		</div>
 </body>
 </html>
