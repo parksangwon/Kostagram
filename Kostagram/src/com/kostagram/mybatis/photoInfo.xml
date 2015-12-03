@@ -24,7 +24,7 @@
 
 	</update>
 
-	<select id="getTimeline" parameterType="java.lang.String"
+	<select id="getTimeline" parameterType="com.kostagram.service.beans.UserInfoVO"
 		resultType="com.kostagram.service.beans.PhotoInfoVO">
 		SELECT PHOTO.*
 		FROM PHOTO, (
