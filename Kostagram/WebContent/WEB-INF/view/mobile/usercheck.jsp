@@ -1,9 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
+<%
+	String email = (String)request.getAttribute("email");
+%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no"/>
 		<TITLE>Kostagram</TITLE>
 		
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -11,11 +15,7 @@
 		<script src="js/common.js"></script>
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 		
-	</head>
-	<body>
-		<div data-role="page" data-theme="e">
-			
-			<script>
+		<script type="text/javascript">
 			$(function(){
 				var joinForm = $("#joinForm");
 				
@@ -23,10 +23,11 @@
 					
 					var idInput = $('input:text[name=email]');
 					var idValue = trim(idInput.val());
+					var message = $('#check')
 					
 					if(idValue === "")
 					{
-						window.alert("E-mail ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+						message.text("E-mail IDë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 						idInput.select();
 						return false;
 					}
@@ -34,13 +35,13 @@
 					{
 						if(isEmailChar(idValue))
 						{
-							window.alert("E-mail ID ¿¡´Â ¿µ¹® ¼Ò¹®ÀÚ¿Í ¼ıÀÚ, '@', '.' ¸¸ÀÌ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+							message.text("E-mail ID ì—ëŠ” ì˜ë¬¸ ì†Œë¬¸ìì™€ ìˆ«ì, '@', '.' ë§Œì´ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 							idInput.select();
 							return false;
 						}
 						else if(idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1 || idValue.indexOf(".")<idValue.indexOf("@") || isNum(idValue.charAt(0)))
 						{
-							window.alert("E-mail ID¸¦ È®ÀÎ ÇÏ¼¼¿ä.");
+							message.text("E-mail IDë¥¼ í™•ì¸ í•˜ì„¸ìš”.");
 							idInput.select();
 							return false;
 						}
@@ -50,7 +51,7 @@
 					
 					if(idValueName === "")
 					{
-						window.alert("ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+						message.text("ì´ë¦„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 						idInputName.select();
 						return false;
 					}
@@ -59,7 +60,7 @@
 					var idValueNickName = trim(idInputNickName.val());
 					if(idValueNickName === "")
 					{
-						window.alert("»ç¿ëÀÚÀÌ¸§(´Ğ³×ÀÓ) À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+						message.text("ì‚¬ìš©ìì´ë¦„(ë‹‰ë„¤ì„) ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 						idInputNickName.select();
 						return false;
 					}
@@ -67,55 +68,76 @@
 					var pass = $('input:password[name=pass]');
 					if(pass.val() == "")
 					{
-						window.alert("ºñ¹Ğ¹øÈ£¸¦ ¹İµå½Ã ÀÔ·ÂÇØ¾ß ÇÕ´Ï´Ù.");
+						message.text("ë¹„ë°€ë²ˆí˜¸ë¥¼ ë°˜ë“œì‹œ ì…ë ¥í•´ì•¼ í•©ë‹ˆë‹¤.");
 						pass.focus();
 						return false;
 					}
 					if(pass.val().length < 4 || pass.val().length > 20)
 					{
-						window.alert("ºñ¹Ğ¹øÈ£¸¦ 4ÀÚ ÀÌ»ó 20ÀÚ ÀÌÇÏ ÀÔ´Ï´Ù.");
+						message.text("ë¹„ë°€ë²ˆí˜¸ë¥¼ 4ì ì´ìƒ 20ì ì´í•˜ ì…ë‹ˆë‹¤.");
 						pass.select();
 						return false;
 					}
 					
-						
-					joinForm.submit();
-					//$.mobile.changePage("./usercheck");
-								
+					$.ajax({
+		                type:'POST',
+		                url:'validationNickname',
+		                dataType:'text',
+		                data:{email:idValue, name:idValueName, nickname:idValueNickName, pass:pass.val()},
+		                success:function(text){
+		                  if ( text === "availableEmail" ) {
+		                     location.href="usercheck?email="+idValue;
+		                  } else if ( text === "existedEmail" ) {
+		                     message.text("ë­ë¼ê³ ì“°ì§€ ì¼ë‹¨ ì¤‘ë³µëì„ë•Œ");
+		                  }
+		                },
+		                error:function() {
+		                   alert("error");
+		                }
+		             });		
 				});
 			});
 		</script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="e">
 			
-			<center><h1>Kostagram</h1></center>
-<%
-	String id = (String)request.getParameter("id");
-%>
+			<div align="center">
+				<br>
+				<image src="./image/banner.png" width="200"/>
+			</div>
+
 			<div data-role="content">
 				<form id="joinForm" method="post" action="findfriend" align="center">
-					<div data-role="fieldcontain" align="center">
-						<input id="email" type="text" name="email" placeholder="email-id" value="<%= id %>"/> 
-					</div>
-					<div data-role="fieldcontain" align="center">
-						<input id="name" type="text" name="name" placeholder="ÀÌ¸§"/> 
-					</div>
-					<div data-role="fieldcontain" align="center">
-						<input id="nickname" type="text" name="nickname" placeholder="»ç¿ëÀÚ ÀÌ¸§(´Ğ³×ÀÓ)"/> 
-					</div>
-					<div data-role="fieldcontain" align="center">
-						<input id="pass" type="password" name="pass" placeholder="ºñ¹Ğ¹øÈ£"/> 
-					</div>				
-					
-					<div data-role="fieldcontain">
-						<center>
-							<input type="button" data-ajax="false" value="°¡ÀÔÇÏ±â" data-inline="true" id="joinbutton"/>
-						</center>
+					<div align="center">
+						<input id="email" type="text" name="email" placeholder="email" value="<%= email %>"/> 
+						<br>
+						<input id="name" type="text" name="name" placeholder="ì´ë¦„"/> 
+						<br>
+						<input id="nickname" type="text" name="nickname" placeholder="ì‚¬ìš©ì ì´ë¦„(ë‹‰ë„¤ì„)"/> 8
+						<br>
+						<input id="pass" type="password" name="pass" placeholder="ë¹„ë°€ë²ˆí˜¸"/> 
+						<br>
+						<a data-ajax="false"><input type="button" id="joinbutton" value="ê°€ì…í•˜ê¸°" data-inline="true"/></a>
+						<br>
+						<p align="center" id="check" style="color:red"></p>
 					</div>
 				</form>
 			</div>
 			
-			<div data-role="footer" data-theme="b">
-				<center><a href="./login" data-ajax="false"><h4>ÀÌ¹Ì °èÁ¤ÀÌ ÀÖÀ¸½Å°¡¿ä? ·Î±×ÀÎ.</h4></a></center>
+			<div data-role="footer" data-theme="b" data-position="fixed">
+				<div data-role="navbar" class="ui-btn-active">
+					<ul>
+						<li>
+							<a href="./" data-ajax="false" style="text-decoration:none;
+							text-shadow: 0px 0px 0px;
+							color: #fff;
+							font-weight: normal;">ì´ë¯¸ ê³„ì •ì´ ìˆìœ¼ì‹ ê°€ìš”? ë¡œê·¸ì¸.</a>
+						</li>
+					</ul>
+				</div>
 			</div>
+			
 		</div>	
 	</body>
 </html>
