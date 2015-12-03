@@ -55,11 +55,11 @@
 			<div data-role="content"	 data-theme="d">
 				<p><font color="#004879">비밀번호를 잊으셨나요??</font></p>
 				
-				<img src="./m/image/icon/lock.png"><input type="text" placeholder="현재 비밀번호" >
+				<img src="./m/image/icon/lock.png"><input type="password" placeholder="현재 비밀번호" >
 				<br>
-				<img src="./m/image/icon/lock.png" ><input type="text" placeholder="새 비밀번호">
+				<img src="./m/image/icon/lock.png" ><input type="password" placeholder="새 비밀번호">
 				<br>
-				<img src="./m/image/icon/lock.png" ><input type="text" placeholder="새 비밀번호 다시 입력" >
+				<img src="./m/image/icon/lock.png" ><input type="password" placeholder="새 비밀번호 다시 입력" >
 				<br>
 				
 			</div>
