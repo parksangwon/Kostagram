@@ -20,5 +20,12 @@
 		resultType="com.kostagram.service.beans.UserInfoVO">
 		select * from member where nickname=#{nickname}
 	</select>
+	
+	<select id="findEmailAndNickname"  parameterType="com.kostagram.service.beans.UserInfoVO"
+		resultType="com.kostagram.service.beans.UserInfoVO">
+		SELECT *
+		FROM MEMBER
+		WHERE NICKNAME = #{nickname} OR EMAIL = #{email}
+	</select>
 
 </mapper>
