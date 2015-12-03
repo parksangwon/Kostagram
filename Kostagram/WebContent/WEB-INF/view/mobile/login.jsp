@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -20,25 +21,24 @@
 				{
 					var idInput = $('input:text[name=nickname]');
 					var idValue = trim(idInput.val());
-					var message = $('#check')
+					var message = $('#check');
 					if(idValue === "")
 					{
-						message.text("E-mail ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+						message.text("E-mail IDë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 						idInput.select();
 						return false;
 					}
-
 					
 					var pw = $('input:password[name=pass]');
 					if(pw.val() == "")
 					{
-						message.text("ºñ¹Ğ¹øÈ£¸¦ ¹İµå½Ã ÀÔ·ÂÇØ¾ß ÇÕ´Ï´Ù.");
+						message.text("ë¹„ë°€ë²ˆí˜¸ë¥¼ ë°˜ë“œì‹œ ì…ë ¥í•´ì•¼ í•©ë‹ˆë‹¤.");
 						pw.focus();
 						return false;
 					}
 					if(pw.val().length < 4 || pw.val().length > 20)
 					{
-						message.text("ºñ¹Ğ¹øÈ£¸¦ 4ÀÚ ÀÌ»ó 20ÀÚ ÀÌÇÏ ÀÔ´Ï´Ù.");
+						message.text("ë¹„ë°€ë²ˆí˜¸ë¥¼ 4ì ì´ìƒ 20ì ì´í•˜ ì…ë‹ˆë‹¤.");
 						pw.select();
 						return false;
 					}
@@ -52,7 +52,7 @@
 		                  if ( text === "loginSuccess" ) {
 		                     location.href=""
 		                  } else if ( text === "loginFail" ) {
-		                     message.text("»ç¿ëÀÚÀÇ ÀÌ¸§°ú ºñ¹Ğ¹øÈ£°¡ Á¤È®ÇÏÁö ¾Ê½À´Ï´Ù.");
+		                     message.text("ì‚¬ìš©ìì˜ ì´ë¦„ê³¼ ë¹„ë°€ë²ˆí˜¸ê°€ ì •í™•í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		                  }
 		                },
 		                error:function() {
@@ -70,11 +70,11 @@
 			<div data-role="content">
 				<form id="loginForm" method="post" action="#" align="center">
 					<div align="center">
-						<input id="nickname" type="text" name="nickname" placeholder="»ç¿ëÀÚ ÀÌ¸§"/> 
+						<input id="nickname" type="text" name="nickname" placeholder="ì‚¬ìš©ì ì´ë¦„"/> 
 						<br>
-						<input id="pass" type="password" name="pass" placeholder="ºñ¹Ğ¹øÈ£"/> 	
+						<input id="pass" type="password" name="pass" placeholder="ë¹„ë°€ë²ˆí˜¸"/> 	
 						<br>		
-						<input type="button" value="·Î±×ÀÎ" data-inline="true" onclick="login()"/>
+						<input type="button" value="ë¡œê·¸ì¸" data-inline="true" onclick="login()"/>
 						<br>
 						<p align="center" id="check" style="color:red"></p>
 					</div>
@@ -88,7 +88,7 @@
 							<a href="./emailcheck" data-ajax="false" style="text-decoration:none;
 							text-shadow: 0px 0px 0px;
 							color: #fff;
-							font-weight: normal;">°èÁ¤ÀÌ ¾øÀ¸½Å°¡¿ä? °¡ÀÔÇÏ±â.</a>
+							font-weight: normal;">ê³„ì •ì´ ì—†ìœ¼ì‹ ê°€ìš”? ê°€ì…í•˜ê¸°.</a>
 						</li>
 					</ul>
 				</div>

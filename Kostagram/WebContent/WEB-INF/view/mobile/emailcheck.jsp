@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -19,10 +20,11 @@
 		
 				var idInput = $('input:text[name=email]');
 				var idValue = trim(idInput.val());
+				var message = $('#check');
 				
 				if(idValue === "")
 				{
-					window.alert("E-mail ID¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+					message.text("E-mail IDë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 					idInput.select();
 					return false;
 				}
@@ -31,13 +33,13 @@
 				{
 					if(isEmailChar(idValue))
 					{
-						window.alert("E-mail ID ¿¡´Â ¿µ¹® ¼Ò¹®ÀÚ¿Í ¼ıÀÚ, '@', '.' ¸¸ÀÌ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+						message.text("E-mail ID ì—ëŠ” ì˜ë¬¸ ì†Œë¬¸ìì™€ ìˆ«ì, '@', '.' ë§Œì´ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 						idInput.select();
 						return false;
 					}
 					else if(idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1 || idValue.indexOf(".")<idValue.indexOf("@") || isNum(idValue.charAt(0)))
 					{
-						window.alert("E-mail ID¸¦ È®ÀÎ ÇÏ¼¼¿ä.");
+						message.text("E-mail IDë¥¼ í™•ì¸ í•˜ì„¸ìš”.");
 						idInput.select();
 						return false;
 					}
@@ -52,7 +54,7 @@
 			                  if ( text === "availableEmail" ) {
 			                     location.href="usercheck?email="+idValue;
 			                  } else if ( text === "existedEmail" ) {
-			                     message.text("»ç¿ëÇÒ ¼ö ¾ø´Â ÀÌ¸ŞÀÏ ÀÔ´Ï´Ù.");
+			                     message.text("ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ì´ë©”ì¼ ì…ë‹ˆë‹¤.");
 			                  }
 			                },
 			                error:function() {
@@ -76,9 +78,9 @@
 			<div data-role="content">
 				<form id="joinForm" method="post" action="usercheck" align="center">
 					<div align="center">
-						<input id="email" type="text" name="email" placeholder="ÀÌ¸ŞÀÏ"/>
+						<input id="email" type="text" name="email" placeholder="ì´ë©”ì¼"/>
 						<br>
-						<a data-ajax="false"><input type="button" id="joinbutton" value="´ÙÀ½" data-inline="true"/></a>
+						<a data-ajax="false"><input type="button" id="joinbutton" value="ë‹¤ìŒ" data-inline="true"/></a>
 						<br>
 						<p align="center" id="check" style="color:red"></p>
 					</div>
@@ -92,7 +94,7 @@
 							<a href="./" data-ajax="false" style="text-decoration:none;
 							text-shadow: 0px 0px 0px;
 							color: #fff;
-							font-weight: normal;">ÀÌ¹Ì °èÁ¤ÀÌ ÀÖÀ¸½Å°¡¿ä? ·Î±×ÀÎ.</a>
+							font-weight: normal;">ì´ë¯¸ ê³„ì •ì´ ìˆìœ¼ì‹ ê°€ìš”? ë¡œê·¸ì¸.</a>
 						</li>
 					</ul>
 				</div>
