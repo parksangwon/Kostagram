@@ -1,9 +1,11 @@
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
 		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
@@ -29,7 +31,7 @@
 							border:0px;
 							text-shadow: 0px 0px 0px black;
 							padding-left:5px;">
-							�˻�
+							검색
 							</span>
 						</td>
 					</tr>
@@ -41,13 +43,13 @@
 					<table width="100%" align="center">
 						<tr>
 							<td align="left">
-								&nbsp;&nbsp;<span style="font-size:11pt; font-weight:bolder;">���ã�ƺ���</span><br>
-								&nbsp;&nbsp;<span style="font-size:7pt;">���� �ȷο��� ����� ã�ƺ�����</span>
+								&nbsp;&nbsp;<span style="font-size:11pt; font-weight:bolder;">사람찾아보기</span><br>
+								&nbsp;&nbsp;<span style="font-size:7pt;">새로 팔로우할 사람을 찾아보세요</span>
 							</td>
 							<td align="right">
 							<%
-								// ����Ʈ �޾ƿ��� ��, �ӽ÷� �� �� ��
-								// �� �κ��� ����Ʈ�� null ���� ��찡 ��� null üũ����
+								// 리스트 받아오기 전, 임시로 값 준 것
+								// 이 부분은 리스트가 null 값인 경우가 없어서 null 체크안함
 								ArrayList profilelist = new ArrayList();
 								for(int i=0; i<4; i++)
 								{
@@ -69,7 +71,7 @@
 			</div>
 			<%
 				int count=0;
-				// ����Ʈ �޾ƿ��� ��, �ӽ÷� �� �� ��
+				// 리스트 받아오기 전, 임시로 값 준 것
 				ArrayList list = new ArrayList();
 				for(int i=0; i<20; i++)
 				{

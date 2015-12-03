@@ -1,9 +1,11 @@
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
 		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
@@ -25,7 +27,7 @@
 							border:0px;
 							text-shadow: 0px 0px 0px black;
 							padding-left:5px;">
-							È°µ¿
+							í™œë™
 							</span>
 						</td>
 					</tr>
@@ -36,14 +38,14 @@
 				<div>
 					<table width="100%">
 						<tr>
-							<td onclick="location.href='./mynews#following'" align="center">ÆÈ·ÎÀ×</td>
-							<td onclick="location.href='./mynews#mynews'" align="center">³» °Ô½Ã¹°</td>
+							<td onclick="location.href='./mynews#following'" align="center">íŒ”ë¡œìž‰</td>
+							<td onclick="location.href='./mynews#mynews'" align="center">ë‚´ ê²Œì‹œë¬¼</td>
 						</tr>
 					</table>
 				</div>
 				<div>
 				<%
-					// ÀÓ½Ã·Î È°µ¿ ¸®½ºÆ® Ãß°¡
+					// ìž„ì‹œë¡œ í™œë™ ë¦¬ìŠ¤íŠ¸ ì¶”ê°€
 					ArrayList follwingList = new ArrayList();
 					for(int i=0; i<10; i++)
 					{
@@ -63,13 +65,13 @@
 										<a href="#" style="text-decoration:none;
 										text-shadow: 0px 0px 0px;
 										color: #004879;
-										font-weight: normal;">¼º°æ¾²</a>
-										´ÔÀÌ</a>
+										font-weight: normal;">ì„±ê²½ì“°</a>
+										ë‹˜ì´</a>
 										<a href="#" style="text-decoration:none;
 										text-shadow: 0px 0px 0px;
 										color: #004879;
-										font-weight: normal;">Á¶¿µ°»</a>
-										´ÔÀÇ »çÁøÀ» ÁÁ¾ÆÇÕ´Ï´Ù.
+										font-weight: normal;">ì¡°ì˜ê°±</a>
+										ë‹˜ì˜ ì‚¬ì§„ì„ ì¢‹ì•„í•©ë‹ˆë‹¤.
 										<a href="./detail"><image src="./image/park.jpg" width="40"/></a>
 									</td>
 								</tr>
@@ -82,7 +84,7 @@
 					{
 				%>
 					<div>
-						ÆÈ·ÎÀ×ÀÌ ¾ø½À´Ï´Ù.
+						íŒ”ë¡œìž‰ì´ ì—†ìŠµë‹ˆë‹¤.
 					</div>
 				<%		
 					}
@@ -118,7 +120,7 @@
 							border:0px;
 							text-shadow: 0px 0px 0px black;
 							padding-left:5px;">
-							È°µ¿
+							í™œë™
 							</span>
 						</td>
 					</tr>
@@ -129,15 +131,15 @@
 				<div>
 					<table width="100%">
 						<tr>
-							<td onclick="location.href='./mynews#following'" align="center">ÆÈ·ÎÀ×</td>
-							<td onclick="location.href='./mynews#mynews'" align="center">³» °Ô½Ã¹°</td>
+							<td onclick="location.href='./mynews#following'" align="center">íŒ”ë¡œìž‰</td>
+							<td onclick="location.href='./mynews#mynews'" align="center">ë‚´ ê²Œì‹œë¬¼</td>
 						</tr>
 					</table>
 				</div>
 				
 				<div>
 				<%
-					// ÀÓ½Ã·Î È°µ¿ ¸®½ºÆ® Ãß°¡
+					// ìž„ì‹œë¡œ í™œë™ ë¦¬ìŠ¤íŠ¸ ì¶”ê°€
 					ArrayList newsList = new ArrayList();
 					for(int i=0; i<10; i++)
 					{
@@ -157,8 +159,8 @@
 										<a href="#" style="text-decoration:none;
 										text-shadow: 0px 0px 0px;
 										color: #004879;
-										font-weight: normal;">¼º°æ¾²</a>
-										´ÔÀÌ È¸¿ø´ÔÀÇ »çÁøÀ» ÁÁ¾ÆÇÕ´Ï´Ù.
+										font-weight: normal;">ì„±ê²½ì“°</a>
+										ë‹˜ì´ íšŒì›ë‹˜ì˜ ì‚¬ì§„ì„ ì¢‹ì•„í•©ë‹ˆë‹¤.
 										<a href="./detail"><image src="./image/park.jpg" width="40"/></a>
 									</td>
 								</tr>
@@ -171,7 +173,7 @@
 					{
 				%>
 					<div>
-						È°µ¿ ³»¿ªÀÌ ¾ø½À´Ï´Ù.
+						í™œë™ ë‚´ì—­ì´ ì—†ìŠµë‹ˆë‹¤.
 					</div>
 				<%		
 					}

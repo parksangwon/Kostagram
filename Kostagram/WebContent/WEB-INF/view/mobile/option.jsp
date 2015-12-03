@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 		
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -14,7 +16,7 @@
 	<body>
 		<div>
 			<div data-role="header" data-theme="b">
-				<h2>¿É¼Ç</h2> <a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
+				<h2>ì˜µì…˜</h2> <a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
 				<a href="./userpage" data-icon="delete" class="ui-btn-left" data-iconpos="notext"></a>
 			</div>
 			<div data-rol="content" >
@@ -23,32 +25,32 @@
 						<table width="90%" border="0">
 							<Tr>
 								<Td>
-									<h3>¼³Á¤</h3><hr>
+									<h3>ì„¤ì •</h3><hr>
 								</Td>
 							</Tr>
 							<tr>
 								<Td>
-									<h4><a href="./profileupdate">ÇÁ·ÎÇÊ ¼öÁ¤</a></h4>
+									<h4><a href="./profileupdate">í”„ë¡œí•„ ìˆ˜ì •</a></h4>
 								</Td>
 							</tr>
 							<tr>
 								<Td>
-									<h4><a href="./findphonenumber">¿¬¶ôÃ³·Î Ä£±¸ Ã£±â</a></h4>
+									<h4><a href="./findphonenumber">ì—°ë½ì²˜ë¡œ ì¹œêµ¬ ì°¾ê¸°</a></h4>
 								</Td>
 							</tr>
 							<tr>
 								<Td>
-									<h4>ºñ¹Ð¹øÈ£ º¯°æ</h4>
+									<h4>ë¹„ë°€ë²ˆí˜¸ ë³€ê²½</h4>
 								</Td>
 							</tr>
 							<tr>
 								<Td>
-									<h4>È¸¿ø´ÔÀÌ ÁÁ¾ÆÇÑ °Ô½Ã¹°</h4><hr>
+									<h4>íšŒì›ë‹˜ì´ ì¢‹ì•„í•œ ê²Œì‹œë¬¼</h4><hr>
 								</Td>
 							</tr>
 							<tr>
 								<Td>
-									<h4>·Î±×¾Æ¿ô</h4><hr>
+									<h4>ë¡œê·¸ì•„ì›ƒ</h4><hr>
 								</Td>
 							</tr>
 						</table>

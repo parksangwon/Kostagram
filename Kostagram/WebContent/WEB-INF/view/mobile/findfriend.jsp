@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -21,24 +23,24 @@
 				}
 			</script>		
 		
-			<center><h1>ģ�� ã��</h1></center>
+			<center><h1>친구 찾기</h1></center>
 	
 			<div data-role="content">
 				<form id="joinForm" method="post" action="#" align="center">
-									�ȷο��� ����ó ã��
-									���� Kostagram�� ��� ������<br>
-									 Ȯ���ϰ� ���ϴ� ģ���� �����Ͽ� �ȷο��غ�����.
+									팔로우할 연락처 찾기
+									누가 Kostagram을 사용 중인지<br>
+									 확인하고 원하는 친구를 선택하여 팔로우해보세요.
 					<div data-role="fieldcontain">
 						<center>
-							<input type="button" value="����ó �˻�" data-inline="true" onclick="numbersearch()"/><br><br>
-							ȸ�� ���Խ� �Է��ϼ̴� ��ȭ��ȣ�� ������ ����˴ϴ�.<br>
+							<input type="button" value="연락처 검색" data-inline="true" onclick="numbersearch()"/><br><br>
+							회원 가입시 입력하셨던 전화번호로 서버에 저장됩니다.<br>
 						</center>
 					</div>
 				</form>
 			</div>
 			
 			<div data-role="footer" data-theme="b">
-				<center><a href="#"><h4>�ǳʶٱ�</h4></a></center>
+				<center><a href="#"><h4>건너뛰기</h4></a></center>
 			</div>
 		</div>	
 	</body>

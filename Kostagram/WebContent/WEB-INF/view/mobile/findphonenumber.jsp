@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -15,17 +17,17 @@
 		<div id="loginform" data-role="page" data-theme="e">
 			
 			<div data-role="header" data-theme="b">
-				<h2>¿¬¶ôÃ³ Ã£±â</h2><a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
+				<h2>ì—°ë½ì²˜ ì°¾ê¸°</h2><a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
 				<a href="./option" data-icon="delete" class="ui-btn-left" data-iconpos="notext"></a>
 			</div>
 			
-			<center><h3>¿¬¶ôÃ³¿¡ ÀÖ´Â »ç¶÷ Áß 3¸íÀÌ InstagramÀ» <br> »ç¿ë ÁßÀÔ´Ï´Ù.</h3><br>
+			<center><h3>ì—°ë½ì²˜ì— ìžˆëŠ” ì‚¬ëžŒ ì¤‘ 3ëª…ì´ Instagramì„ <br> ì‚¬ìš© ì¤‘ìž…ë‹ˆë‹¤.</h3><br>
 			
-					<font color="gray"><h5>Ä£±¸µéÀÇ °Ô½Ã¹° / »çÁøÀ» È®ÀÎÇØº¸¼¼¿ä.</h5></font>
+					<font color="gray"><h5>ì¹œêµ¬ë“¤ì˜ ê²Œì‹œë¬¼ / ì‚¬ì§„ì„ í™•ì¸í•´ë³´ì„¸ìš”.</h5></font>
 			</center>
 			<div data-role="content">
 				<form id="joinForm" method="post" action="#" align="center">
-									<hr> + ¸ðµÎ ÆÈ·Î¿ì <hr>
+									<hr> + ëª¨ë‘ íŒ”ë¡œìš° <hr>
 					<table width="100%" border="0">
 						<tr>
 							<td width="20%" height="5%">
@@ -33,7 +35,7 @@
 							</td>
 							<td width="50%">
 								abcdefg<br>
-								Á¶¿µ°æ
+								ì¡°ì˜ê²½
 							</td>
 							<td width="30%">
 								<a href="#"><img src=image/follow.jpg></a>
@@ -46,7 +48,7 @@
 							</td>
 							<td width="50%">
 								zxcasd123<br>
-								ÀåÁ¤¿ì
+								ìž¥ì •ìš°
 							</td>
 							<td width="30%">
 								<a href="#"><img src=image/follow.jpg></a>
@@ -59,7 +61,7 @@
 							</td>
 							<td width="50%">
 								bbggedd56<br>
-								¹Ú»ó¿ø
+								ë°•ìƒì›
 							</td>
 							<td width="30%">
 								<a href="#"><img src=image/following.jpg></a>

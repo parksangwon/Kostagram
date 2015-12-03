@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 
 <%
@@ -9,6 +9,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 		
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -33,35 +35,35 @@
 								</td>
 								<td align="center">
 									0<br>
-									°Ô½Ã¹°
+									ê²Œì‹œë¬¼
 								</td>
 								<td align="center">
 									30<br>
-									ÆÈ·ÎÀ×
+									íŒ”ë¡œìž‰
 								</td>
 								<td align="center">
 									30<br>
-									ÆÈ·Î¿ö
+									íŒ”ë¡œì›Œ
 								</td>
 							</tr>
 							<tr>
 								<td align="center" colspan="3">
-									<a href="./profileupdate">ÇÁ·ÎÇÊ ¼öÁ¤</a>
+									<a href="./profileupdate">í”„ë¡œí•„ ìˆ˜ì •</a>
 								</td>
 							</tr>
 						</table>
 					</div>
 				</ul>	
 				<div>
-					<ul data-insert="true">¹Ú»ó¿ø</ul>
+					<ul data-insert="true">ë°•ìƒì›</ul>
 					
 				</div>
 				<div data-role="navbar">
 					<ul>
-						<li><a data-icon="grid">°ÝÀÚÇü ¸®½ºÆ®</a></li>
-						<li><a data-icon="grid">»ó¼¼º¸±â</a></li>
-						<li><a data-icon="grid">Æ÷Åä¸Ê</a></li>
-						<li><a data-icon="grid">È¸¿ø´ÔÀÌ ³ª¿Â»çÁø</a></li>
+						<li><a data-icon="grid">ê²©ìží˜• ë¦¬ìŠ¤íŠ¸</a></li>
+						<li><a data-icon="grid">ìƒì„¸ë³´ê¸°</a></li>
+						<li><a data-icon="grid">í¬í† ë§µ</a></li>
+						<li><a data-icon="grid">íšŒì›ë‹˜ì´ ë‚˜ì˜¨ì‚¬ì§„</a></li>
 					</ul>
 				</div>
 				<div>
@@ -71,8 +73,8 @@
 					<%
 			if (photoList == null || photoList.size() == 0 ) {
 		%>
-				<ul align="center" data-insert="true">µî·ÏÇÑ ±ÛÀÌ ¾ø½À´Ï´Ù.</ul>
-				<ul align="center" data-insert="true">¼ÒÁßÇÑ ¼ø°£À» Æ÷ÂøÇÏ¿© °øÀ¯ÇØº¸¼¼¿ä</ul>
+				<ul align="center" data-insert="true">ë“±ë¡í•œ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</ul>
+				<ul align="center" data-insert="true">ì†Œì¤‘í•œ ìˆœê°„ì„ í¬ì°©í•˜ì—¬ ê³µìœ í•´ë³´ì„¸ìš”</ul>
 		<%	
 			} else {
 				for ( int i = 0; i < photoList.size(); i++ ) {
@@ -82,9 +84,9 @@
 					<li >
 						<table>
 							<tr>
-								<td width="5%">ÇÁ»ç</td>
-								<td width="20%"><a href="#" style="text-decoration:none"><font color="#004879">º»ÀÎ ¾ÆÀÌµð</font></a></td>							
-								<td width="70%"	align="right">10ºÐ</td>
+								<td width="5%">í”„ì‚¬</td>
+								<td width="20%"><a href="#" style="text-decoration:none"><font color="#004879">ë³¸ì¸ ì•„ì´ë””</font></a></td>							
+								<td width="70%"	align="right">10ë¶„</td>
 							</tr>			
 						</table>
 					</li>
@@ -92,39 +94,39 @@
 					<li>
 							
 							<div data-role="main" class="ui-content">
-								<a href="#love" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" data-rel="dialog"><font size="2">¢¾</font></a>
-							    <a href="#commant" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" data-rel="dialog"><font size="2">´ñ±Û</font></a>
-							    <a href="#submit" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" data-rel="dialog"><font size="2">¢Ö</font></a>
+								<a href="#love" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" data-rel="dialog"><font size="2">â™¥</font></a>
+							    <a href="#commant" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" data-rel="dialog"><font size="2">ëŒ“ê¸€</font></a>
+							    <a href="#submit" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" data-rel="dialog"><font size="2">â†—</font></a>
 							    <a href="#smenu" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all" >:</a>
 							    
 							    <div data-role="popup" id="smenu" data-overlay-theme="b">
-							      <input type="button" value="½Å°í">
+							      <input type="button" value="ì‹ ê³ ">
 							    </div>
 							</div>
 
 					</li>
 					<li>
-						<p><a href="#" style="text-decoration:none" ><font color="#004879">¢¾ ÁÁ¾Æ¿ä 142°³</font></a></p>
+						<p><a href="#" style="text-decoration:none" ><font color="#004879">â™¥ ì¢‹ì•„ìš” 142ê°œ</font></a></p>
 						<br>
 						<p><a href="#" style="text-decoration:none"><font color="#004879">Hihi123</font></a> I see you. 
 						<a href="#" style="text-decoration:none"><font color="#OD37CA">#widewhynot</font></a></p>
 						
-						<p><a href="#" style="text-decoration:none"><font color="gray">´ñ±Û ???°³ ¸ðµÎº¸±â</font></a></p>
+						<p><a href="#" style="text-decoration:none"><font color="gray">ëŒ“ê¸€ ???ê°œ ëª¨ë‘ë³´ê¸°</font></a></p>
 						<p><a href="#" style="text-decoration:none"><font color="#004879">borouhhin</font></a>	Fire~</p>
 						<p><a href="#" style="text-decoration:none"><font color="#004879">junhyck</font></a>	Awesome</p>
 						<p><a href="#" style="text-decoration:none"><font color="#004879">rossmansusna</font></a>	Going up or going down1 Great, ILove this pic.</p>
-						<p><a href="#comment" style="text-decoration:none"><font color="gray">´ñ±Û ´Þ±â</font></a></p>
+						<p><a href="#comment" style="text-decoration:none"><font color="gray">ëŒ“ê¸€ ë‹¬ê¸°</font></a></p>
 					</li>
 				</ul>
 		
 			
 			<div id="comment" data-role="page"  data-theme="d">
 				<div data-role="header">
-					<h1>´ñ±Û ´Þ±â</h1>
+					<h1>ëŒ“ê¸€ ë‹¬ê¸°</h1>
 					<a href="#" data-rel="back" data-icon="arrow-1"></a>
 				</div>
 				<div data-role="content">
-					<h1>´ñ±Û ´Ù´Â ÆäÀÌÁö</h1>
+					<h1>ëŒ“ê¸€ ë‹¤ëŠ” íŽ˜ì´ì§€</h1>
 				</div>
 			</div>
 		

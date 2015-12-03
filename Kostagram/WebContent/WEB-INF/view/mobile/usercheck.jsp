@@ -3,6 +3,7 @@
     
 <%
 	String email = (String)session.getAttribute("email");
+	session.removeAttribute("email");
 %>
 <html>
 	<head>
@@ -85,10 +86,15 @@
 		                dataType:'text',
 		                data:{email:idValue, name:idValueName, nickname:idValueNickName, pass:pass.val()},
 		                success:function(text){
-		                  if ( text === "availableEmail" ) {
-		                     location.href="usercheck?email="+idValue;
+		                  if ( text === "joinSuccess" ) {
+		                	 alert("성공적으로 가입되었습니다. 로그인 페이지로 이동합니다.");
+		                     location.href="/Kostagram/m/";
 		                  } else if ( text === "existedEmail" ) {
-		                     message.text("뭐라고쓰지 일단 중복됐을때");
+		                     message.text("사용할 수 없는 이메일 입니다.");
+		                  } else if ( text === "existedNickname" ) {
+		                     message.text("사용할 수 없는 닉네임 입니다.");
+		                  } else if ( text === "DBerror" ) {
+		                     message.text("DB error");
 		                  }
 		                },
 		                error:function() {

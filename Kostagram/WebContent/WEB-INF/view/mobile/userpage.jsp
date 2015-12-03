@@ -1,9 +1,11 @@
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 		
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -13,7 +15,7 @@
 		
 	</head>
 	<body>
-		<!-- Æ÷Åä±×¸®µå ½ÃÀÛ -->
+		<!-- í¬í† ê·¸ë¦¬ë“œ ì‹œìž‘ -->
 		<div id="photogrid" data-role="page" data-theme="e">
 			<div data-role="header" data-theme="b">
 				<table width="100%">
@@ -48,19 +50,19 @@
 								</td>
 								<td align="center">
 									0<br>
-									°Ô½Ã¹°
+									ê²Œì‹œë¬¼
 								</td>
 								<td align="center">
 									30<br>
-									ÆÈ·ÎÀ×
+									íŒ”ë¡œìž‰
 								</td>
 								<td align="center">
 									30<br>
-									ÆÈ·Î¿ö
+									íŒ”ë¡œì›Œ
 								</td>
 							</tr>
 							<tr>
-								<td align="center" colspan="3" onclick="location.href='./profileupdate'">ÇÁ·ÎÇÊ ¼öÁ¤</td>
+								<td align="center" colspan="3" onclick="location.href='./profileupdate'">í”„ë¡œí•„ ìˆ˜ì •</td>
 							</tr>
 						</table>
 					</div>
@@ -68,7 +70,7 @@
 			</div>
 				
 			<div>
-				<ul data-insert="true">¹Ú»ó¿ø</ul>
+				<ul data-insert="true">ë°•ìƒì›</ul>
 				
 			</div>
 				
@@ -85,7 +87,7 @@
 			<br>
 			<%
 				int count=0;
-				// ¸®½ºÆ® ¹Þ¾Æ¿À±â Àü, ÀÓ½Ã·Î °ª ÁØ °Í
+				// ë¦¬ìŠ¤íŠ¸ ë°›ì•„ì˜¤ê¸° ì „, ìž„ì‹œë¡œ ê°’ ì¤€ ê²ƒ
 				ArrayList list = new ArrayList();
 				for(int i=0; i<20; i++)
 				{
@@ -136,9 +138,9 @@
 			</div>
 		</div>
 		
-		<!-- Æ÷Åä±×¸®µå ³¡ -->
+		<!-- í¬í† ê·¸ë¦¬ë“œ ë -->
 		
-		<!-- Æ÷Åä¸®½ºÆ® ½ÃÀÛ -->
+		<!-- í¬í† ë¦¬ìŠ¤íŠ¸ ì‹œìž‘ -->
 		<div id="photolist" data-role="page" data-theme="e">
 			<div data-role="header" data-theme="b">
 				<table width="100%">
@@ -173,19 +175,19 @@
 								</td>
 								<td align="center">
 									0<br>
-									°Ô½Ã¹°
+									ê²Œì‹œë¬¼
 								</td>
 								<td align="center">
 									30<br>
-									ÆÈ·ÎÀ×
+									íŒ”ë¡œìž‰
 								</td>
 								<td align="center">
 									30<br>
-									ÆÈ·Î¿ö
+									íŒ”ë¡œì›Œ
 								</td>
 							</tr>
 							<tr>
-								<td align="center" colspan="3" onclick="location.href='./profileupdate'">ÇÁ·ÎÇÊ ¼öÁ¤</td>
+								<td align="center" colspan="3" onclick="location.href='./profileupdate'">í”„ë¡œí•„ ìˆ˜ì •</td>
 							</tr>
 						</table>
 					</div>
@@ -193,7 +195,7 @@
 			</div>
 				
 			<div>
-				<ul data-insert="true">¹Ú»ó¿ø</ul>
+				<ul data-insert="true">ë°•ìƒì›</ul>
 				
 			</div>
 				
@@ -219,7 +221,7 @@
 			{ 
 		%>
 			<div>
-				<center>ÆÈ·ÎÀ×ÀÌ ¾ø½À´Ï´Ù.</center>
+				<center>íŒ”ë¡œìž‰ì´ ì—†ìŠµë‹ˆë‹¤.</center>
 			</div> 
 		<%	
 			}
@@ -236,11 +238,11 @@
 						<td align="left"><a href="#" style="text-decoration:none;
 							text-shadow: 0px 0px 0px;
 							color: #004879;
-							font-weight: normal;">ÀÌ¼º°æ Á¸³ªÀÌ»µ¿ä</a></td>
+							font-weight: normal;">ì´ì„±ê²½ ì¡´ë‚˜ì´ë»ìš”</a></td>
 						<td align="right" style="text-decoration:none;
 							text-shadow: 0px 0px 0px;
 							color: #004879;
-							font-weight: normal;">¿Ã¸°½Ã°£</td>
+							font-weight: normal;">ì˜¬ë¦°ì‹œê°„</td>
 					</tr>
 				</table>
 			</div>
@@ -261,7 +263,7 @@
 				<table>
 					<tr>
 			<%
-				// ÁÁ¾Æ¿ä ºÎºÐ, ÁÁ¾Æ¿ä°¡ 5°³ ÀÌÇÏÀÌ¸é ¾ÆÀÌµð¸¦, ÃÊ°úµÇ¸é °¹¼ö¸¦
+				// ì¢‹ì•„ìš” ë¶€ë¶„, ì¢‹ì•„ìš”ê°€ 5ê°œ ì´í•˜ì´ë©´ ì•„ì´ë””ë¥¼, ì´ˆê³¼ë˜ë©´ ê°¯ìˆ˜ë¥¼
 				ArrayList likelist = new ArrayList();
 				for(int j=0; j<5; j++)
 				{
@@ -274,7 +276,7 @@
 						<td><a href="#" style="text-decoration:none;
 						text-shadow: 0px 0px 0px;
 						color: #004879;
-						font-weight: normal;">¢¾ 
+						font-weight: normal;">â™¥ 
 					<%
 						for(int k=0; k<likelist.size(); k++)
 						{
@@ -292,7 +294,7 @@
 					<td><a href="#" style="text-decoration:none;
 					text-shadow: 0px 0px 0px;
 					color: #004879;
-					font-weight: normal;">¢¾ <%= likelist.size()%>°³</a></td>
+					font-weight: normal;">â™¥ <%= likelist.size()%>ê°œ</a></td>
 			<%
 				}
 			%>
@@ -302,14 +304,14 @@
 						<td><a href="#" style="text-decoration:none;
 							text-shadow: 0px 0px 0px;
 							color: #004879;
-							font-weight: normal;">¾ÆÀÌµð</a>
-							°Ô½Ã±Û ³»¿ë
+							font-weight: normal;">ì•„ì´ë””</a>
+							ê²Œì‹œê¸€ ë‚´ìš©
 							</td>
 						</tr>
 					<tr>
 			<%
-				// ´ñ±Û ½ÃÀÛ
-				// ÀÓ½Ã·Î ´ñ±Û ¸®½ºÆ® Ãß°¡
+				// ëŒ“ê¸€ ì‹œìž‘
+				// ìž„ì‹œë¡œ ëŒ“ê¸€ ë¦¬ìŠ¤íŠ¸ ì¶”ê°€
 				ArrayList replylist = new ArrayList();
 				for(int n=0; n<4; n++)
 				{
@@ -325,7 +327,7 @@
 						<td><a href="#" style="text-decoration:none;
 						text-shadow: 0px 0px 0px;
 						color:#353535;
-						font-weight:normal;">´ñ±Û ´õº¸±â</a></td>
+						font-weight:normal;">ëŒ“ê¸€ ë”ë³´ê¸°</a></td>
 					</tr>
 			<%
 					}
@@ -336,7 +338,7 @@
 						<td><a href="#" style="text-decoration:none;
 						text-shadow: 0px 0px 0px;
 						color: #004879;
-						font-weight: normal;"><%= replylist.get(m) %></a> ´ñ±Û</td>
+						font-weight: normal;"><%= replylist.get(m) %></a> ëŒ“ê¸€</td>
 					</tr>
 			<%
 					}
@@ -351,7 +353,7 @@
 				<a href="#" style="text-decoration:none;
 				text-shadow: 0px 0px 0px;
 				color:#353535;
-				font-weight:normal;">´ñ±Û ´Þ±â</a>
+				font-weight:normal;">ëŒ“ê¸€ ë‹¬ê¸°</a>
 			</div>
 			<br>
 			<%
@@ -370,6 +372,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- Æ÷Åä¸®½ºÆ® ³¡ -->	
+		<!-- í¬í† ë¦¬ìŠ¤íŠ¸ ë -->	
 	</body>
 </html>

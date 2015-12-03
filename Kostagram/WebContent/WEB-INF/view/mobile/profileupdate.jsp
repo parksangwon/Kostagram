@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 		
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -14,7 +16,7 @@
 	<body>
 		<div>
 			<div data-role="header" data-theme="a">
-				<h2>«¡∑Œ«  ºˆ¡§</h2> <a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
+				<h2>ÌîÑÎ°úÌïÑ ÏàòÏ†ï</h2> <a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
 				<a href="./userpage" data-icon="delete" class="ui-btn-left" data-iconpos="notext"></a>
 			</div>
 			<div data-rol="content" >
@@ -42,13 +44,13 @@
 									<img src="image/icon/chat_bubble.png">
 								</td>
 								<td>
-									<input type="text" id="profilemassage" placeholder="ªÛ≈¬∏ﬁºº¡ˆ">
+									<input type="text" id="profilemassage" placeholder="ÏÉÅÌÉúÎ©îÏÑ∏ÏßÄ">
 								</td>
 							</tr>
 						</table>
 					</div>
 				</ul>
-				<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;∞≥¿Œ ¡§∫∏</h3><hr>
+				<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Í∞úÏù∏ Ï†ïÎ≥¥</h3><hr>
 				<ul data-insert="true">
 					<div>
 						<table width="90%">
@@ -74,9 +76,9 @@
 								</td>
 								<td>
 									<select id="sex">
-										<option value="0">º±≈√ æ» «‘</option>
-										<option value="m">≥≤º∫</option>
-										<option value="w">ø©º∫</option>
+										<option value="0">ÏÑ†ÌÉù Ïïà Ìï®</option>
+										<option value="m">ÎÇ®ÏÑ±</option>
+										<option value="w">Ïó¨ÏÑ±</option>
 									</select>
 								</td>
 							</tr>

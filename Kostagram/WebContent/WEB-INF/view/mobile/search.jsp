@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 		<TITLE>Kostagram</TITLE>
 		
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -21,7 +23,7 @@
 							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
 						</td>
 						<td>
-							<input type="text" placeholder="°Ë»ö" style="width:300px;
+							<input type="text" placeholder="ê²€ìƒ‰" style="width:300px;
 							height:35px;
 							font-size:15px;
 							line-height:35px;
@@ -40,15 +42,15 @@
 			<div data-role="content">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home">°Ë»ö</a></li>
-						<li><a href="#people">»ç¶÷ °Ë»ö</a></li>
-						<li><a href="#hashtag">ÇØ½ÃÅÂ±× °Ë»ö</a></li>
-						<li><a href="#place">Àå¼Ò °Ë»ö</a></li>
+						<li><a href="#home">ê²€ìƒ‰</a></li>
+						<li><a href="#people">ì‚¬ëžŒ ê²€ìƒ‰</a></li>
+						<li><a href="#hashtag">í•´ì‹œíƒœê·¸ ê²€ìƒ‰</a></li>
+						<li><a href="#place">ìž¥ì†Œ ê²€ìƒ‰</a></li>
 					</ul>
 				</div>
 				<div>
 					<ul data-insert="true">
-						°Ë»ö
+						ê²€ìƒ‰
 					</ul>
 				</div>	
 			</div>
@@ -75,7 +77,7 @@
 							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
 						</td>
 						<td>
-							<input type="text" placeholder="»ç¶÷ °Ë»ö" style="width:300px;
+							<input type="text" placeholder="ì‚¬ëžŒ ê²€ìƒ‰" style="width:300px;
 							height:35px;
 							font-size:15px;
 							line-height:35px;
@@ -94,15 +96,15 @@
 			<div data-role="content">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home">°Ë»ö</a></li>
-						<li><a href="#people">»ç¶÷ °Ë»ö</a></li>
-						<li><a href="#hashtag">ÇØ½ÃÅÂ±× °Ë»ö</a></li>
-						<li><a href="#place">Àå¼Ò °Ë»ö</a></li>
+						<li><a href="#home">ê²€ìƒ‰</a></li>
+						<li><a href="#people">ì‚¬ëžŒ ê²€ìƒ‰</a></li>
+						<li><a href="#hashtag">í•´ì‹œíƒœê·¸ ê²€ìƒ‰</a></li>
+						<li><a href="#place">ìž¥ì†Œ ê²€ìƒ‰</a></li>
 					</ul>
 				</div>
 				<div>
 					<ul data-insert="true">
-						»ç¶÷ °Ë»ö
+						ì‚¬ëžŒ ê²€ìƒ‰
 					</ul>
 				</div>	
 			</div>
@@ -129,7 +131,7 @@
 							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
 						</td>
 						<td>
-							<input type="text" placeholder="ÇØ½ÃÅÂ±× °Ë»ö" style="width:300px;
+							<input type="text" placeholder="í•´ì‹œíƒœê·¸ ê²€ìƒ‰" style="width:300px;
 							height:35px;
 							font-size:15px;
 							line-height:35px;
@@ -148,15 +150,15 @@
 			<div data-role="content">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home">°Ë»ö</a></li>
-						<li><a href="#people">»ç¶÷ °Ë»ö</a></li>
-						<li><a href="#hashtag">ÇØ½ÃÅÂ±× °Ë»ö</a></li>
-						<li><a href="#place">Àå¼Ò °Ë»ö</a></li>
+						<li><a href="#home">ê²€ìƒ‰</a></li>
+						<li><a href="#people">ì‚¬ëžŒ ê²€ìƒ‰</a></li>
+						<li><a href="#hashtag">í•´ì‹œíƒœê·¸ ê²€ìƒ‰</a></li>
+						<li><a href="#place">ìž¥ì†Œ ê²€ìƒ‰</a></li>
 					</ul>
 				</div>
 				<div>
 					<ul data-insert="true">
-						ÇØ½¬ÅÂ±× °Ë»ö
+						í•´ì‰¬íƒœê·¸ ê²€ìƒ‰
 					</ul>
 				</div>	
 			</div>
@@ -183,7 +185,7 @@
 							<image src="./image/icon/search.png" width="20" style="padding-left:10px;"/>
 						</td>
 						<td>
-							<input type="text" placeholder="Àå¼Ò °Ë»ö" style="width:300px;
+							<input type="text" placeholder="ìž¥ì†Œ ê²€ìƒ‰" style="width:300px;
 							height:35px;
 							font-size:15px;
 							line-height:35px;
@@ -202,15 +204,15 @@
 			<div data-role="content">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#home">°Ë»ö</a></li>
-						<li><a href="#people">»ç¶÷ °Ë»ö</a></li>
-						<li><a href="#hashtag">ÇØ½ÃÅÂ±× °Ë»ö</a></li>
-						<li><a href="#place">Àå¼Ò °Ë»ö</a></li>
+						<li><a href="#home">ê²€ìƒ‰</a></li>
+						<li><a href="#people">ì‚¬ëžŒ ê²€ìƒ‰</a></li>
+						<li><a href="#hashtag">í•´ì‹œíƒœê·¸ ê²€ìƒ‰</a></li>
+						<li><a href="#place">ìž¥ì†Œ ê²€ìƒ‰</a></li>
 					</ul>
 				</div>
 				<div>
 					<ul data-insert="true">
-						Àå¼Ò °Ë»ö
+						ìž¥ì†Œ ê²€ìƒ‰
 					</ul>
 				</div>	
 			</div>
