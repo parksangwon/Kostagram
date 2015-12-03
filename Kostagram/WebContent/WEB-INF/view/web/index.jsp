@@ -2922,9 +2922,9 @@ transform
 	    			data:{nickname:idValue, pass:pwValue},
 	    			success:function(text){
 	    			  if ( text === "loginSuccess" ) {
-	    				  location.href="/timeline"
+	    				  location.href=""
 	    			  } else if ( text === "loginFail" ) {
-	    				  message.text("사용자의 이름과 비밀번호가 정확하지 않습니다.");
+	    				  message.text("닉네임 또는 비밀번호가 틀렸습니다");
 	    			  }
 	    			},
 	    			error:function() {
