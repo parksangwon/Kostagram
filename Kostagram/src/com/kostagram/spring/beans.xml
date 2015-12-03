@@ -18,6 +18,7 @@
    <bean class="com.kostagram.service.dao.ReportDAOImpl"></bean>
    <bean class="com.kostagram.service.dao.ReportItemDAOImpl"></bean>
    <bean class="com.kostagram.service.dao.UserInfoDAOImpl"></bean>
+   <bean class="com.kostagram.service.dao.SearchDAOImpl"></bean>
    
    <!-- 각자 필요한 DAO에 대한 객체를 사용하기 위해 이곳에 bean으로 선언해주면 됨 -->
 </beans>
