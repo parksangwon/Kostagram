@@ -2890,8 +2890,6 @@ transform
 			
 			$('#loginBtn').click(function(){
 				
-				alert("aa");
-				
 				var idInput = $('input:text[name=nickname]');
 				var idValue = trim(idInput.val());
 				var message = $('#check')
@@ -2903,6 +2901,7 @@ transform
 				}
 				
 				var pw = $('input:password[name=pass]');
+				var pwValue = trim(pw.val());
 				if(pw.val() == "")
 				{
 					message.text("비밀번호를 반드시 입력해야 합니다.");
@@ -2914,21 +2913,25 @@ transform
 					message.text("비밀번호는 4자 이상 20자 이하 입니다.");
 					pw.select();
 					return false;
-				}				
-				
+				}
 				
 	    		$.ajax({
-	    			type:'post',
-	    			url:'/login',
+	    			type:'POST',
+	    			url:'login',
 	    			dataType:'json',
-	    			data:{nickname:idValue, pass:pw},
+	    			data:{nickname:idValue, pass:pwValue},
 	    			success:function(json){
 	    			  var data = json.login;
-	    			  alert(typeof data);
-	    			  /* $('p').text(data); */
+	    			  if ( data === "1" ) {
+	    				  // location = "이동"
+	    			  } else if ( data === "0" ) {
+	    				  // 사용자의 이름과 비밀번호가 정확하지 않습니다.
+	    			  }
+	    			},
+	    			error:function() {
+	    				alert("error");
 	    			}
 	    		});
-	    		
 	    	});
 		});
 		
