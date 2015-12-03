@@ -16,58 +16,58 @@
 		<link rel="shortcut icon" href="../image/icon.png">
 		<link rel="apple-touch-icon" href="../image/icon.png"> 
 		
-		<!-- Include jQuery Mobile stylesheets -->
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="jquery-mobile/jquery-1.6.4.js"></script>
+		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
+		<script src="js/common.js"></script>
+		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />					
 		
-		<!-- Include the jQuery library -->
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		
-		<!-- Include the jQuery Mobile library -->
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		
-		<style>
-			.ui-bar-f {
-			    color:#004879;
-			    background-color: #004879;
-			}
-		</style>					
+						
 	</head> 
 <body>
 	<div data-role="page">
 		
-			<div data-role="header"	data-theme="f" >
-				<left><font color="white" size="3">활동</font></left>
-			</div>
-		
-			<div data-role="content" >
-				<table width="100%">
-					<tr >
-						<td align="left" width="50%">
-							<a href="./following.jsp" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" style="text-decoration:none"><center>팔로잉</center></a>
-							<hr>
-						</td>
-						
-						<td  align="right" width="50%">
-							<a href="./mynews.jsp" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" style="text-decoration:none"><center>내 게시물</center></a>
-							<hr>
+			<div data-role="header" data-theme="b">
+				<table>
+					<tr>
+						<td>
+							<span style="height:35px;
+							font-size:20px;
+							color:#ffffff;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							text-shadow: 0px 0px 0px black;
+							padding-left:5px;">
+							활동
+							</span>
 						</td>
 					</tr>
 				</table>
+			</div>
 		
+			<div data-role="content" data-theme="d">
+				<table width="100%">
+						<tr>
+							<td onclick="window.location.href = './following.jsp'" align="center">팔로잉</td>
+							<td onclick="window.location.href = './mynews.jsp'" align="center">내 게시물</td>
+						</tr>
+				</table>
+			</div>	
 		
-		<div data-role="content"	 data-theme="d">		
-			<%
-				if (followingList == null || followingList.size() == 0 ) {
-			%>
-					<center>
-						<h3>내가 팔로우 하는 사람들의 활동</h3>
-						<font size="2">내가 팔로우 하는 사람이 게시물에 댓글을 달거나 좋아요를 클릭하면 표시됩니다.</font>
-					</center>
-					
-			<%	
-				} else {
-					for ( int i = 0; i < followingList.size(); i++ ) {
-			%>	
+			<div data-role="content" data-theme="d">
+				<%
+					if (followingList == null || followingList.size() == 0 ) {
+				%>
+						<center>
+							<h3>내가 팔로우 하는 사람들의 활동</h3>
+							<font size="2">내가 팔로우 하는 사람이 게시물에 댓글을 달거나 좋아요를 클릭하면 표시됩니다.</font>
+						</center>
+						
+				<%	
+					} else {
+						for ( int i = 0; i < followingList.size(); i++ ) {
+				%>	
 		
 					
 				<ul data-role="listview">
@@ -117,22 +117,21 @@
 				</ul>
 			<%  }
 				}	%>
-		</div>
+			</div>
 		
 		
-		  </div>
 		  
-			<div data-role="footer" data-theme="b"		data-position="fixed">
-				<div data-role="navbar" >
+			<div data-role="footer" data-theme="b" data-position="fixed">
+				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a data-role="button" data-icon="home" data-iconpos="notext" ></a></li>
-						<li><a data-role="button" data-icon="search" data-iconpos="notext" ></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"	class="ui-btn-active 	ui-state-persist"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="info" data-iconpos="notext" ></a></li>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
-			</div> 
+			</div>
 	</div>
 </body>
 </html>
