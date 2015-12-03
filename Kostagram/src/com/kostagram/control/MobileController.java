@@ -85,25 +85,59 @@ public class MobileController {
 	    out.print("loginFail");
 	}
     }
-
-    // 이메일만 보내고 중복을 체크
+    
     @RequestMapping("/emailcheck")
-    public String emailcheck(UserInfoVO user) {
+    public String emailcheck() {
+	return "mobile/emailcheck";
+    }
+    
+    // 이메일만 보내고 중복을 체크
+    @RequestMapping("/validationEmail")
+    public void validationEmail(UserInfoVO user, HttpServletResponse res) throws IOException {
 	
-	if ( user == null || user.getEmail() == null ) {
-	    return "";
+	PrintWriter out = res.getWriter();
+	
+	res.setCharacterEncoding("utf-8");
+	res.setContentType("text/xml");
+	res.setHeader("Cache-Control", "no-cache");
+	
+	UserInfoVO findedUser = userInfoDao.findEmail(user);
+	
+	if ( findedUser != null ) {
+	    // 중복되었음
+	    out.print("existedEmail");
+	} else {
+	    // 사용가능
+	    out.print("availableEmail");
 	}
-	return "mobile/usercheck";
     }
 
     @RequestMapping("/usercheck")
     public String usercheck(HttpServletRequest request, Model model) {
-	String id = (String) request.getParameter("id");
-	model.addAttribute("id", id);
+	String email = (String) request.getParameter("email");
+	model.addAttribute("email", email);
 	return "mobile/usercheck";
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    public void validationEmailAndNickname(UserInfoVO user, HttpServletResponse res) throws IOException {
+	
+	PrintWriter out = res.getWriter();
+	
+	res.setCharacterEncoding("utf-8");
+	res.setContentType("text/xml");
+	res.setHeader("Cache-Control", "no-cache");
+	
+	List<UserInfoVO> findedUserList = userInfoDao.findEmailAndNickname(user);
+	
+	if ( findedUserList != null || findedUserList.size() > 0 ) {
+	    // 중복되었음
+	    out.print("existedEmail");
+	} else {
+	    // 사용가능
+	    out.print("availableEmail");
+	}
+	
+    }
 
     // 팔로잉 로그 (좋아요 팔로우)
     @RequestMapping("/following")
