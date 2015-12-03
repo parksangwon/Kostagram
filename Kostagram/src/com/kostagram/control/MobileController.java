@@ -93,7 +93,7 @@ public class MobileController {
     
     // 이메일만 보내고 중복을 체크
     @RequestMapping("/validationEmail")
-    public void validationEmail(UserInfoVO user, HttpServletResponse res) throws IOException {
+    public void validationEmail(UserInfoVO user, HttpSession session, HttpServletResponse res) throws IOException {
 	
 	PrintWriter out = res.getWriter();
 	
@@ -108,6 +108,7 @@ public class MobileController {
 	    out.print("existedEmail");
 	} else {
 	    // 사용가능
+	    session.setAttribute("email", findedUser.getEmail());
 	    out.print("availableEmail");
 	}
     }
@@ -137,7 +138,7 @@ public class MobileController {
 	    out.print("existedEmail");
 	} else {
 	    // 사용가능
-
+	    
 	    System.out.println("이메일, 닉네임 중복 검사 : 이메일, 닉네임 사용 가능");
 	    out.print("availableEmail");
 	}
