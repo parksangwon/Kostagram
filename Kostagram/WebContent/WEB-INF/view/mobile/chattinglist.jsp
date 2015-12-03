@@ -31,7 +31,7 @@
 				<table>
 					<tr>
 						<td>
-						<!--  뒤로가기  --><img src="./m/image/icon/back.png" onclick="#" >
+						<!--  뒤로가기  --><img src="./m/image/icon/back.png" onclick="window.location.href = './timeline.jsp'" >
 						<font color="white">DIRECT</font>				
 						</td>
 					</tr>
