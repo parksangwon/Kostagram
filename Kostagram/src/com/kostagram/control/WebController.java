@@ -27,8 +27,8 @@ public class WebController {
 
     @Autowired
     private UserInfoDAO userInfoDao;
-    private PhotoInfoDAO photoInfoDao;
-    private SearchDAO searchDao;
+    @Autowired private PhotoInfoDAO photoInfoDao;
+    @Autowired private SearchDAO searchDao;
 
     @RequestMapping("/")
     public String goToMainPage(HttpSession session, Model model) {
@@ -127,16 +127,17 @@ public class WebController {
     }
     
     @RequestMapping("/searchWordAutoComplete/")
-    public void searchWord(HttpServletRequest request, HttpServletResponse response) throws IOException
+    public void searchWord(SearchVO searchVO, HttpServletRequest request, HttpServletResponse response) throws IOException
     {
-    	String test = (String)request.getParameter("sw");
-    	System.out.println(test);
-    	SearchVO2 searchvo2 = new SearchVO2();
-    	searchvo2.setMessage(test);
-    	List<SearchVO> list = searchDao.select(searchvo2);
+    	System.out.println(searchVO.getMessage());
     	
+    	List<SearchVO> list = searchDao.select(searchVO);
+    	
+    	System.out.println(list.size());
     	if (list.size() > 0)
 		{
+    		response.setCharacterEncoding("utf-8");
+    		
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/xml");
 			response.setHeader("Cache-Control", "no-cache");
@@ -144,7 +145,7 @@ public class WebController {
 
 			for(int i=0; i<list.size(); i++)
 			{
-				SearchVO searchVO = (SearchVO)list.get(i);
+				searchVO = (SearchVO)list.get(i);
 				String word = searchVO.getWord();
 				String count = searchVO.getCount();
 				out.println("<WORD>");
