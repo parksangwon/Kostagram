@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.SearchVO;
-import com.kostagram.service.beans.SearchVO2;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.SearchDAO;
