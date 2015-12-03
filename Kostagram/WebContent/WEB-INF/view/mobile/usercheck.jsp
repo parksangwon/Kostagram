@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-	String email = (String)request.getAttribute("email");
+	String email = (String)session.getAttribute("email");
 %>
 <html>
 	<head>
@@ -104,17 +104,17 @@
 			
 			<div align="center">
 				<br>
-				<image src="./image/banner.png" width="200"/>
+				<img src="./image/banner.png" width="200"/>
 			</div>
 
 			<div data-role="content">
-				<form id="joinForm" method="post" action="findfriend" align="center">
+				<form id="joinForm" method="post" action="findfriend">
 					<div align="center">
 						<input id="email" type="text" name="email" placeholder="email" value="<%= email %>"/> 
 						<br>
 						<input id="name" type="text" name="name" placeholder="이름"/> 
 						<br>
-						<input id="nickname" type="text" name="nickname" placeholder="사용자 이름(닉네임)"/> 8
+						<input id="nickname" type="text" name="nickname" placeholder="사용자 이름(닉네임)"/>
 						<br>
 						<input id="pass" type="password" name="pass" placeholder="비밀번호"/> 
 						<br>
