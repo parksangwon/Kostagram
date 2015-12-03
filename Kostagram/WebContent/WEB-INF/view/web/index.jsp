@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	
+	
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko"
 	class="js not-logged-in wf-proximanova-n3-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n7-active wf-active">
@@ -2884,7 +2888,7 @@ transform
 <script type="text/javascript">
 		function login() 
 		{
-			var idInput = $('input:text[name=username]');
+			var idInput = $('input:text[name=nickname]');
 			var idValue = trim(idInput.val());
 			var message = $('#check')
 			if(idValue === "")
@@ -2894,8 +2898,7 @@ transform
 				return false;
 			}
 			
-			
-			var pw = $('input:password[name=password]');
+			var pw = $('input:password[name=pass]');
 			if(pw.val() == "")
 			{
 				message.text("비밀번호를 반드시 입력해야 합니다.");
@@ -2907,12 +2910,23 @@ transform
 				message.text("비밀번호는 4자 이상 20자 이하 입니다.");
 				pw.select();
 				return false;
-			}
-			
-			
+			}				
 		}
 		
-  
+		$('#loginBtn').click(function(){
+    		$.ajax({
+    			url:'/login',
+    			dataType:'json',
+    			success:function(json){
+    			  var data = json.login;
+    			  alert(typeof data);
+    			  /* $('p').text(data); */
+    			}
+    		});
+    	});
+		
+		
+		
 </script>
 
 
@@ -2956,7 +2970,7 @@ transform
 								class="-cx-PRIVATE-SlimTextInput__input -cx-PRIVATE-TextInput__root"
 								aria-describedby="" aria-label="사용자 이름" aria-required="true"
 								autocapitalize="off" autocorrect="off" maxlength="30"
-								name="username" placeholder="사용자 이름" value="" type="text"
+								name="nickname" placeholder="사용자 이름" value="" type="text"
 								data-reactid=".0.1.0.1.0.1.0.0.0">
 						</div>
 						<div
@@ -2965,7 +2979,7 @@ transform
 							<input
 								class="-cx-PRIVATE-SlimTextInput__input -cx-PRIVATE-TextInput__root"
 								aria-describedby="" aria-label="비밀번호" aria-required="true"
-								autocapitalize="off" autocorrect="off" name="password"
+								autocapitalize="off" autocorrect="off" name="pass"
 								placeholder="비밀번호" type="password" value=""
 								data-reactid=".0.1.0.1.0.1.0.1.0">
 							<div class="-cx-PRIVATE-SlimTextInput__indicators"
@@ -2978,7 +2992,7 @@ transform
 						<div>
 						<input type= "button" value="로그인" onclick="login()"
 							class="-cx-PRIVATE-SlimLoginForm__button -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__solid -cx-PRIVATE-IGButton__sizeLarge -cx-PRIVATE-IGButton__enabled"
-							id= >
+							id="loginBtn" >
 						</div>
 						<p align="center" id="check" style="color:red"></p>
 					</form>
