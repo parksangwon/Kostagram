@@ -45,22 +45,22 @@ public class WebController {
     }
 
     @RequestMapping("/login")
-    public String login(HttpServletRequest req, Model model) {
+    public String login(HttpServletRequest req, UserInfoVO user, Model model) {
 
 	// 파라미터 값 validation 후
-	if (req == null || req.getParameter("username") == null || req.getParameter("password") == null) {
+	if (req == null || req.getParameter("nickname") == null || req.getParameter("password") == null) {
 	    return "web/ajax/loginFailed";
 	}
 
-	String nickname = (String) req.getParameter("username");
+	String nickname = (String) req.getParameter("nickname");
 	String password = (String) req.getParameter("password");
 
 	// userInfoDao 로 정보가 있는지 확인
-	UserInfoVO user = userInfoDao.findNickname(new UserInfoVO(nickname));
+	UserInfoVO findedUser = userInfoDao.findNickname(user);
 
-	if (user != null && user.getPass().equals(password)) {
+	if (findedUser != null && findedUser.getPass().equals(password)) {
 	    // 로그인 성공
-	    return "web/timeline";
+	    return "web/ajax/loginSuccessed";
 	}
 
 	return "web/ajax/loginFailed";
