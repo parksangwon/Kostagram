@@ -133,12 +133,12 @@ public class MobileController {
 	
 	if ( findedUserList != null || findedUserList.size() > 0 ) {
 	    // 중복되었음
-	    System.out.println("이메일 중복 검사 : 이메일 중복");
+	    System.out.println("이메일, 닉네임 중복 검사 : 이메일, 닉네임 중복");
 	    out.print("existedEmail");
 	} else {
 	    // 사용가능
 
-	    System.out.println("이메일 중복 검사 : 이메일 사용 가능");
+	    System.out.println("이메일, 닉네임 중복 검사 : 이메일, 닉네임 사용 가능");
 	    out.print("availableEmail");
 	}
 	
