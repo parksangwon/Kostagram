@@ -48,12 +48,12 @@ public class WebController {
     public String login(HttpServletRequest req, UserInfoVO user, Model model) {
 
 	// 파라미터 값 validation 후
-	if (req == null || req.getParameter("nickname") == null || req.getParameter("password") == null) {
+	if (req == null || req.getParameter("nickname") == null || req.getParameter("pass") == null) {
 	    return "web/ajax/loginFailed";
 	}
 
 	String nickname = (String) req.getParameter("nickname");
-	String password = (String) req.getParameter("password");
+	String password = (String) req.getParameter("pass");
 
 	// userInfoDao 로 정보가 있는지 확인
 	UserInfoVO findedUser = userInfoDao.findNickname(user);
