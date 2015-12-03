@@ -114,10 +114,7 @@ public class MobileController {
     }
 
     @RequestMapping("/usercheck")
-    public String userCheck(HttpServletRequest request, Model model) {
-	String email = (String) request.getParameter("email");
-	System.out.println("userCheck method params => email : " + email);
-	model.addAttribute("email", email);
+    public String userCheck() {
 	return "mobile/usercheck";
     }
 
