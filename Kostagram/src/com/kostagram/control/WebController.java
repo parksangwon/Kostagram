@@ -44,29 +44,26 @@ public class WebController {
     }
 
     @RequestMapping("/login")
-    public String login(HttpServletRequest req, UserInfoVO user, Model model) {
-
-	// 파라미터 값 validation 후
-	if (req == null || req.getParameter("nickname") == null || req.getParameter("pass") == null) {
-	    return "web/ajax/loginFailed";
+    public void login(UserInfoVO user, HttpServletResponse res) throws IOException {
+	
+	PrintWriter out = res.getWriter();
+	
+	res.setCharacterEncoding("utf-8");
+	res.setContentType("text/xml");
+	res.setHeader("Cache-Control", "no-cache");
+	
+	if (user == null || user.getNickname() == null || user.getPass() == null ) {
+	    out.print("loginFail");
 	}
 	
-	String nickname = (String) req.getParameter("nickname");
-	String pass = (String) req.getParameter("pass");
-
-	
-	System.out.println("TEST PRINT");
-	System.out.println("user\n:"+user);
-	System.out.println("nickname : " + nickname + " password : " + pass);
-	// userInfoDao 로 정보가 있는지 확인
+	// userInfoDao로 정보가 있는지 확인
 	UserInfoVO findedUser = userInfoDao.findNickname(user);
 
-	if (findedUser != null && findedUser.getPass().equals(pass)) {
-	    // 로그인 성공
-	    return "web/ajax/loginSuccessed";
+	if (findedUser != null && findedUser.getPass().equals(user.getPass())) {
+	    out.print("loginSuccess");
+	} else {
+	    out.print("loginFail");
 	}
-
-	return "web/ajax/loginFailed";
     }
 
     @RequestMapping("/accounts/password/change/")

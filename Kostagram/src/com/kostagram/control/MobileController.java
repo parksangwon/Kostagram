@@ -1,8 +1,11 @@
 package com.kostagram.control;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +46,7 @@ public class MobileController {
 
     // 타임 라인 (메인)
     @RequestMapping("/")
-    public String timeLine(HttpServletRequest request, HttpSession session, Model model) {
+    public String timeLine(HttpSession session, Model model) {
 
 	if (session == null || session.getAttribute("loginYn") == null || session.getAttribute("loginYn").equals("N")
 		|| session.getAttribute("email") == null) {
@@ -59,13 +62,36 @@ public class MobileController {
     }
 
     @RequestMapping("/login")
-    public String login() {
-	return "mobile/login";
+    public void login(UserInfoVO user, HttpServletResponse res) throws IOException {
+	
+	PrintWriter out = res.getWriter();
+	
+	res.setCharacterEncoding("utf-8");
+	res.setContentType("text/xml");
+	res.setHeader("Cache-Control", "no-cache");
+	
+	if (user == null || user.getNickname() == null || user.getPass() == null ) {
+	    out.print("loginFail");
+	}
+	
+	// userInfoDao로 정보가 있는지 확인
+	UserInfoVO findedUser = userInfoDao.findNickname(user);
+
+	if (findedUser != null && findedUser.getPass().equals(user.getPass())) {
+	    out.print("loginSuccess");
+	} else {
+	    out.print("loginFail");
+	}
     }
 
+    // 이메일만 보내고 중복을 체크
     @RequestMapping("/emailcheck")
-    public String emailcheck() {
-	return "mobile/emailcheck";
+    public String emailcheck(UserInfoVO user) {
+	
+	if ( user == null || user.getEmail() == null ) {
+	    return "";
+	}
+	return "mobile/usercheck";
     }
 
     @RequestMapping("/usercheck")
@@ -74,15 +100,9 @@ public class MobileController {
 	model.addAttribute("id", id);
 	return "mobile/usercheck";
     }
-    
-    
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-    
-    
-    
+
     // 팔로잉 로그 (좋아요 팔로우)
     @RequestMapping("/following")
     public String following(HttpServletRequest request, HttpSession session, Model model) {
@@ -168,7 +188,9 @@ public class MobileController {
 
 	// 로그인을 한 상태면 자신의 아이디를 가져와서 DAO로 보낸 다음 자신의 아이디에 맞는 likeNoticeList를 가져온다.
 	String email = (String) session.getAttribute("email");
-	List<PhotoInfoVO> likePhotoList = photoInfoDao.selectList(new UserInfoVO(email)); // LikeDAO에 selectList 추가
+	List<PhotoInfoVO> likePhotoList = photoInfoDao.selectList(new UserInfoVO(email)); // LikeDAO에
+											  // selectList
+											  // 추가
 
 	// 가져온 likeNoticeList 를 뷰와 공유
 
@@ -211,11 +233,10 @@ public class MobileController {
 	// 다시 chattinglist 페이지로 이동
 	String someoneEmail = request.getParameter("someoneEmail");
 	boolean result = conversationDao.insert(new UserInfoVO(someoneEmail));
-	
+
 	return "mobile/chattinglist";
 
     }
-
 
     @RequestMapping("/userpage")
     public String userpage() {
