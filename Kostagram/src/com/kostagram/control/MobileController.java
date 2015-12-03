@@ -120,6 +120,7 @@ public class MobileController {
 	return "mobile/usercheck";
     }
 
+    @RequestMapping("/validationNickname")
     public void validationEmailAndNickname(UserInfoVO user, HttpServletResponse res) throws IOException {
 	
 	PrintWriter out = res.getWriter();
