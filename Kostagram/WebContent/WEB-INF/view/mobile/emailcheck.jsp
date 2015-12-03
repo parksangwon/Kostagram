@@ -52,7 +52,8 @@
 			                data:{email:idValue},
 			                success:function(text){
 			                  if ( text === "availableEmail" ) {
-			                     location.href="usercheck?email="+idValue;
+			                     //location.href="usercheck?email="+idValue;
+			                     joinForm.submit();
 			                  } else if ( text === "existedEmail" ) {
 			                     message.text("사용할 수 없는 이메일 입니다.");
 			                  }
