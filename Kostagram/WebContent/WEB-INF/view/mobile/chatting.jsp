@@ -14,14 +14,10 @@
 		
 		
 				
-		<!-- Include jQuery Mobile stylesheets -->
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-		
-		<!-- Include the jQuery library -->
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		
-		<!-- Include the jQuery Mobile library -->
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="jquery-mobile/jquery-1.6.4.js"></script>
+		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
+		<script src="js/common.js"></script>
+		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />	
 			
 		
 		<style TYPE="text/css"> 
@@ -73,24 +69,21 @@
 <body>
 
 	<div data-role="page">
-		
-			<div data-role="header"	data-theme="f" >
-				<table width="100%">
+			
+			<div data-role="header" data-theme="b">
+				<table>
 					<tr>
 					
 						<td>
-						<!--  뒤로가기  --><input type="image" src="./m/image/icon/cross.png" onclick="#" >
+						<!--  뒤로가기  --><img src="./m/image/icon/back.png" onclick="window.location.href = './chattinglist.jsp'">
 						<font color="white">아이디</font>				
 						</td>
-						
-						<td align="right">
-							<input type="image" src="./m/image/icon/info.png" onclick="#"  >
-						</td>											
+													
 					</tr>
-								
-				</table>								
-
+				</table>
 			</div>
+			
+			
 			
 			
 			
@@ -234,15 +227,15 @@
 				
 			</div>
 			
-			 <div data-role="footer" data-theme="a"		data-position="fixed">
+			 <div data-role="footer" data-theme="c"	data-position="fixed">
 				<div data-role="navbar" >
 					<table width="100%">
 						<tr>			
 							<td>
 								<input type="text" id="messasgeText" placeholder="메시지 쓰기...">
 							</td>
-							<td >
-								<input type="image" src="./m/image/icon/heart.png">
+							<td align="right">
+								<img src="./m/image/icon/heart.png">
 							</td>
 						</tr>
 					</table>

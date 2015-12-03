@@ -16,16 +16,10 @@
 		
 		
 		
-				
-		<!-- Include jQuery Mobile stylesheets -->
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-		
-		<!-- Include the jQuery library -->
-		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		
-		<!-- Include the jQuery Mobile library -->
-		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-			
+		<script src="jquery-mobile/jquery-1.6.4.js"></script>
+		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
+		<script src="js/common.js"></script>
+		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />	
 		
 		<style TYPE="text/css"> 
 			.ui-bar-f {
@@ -39,37 +33,30 @@
 <body>
 
 	<div data-role="page">
-		
-			<div data-role="header"	data-theme="f" >
-				<table width="100%">
+			
+			
+			<div data-role="header" data-theme="b">
+				<table>
 					<tr>
 						<td>
-						<!--  뒤로가기  --><input type="image" src="./m/image/icon/cross.png" onclick="#" >
+						<!--  뒤로가기  --><img src="./m/image/icon/back.png" onclick="#" >
 						<font color="white">DIRECT</font>				
-						</td>
-						
-						<td align="right">
-							<input type="image" src="./m/image/icon/plus.png" onclick="#"  >
 						</td>
 					</tr>
 				</table>
 			</div>
 			
+		
+			
+		      
+		 
 			
 			<div data-role="content" >
-						
-									<%
-				if (chattingList == null || chattingList.size() == 0 ) {
-			%>
-					<ul align="center" data-insert="true">대화 상대가 없습니다.</ul>
-
-			<%	
-				} else {
-					for ( int i = 0; i < chattingList.size(); i++ ) {
-			%>
+		     	<input type="text" id="add" placeholder="대화상대 추가"> <input type="submit" value="추가"><br>		
+									
 				<ul data-role="listview">
 					<li>
-						<a href="./detail"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
+						<a href="./chatting.jsp"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
 							<table>
 								<tr>
 									<td>qkrwnsgur0605</td>
@@ -84,7 +71,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="./detail"><img src="./m/image/testImage2.jpg" class="ul-li-icon" />
+						<a href="./chatting.jsp"><img src="./m/image/testImage2.jpg" class="ul-li-icon" />
 							<table>
 								<tr>
 									<td>hihihi10234</td>
@@ -99,7 +86,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="./detail"><img src="./m/image/testImage3.jpg" class="ul-li-icon" />
+						<a href="./chatting.jsp"><img src="./m/image/testImage3.jpg" class="ul-li-icon" />
 							<table>
 								<tr>
 									<td>heyhey5252</td>
@@ -114,24 +101,22 @@
 						</a>
 					</li>
 				</ul>
-			<% }
-				}		
-					%>
+		
 			</div>
 			
 			
 			
-			<div data-role="footer" data-theme="b"		data-position="fixed">
-					<div data-role="navbar" >
-						<ul data-theme="f">
-							<li><a data-role="button" data-icon="home" data-iconpos="notext" ></a></li>
-							<li><a data-role="button" data-icon="search" data-iconpos="notext" ></a></li>
-							<li><a data-role="button" data-icon="star" data-iconpos="notext"	class="ui-btn-active 	ui-state-persist"></a></li>
-							<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-							<li><a data-role="button" data-icon="info" data-iconpos="notext" ></a></li>
-						</ul>
-					</div>
-			</div> 
+			<div data-role="footer" data-theme="b" data-position="fixed">
+				<div data-role="navbar" class="ui-btn-active">
+					<ul>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
+					</ul>
+				</div>
+			</div>
 		
 		
 	</div>
