@@ -3,12 +3,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no"/>
 		<TITLE>Kostagram</TITLE>
 
 		<script src="jquery-mobile/jquery-1.6.4.js"></script>
 		<script src="jquery-mobile/jquery.mobile-1.0.js"></script>
 		<script src="js/common.js"></script>
-		
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 		
 		<script type="text/javascript">
@@ -26,7 +26,8 @@
 					idInput.select();
 					return false;
 				}
-				else if(idValue !== "")
+				
+				if(idValue !== "")
 				{
 					if(isEmailChar(idValue))
 					{
@@ -42,8 +43,22 @@
 					}
 					else
 					{
-						joinForm.submit();
-						//$.mobile.changePage("./usercheck");
+						$.ajax({
+			                type:'POST',
+			                url:'validationEmail',
+			                dataType:'text',
+			                data:{email:idValue},
+			                success:function(text){
+			                  if ( text === "availableEmail" ) {
+			                     location.href="usercheck?email="+idValue;
+			                  } else if ( text === "existedEmail" ) {
+			                     message.text("사용할 수 없느 이메일 입니다.");
+			                  }
+			                },
+			                error:function() {
+			                   alert("error");
+			                }
+			             });
 					}
 				}
 			});
@@ -53,26 +68,36 @@
 	<body>
 		<div data-role="page" data-theme="e">
 		
-		
-			<center><h1>Kostagram</h1></center>
+			<div align="center">
+				<br>
+				<image src="./image/banner.png" width="200"/>
+			</div>
 	
 			<div data-role="content">
 				<form id="joinForm" method="post" action="usercheck" align="center">
-					<div data-role="fieldcontain" align="center">
+					<div align="center">
 						<input id="email" type="text" name="email" placeholder="이메일"/>
-					</div>					
-					
-					<div data-role="fieldcontain">
-						<center>
-							<a data-ajax="false"><input type="button" id="joinbutton" value="다음" data-inline="true"/></a>
-						</center>
+						<br>
+						<a data-ajax="false"><input type="button" id="joinbutton" value="다음" data-inline="true"/></a>
+						<br>
+						<p align="center" id="check" style="color:red"></p>
 					</div>
 				</form>
 			</div>
 			
-			<div data-role="footer" data-theme="b">
-				<center><a href="./login" data-ajax="false"><h4>이미 계정이 있으신가요? 로그인.</h4></a></center>
+			<div data-role="footer" data-theme="b" data-position="fixed">
+				<div data-role="navbar" class="ui-btn-active">
+					<ul>
+						<li>
+							<a href="./" data-ajax="false" style="text-decoration:none;
+							text-shadow: 0px 0px 0px;
+							color: #fff;
+							font-weight: normal;">이미 계정이 있으신가요? 로그인.</a>
+						</li>
+					</ul>
+				</div>
 			</div>
+
 		</div>	
 	</body>
 </html>
