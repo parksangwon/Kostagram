@@ -43,12 +43,12 @@
 				<table width="100%">
 					<tr >
 						<td align="left" width="50%">
-							<a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" style="text-decoration:none"><center>팔로잉</center></a>
+							<a href="./following.jsp" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" style="text-decoration:none"><center>팔로잉</center></a>
 							<hr>
 						</td>
 						
 						<td  align="right" width="50%">
-							<a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" style="text-decoration:none"><center>내 게시물</center></a>
+							<a href="./mynews.jsp" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" style="text-decoration:none"><center>내 게시물</center></a>
 							<hr>
 						</td>
 					</tr>
@@ -56,18 +56,18 @@
 		
 		
 		<div data-role="content"	 data-theme="d">		
-		<%
-			if (followingList == null || followingList.size() == 0 ) {
-		%>
-				<center>
-					<h3>내가 팔로우 하는 사람들의 활동</h3>
-					<font size="2">내가 팔로우 하는 사람이 게시물에 댓글을 달거나 좋아요를 클릭하면 표시됩니다.</font>
-				</center>
-				
-		<%	
-			} else {
-				for ( int i = 0; i < followingList.size(); i++ ) {
-		%>	
+			<%
+				if (followingList == null || followingList.size() == 0 ) {
+			%>
+					<center>
+						<h3>내가 팔로우 하는 사람들의 활동</h3>
+						<font size="2">내가 팔로우 하는 사람이 게시물에 댓글을 달거나 좋아요를 클릭하면 표시됩니다.</font>
+					</center>
+					
+			<%	
+				} else {
+					for ( int i = 0; i < followingList.size(); i++ ) {
+			%>	
 		
 					
 				<ul data-role="listview">
@@ -115,10 +115,8 @@
 					</li>
 					
 				</ul>
-			<% }
-				}
-				%>
-	
+			<%  }
+				}	%>
 		</div>
 		
 		
