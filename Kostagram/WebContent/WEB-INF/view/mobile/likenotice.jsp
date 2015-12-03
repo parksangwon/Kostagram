@@ -56,7 +56,7 @@
 		<%
 			if (likeNoticeList == null || likeNoticeList.size() == 0 ) {
 		%>
-				좋아요 한 글이 없습니다.
+				<center>좋아요 한 글이 없습니다.</center>
 		<%	
 			} else {
 				for ( int i = 0; i < likeNoticeList.size(); i++ ) {
@@ -64,13 +64,13 @@
 				
 				<table>
 					<tr>
-						<td width="30%"><input type="image" src="./m/image/testImage3.jpg" width="100%" onclick="#"></td>
-						<td width="30%"><input type="image" src="./m/image/testImage3.jpg" width="100%" onclick="#"></td>
-						<td width="30%"><input type="image" src="./m/image/testImage3.jpg" width="100%" onclick="#"></td>
+						<td width="30%"><a href="./detail"><input type="image" src="./m/image/testImage3.jpg" width="100%" onclick="#"></a></td>
+						<td width="30%"><a href="./detail"><input type="image" src="./m/image/testImage3.jpg" width="100%" onclick="#"></a></td>
+						<td width="30%"><a href="./detail"><input type="image" src="./m/image/testImage3.jpg" width="100%" onclick="#"></a></td>
 					</tr>
 					
 					<tr>
-						<td width="30%"><input type="image" src="./m/image/testImage3.jpg" width="100%" onclick="#"></td>
+						<td width="30%"><a href="./detail"><input type="image" src="./m/image/testImage3.jpg" width="100%" onclick="#"></a></td>
 						
 					</tr>
 					
