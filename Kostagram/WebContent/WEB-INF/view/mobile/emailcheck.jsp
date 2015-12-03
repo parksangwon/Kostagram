@@ -52,7 +52,7 @@
 			                  if ( text === "availableEmail" ) {
 			                     location.href="usercheck?email="+idValue;
 			                  } else if ( text === "existedEmail" ) {
-			                     message.text("사용할 수 없느 이메일 입니다.");
+			                     message.text("사용할 수 없는 이메일 입니다.");
 			                  }
 			                },
 			                error:function() {
