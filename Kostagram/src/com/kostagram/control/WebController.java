@@ -44,7 +44,7 @@ public class WebController {
     }
 
     @RequestMapping("/login")
-    public void login(UserInfoVO user, HttpServletResponse res) throws IOException {
+    public void login(UserInfoVO user, HttpSession session, HttpServletResponse res) throws IOException {
 	
 	PrintWriter out = res.getWriter();
 	
@@ -60,6 +60,8 @@ public class WebController {
 	UserInfoVO findedUser = userInfoDao.findNickname(user);
 
 	if (findedUser != null && findedUser.getPass().equals(user.getPass())) {
+	    session.setAttribute("loginYn", "Y");
+	    session.setAttribute("email", findedUser.getEmail());
 	    out.print("loginSuccess");
 	} else {
 	    out.print("loginFail");
