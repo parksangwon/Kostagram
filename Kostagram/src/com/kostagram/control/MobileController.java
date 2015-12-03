@@ -54,7 +54,7 @@ public class MobileController {
 	}
 
 	String email = (String) session.getAttribute("email");
-	List<PhotoInfoVO> timeLineList = photoInfoDao.getTimeline(email);
+	List<PhotoInfoVO> timeLineList = photoInfoDao.getTimeline(new UserInfoVO(email));
 	model.addAttribute("timeLineList", timeLineList);
 
 	return "mobile/timeline";
@@ -113,8 +113,9 @@ public class MobileController {
     }
 
     @RequestMapping("/usercheck")
-    public String usercheck(HttpServletRequest request, Model model) {
+    public String userCheck(HttpServletRequest request, Model model) {
 	String email = (String) request.getParameter("email");
+	System.out.println("userCheck method params => email : " + email);
 	model.addAttribute("email", email);
 	return "mobile/usercheck";
     }
@@ -131,9 +132,12 @@ public class MobileController {
 	
 	if ( findedUserList != null || findedUserList.size() > 0 ) {
 	    // 중복되었음
+	    System.out.println("이메일 중복 검사 : 이메일 중복");
 	    out.print("existedEmail");
 	} else {
 	    // 사용가능
+
+	    System.out.println("이메일 중복 검사 : 이메일 사용 가능");
 	    out.print("availableEmail");
 	}
 	
@@ -165,7 +169,7 @@ public class MobileController {
 	    return "mobile/login";
 	}
 	String email = (String) session.getAttribute("email");
-	List<PhotoInfoVO> photoList = photoInfoDao.getTimeline(email);
+	List<PhotoInfoVO> photoList = photoInfoDao.getTimeline(new UserInfoVO(email));
 	model.addAttribute("photoList", photoList);
 
 	return "mobile/photolist";

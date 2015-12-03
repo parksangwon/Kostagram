@@ -36,10 +36,13 @@ public class WebController {
 		|| session.getAttribute("email") == null) {
 	    return "web/index";
 	}
-
-	List<PhotoInfoVO> timeline = photoInfoDao.getTimeline((String) session.getAttribute("email"));
-
+	String email = (String) session.getAttribute("email");
+	List<PhotoInfoVO> timeline = photoInfoDao.getTimeline(new UserInfoVO(email));
+	UserInfoVO user = userInfoDao.findNickname(new UserInfoVO((String) session.getAttribute("email")));
+	
+	model.addAttribute("nickname", user.getNickname());
 	model.addAttribute("timeline", timeline);
+	
 	return "web/timeline";
     }
 
