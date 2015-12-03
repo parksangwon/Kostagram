@@ -56,7 +56,7 @@
 		
 		
 		<div data-role="content"	 data-theme="d">		
-					<%
+		<%
 			if (followingList == null || followingList.size() == 0 ) {
 		%>
 				<center>
@@ -67,14 +67,15 @@
 		<%	
 			} else {
 				for ( int i = 0; i < followingList.size(); i++ ) {
-		%>
-			
+		%>	
+		
+					
 				<ul data-role="listview">
 					<li>
-						<a href="./detail"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
-							<table style="word-break:break-all">
+						<a href="./detail"><img src="./m/image/testImage3.jpg" class="ul-li-icon" />
+							<table width="100%">
 								<tr>
-									<td>qkrwnsgur0605</td>
+									<td><font size="2">qkrwnsgur0605</font></td>
 								</tr>
 								
 								<tr>
@@ -86,37 +87,38 @@
 					</li>
 					
 					<li>
-						<a href="./detail"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
-							<table style="word-break:break-all">
+						<a href="./detail"><img src="./m/image/testImage3.jpg" class="ul-li-icon" />
+							<table  width="100%">
 								<tr>
-									<td >hihi123</td>
+									<td ><font size="2">hihi123</font></td>
 								</tr>
 								
 								<tr>
-									<td><font size="1">회원님이 좋아요!</font></td>
+									<td ><font size="1">회원님이 좋아요!</font></td>
 								</tr>
 							</table>		
 						</a>
 					</li>
 					
 					<li>
-						<a href="./detail"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
-							<table style="word-break:break-all">
+						<a href="./detail"><img src="./m/image/testImage2.jpg" class="ul-li-icon" />
+							<table  width="100%">
 								<tr>
-									<td >ohyegood422 님이 회원님의 게시물을 팔로우 하셨습니다.</td>
+									<td ><font size="2">ohyegood422</font></td>
 								</tr>
 								
 								<tr>
-									<td><font size="1">회원님의 글이 좋아요!</font></td>
+									<td style="word-break:break-all"><font size="1">회원님의 글을 팔로우</font></td>
 								</tr>
 							</table>		
 						</a>
 					</li>
 					
 				</ul>
-			<%}
-				
-				}%>
+			<% }
+				}
+				%>
+	
 		</div>
 		
 		
