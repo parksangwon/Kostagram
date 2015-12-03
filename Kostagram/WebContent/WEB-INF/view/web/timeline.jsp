@@ -4,6 +4,7 @@
 
 <%
 	ArrayList articleList = (ArrayList)request.getAttribute("articleList");
+	String nickname = (String)request.getParameter("nickname");
 %>
 
 <html>
@@ -828,9 +829,9 @@ opacity
 
 .coreSpriteNavigationBrandSmall {
 	background-image:
-		url(//instagramstatic-a.akamaihd.net/bluebar/9308ef9/sprites/core-sprites-cd6d7d.png);
+		
 	background-repeat: no-repeat;
-	background-position: -344px -284px;
+	
 	height: 28px;
 	width: 102px;
 }
@@ -3686,6 +3687,7 @@ a.-cx-PRIVATE-LocationLink__root:hover {
 }
 
 .-cx-PRIVATE-Navigation__menuItems {
+	
 	-webkit-align-content: center;
 	-ms-flex-line-pack: center;
 	align-content: center;
@@ -5530,38 +5532,7 @@ transform
 					</div>
 				</section>
 			</main>
-			<nav class="-cx-PRIVATE-Shell__nav" role="navigation" data-reactid=".0.2">
-				<div class="-cx-PRIVATE-Navigation__main" style="max-width: 600px;"
-					data-reactid=".0.2.0">
-					<a
-						class="-cx-PRIVATE-Navigation__brand -cx-PRIVATE-Util__hideText coreSpriteNavigationBrandSmall"
-						href="/" data-reactid=".0.2.0.0">Instagram</a>
-					<div class="-cx-PRIVATE-Navigation__menuItems"
-						data-reactid=".0.2.0.1">
-						<div
-							class="-cx-PRIVATE-Navigation__searchBoxContainer -cx-PRIVATE-SearchBox__root"
-							data-reactid=".0.2.0.1.$searchBox">
-							<input
-								class="-cx-PRIVATE-SearchBox__input -cx-PRIVATE-TextInput__root"
-								placeholder="검색" value="" type="text"
-								data-reactid=".0.2.0.1.$searchBox.0">
-							<div class="-cx-PRIVATE-SearchBox__inactiveLabel"
-								data-reactid=".0.2.0.1.$searchBox.1">
-								<div class="-cx-PRIVATE-SearchBox__inactiveSearchCaption"
-									data-reactid=".0.2.0.1.$searchBox.1.0">
-									<span
-										class="-cx-PRIVATE-SearchBox__inactiveSearchIcon coreSpriteSearchIcon"
-										data-reactid=".0.2.0.1.$searchBox.1.0.0"></span> <span
-										class="-cx-PRIVATE-SearchBox__inactiveSearchQuery"
-										data-reactid=".0.2.0.1.$searchBox.1.0.1">검색</span>
-								</div>
-							</div>
-						</div>
-						<a class="-cx-PRIVATE-Navigation__menuLink" href="/park.sang.won/"
-							data-reactid=".0.2.0.1.$profileLink">park.sang.won</a>
-					</div>
-				</div>
-			</nav>
+			<jsp:include page="top.jsp" flush="true" />
 			<footer class="-cx-PRIVATE-Shell__footer" role="contentinfo"
 			data-reactid=".0.3">
 				<div class="-cx-PRIVATE-Footer__main -cx-PRIVATE-Footer__slim"

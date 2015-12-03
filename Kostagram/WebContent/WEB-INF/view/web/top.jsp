@@ -19,6 +19,12 @@
 		background: #708090;
 		color: #FFFAFA;
 	}
+	
+	.search
+	{
+		border-radius: 10px;
+	}
+	
 </STYLE>
 <script type="text/javascript">
 	var wordDiv;
@@ -138,23 +144,31 @@
 </head>
 <body>
 	<nav class="TOP_BORDER" role="navigation">
-		<DIV class="TOP_MAXSIZE" style="max-width: 600px;">
-			<A class="TOP_LEFT_LINK"></A>
-			<FORM name="searchForm">
-			<DIV class="TOP_SEARCH">
-				<DIV class="TOP_SEARCH_ITEMS" style="max-width: 600px;">
-					<SPAN class="SEARCH_LEFT_IMG"><A href="/"><img src="img/web/searchicon.png"></A></SPAN>
-					<INPUT type="text" name="word" id="searchWord" placeholder="검색" onkeyup="wordComplete();" onclick="wordComplete();">
-				</DIV>
-				<DIV style="position:absolute;" id="wordDiv">
-						<TABLE id="wordTable" bgcolor="#FFFAFA" border="0" cellspacing="0" cellpadding="0">
-							<TBODY id="wordTableBody"></TBODY>
-						</TABLE>
-				</DIV>
-			<A class="TOP_RIGHT_LINK"></A>
-			</DIV>
-			</FORM>
-		</DIV>
+		<CENTER>
+		<table  class="TOP_MAXSIZE" style="max-width: 600px" height="60" >
+			
+				<FORM name="searchForm">
+				
+					<tr  class="TOP_SEARCH_ITEMS" >
+						<td width="200" style="vertical-align: middle;">
+							<img src="img/web/kostagram3.png" style="display:block;">
+						</td>
+						<td width="200" align="center" style="vertical-align: middle;">
+							<INPUT type="text" name="word"  style="display:block;" id="searchWord" class="search"  placeholder="  검색  "  onkeyup="wordComplete();"  onclick="wordComplete();"style="margin-bottom: 20px" >
+						</td>
+						<td width="200" align="right" style="vertical-align: middle;">
+						<span style="display:block;">jungwoo91_1</span>
+						</td>
+					</tr>
+				
+				</FORM>
+		</table>
+		<DIV style="position:absolute;" id="wordDiv">
+							<TABLE id="wordTable" bgcolor="#FFFAFA" border="0" cellspacing="0" cellpadding="0">
+								<TBODY id="wordTableBody"></TBODY>
+							</TABLE>
+				    </DIV>
+		</CENTER>
 	</nav>
 </body>
 </html>
