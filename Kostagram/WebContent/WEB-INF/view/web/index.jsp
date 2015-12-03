@@ -2885,45 +2885,55 @@ transform
 }
 </style>
 
-<script type="text/javascript">
-		function login() 
-		{
-			var idInput = $('input:text[name=nickname]');
-			var idValue = trim(idInput.val());
-			var message = $('#check')
-			if(idValue === "")
-			{
-				message.text("닉네임을 입력하세요.");
-				idInput.select();
-				return false;
-			}
+<script>
+		$(function() {
 			
-			var pw = $('input:password[name=pass]');
-			if(pw.val() == "")
-			{
-				message.text("비밀번호를 반드시 입력해야 합니다.");
-				pw.focus();
-				return false;
-			}
-			if(pw.val().length < 4 || pw.val().length > 20)
-			{
-				message.text("비밀번호는 4자 이상 20자 이하 입니다.");
-				pw.select();
-				return false;
-			}				
-		}
+			$('#loginBtn').click(function(){
+				
+				alert("aa");
+				
+				var idInput = $('input:text[name=nickname]');
+				var idValue = trim(idInput.val());
+				var message = $('#check')
+				if(idValue === "")
+				{
+					message.text("닉네임을 입력하세요.");
+					idInput.select();
+					return false;
+				}
+				
+				var pw = $('input:password[name=pass]');
+				if(pw.val() == "")
+				{
+					message.text("비밀번호를 반드시 입력해야 합니다.");
+					pw.focus();
+					return false;
+				}
+				if(pw.val().length < 4 || pw.val().length > 20)
+				{
+					message.text("비밀번호는 4자 이상 20자 이하 입니다.");
+					pw.select();
+					return false;
+				}				
+				
+				
+	    		$.ajax({
+	    			type:'post',
+	    			url:'/login',
+	    			dataType:'json',
+	    			data:{nickname:idValue, pass:pw},
+	    			success:function(json){
+	    			  var data = json.login;
+	    			  alert(typeof data);
+	    			  /* $('p').text(data); */
+	    			}
+	    		});
+	    		
+	    	});
+		});
 		
-		$('#loginBtn').click(function(){
-    		$.ajax({
-    			url:'/login',
-    			dataType:'json',
-    			success:function(json){
-    			  var data = json.login;
-    			  alert(typeof data);
-    			  /* $('p').text(data); */
-    			}
-    		});
-    	});
+		
+		
 		
 		
 		
@@ -2990,7 +3000,7 @@ transform
 							</div>
 						</div>
 						<div>
-						<input type= "button" value="로그인" onclick="login()"
+						<input type= "button" value="로그인"
 							class="-cx-PRIVATE-SlimLoginForm__button -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__solid -cx-PRIVATE-IGButton__sizeLarge -cx-PRIVATE-IGButton__enabled"
 							id="loginBtn" >
 						</div>
