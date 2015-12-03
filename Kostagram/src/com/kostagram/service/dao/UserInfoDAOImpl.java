@@ -37,11 +37,6 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	}
 	
 	@Override
-	public List<UserInfoVO> findEmailAndNickname(UserInfoVO user) {
-		return sqlSession.selectList("userInfo.findEmailAndNickname", user);
-	}
-	
-	@Override
 	public List<UserInfoVO> findList(String token) {
 		return sqlSession.selectList("userInfo.findList",token);
 	}

@@ -9,7 +9,6 @@ public interface UserInfoDAO {
     public boolean update(UserInfoVO user); //프로필수정
     public UserInfoVO findEmail(UserInfoVO user); //유저,로그인
     public UserInfoVO findNickname(UserInfoVO user);
-    public List<UserInfoVO> findEmailAndNickname(UserInfoVO user);
     public List<UserInfoVO> findList(String token); //검색 리스트(%a%)
     public boolean pwCheck(UserInfoVO user);
     public boolean pwUpdate(UserInfoVO user);
