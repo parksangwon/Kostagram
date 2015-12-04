@@ -195,5 +195,17 @@ public class WebController {
 	return "web/search_result";
     }
     
+    
+    @RequestMapping(value = "/profileupdate")
+    public String profileupdate() {
+	return "common/profileupdate";
+    }
+   
+    
+    @RequestMapping(value = "/pwupdate")
+    public String pwupdate() {
+	return "common/pwupdate";
+    }
+    
   
 }
