@@ -18,8 +18,7 @@
 
 	<select id="findNickname" parameterType="com.kostagram.service.beans.UserInfoVO"
 		resultType="com.kostagram.service.beans.UserInfoVO">
-		select * from member where nickname=#{nickname}
+		select * from member where nickname = #{nickname}
 	</select>
 	
-
 </mapper>

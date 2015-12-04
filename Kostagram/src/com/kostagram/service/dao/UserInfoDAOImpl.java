@@ -33,6 +33,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	
 	@Override
 	public UserInfoVO findNickname(UserInfoVO user) {
+	    	System.out.println("UserDAO : " + user);
 		return sqlSession.selectOne("userInfo.findNickname", user);
 	}
 	

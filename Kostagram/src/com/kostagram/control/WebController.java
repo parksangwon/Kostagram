@@ -36,9 +36,16 @@ public class WebController {
 		|| session.getAttribute("email") == null) {
 	    return "web/index";
 	}
+	
+	// test code 
+		System.out.println("-- WebController call / --");
+		System.out.println("session(email) : " + session.getAttribute("email"));
+	//
+		
+		
 	String email = (String) session.getAttribute("email");
 	List<PhotoInfoVO> timeline = photoInfoDao.getTimeline(new UserInfoVO(email));
-	UserInfoVO user = userInfoDao.findNickname(new UserInfoVO((String) session.getAttribute("email")));
+	UserInfoVO user = userInfoDao.findEmail(new UserInfoVO((String) session.getAttribute("email")));
 	
 	model.addAttribute("nickname", user.getNickname());
 	model.addAttribute("timeline", timeline);
@@ -59,9 +66,22 @@ public class WebController {
 	    out.print("loginFail");
 	}
 	
+	// test code 
+		System.out.println("-- WebController call /login --");
+		System.out.println("user : " + user);
+	//
+	
+	
 	// userInfoDao로 정보가 있는지 확인
 	UserInfoVO findedUser = userInfoDao.findNickname(user);
+	
 
+	// test code 
+		System.out.println("-- /login find user by nickname --");
+		System.out.println("findedUser : " + findedUser);
+	//
+		
+		
 	if (findedUser != null && findedUser.getPass().equals(user.getPass())) {
 	    session.setAttribute("loginYn", "Y");
 	    session.setAttribute("email", findedUser.getEmail());
@@ -69,6 +89,7 @@ public class WebController {
 	} else {
 	    out.print("loginFail");
 	}
+	System.out.println("login 끝");
     }
 
     @RequestMapping("/accounts/password/change/")

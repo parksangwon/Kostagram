@@ -9,33 +9,36 @@ import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.UserInfoVO;
 
 public class PhotoInfoDAOImpl implements PhotoInfoDAO {
-	@Autowired
-	private SqlSession sqlSession;
-	
-	@Override
-	public boolean insert(PhotoInfoVO photo) {
-		int insert= sqlSession.insert("photoInfo.insert",photo);
-		if(insert==1)return true;
-		
-		return false;
-	}
-	@Override
-	public boolean delete(PhotoInfoVO photo) {
-		return false;
-	}
-	
-	@Override
-	public boolean update(PhotoInfoVO photo) {
-		return false;
-	}
-	
+    @Autowired
+    private SqlSession sqlSession;
 
-	@Override
-	public List<PhotoInfoVO> getTimeline(UserInfoVO user) {
-		return sqlSession.selectList("photoInfo.getTimeline", user);
-	}
-	
-	@Override
+    @Override
+    public boolean insert(PhotoInfoVO photo) {
+	int insert = sqlSession.insert("photoInfo.insert", photo);
+	if (insert == 1)
+	    return true;
+
+	return false;
+    }
+
+    @Override
+    public boolean delete(PhotoInfoVO photo) {
+	return false;
+    }
+
+    @Override
+    public boolean update(PhotoInfoVO photo) {
+	return false;
+    }
+
+    @Override
+    public List<PhotoInfoVO> getTimeline(UserInfoVO user) {
+
+    	System.out.println("PhotoDAO getTimeline : " + user);
+	return sqlSession.selectList("photoInfo.getTimeline", user);
+    }
+
+    @Override
     public List<PhotoInfoVO> selectList(UserInfoVO user) {
 	List<PhotoInfoVO> selectList = sqlSession.selectList("photoInfo.selectList", user);
 	return selectList;
