@@ -183,4 +183,17 @@ public class WebController {
 			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 		}
     }
+    
+    
+    @RequestMapping(value = "/pwforget")
+    public String pwforget() {
+	return "web/pw_forget";
+    }
+    
+    @RequestMapping(value = "/searchresult")
+    public String searchresult() {
+	return "web/search_result";
+    }
+    
+  
 }
