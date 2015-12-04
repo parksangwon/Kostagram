@@ -148,7 +148,7 @@
                     
                         <header class="top-bar top-bar-new">
     <div class="top-bar-wrapper">
-        <div class="logo"><a href="/">Kostagram</a></div>
+         <center><img src="img/web/KakaoTalk_20151204_145110288.png" ></center>
 
         <div class="top-bar-left">
             <ul class="top-bar-actions">
