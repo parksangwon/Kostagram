@@ -34,7 +34,7 @@
 							</span>
 						</td>
 						<td align="right">
-							<a href="./option"><image src="./image/icon/settings.png" width="20" style="padding-right:10px;"/></a>
+							<a href="./option" data-ajax="false"><image src="./image/icon/settings.png" width="20" style="padding-right:10px;"/></a>
 						</td>
 					</tr>
 				</table>

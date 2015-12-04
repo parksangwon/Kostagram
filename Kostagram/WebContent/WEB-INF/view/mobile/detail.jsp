@@ -45,7 +45,7 @@
 						<td align="left"><a href="#" style="text-decoration:none;
 							text-shadow: 0px 0px 0px;
 							color: #004879;
-							font-weight: normal;">이성경 존나이뻐요</a></td>
+							font-weight: normal;">닉네임</a></td>
 						<td align="right"><a href="#"><image src="./image/follow.jpg" width="80"/></a></td>
 					</tr>
 				</table>

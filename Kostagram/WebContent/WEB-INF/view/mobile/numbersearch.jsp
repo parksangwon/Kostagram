@@ -20,7 +20,7 @@
 				<h2>연락처 찾기</h2><a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
 			</div>
 			
-			<center><h3>연락처에 있는 사람 중 3명이 Instagram을 <br> 사용 중입니다.</h3><br>
+			<center><h3>연락처에 있는 사람 중 3명이 Kosagram을 <br> 사용 중입니다.</h3><br>
 			
 					<font color="gray"><h5>친구들의 게시물 / 사진을 확인해보세요.</h5></font>
 			</center>
