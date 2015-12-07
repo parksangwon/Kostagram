@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
-
+<%
+	ArrayList chattingList =(ArrayList)request.getAttribute("chattingList");
+	String chattingSection = (String)request.getAttribute("chattingSection");
+%>
+				
 <title>Kostagram</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
@@ -114,86 +118,54 @@
 				}
 				
 				 -->
-		<div data-role="content">
-			<table width="100%">
-				<tr>
-					<!--  시간 -->
-					<td align="right"><font size="1">12:11</font></td>
-					<!--  자신 -->
-					<td style="word-break: break-all">
-						<p id="me">ㅎgdgdgdgdgdggggdgdㅇ</p>
-					</td>
-				</tr>
-			</table>
+		<div data-role="content">		
+				
 
-
-			<table width="100%">
-				<tr>
-					<!--  상대 -->
-					<td style="word-break: break-all">
-						<p id="someone">gdgdgdgdgdgdgdgdgddgdgdgdgdgdgddgdgddgdgdsgdgdgddddgdgdgdgdgdg</p>
-					</td>
-					<!--  시간 -->
-					<td align="left"><font size="1">12:11</font></td>
-				</tr>
-			</table>
-
-			<table width="100%">
-				<tr>
-					<!--  시간 -->
-					<td align="right"><font size="1">12:11</font></td>
-					<!--  자신 -->
-					<td style="word-break: break-all">
-						<p id="me">안녕하세요??</p>
-					</td>
-				</tr>
-			</table>
-
-			<table width="100%">
-				<tr>
-					<!--  상대 -->
-					<td style="word-break: break-all">
-						<p id="someone">안녕하세요!!</p>
-					</td>
-					<!--  시간 -->
-					<td align="left"><font size="1">12:11</font></td>
-				</tr>
-			</table>
-
-			<table width="100%">
-				<tr>
-					<!--  상대 -->
-					<td style="word-break: break-all">
-						<p id="someone">그런데 누구시죠??</p>
-					</td>
-					<!--  시간 -->
-					<td align="left"><font size="1">12:11</font></td>
-				</tr>
-			</table>
-
-			<table width="100%">
-				<tr>
-					<!--  시간 -->
-					<td align="right"><font size="1">12:11</font></td>
-					<!--  자신 -->
-					<td style="word-break: break-all">
-						<p id="me">준혁입니다</p>
-					</td>
-				</tr>
-			</table>
-
-			<table width="100%">
-				<tr>
-					<!--  상대 -->
-					<td style="word-break: break-all">
-						<p id="someone">오랜만이다</p>
-					</td>
-					<!--  시간 -->
-					<td align="left"><font size="1">12:11</font></td>
-				</tr>
-			</table>
-
-		</div>
+				<%
+					if (chattingList == null || chattingList.size() == 0 ) {
+				%>
+						<center>채팅을 시작해보세요!</center>
+				<%	
+					} else if(chattingSection.equals("M")) {
+						for ( int i = 0; i < chattingList.size(); i++ ) {
+				%>
+				<table width="100%">
+					<tr >	
+							<!--  시간 -->
+							<td align="right">
+							<font size="1"><!-- 시간 --></font>
+							</td>
+							<!--  자신 -->
+							<td   style="word-break:break-all">
+								<p id="me" ><!-- 채팅 --></p>
+							</td>				
+					</tr>
+				</table>
+				
+				<%}
+				}else if(chattingSection.equals("S")){
+					for(int i=0; i< chattingList.size(); i++) 
+				{%>
+				
+				<table width="100%">	
+					<tr>
+						
+						<!--  상대 -->
+						<td style="word-break:break-all">
+								<p id="someone" ><!-- 채팅 --></p>			
+						</td>
+						<!--  시간 -->
+						<td align="left">
+							<font size="1"><!-- 시간 --></font>
+						</td>
+					</tr>				
+				</table>
+				
+				<%}
+				}
+				%>
+				
+			</div>
 
 		<div data-role="footer" data-theme="c" data-position="fixed">
 			<div data-role="navbar">
