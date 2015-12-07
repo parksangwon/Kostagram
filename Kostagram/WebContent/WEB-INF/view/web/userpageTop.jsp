@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
 <%
+	String loginYn="N";
+	if (session != null && session.getAttribute("loginYn") !=null && ((String)session.getAttribute("loginYn")).equals("Y") ) 
+	{
+		loginYn = "Y";
+	}
 	String nickname = (String)session.getAttribute("nickname");
-%>    
+%>
+
+
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -146,25 +152,58 @@
 		wordTableBody.empty();
 		wordDiv.css('border', 'none');
 	}
+
+	
+	var nicknameUrl = document.location.href; 
+	nicknameUrl = nicknameUrl.slice(7); 
+	arr = nicknameUrl.split("/");
+	nicknameUrl = arr[2];
+	
+	$(document).ready(function(){
+		
+		if('<%= loginYn%>' == "Y" )
+		{
+			if(nicknameUrl == '<%= nickname %>')
+			{
+				var loginState = document.getElementById("loginState");
+				loginState.innerHTML = "<a href='/Kostagram/logout'>로그아웃</a>";			
+			}
+			else
+			{
+				var loginState = document.getElementById("loginState");
+				loginState.innerHTML = "<a href='/Kostagram/<%= nickname %>'><%= nickname %></a>" ;
+			}	
+		}
+		
+		else
+		{
+			var loginState = document.getElementById("loginState");
+			loginState.innerHTML = "<a href='/Kostagram'>로그인</a>";
+		}
+	});
+	
+	
+
+		
 </script>
 </head>
 <body>
 	<nav class="TOP_BORDER" role="navigation">
 		<CENTER>
-		<table  class="TOP_MAXSIZE" style="max-width: 600px" height="60" >
+		<table  class="TOP_MAXSIZE" style="max-width: 900px" height="60" >
 			
 				<FORM name="searchForm">
 				
 					<tr  class="TOP_SEARCH_ITEMS" >
-						<td width="200" style="vertical-align: middle;">
-							<a href=""><img src="img/web/kostagram3.png" style="display:block;"></a>
+						<td width="300" style="vertical-align: middle;">
+							<a href="/Kostagram"><img src="img/web/kostagram3.png" style="display:block;"></a>
 						</td>
-						<td width="200" align="center" style="vertical-align: middle;">
+						<td width="300" align="center" style="vertical-align: middle;">
 							<INPUT type="text" size="25" name="word"  style="display:block;" id="searchWord" class="search"  placeholder="  검색  "  onkeyup="wordComplete();"  onclick="wordComplete();" >
 						</td>
 						
-						<td width="200" align="right" style="vertical-align: middle;">
-						<a href="<%= nickname %>"><span style="display:block; color:rgb(0,72,126); font-weight:700; font-size:15pt;" ><%= nickname%></span></a>
+						<td width="300" align="right" style="vertical-align: middle;">
+						<span id="loginState" style="display:block; color:rgb(0,72,126); font-weight:700; font-size:15pt;" ></span></a>
 						</td>
 						
 					</tr>

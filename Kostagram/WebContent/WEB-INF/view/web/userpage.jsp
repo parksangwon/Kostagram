@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+String nickname = (String)session.getAttribute("nickname");
+%>
+	
 <html
 	class="js logged-in wf-proximanova-n3-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n7-active wf-active"
 	lang="ko">
@@ -4748,7 +4753,6 @@ transform
 }
 </style>
 <script
-	src="//instagramstatic-a.akamaihd.net/bluebar/bd9471f/bundles/ko_KR_4.chunk.js"
 	type="text/javascript" charset="utf-8" async=""></script>
 </head>
 <body>
@@ -4773,7 +4777,7 @@ transform
 						<div class="-cx-PRIVATE-ProfilePage__usernameAndFollow"
 							data-reactid=".0.1.0.0:0.1.0">
 							<h1 class="-cx-PRIVATE-ProfilePage__username"
-								data-reactid=".0.1.0.0:0.1.0.0">닉네임</h1>
+								data-reactid=".0.1.0.0:0.1.0.0"><%=nickname %></h1>
 							<a class="-cx-PRIVATE-ProfilePage__editProfileLink"
 								href="/accounts/edit/" data-reactid=".0.1.0.0:0.1.0.2"><button
 									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
@@ -4828,9 +4832,7 @@ transform
 									data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0">
 									<div class="-cx-PRIVATE-Photo__placeholder"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.0">
-										<img class="-cx-PRIVATE-Photo__image" id="pImage_10" alt="D"
-											src="https://igcdn-photos-b-a.akamaihd.net/hphotos-ak-xtf1/t51.2885-15/s640x640/sh0.08/e35/11910208_1639682309647953_1899904173_n.jpg"
-											data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.0.$pImage_10">
+					
 									</div>
 									<div class="-cx-PRIVATE-Photo__clickShield"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.2"></div>
@@ -4872,40 +4874,7 @@ transform
 				
 			</article>
 			</main>
-			<nav class="-cx-PRIVATE-Shell__nav" role="navigation"
-				data-reactid=".0.2">
-				<div class="-cx-PRIVATE-Navigation__main" style="max-width: 935px;"
-					data-reactid=".0.2.0">
-					<a
-						class="-cx-PRIVATE-Navigation__brand -cx-PRIVATE-Util__hideText coreSpriteNavigationBrandSmall"
-						href="/" data-reactid=".0.2.0.0">Instagram</a>
-					<div class="-cx-PRIVATE-Navigation__menuItems"
-						data-reactid=".0.2.0.1">
-						<div
-							class="-cx-PRIVATE-Navigation__searchBoxContainer -cx-PRIVATE-SearchBox__root"
-							data-reactid=".0.2.0.1.$searchBox">
-							<input
-								class="-cx-PRIVATE-SearchBox__input -cx-PRIVATE-TextInput__root"
-								type="text" placeholder="검색" value=""
-								data-reactid=".0.2.0.1.$searchBox.0">
-							<div class="-cx-PRIVATE-SearchBox__inactiveLabel"
-								data-reactid=".0.2.0.1.$searchBox.1">
-								<div class="-cx-PRIVATE-SearchBox__inactiveSearchCaption"
-									data-reactid=".0.2.0.1.$searchBox.1.0">
-									<span
-										class="-cx-PRIVATE-SearchBox__inactiveSearchIcon coreSpriteSearchIcon"
-										data-reactid=".0.2.0.1.$searchBox.1.0.0"></span><span
-										class="-cx-PRIVATE-SearchBox__inactiveSearchQuery"
-										data-reactid=".0.2.0.1.$searchBox.1.0.1">검색</span>
-								</div>
-							</div>
-						</div>
-						<a class="-cx-PRIVATE-Navigation__menuLink"
-							href="/accounts/logout/" data-reactid=".0.2.0.1.$logoutLink"></a>
-					</div>
-				</div>
-			</nav>
-			
+			<jsp:include page="userpageTop.jsp" flush="true" />
 			<noscript data-reactid=".0.4"></noscript>
 		</section></span>
 
@@ -4926,7 +4895,7 @@ transform
 				<iframe name="fb_xdm_frame_https" tabindex="-1"
 					title="Facebook Cross Domain Communication Frame"
 					id="fb_xdm_frame_https" aria-hidden="true"
-					src="https://s-static.ak.facebook.com/connect/xd_arbiter/TlA_zCeMkxl.js?version=41#channel=f141a93c261b40f&amp;origin=https%3A%2F%2Fwww.instagram.com"
+					
 					frameborder="0" scrolling="no" allowfullscreen="true"
 					style="border: currentColor; border-image: none;"
 					allowtransparency="true"></iframe>
