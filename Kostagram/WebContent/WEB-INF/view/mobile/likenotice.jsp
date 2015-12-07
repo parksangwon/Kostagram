@@ -3,8 +3,18 @@
 <%@ page import="java.util.*" %>
 
 <%
-	ArrayList likeNoticeList =(ArrayList)request.getAttribute("likeNoticeList"); ;
+	int count=0;
+	//ArrayList likeNoticeList =(ArrayList)request.getAttribute("likeNoticeList"); ;
 %>
+
+<%
+	ArrayList likeNoticeList = new ArrayList();
+	for(int i=0; i<11; i++)
+	{
+		likeNoticeList.add(i);
+	}
+%>
+
 <!DOCTYPE html> 
 <html> 
 	<head>
@@ -55,37 +65,43 @@
 				</table>
 			</div>
 			
-			
-			
-			
-			<div data-role="content"	 data-theme="d">
-				
-				<%
+			<div data-rol="content">
+				<center>		
+					<%
 					if (likeNoticeList == null || likeNoticeList.size() == 0 ) {
-				%>
-						<center>좋아요 한 글이 없습니다.</center>
-				<%	
-					} else {
-						for ( int i = 0; i < likeNoticeList.size(); i++ ) {
-				%>	
-				
-				<table>
-					<tr>
-						<td width="30%"><a href="./detail"><img src="./m/image/testImage3.jpg" width="100%" onclick="#"></a></td>
-						<td width="30%"><a href="./detail"><img src="./m/image/testImage3.jpg" width="100%" onclick="#"></a></td>
-						<td width="30%"><a href="./detail"><img src="./m/image/testImage3.jpg" width="100%" onclick="#"></a></td>
-					</tr>
-					
-					<tr>
-						<td width="30%"><a href="./detail"><img src="./m/image/testImage3.jpg" width="100%" onclick="#"></a></td>
-						
-					</tr>
-					
-			
-				</table>
-				<%}
-				}%>
+					%>
 		
+						좋아요 한 글이 없습니다.
+				
+					
+					<%
+					}else{
+					%>
+						<table cellspacing="0" cellpadding="0"  width="100%">
+							<tr>
+					<% 
+							for(int i=0; i<likeNoticeList.size(); i++)
+							{
+					%>
+								<td><a href="./detail"><image src="./m/image/testImage3.jpg" width="100%"/></a></td>
+							
+								
+						
+						<%	count++;
+							if(count==3 )
+							{
+								count=0;
+						%>
+							</tr>
+						
+						<% 	
+							}
+							}
+							
+							}
+					%>
+					</table>
+				</center>
 			</div>
 			
 			
