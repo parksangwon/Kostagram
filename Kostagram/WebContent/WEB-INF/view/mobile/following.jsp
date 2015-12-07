@@ -75,45 +75,16 @@
 						<a href="./detail"><img src="./m/image/testImage3.jpg" class="ul-li-icon" />
 							<table width="100%">
 								<tr>
-									<td><font size="2">qkrwnsgur0605</font></td>
+									<td><font size="2"><!-- 나를 좋아요한 아이디 --></font></td>
 								</tr>
 								
 								<tr>
-									<td><font size="1">회원님이 좋아요!</font></td>
+									<td><font size="1">회원님을 팔로잉</font></td>
 								</tr>
 
 							</table>		
 						</a>
-					</li>
-					
-					<li>
-						<a href="./detail"><img src="./m/image/testImage3.jpg" class="ul-li-icon" />
-							<table  width="100%">
-								<tr>
-									<td ><font size="2">hihi123</font></td>
-								</tr>
-								
-								<tr>
-									<td ><font size="1">회원님이 좋아요!</font></td>
-								</tr>
-							</table>		
-						</a>
-					</li>
-					
-					<li>
-						<a href="./detail"><img src="./m/image/testImage2.jpg" class="ul-li-icon" />
-							<table  width="100%">
-								<tr>
-									<td ><font size="2">ohyegood422</font></td>
-								</tr>
-								
-								<tr>
-									<td style="word-break:break-all"><font size="1">회원님의 글을 팔로우</font></td>
-								</tr>
-							</table>		
-						</a>
-					</li>
-					
+					</li>					
 				</ul>
 			<%  }
 				}	%>
