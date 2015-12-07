@@ -16,6 +16,6 @@
 
 	<select id="getCommentByPhotoId" parameterType="com.kostagram.service.beans.PhotoInfoVO"
 		resultType="com.kostagram.service.beans.ArticleVO">
-		select * from photo_comment where
+		select * from photo_comment where seq_photo = #{seq_photo} order by reg_date desc
 	</select>
 </mapper>

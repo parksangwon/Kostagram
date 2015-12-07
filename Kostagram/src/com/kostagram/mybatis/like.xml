@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="like">
-  <insert id="insert" parameterType="com.kostagram.service.beans.LikeVO">
-      insert into person values (person_seq.nextval, #{name}, #{age}, #{job})
-   </insert>
-   
-   <select id="findAll" resultType="com.kostagram.service.beans.LikeVO">
-      select * from person
-   </select> 
+	<insert id="insert" parameterType="com.kostagram.service.beans.LikeVO">
+		insert into person values (person_seq.nextval, #{name}, #{age}, #{job})
+	</insert>
+
+	<select id="findAll" resultType="com.kostagram.service.beans.LikeVO">
+		select * from person
+	</select>
+
+	<select id="getLikeByPhotoId" parameterType="com.kostagram.service.beans.PhotoInfoVO"
+		resultType="com.kostagram.service.beans.LikeVO">
+		select * from photo_comment where seq_photo = #{seq_photo}
+	</select>
 </mapper>
