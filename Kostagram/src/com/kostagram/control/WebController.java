@@ -85,6 +85,7 @@ public class WebController {
 	if (findedUser != null && findedUser.getPass().equals(user.getPass())) {
 	    session.setAttribute("loginYn", "Y");
 	    session.setAttribute("email", findedUser.getEmail());
+	    session.setAttribute("nickname", findedUser.getNickname());
 	    out.print("loginSuccess");
 	} else {
 	    out.print("loginFail");
