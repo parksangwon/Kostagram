@@ -2922,7 +2922,7 @@ transform
 	    			data:{nickname:idValue, pass:pwValue},
 	    			success:function(text){
 	    			  if ( text === "loginSuccess" ) {
-	    				  location.href=""
+	    				  location.href="/Kostagram"
 	    			  } else if ( text === "loginFail" ) {
 	    				  message.text("닉네임 또는 비밀번호가 틀렸습니다");
 	    			  }
