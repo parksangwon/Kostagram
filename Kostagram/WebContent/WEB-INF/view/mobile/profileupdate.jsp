@@ -15,9 +15,25 @@
 	</head>
 	<body>
 		<div>
-			<div data-role="header" data-theme="a">
-				<h2>프로필 수정</h2> <a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
-				<a href="./userpage" data-icon="delete" class="ui-btn-left" data-iconpos="notext"></a>
+			<div data-role="header" data-theme="b">
+				<table>
+					<tr>
+						<td>
+							<a href="#" data-rel="back"><image src="./image/icon/back.png" width="20" style="padding-left:10px;"/></a>
+							<span style="height:35px;
+							font-size:20px;
+							color:#ffffff;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							text-shadow: 0px 0px 0px black;
+							padding-left:5px;">
+							프로필 수정
+							</span>
+						</td>
+					</tr>
+				</table>
 			</div>
 			<div data-rol="content" >
 				<ul data-insert="true">

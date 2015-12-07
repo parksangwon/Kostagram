@@ -82,17 +82,18 @@
 				</ul>
 			</div>
 			
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="b" data-position="fixed">
 				<div data-role="navbar" class="ui-btn-active">
 					<ul>
-						<li><a data-role="button" data-icon="home" data-iconpos="notext"></a></li>
-						<li><a href="./round" data-role="button" data-icon="search" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a data-role="button" data-icon="star" data-iconpos="notext"></a></li>
-						<li><a href="./userpage" data-role="button" data-icon="info" data-iconpos="notext"></a></li>
+						<li><a href="./"><image src="./image/icon/house.png" width="20"/></a></li>
+						<li><a href="./round"><image src="./image/icon/search.png" width="20"/></a></li>
+						<li><a href="#"><image src="./image/icon/camera.png" width="20"/></a></li>
+						<li><a href="./mynews"><image src="./image/icon/info.png" width="20"/></a></li>
+						<li><a href="./userpage"><image src="./image/icon/user.png" width="20"/></a></li>
 					</ul>
 				</div>
 			</div>
+			
 		</div>
 	</body>
 </html>
