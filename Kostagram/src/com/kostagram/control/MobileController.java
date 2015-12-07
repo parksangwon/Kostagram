@@ -87,6 +87,16 @@ public class MobileController {
 	}
     }
     
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+	
+	session.removeAttribute("email");
+	session.removeAttribute("nickname");
+	session.setAttribute("loginYn", "N");
+	
+	return "mobile/login";
+    }
+    
     @RequestMapping("/emailcheck")
     public String emailcheck() {
 	return "mobile/emailcheck";
