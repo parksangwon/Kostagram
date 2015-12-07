@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
- 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
+<title>Kostagram</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
-<TITLE>Kostagram</TITLE>
-
 <script src="jquery-mobile/jquery-1.6.4.js"></script>
 <script src="jquery-mobile/jquery.mobile-1.0.js"></script>
 <script src="js/common.js"></script>
@@ -60,7 +57,7 @@
 		});
 	}
 </script>
-</head>
+
 <body>
 	<div data-role="page" data-theme="e">
 
@@ -83,7 +80,7 @@
 		<div data-role="footer" data-theme="b" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./" data-ajax="false"
+					<li><a href="./"
 						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #fff; font-weight: normal;">이미
 							계정이 있으신가요? 로그인.</a></li>
 				</ul>
@@ -92,4 +89,3 @@
 
 	</div>
 </body>
-</html>
