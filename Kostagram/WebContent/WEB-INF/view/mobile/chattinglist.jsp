@@ -70,42 +70,12 @@
 						<a href="./chatting.jsp"><img src="./m/image/testImage1.jpg" width="20" class="ul-li-icon" />
 							<table>
 								<tr>
-									<td>qkrwnsgur0605</td>
+									<td><!-- 아이디 --></td>
 								</tr>
 								<tr>
 									<td>
-										<font size="2" color="gray">안녕하세요??</font> 
-										<font size="1" color="gray">18분</font>
-									</td>
-								</tr>
-							</table>		
-						</a>
-					</li>
-					<li>
-						<a href="./chatting.jsp"><img src="./m/image/testImage2.jpg" class="ul-li-icon" />
-							<table>
-								<tr>
-									<td>hihihi10234</td>
-								</tr>
-								<tr>
-									<td>
-										<font size="2" color="gray">뭐함??</font> 
-										<font size="1" color="gray">39분</font>
-									</td>
-								</tr>
-							</table>		
-						</a>
-					</li>
-					<li>
-						<a href="./chatting.jsp"><img src="./m/image/testImage3.jpg" class="ul-li-icon" />
-							<table>
-								<tr>
-									<td>heyhey5252</td>
-								</tr>
-								<tr>
-									<td>
-										<font size="2" color="gray">ㅇㅋ알겠음</font> 
-										<font size="1" color="gray">50분</font>
+										<font size="2" color="gray"><!-- 상대의 마지막 말 --></font> 
+										<font size="1" color="gray"><!-- 마지막 말을 받은 시간 --></font>
 									</td>
 								</tr>
 							</table>		
