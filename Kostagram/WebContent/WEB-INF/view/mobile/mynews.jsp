@@ -28,9 +28,8 @@
 			<div>
 				<table width="100%">
 					<tr>
-						<td onclick="location.href='./mynews#following'" align="center">팔로잉</td>
-						<td onclick="location.href='./mynews#mynews'" align="center">내
-							게시물</td>
+						<td align="center"><a href="./mynews#following">팔로잉</a></td>
+						<td align="center"><a href="./mynews#mynews">내 게시물</a></td>
 					</tr>
 				</table>
 			</div>
@@ -110,9 +109,8 @@
 			<div>
 				<table width="100%">
 					<tr>
-						<td onclick="location.href='./mynews#following'" align="center">팔로잉</td>
-						<td onclick="location.href='./mynews#mynews'" align="center">내
-							게시물</td>
+						<td align="center"><a href="./mynews#following">팔로잉</a></td>
+						<td align="center"><a href="./mynews#mynews">내 게시물</a></td>
 					</tr>
 				</table>
 			</div>

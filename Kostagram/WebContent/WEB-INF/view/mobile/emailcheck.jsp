@@ -11,67 +11,19 @@
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
 
-<script type="text/javascript">
-	function emailcheck() {
-		var idInput = $('input:text[name=email]');
-		var idValue = trim(idInput.val());
-		var message = $('#check');
-
-		if (idValue === "") {
-			message.text("E-mail ID를 입력하세요.");
-			idInput.select();
-			return false;
-		}
-
-		if (idValue !== "") {
-			if (isEmailChar(idValue)) {
-				message.text("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
-				idInput.select();
-				return false;
-			} else if (idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1
-					|| idValue.indexOf(".") < idValue.indexOf("@")
-					|| isNum(idValue.charAt(0))) {
-				message.text("E-mail ID를 확인 하세요.");
-				idInput.select();
-				return false;
-			}
-		}
-		$.ajax({
-			type : 'POST',
-			url : 'validationEmail',
-			dataType : 'text',
-			data : {
-				email : idValue
-			},
-			success : function(text) {
-				if (text === "availableEmail") {
-					location.href = "usercheck";
-					// joinForm.submit();
-				} else if (text === "existedEmail") {
-					message.text("사용할 수 없는 이메일 입니다.");
-				}
-			},
-			error : function() {
-				alert("error");
-			}
-		});
-	}
-</script>
-
 <body>
-	<div data-role="page" data-theme="e">
+	<div id="emailCheck" data-role="page" data-theme="e">
 
 		<div align="center">
 			<br>
-			<image src="./image/banner.png" width="200" />
+			<img src="./image/banner.png" width="200" />
 		</div>
 
 		<div data-role="content" align="center">
 			<form id="joinForm" method="post" action="usercheck">
 				<div align="center">
-					<input id="email" type="text" name="email" placeholder="이메일" /> <br>
-					<input type="button" onclick="emailcheck()" value="다음"
-						data-inline="true" /> <br>
+					<input type="text" id="email" name="email" placeholder="이메일" /> <br>
+					<input type="button" id="emailCheckBtn" value="다음" data-inline="true" /> <br>
 					<p align="center" id="check" style="color: red"></p>
 				</div>
 			</form>

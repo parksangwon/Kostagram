@@ -16,7 +16,7 @@
 	<div id="loginform" data-role="page" data-theme="b">
 
 		<div data-role="header" data-theme="b">
-			<table onclick="location.href='search'">
+			<table onclick="$.mobile.changePage('search')">
 				<tr>
 					<td><image src="./image/icon/search.png" width="20"
 							style="padding-left:10px;" /></td>

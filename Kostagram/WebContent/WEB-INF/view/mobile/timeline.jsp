@@ -174,16 +174,16 @@
 		<div data-role="footer" data-theme="b" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./m/"><img src="./m/image/icon/house.png"
+					<li><a href="./"><img src="./image/icon/house.png"
 								width="20" /></a></li>
-					<li><a href="./m/round"><img src="./m/image/icon/search.png"
+					<li><a href="./round"><img src="./image/icon/search.png"
 								width="20" /></a></li>
-					<li><a href="#"><img src="./m/image/icon/camera.png"
+					<li><a href="#"><img src="./image/icon/camera.png"
 								width="20" /></a></li>
-					<li><a href="./m/mynews"><img src="./m/image/icon/info.png"
+					<li><a href="./mynews"><img src="./image/icon/info.png"
 								width="20" /></a></li>
-					<li><a href="./m/userpage"><img
-								src="./m/image/icon/user.png" width="20" /></a></li>
+					<li><a href="./userpage"><img
+								src="./image/icon/user.png" width="20" /></a></li>
 				</ul>
 			</div>
 		</div>
