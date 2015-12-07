@@ -12,11 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kostagram.service.beans.ActivityVO;
+import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.ConversationVO;
-import com.kostagram.service.beans.LikeVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.ActivityDAO;
@@ -54,7 +53,7 @@ public class MobileController {
 	}
 
 	String email = (String) session.getAttribute("email");
-	List<PhotoInfoVO> timeLineList = photoInfoDao.getTimeline(new UserInfoVO(email));
+	List<ArticleVO> timeLineList = photoInfoDao.getTimeline(new UserInfoVO(email));
 	model.addAttribute("timeLineList", timeLineList);
 
 	return "mobile/timeline";
@@ -192,7 +191,7 @@ public class MobileController {
 	    return "mobile/login";
 	}
 	String email = (String) session.getAttribute("email");
-	List<PhotoInfoVO> photoList = photoInfoDao.getTimeline(new UserInfoVO(email));
+	List<ArticleVO> photoList = photoInfoDao.getTimeline(new UserInfoVO(email));
 	model.addAttribute("photoList", photoList);
 
 	return "mobile/photolist";
