@@ -3,7 +3,7 @@
 <%@ page import="java.util.*" %>
 
 <%
-	ArrayList chattingList =(ArrayList)request.getAttribute("chattingList"); ;
+	ArrayList chattingMemberList =(ArrayList)request.getAttribute("chattingMemberList"); ;
 %>
 
 <!DOCTYPE html> 
@@ -48,16 +48,16 @@
 			
 			
 			<%
-			if (chattingList == null || chattingList.size() == 0 ) {
+			if (chattingMemberList == null || chattingMemberList.size() == 0 ) {
 			%>
-				
+				<center>채팅 상대를 추가해주세요.</center>
 			<%	
 				} else {
-					for ( int i = 0; i < chattingList.size(); i++ ) {
+					for ( int i = 0; i < chattingMemberList.size(); i++ ) {
 			%>						
 				<ul data-role="listview">
 					<li>
-						<a href="./chatting.jsp"><img src="./m/image/testImage1.jpg" class="ul-li-icon" />
+						<a href="./chatting.jsp"><img src="./m/image/testImage1.jpg" width="20" class="ul-li-icon" />
 							<table>
 								<tr>
 									<td>qkrwnsgur0605</td>
