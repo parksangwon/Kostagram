@@ -12,7 +12,7 @@
 	}
 	*/
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
 <script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -51,7 +51,7 @@
 		<div>
 			<table width="100%">
 				<tr>
-					<td width="60"><image src="./image/test.jpg" width="60"
+					<td width="60"><img src="./image/test.jpg" width="60"
 							style="-webkit-border-radius: 100px; 
 								border-radius: 100px;" /></td>
 					<td align="left"><a href="#"
@@ -65,14 +65,14 @@
 		<div>
 			<table width="100%" cellpadding="0" cellspacing="0">
 				<tr>
-					<td width="100%" colspan="2"><image src="./image/test.jpg"
+					<td width="100%" colspan="2"><img src="./image/test.jpg"
 							width="100%" /></td>
 				</tr>
 				<tr>
-					<td align="left"><a href="#"><image
+					<td align="left"><a href="#"><img
 								src="./image/icon/heart.png" width="25" /></a>&nbsp;&nbsp;<a
-						href="#"><image src="./image/icon/chat_bubble.png" width="25" /></a></td>
-					<td align="right"><a href="#"><image
+						href="#"><img src="./image/icon/chat_bubble.png" width="25" /></a></td>
+					<td align="right"><a href="#"><img
 								src="./image/icon/warning.png" width="25" /></a></td>
 				</tr>
 			</table>
@@ -174,15 +174,15 @@
 		<div data-role="footer" data-theme="b" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./m/"><image src="./m/image/icon/house.png"
+					<li><a href="./m/"><img src="./m/image/icon/house.png"
 								width="20" /></a></li>
-					<li><a href="./m/round"><image src="./m/image/icon/search.png"
+					<li><a href="./m/round"><img src="./m/image/icon/search.png"
 								width="20" /></a></li>
-					<li><a href="#"><image src="./m/image/icon/camera.png"
+					<li><a href="#"><img src="./m/image/icon/camera.png"
 								width="20" /></a></li>
-					<li><a href="./m/mynews"><image src="./m/image/icon/info.png"
+					<li><a href="./m/mynews"><img src="./m/image/icon/info.png"
 								width="20" /></a></li>
-					<li><a href="./m/userpage"><image
+					<li><a href="./m/userpage"><img
 								src="./m/image/icon/user.png" width="20" /></a></li>
 				</ul>
 			</div>
