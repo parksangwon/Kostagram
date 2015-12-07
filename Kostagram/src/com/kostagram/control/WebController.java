@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kostagram.service.beans.PhotoInfoVO;
+import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.SearchVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.PhotoInfoDAO;
@@ -44,7 +44,7 @@ public class WebController {
 		
 		
 	String email = (String) session.getAttribute("email");
-	List<PhotoInfoVO> timeline = photoInfoDao.getTimeline(new UserInfoVO(email));
+	List<ArticleVO> timeline = photoInfoDao.getTimeline(new UserInfoVO(email));
 	UserInfoVO user = userInfoDao.findEmail(new UserInfoVO((String) session.getAttribute("email")));
 	
 	model.addAttribute("nickname", user.getNickname());
