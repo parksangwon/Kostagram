@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="comment">
-   <insert id="insert" parameterType="com.kostagram.service.beans.CommentVO">
+	<insert id="insert" parameterType="com.kostagram.service.beans.CommentVO">
 
-      insert into member(email,nickname,pass,name) values (#{email}, #{nickname}, #{pass}, #{name})
-   </insert>
-   
-   <delete id="delete" parameterType="com.kostagram.service.beans.CommentVO">
-      update comment set dispYn="N" where seq_add = #{seq_add}
-   </delete>  
+		insert into
+		member values
+		(to_char(sysdate,'YYYYMMDDHHMISS')||lpad(seq_comment.nextval, 16, 0),
+		#{seq_photo}, #{comment}, #{email}, sysdate, 'Y')
+	</insert>
+
+	<delete id="delete" parameterType="com.kostagram.service.beans.CommentVO">
+		update comment set dispYn="N"
+		where seq_add = #{seq_add}
+	</delete>
+
+	<select id="getCommentByPhotoId" parameterType="com.kostagram.service.beans.PhotoInfoVO"
+		resultType="com.kostagram.service.beans.ArticleVO">
+		select * from photo_comment where
+	</select>
 </mapper>
