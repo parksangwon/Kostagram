@@ -11,21 +11,9 @@
 		<script src="js/common.js"></script>
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 		
-		<script type="text/javascript">
-		$(function(){
-			$('#logoutbutton').click(function(){
-				var logoutconfirm = confirm("로그아웃 하시겠습니까?");  // 확인/취소 창 뛰우기
-				if(logoutconfirm == true){
-					<% session.removeAttribute("loginYn");%>
-					alert("로그아웃 되었습니다.");
-					location.href="/Kostagram/m/";
-				}
-			});
-		});
-		</script>
 	</head>
 	<body>
-		<div>
+		<div data-role="page">
 		
 			<div data-role="header" data-theme="b">
 				<table>
@@ -74,7 +62,7 @@
 							</tr>
 							<tr>
 								<Td>
-									<a data-ajax="false"><input type="button" id="logoutbutton" value="로그아웃" data-inline="true"/></a>
+									<input type="button" onclick="location.href='./logout'" value="로그아웃" data-inline="true"/>
 								</Td>
 							</tr>
 						</table>
