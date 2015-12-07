@@ -29,12 +29,22 @@
 				<table width="100%">
 					<tr>
 						<td>
-						<!--  뒤로가기  --><img src="./m/image/icon/back.png" onclick="window.location.href = './userpage.jsp'" >
-						<font color="white">비밀번호 변경</font>				
+						<!--  뒤로가기  --><img src="./m/image/icon/back.png" width="20" onclick="window.location.href = './userpage.jsp'" >
+						<span style="height:35px;
+							font-size:15px;
+							color:#ffffff;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							text-shadow: 0px 0px 0px black;
+							padding-left:5px;">
+							비밀번호 변경
+							</span>				
 						</td>
 						
 						<td align="right">
-						<!--  확인 --><a href="./detail"><img src="./m/image/icon/tick.png" ></a>
+						<!--  확인 --><a href="./detail"><img src="./m/image/icon/tick.png" width="20"></a>
 						</td>
 					</tr>
 				</table>

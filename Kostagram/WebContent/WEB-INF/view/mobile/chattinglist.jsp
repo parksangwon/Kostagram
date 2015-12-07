@@ -31,8 +31,18 @@
 				<table>
 					<tr>
 						<td>
-						<!--  뒤로가기  --><img src="./m/image/icon/back.png" onclick="window.location.href = './timeline.jsp'" >
-						<font color="white">DIRECT</font>				
+						<!--  뒤로가기  --><img src="./m/image/icon/back.png" width="20" onclick="window.location.href = './timeline.jsp'" >
+						<span style="height:35px;
+							font-size:15px;
+							color:#ffffff;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							text-shadow: 0px 0px 0px black;
+							padding-left:5px;">
+							DIRECT
+							</span>				
 						</td>
 					</tr>
 				</table>

@@ -81,7 +81,17 @@
 					
 						<td>
 						<!--  뒤로가기  --><img src="./m/image/icon/back.png" width="20" onclick="window.location.href = './chattinglist.jsp'">
-						<font color="white">아이디</font>				
+						<span style="height:35px;
+							font-size:15px;
+							color:#ffffff;
+							line-height:35px;
+							text-align:left;
+							background-color:transparent;
+							border:0px;
+							text-shadow: 0px 0px 0px black;
+							padding-left:5px;">
+							아이디
+							</span>			
 						</td>
 													
 					</tr>
