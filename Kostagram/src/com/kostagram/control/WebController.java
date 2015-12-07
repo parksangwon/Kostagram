@@ -34,6 +34,9 @@ public class WebController {
 	// 로그인 세션 확인 후 로그인이 안되어 있으면 로그인 페이지
 	if (session == null || session.getAttribute("loginYn") == null || session.getAttribute("loginYn").equals("N")
 		|| session.getAttribute("email") == null) {
+		
+		
+		
 	    return "web/index";
 	}
 	
@@ -207,5 +210,15 @@ public class WebController {
     public String userPage() {
 	return "web/userpage";
     }
+    
+    @RequestMapping("/logout") //로그아웃
+	public String logout(HttpSession session) {
+
+		session.removeAttribute("email");
+		session.removeAttribute("nickname");
+		session.setAttribute("loginYn", "N");
+
+		return "web/index";
+	}
     
 }
