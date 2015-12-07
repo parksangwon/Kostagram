@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 
+<%
+	ArrayList chattingList =(ArrayList)request.getAttribute("chattingList");
+	String chattingSection = (String)request.getAttribute("chattingSection");
+%>
+
 
 <!DOCTYPE html> 
 <html> 
@@ -75,7 +80,7 @@
 					<tr>
 					
 						<td>
-						<!--  뒤로가기  --><img src="./m/image/icon/back.png" onclick="window.location.href = './chattinglist.jsp'">
+						<!--  뒤로가기  --><img src="./m/image/icon/back.png" width="20" onclick="window.location.href = './chattinglist.jsp'">
 						<font color="white">아이디</font>				
 						</td>
 													
@@ -128,7 +133,15 @@
 				}
 				
 				 -->
-			<div data-role="content">
+			<div data-role="content">		
+				<%
+					if (chattingList == null || chattingList.size() == 0 ) {
+				%>
+						<center>채팅을 시작해보세요!</center>
+				<%	
+					} else if(chattingSection.equals("M")) {
+						for ( int i = 0; i < chattingList.size(); i++ ) {
+				%>
 				<table width="100%">
 					<tr >	
 							<!--  시간 -->
@@ -142,6 +155,10 @@
 					</tr>
 				</table>
 				
+				<%}
+				}else if(chattingSection.equals("S")){
+					for(int i=0; i< chattingList.size(); i++) 
+				{%>
 				
 				<table width="100%">	
 					<tr>
@@ -157,73 +174,9 @@
 					</tr>				
 				</table>
 				
-				<table width="100%">
-					<tr >	
-							<!--  시간 -->
-							<td align="right">
-							<font size="1">12:11</font>
-							</td>
-							<!--  자신 -->
-							<td   style="word-break:break-all">
-								<p id="me" >안녕하세요??</p>
-							</td>				
-					</tr>
-				</table>
-				
-				<table width="100%">	
-					<tr>
-						
-						<!--  상대 -->
-						<td style="word-break:break-all">
-								<p id="someone" >안녕하세요!!</p>			
-						</td>
-						<!--  시간 -->
-						<td align="left">
-							<font size="1">12:11</font>
-						</td>
-					</tr>				
-				</table>
-				
-				<table width="100%">	
-					<tr>
-						
-						<!--  상대 -->
-						<td style="word-break:break-all">
-								<p id="someone" >그런데 누구시죠??</p>			
-						</td>
-						<!--  시간 -->
-						<td align="left">
-							<font size="1">12:11</font>
-						</td>
-					</tr>				
-				</table>
-				
-				<table width="100%">
-					<tr >	
-							<!--  시간 -->
-							<td align="right">
-							<font size="1">12:11</font>
-							</td>
-							<!--  자신 -->
-							<td   style="word-break:break-all">
-								<p id="me" >준혁입니다</p>
-							</td>				
-					</tr>
-				</table>
-				
-				<table width="100%">	
-					<tr>
-						
-						<!--  상대 -->
-						<td style="word-break:break-all">
-								<p id="someone" >오랜만이다</p>			
-						</td>
-						<!--  시간 -->
-						<td align="left">
-							<font size="1">12:11</font>
-						</td>
-					</tr>				
-				</table>
+				<%}
+				}
+				%>
 				
 			</div>
 			
