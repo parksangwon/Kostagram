@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+<%
+	String nickname = (String)session.getAttribute("nickname");
+%>    
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +27,8 @@
 	
 	.search
 	{
-		border-radius: 10px;
+		border-radius: 15px;
+	 	color: #000000;
 	}
 	
 </STYLE>
@@ -154,17 +160,17 @@
 							<img src="img/web/kostagram3.png" style="display:block;">
 						</td>
 						<td width="200" align="center" style="vertical-align: middle;">
-							<INPUT type="text" name="word"  style="display:block;" id="searchWord" class="search"  placeholder="  검색  "  onkeyup="wordComplete();"  onclick="wordComplete();"style="margin-bottom: 20px" >
+							<INPUT type="text" size="25" name="word"  style="display:block;" id="searchWord" class="search"  placeholder="  검색  "  onkeyup="wordComplete();"  onclick="wordComplete();" >
 						</td>
 						<td width="200" align="right" style="vertical-align: middle;">
-						<span style="display:block;">jungwoo91_1</span>
+						<span style="display:block; color:rgb(0,72,126); font-weight:700; font-size:15pt;" ><%= nickname%></span>
 						</td>
 					</tr>
 				
 				</FORM>
 		</table>
 		<DIV style="position:absolute;" id="wordDiv">
-							<TABLE id="wordTable" bgcolor="#FFFAFA" border="0" cellspacing="0" cellpadding="0">
+							<TABLE id="wordTable" bgcolor="" border="0" cellspacing="0" cellpadding="0">
 								<TBODY id="wordTableBody"></TBODY>
 							</TABLE>
 				    </DIV>
