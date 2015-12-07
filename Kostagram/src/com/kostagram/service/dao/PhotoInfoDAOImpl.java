@@ -1,10 +1,12 @@
 package com.kostagram.service.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.UserInfoVO;
 
@@ -32,10 +34,14 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
     }
 
     @Override
-    public List<PhotoInfoVO> getTimeline(UserInfoVO user) {
+    public ArrayList<ArticleVO> getTimeline(UserInfoVO user) {
 
     	System.out.println("PhotoDAO getTimeline : " + user);
-	return sqlSession.selectList("photoInfo.getTimeline", user);
+    	
+    	ArrayList<ArticleVO> timeline = new ArrayList<ArticleVO>();
+    	timeline = (ArrayList)sqlSession.selectList("photoInfo.getTimeline", user);
+    	
+	return timeline;
     }
 
     @Override
