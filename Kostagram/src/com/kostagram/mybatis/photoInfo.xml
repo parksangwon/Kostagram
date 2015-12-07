@@ -24,6 +24,8 @@
 
 	</update>
 
+
+	<!-- 내가 팔로우 하는 사람들의 사진을 모두 가져오기 -->
 	<select id="getTimeline" parameterType="com.kostagram.service.beans.UserInfoVO"
 		resultType="com.kostagram.service.beans.PhotoInfoVO">
 		SELECT PHOTO.*
