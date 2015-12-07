@@ -1,8 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html>
-	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 		<meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
@@ -13,7 +11,6 @@
 		<script src="js/common.js"></script>
 		<link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet" type="text/css" />
 		
-	</head>
 	<body>
 		<!-- 포토그리드 시작 -->
 		<div id="photogrid" data-role="page" data-theme="e">
@@ -34,7 +31,7 @@
 							</span>
 						</td>
 						<td align="right">
-							<a href="./option" data-ajax="false"><image src="./image/icon/settings.png" width="20" style="padding-right:10px;"/></a>
+							<a href="./option"><image src="./image/icon/settings.png" width="20" style="padding-right:10px;"/></a>
 						</td>
 					</tr>
 				</table>
@@ -372,4 +369,3 @@
 		</div>
 		<!-- 포토리스트 끝 -->	
 	</body>
-</html>
