@@ -5541,7 +5541,7 @@ transform
 						data-reactid=".0.3.0.0">
 					</nav>
 					<span class="-cx-PRIVATE-Footer__copyright" data-reactid=".0.3.0.1">©
-						2015 Instagram</span>
+						2015 Kostagram</span>
 				</div>
 			</footer>
 			<noscript data-reactid=".0.4"></noscript>
