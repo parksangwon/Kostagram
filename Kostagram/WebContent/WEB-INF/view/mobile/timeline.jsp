@@ -5,10 +5,12 @@
 <%
 	//ArrayList timeLineList =(ArrayList)request.getAttribute("timeLineList");
 	ArrayList timeLineList = new ArrayList();
+	/*
 	for(int i=0; i<5; i++)
 	{
 		timeLineList.add(i);
 	}
+	*/
 %>
 <html> 
 	<head>

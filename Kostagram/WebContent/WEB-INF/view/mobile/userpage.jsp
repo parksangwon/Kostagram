@@ -46,7 +46,7 @@
 						<table border="0" width="100%">
 							<tr>
 								<td rowspan="2" width="30%">
-									<image src="image/park.jpg"/>
+									<image width=200 src="image/test.jpg"/>
 								</td>
 								<td align="center">
 									0<br>
@@ -64,16 +64,14 @@
 							<tr>
 								<td align="center" colspan="3" onclick="location.href='./profileupdate'">프로필 수정</td>
 							</tr>
+							<tr>
+								<td align="left" colspan="3">프로필 메시지</td>
+							</tr>
 						</table>
 					</div>
 				</ul>	
 			</div>
-				
-			<div>
-				<ul data-insert="true">박상원</ul>
-				
-			</div>
-				
+			
 			<div>
 				<table width="100%">
 					<tr>
