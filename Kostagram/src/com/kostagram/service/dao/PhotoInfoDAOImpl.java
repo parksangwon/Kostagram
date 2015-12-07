@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kostagram.service.beans.ArticleVO;
+import com.kostagram.service.beans.CommentVO;
+import com.kostagram.service.beans.LikeVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.UserInfoVO;
 
@@ -39,7 +41,19 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
     	System.out.println("PhotoDAO getTimeline : " + user);
     	
     	ArrayList<ArticleVO> timeline = new ArrayList<ArticleVO>();
-    	timeline = (ArrayList)sqlSession.selectList("photoInfo.getTimeline", user);
+    	
+    	List<PhotoInfoVO> photoList = sqlSession.selectList("photoInfo.getTimeline", user);
+    	for(PhotoInfoVO photo : photoList) {
+    	    List<CommentVO> commentList = sqlSession.selectList("comment.getCommentByPhotoId", photo);
+    	    List<LikeVO> likeList = sqlSession.selectList("like.getLikeByPhotoId", photo);
+    	    
+    	    ArticleVO article = new ArticleVO();
+    	    article.setPhoto(photo);
+    	    article.setComment(commentList);
+    	    article.setLike(likeList);
+    	    
+    	    timeline.add(article);
+    	}
     	
 	return timeline;
     }
