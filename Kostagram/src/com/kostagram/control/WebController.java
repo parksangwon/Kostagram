@@ -136,19 +136,6 @@ public class WebController {
 	return "profileupdate";
     }
 
-    @RequestMapping(value = "/userpage/{nickname}")
-    public String userPage(@PathVariable String nickname) {
-	System.out.println(nickname);
-	// DAO에서 {name}에 해당하는 자료를 갖고오고
-	// model에 addAttr--
-	return "web/userpage";
-    }
-
-    @RequestMapping(value = "/userpage")
-    public String userPage() {
-	return "web/userpage";
-    }
-    
     @RequestMapping("/searchWordAutoComplete/")
     public void searchWord(SearchVO searchVO, HttpServletRequest request, HttpServletResponse response) throws IOException
     {
@@ -208,5 +195,17 @@ public class WebController {
 	return "common/pwupdate";
     }
     
-  
+
+    @RequestMapping(value = "/{nickname}")
+    public String userPage(@PathVariable String nickname) {
+	// DAO에서 {name}에 해당하는 자료를 갖고오고
+	// model에 addAttr--
+	return "web/userpage";
+    }
+
+    @RequestMapping(value = "/userpage")
+    public String userPage() {
+	return "web/userpage";
+    }
+    
 }
