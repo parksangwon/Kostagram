@@ -24,12 +24,14 @@
 			</table>
 		</div>
 
-		<div>
+		<div data-role="content">
 			<div>
 				<table width="100%">
 					<tr>
-						<td align="center"><a href="./mynews#following">팔로잉</a></td>
-						<td align="center"><a href="./mynews#mynews">내 게시물</a></td>
+						<td align="center"><a href="/Kostagram/m/mynews#following">팔로잉</a></td>
+						<td align="center"><a href="/Kostagram/m/mynews#mynews" data-transition="slide">내게시물</a></td>
+						<!-- <td align="center"><span id="followingButton">팔로잉</span></td>
+						<td align="center"><span id="mynewsButton">내 게시물</span></td> -->
 					</tr>
 				</table>
 			</div>
@@ -37,39 +39,32 @@
 				<%
 					// 임시로 활동 리스트 추가
 					ArrayList follwingList = new ArrayList();
-					for(int i=0; i<10; i++)
-					{
+					for (int i = 0; i < 10; i++) {
 						follwingList.add(i);
 					}
-					
-					if(follwingList!=null && follwingList.size()>=0)
-					{
-						for(int i=0; i<follwingList.size(); i++)
-						{
+
+					if (follwingList != null && follwingList.size() >= 0) {
+						for (int i = 0; i < follwingList.size(); i++) {
 				%>
 				<table width="100%">
 					<tr>
-						<td align="center"><a href="./detail"><image
+						<td align="center"><a href="./detail"><img
 									src="./image/test.jpg" width="40"
 									style="-webkit-border-radius: 100px; 
 										border-radius: 100px;" /></a>
-							<a href="#"
-							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">성경쓰</a>
-							님이</a> <a href="#"
+							<a href="#" style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">성경쓰</a>님이 <a href="#"
 							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">조영갱</a>
-							님의 사진을 좋아합니다. <a href="./detail"><image
+							님의 사진을 좋아합니다. <a href="./detail"><img
 									src="./image/park.jpg" width="40" /></a></td>
 					</tr>
 				</table>
 				<hr>
 				<%
-						}	
 					}
-					else
-					{
+					} else {
 				%>
 				<div>팔로잉이 없습니다.</div>
-				<%		
+				<%
 					}
 				%>
 			</div>
@@ -78,16 +73,16 @@
 		<div data-role="footer" data-theme="b" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./"><image src="./image/icon/house.png"
-								width="20" /></a></li>
-					<li><a href="./round"><image src="./image/icon/search.png"
-								width="20" /></a></li>
-					<li><a href="#"><image src="./image/icon/camera.png"
-								width="20" /></a></li>
-					<li><a href="./mynews"><image src="./image/icon/info.png"
-								width="20" /></a></li>
-					<li><a href="./userpage"><image
-								src="./image/icon/user.png" width="20" /></a></li>
+					<li><a href="./"><img src="./image/icon/house.png"
+							width="20" /></a></li>
+					<li><a href="./round"><img src="./image/icon/search.png"
+							width="20" /></a></li>
+					<li><a href="#"><img src="./image/icon/camera.png"
+							width="20" /></a></li>
+					<li><a href="./mynews"><img src="./image/icon/info.png"
+							width="20" /></a></li>
+					<li><a href="./userpage"><img src="./image/icon/user.png"
+							width="20" /></a></li>
 				</ul>
 			</div>
 		</div>
@@ -105,12 +100,14 @@
 			</table>
 		</div>
 
-		<div>
+		<div data-role="content">
 			<div>
 				<table width="100%">
 					<tr>
-						<td align="center"><a href="./mynews#following">팔로잉</a></td>
-						<td align="center"><a href="./mynews#mynews">내 게시물</a></td>
+						<td align="center"><a href="/Kostagram/m/mynews#following" data-transition="slide" data-direction="reverse">팔로잉</a></td>
+						<td align="center"><a href="/Kostagram/m/mynews#mynews">내 게시물</a></td>
+						<!-- <td align="center"><span id="followingButton">팔로잉</span></td>
+						<td align="center"><span id="mynewsButton">내 게시물</span></td> -->
 					</tr>
 				</table>
 			</div>
@@ -119,37 +116,32 @@
 				<%
 					// 임시로 활동 리스트 추가
 					ArrayList newsList = new ArrayList();
-					for(int i=0; i<10; i++)
-					{
+					for (int i = 0; i < 10; i++) {
 						newsList.add(i);
 					}
-					
-					if(newsList!=null && newsList.size()>=0)
-					{
-						for(int i=0; i<newsList.size(); i++)
-						{
+
+					if (newsList != null && newsList.size() >= 0) {
+						for (int i = 0; i < newsList.size(); i++) {
 				%>
 				<table width="100%">
 					<tr>
-						<td align="center"><a href="./detail"><image
+						<td align="center"><a href="./detail"><img
 									src="./image/test.jpg" width="40"
 									style="-webkit-border-radius: 100px; 
 										border-radius: 100px;" /></a>
 							<a href="#"
 							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">성경쓰</a>
-							님이 회원님의 사진을 좋아합니다. <a href="./detail"><image
+							님이 회원님의 사진에 댓글을 남겼습니다. <a href="./detail"><img
 									src="./image/park.jpg" width="40" /></a></td>
 					</tr>
 				</table>
 				<hr>
 				<%
-						}	
 					}
-					else
-					{
+					} else {
 				%>
 				<div>활동 내역이 없습니다.</div>
-				<%		
+				<%
 					}
 				%>
 			</div>
@@ -158,16 +150,16 @@
 		<div data-role="footer" data-theme="b" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./"><image src="./image/icon/house.png"
-								width="20" /></a></li>
-					<li><a href="./round"><image src="./image/icon/search.png"
-								width="20" /></a></li>
-					<li><a href="#"><image src="./image/icon/camera.png"
-								width="20" /></a></li>
-					<li><a href="./mynews"><image src="./image/icon/info.png"
-								width="20" /></a></li>
-					<li><a href="./userpage"><image
-								src="./image/icon/user.png" width="20" /></a></li>
+					<li><a href="./"><img src="./image/icon/house.png"
+							width="20" /></a></li>
+					<li><a href="./round"><img src="./image/icon/search.png"
+							width="20" /></a></li>
+					<li><a href="#"><img src="./image/icon/camera.png"
+							width="20" /></a></li>
+					<li><a href="./mynews"><img src="./image/icon/info.png"
+							width="20" /></a></li>
+					<li><a href="./userpage"><img src="./image/icon/user.png"
+							width="20" /></a></li>
 				</ul>
 			</div>
 		</div>

@@ -153,16 +153,33 @@
 			// usercheck 끝
 			// mynews 시작
 			else if (this.id == "following") {
-				var followingPage = $("following");
-				var mynewsPage = $("mynews");
 				$('#followingButton').click(function() {
-					alert("눌림");
-					$.mobile.changePage(followingPage);
+					$.mobile.changePage("/Kostagram/m/mynews");
 				});
 				
 				$('#mynewsButton').click(function() {
-					alert("눌림");
-					$.mobile.changePage(mynewsPage);
+					$.mobile.changePage("/Kostagram/m/mynews#mynews");
+				});
+				/*
+				function following(){
+					$.mobile.changePage("./m/mynews#following");
+				}
+				
+				function mynews(){
+					$.mobile.changePage("./m/mynews#mynews");
+				}*/
+			}
+			
+			else if (this.id == "mynews") {
+				alert("mynews페이지");
+				$('#followingButton').click(function() {
+					alert("followingButton")
+					$.mobile.changePage("/Kostagram/m/mynews");
+				});
+				
+				$('#mynewsButton').click(function() {
+					alert("mynewsButton");
+					$.mobile.changePage("/Kostagram/m/mynews#mynews");
 				});
 				/*
 				function following(){

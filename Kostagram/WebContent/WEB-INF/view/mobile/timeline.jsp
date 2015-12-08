@@ -22,7 +22,7 @@
 	type="text/css" />
 
 <body>
-	<div data-role="page">
+	<div id="timeline" data-role="page">
 
 		<div data-role="header" data-theme="b">
 			<table>
@@ -34,26 +34,21 @@
 			</table>
 		</div>
 
-		<% 
-			if (timeLineList == null || timeLineList.size() == 0 )
-			{ 
+		<%
+			if (timeLineList == null || timeLineList.size() == 0) {
 		%>
 		<div>
 			<center>팔로잉이 없습니다.</center>
 		</div>
-		<%	
-			}
-			else
-			{
-				for (int i=0; i<timeLineList.size(); i++ )
-				{ 
+		<%
+			} else {
+				for (int i = 0; i < timeLineList.size(); i++) {
 		%>
 		<div>
 			<table width="100%">
 				<tr>
 					<td width="60"><img src="./image/test.jpg" width="60"
-							style="-webkit-border-radius: 100px; 
-								border-radius: 100px;" /></td>
+						style="-webkit-border-radius: 100px; border-radius: 100px;" /></td>
 					<td align="left"><a href="#"
 						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">닉네임</a></td>
 					<td align="right"
@@ -66,14 +61,14 @@
 			<table width="100%" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="100%" colspan="2"><img src="./image/test.jpg"
-							width="100%" /></td>
+						width="100%" /></td>
 				</tr>
 				<tr>
 					<td align="left"><a href="#"><img
-								src="./image/icon/heart.png" width="25" /></a>&nbsp;&nbsp;<a
+							src="./image/icon/heart.png" width="25" /></a>&nbsp;&nbsp;<a
 						href="#"><img src="./image/icon/chat_bubble.png" width="25" /></a></td>
 					<td align="right"><a href="#"><img
-								src="./image/icon/warning.png" width="25" /></a></td>
+							src="./image/icon/warning.png" width="25" /></a></td>
 				</tr>
 			</table>
 		</div>
@@ -81,37 +76,32 @@
 			<table>
 				<tr>
 					<%
-				// 좋아요 부분, 좋아요가 5개 이하이면 아이디를, 초과되면 갯수를
-				ArrayList likelist = new ArrayList();
-				for(int j=0; j<5; j++)
-				{
-					likelist.add(j);
-				}
-				
-				if(likelist.size()<6)
-				{
-			%>
+						// 좋아요 부분, 좋아요가 5개 이하이면 아이디를, 초과되면 갯수를
+								ArrayList likelist = new ArrayList();
+								for (int j = 0; j < 5; j++) {
+									likelist.add(j);
+								}
+
+								if (likelist.size() < 6) {
+					%>
 					<td><a href="#"
 						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">♥
 							<%
-						for(int k=0; k<likelist.size(); k++)
-						{
-					%> <%= likelist.get(k) %> <%
-						} 
-					%>
+						for (int k = 0; k < likelist.size(); k++) {
+					%> <%=likelist.get(k)%> <%
+ 	}
+ %>
 					</a></td>
 					<%
-				}
-				else
-				{
-			%>
+						} else {
+					%>
 					<td><a href="#"
 						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">♥
-							<%= likelist.size()%>개
+							<%=likelist.size()%>개
 					</a></td>
 					<%
-				}
-			%>
+						}
+					%>
 				</tr>
 
 				<tr>
@@ -121,19 +111,16 @@
 				</tr>
 				<tr>
 					<%
-				// 댓글 시작
-				// 임시로 댓글 리스트 추가
-				ArrayList replylist = new ArrayList();
-				for(int n=0; n<4; n++)
-				{
-					replylist.add(n);
-				}
-				
-				if(replylist!=null && replylist.size()>=0)
-				{
-					if(likelist.size()>3)
-					{
-			%>
+						// 댓글 시작
+								// 임시로 댓글 리스트 추가
+								ArrayList replylist = new ArrayList();
+								for (int n = 0; n < 4; n++) {
+									replylist.add(n);
+								}
+
+								if (replylist != null && replylist.size() >= 0) {
+									if (likelist.size() > 3) {
+					%>
 				
 				<tr>
 					<td><a href="#"
@@ -142,20 +129,20 @@
 				</tr>
 				<%
 					}
-					for(int m=0; m<4; m++)
-					{
-			%>
+								for (int m = 0; m < 4; m++) {
+				%>
 				<tr>
 					<td><a href="#"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%= replylist.get(m) %></a>
+						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%=replylist.get(m)%></a>
 						댓글</td>
 				</tr>
 				<%
 					}
-				}
-				
-				else{}
-			%>
+							}
+
+							else {
+							}
+				%>
 			</table>
 		</div>
 
@@ -166,24 +153,24 @@
 		</div>
 		<br>
 		<%
-				}
 			}
-			%>
+			}
+		%>
 
 
 		<div data-role="footer" data-theme="b" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./"><img src="./image/icon/house.png"
-								width="20" /></a></li>
-					<li><a href="./round"><img src="./image/icon/search.png"
-								width="20" /></a></li>
-					<li><a href="#"><img src="./image/icon/camera.png"
-								width="20" /></a></li>
-					<li><a href="./mynews"><img src="./image/icon/info.png"
-								width="20" /></a></li>
-					<li><a href="./userpage"><img
-								src="./image/icon/user.png" width="20" /></a></li>
+					<li><a href="/Kostagram/m/"><img src="/Kostagram/m/image/icon/house.png"
+							width="20" /></a></li>
+					<li><a href="/Kostagram/m/round"><img src="/Kostagram/m/image/icon/search.png"
+							width="20" /></a></li>
+					<li><a href="#"><img src="/Kostagram/m/image/icon/camera.png"
+							width="20" /></a></li>
+					<li><a href="/Kostagram/m/mynews"><img src="/Kostagram/m/image/icon/info.png"
+							width="20" /></a></li>
+					<li><a href="/Kostagram/m/userpage"><img src="/Kostagram/m/image/icon/user.png"
+							width="20" /></a></li>
 				</ul>
 			</div>
 		</div>
