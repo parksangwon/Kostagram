@@ -3022,8 +3022,8 @@ transform
 								data-reactid=".0.1.0.1.0.1.0.1.0" >
 							<div class="-cx-PRIVATE-SlimTextInput__indicators"
 								data-reactid=".0.1.0.1.0.1.0.1.1">
-								<a href ="pw_forget.jsp" class="-cx-PRIVATE-SlimTextInput__forgot"
-									href="/accounts/password/reset/"
+								<a href ="/Kostagram/pwforget" class="-cx-PRIVATE-SlimTextInput__forgot"
+									
 									data-reactid=".0.1.0.1.0.1.0.1.1.0">비밀번호를 잊으셨나요?</a>
 							</div>
 						</div>
