@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>        
 
+<%
+	String loginYn="N";
+	if (session != null && session.getAttribute("loginYn") !=null && ((String)session.getAttribute("loginYn")).equals("Y") ) 
+	{
+		loginYn = "Y";
+	}
+	String nickname = (String)session.getAttribute("nickname");
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -109,7 +117,24 @@
     
     <script src="//instagramstatic-a.akamaihd.net/bluebar/0939fc9/scripts/jquery.js" type="text/javascript"></script>
     <script src="//instagramstatic-a.akamaihd.net/bluebar/0939fc9/scripts/bluebar.js" type="text/javascript"></script>
-
+	
+	<script>
+	$(document).ready(function(){
+		
+		if('<%=loginYn %>'=="Y")
+		{
+			var loginState = document.getElementById("loginState");
+			loginState.innerHTML = "<a href='/Kostagram'><%= nickname %></a>" ;
+		}
+		else
+		{
+			var loginState = document.getElementById("loginState");
+			loginState.innerHTML = "<a href='/Kostagram'>로그인</a>" ;
+		}
+		
+		
+	});
+	</script>
 
     </head>
     <body class=" p-error dialog-404">
@@ -133,14 +158,14 @@
         </div>
 
         
-            <div class="top-bar-right account-state" id="top_bar_right">
-                <ul class="top-bar-actions">
+            <div class="top-bar-right account-state" id="top_bar_right" style="vertical-align: middle;">
+                <ul class="top-bar-actions" style="vertical-align: middle;">
                     
                     
                     <li class="link-signin" id="link_profile">
                         <a class="loginLink" href="/Kostagram">
                             <i></i>
-                            <strong>로그인</strong>
+                            <p id="loginState" style="padding:0 "></p>
                         </a>
                     </li>
                     

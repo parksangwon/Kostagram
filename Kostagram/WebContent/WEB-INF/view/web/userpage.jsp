@@ -4781,7 +4781,7 @@ transform
 							<h1 class="-cx-PRIVATE-ProfilePage__username"
 								data-reactid=".0.1.0.0:0.1.0.0"><%=userInfoVO.getNickname()%></h1>
 							<a class="-cx-PRIVATE-ProfilePage__editProfileLink"
-								href="/accounts/edit/" data-reactid=".0.1.0.0:0.1.0.2">
+								href="/Kostagram/profileupdate" data-reactid=".0.1.0.0:0.1.0.2">
 							
 								<button
 									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
