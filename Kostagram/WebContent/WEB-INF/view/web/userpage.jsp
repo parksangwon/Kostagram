@@ -4782,22 +4782,11 @@ transform
 								data-reactid=".0.1.0.0:0.1.0.0"><%=userInfoVO.getNickname()%></h1>
 							<a class="-cx-PRIVATE-ProfilePage__editProfileLink"
 								href="/accounts/edit/" data-reactid=".0.1.0.0:0.1.0.2">
-							<%
-								if(!check.equals("Y"))
-								{
-							%>
 							
-							<%
-								}
-								else
-								{
-							%>
 								<button
 									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
 									data-reactid=".0.1.0.0:0.1.0.2.0">프로필 편집</button></a>
-							<% 
-								}
-							%>
+							
 						</div>
 						<div class="-cx-PRIVATE-ProfilePage__biography"
 							data-reactid=".0.1.0.0:0.1.1">
@@ -4848,7 +4837,7 @@ transform
 									data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0">
 									<div class="-cx-PRIVATE-Photo__placeholder"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.0">
-					
+
 									</div>
 									<div class="-cx-PRIVATE-Photo__clickShield"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.2"></div>
