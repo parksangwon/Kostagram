@@ -2,23 +2,24 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-   <!-- beans.xml(빈등록,관리) -->
-   
+	<!-- beans.xml(빈등록,관리) -->
 
-   
-   <bean class="com.kostagram.service.dao.ActivityDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.CommentDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.ConversationDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.ConversationReplyDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.FollowDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.HashtagDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.LikeDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.LocationDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.PhotoInfoDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.ReportDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.ReportItemDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.UserInfoDAOImpl"></bean>
-   <bean class="com.kostagram.service.dao.SearchDAOImpl"></bean>
-   
-   <!-- 각자 필요한 DAO에 대한 객체를 사용하기 위해 이곳에 bean으로 선언해주면 됨 -->
+
+
+	<bean class="com.kostagram.service.dao.ActivityDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.CommentDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.ConversationDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.ConversationReplyDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.FollowDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.HashtagDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.LikeDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.LocationDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.PhotoInfoDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.ReportDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.ReportItemDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.UserInfoDAOImpl"></bean>
+	<bean class="com.kostagram.service.dao.SearchDAOImpl"></bean>
+	<bean id="email" class="com.kostagram.mail.Mail"/>
+	<bean id="emailService" class="com.kostagram.mail.MailService"/>
+	<!-- 각자 필요한 DAO에 대한 객체를 사용하기 위해 이곳에 bean으로 선언해주면 됨 -->
 </beans>
