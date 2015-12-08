@@ -2885,10 +2885,34 @@ transform
 }
 </style>
 
+
+
 <script>
-		$(function() {
+		$(function(){
 			
 			$('#loginBtn').click(function(){
+				loginAction();
+			});
+			
+			
+			
+			$('#nicknameInput').keypress(function(event){
+				if(event.keyCode == 13)
+				{
+					loginAction();
+					return false;
+				}
+			});
+			
+			$('#pwInput').keypress(function(event){
+				if(event.keyCode == 13)
+				{
+					loginAction();
+					return false;
+				}
+			});
+				
+			function loginAction(){
 				
 				var idInput = $('input:text[name=nickname]');
 				var idValue = trim(idInput.val());
@@ -2915,6 +2939,8 @@ transform
 					return false;
 				}
 				
+				$('#loginForm').submit();
+			
 	    		$.ajax({
 	    			type:'POST',
 	    			url:'login',
@@ -2931,7 +2957,7 @@ transform
 	    				alert("error");
 	    			}
 	    		});
-	    	});
+			}
 		});
 		
 		
@@ -2973,7 +2999,7 @@ transform
 				<div class="-cx-PRIVATE-SlimLoginForm__root"
 					data-reactid=".0.1.0.1.0.1">
 					<form class="-cx-PRIVATE-SlimLoginForm__form"
-						data-reactid=".0.1.0.1.0.1.0"
+						data-reactid=".0.1.0.1.0.1.0" name="loginForm"
 						id="joinForm" method="post" action="#" align="center">
 						<div
 							class="-cx-PRIVATE-SlimLoginForm__inputField -cx-PRIVATE-SlimTextInput__root"
@@ -2982,7 +3008,7 @@ transform
 								class="-cx-PRIVATE-SlimTextInput__input -cx-PRIVATE-TextInput__root"
 								aria-describedby="" aria-label="사용자 이름" aria-required="true"
 								autocapitalize="off" autocorrect="off" maxlength="30"
-								name="nickname" placeholder="사용자 이름" value="" type="text"
+								name="nickname" placeholder="사용자 이름" value="" type="text" id="nicknameInput"
 								data-reactid=".0.1.0.1.0.1.0.0.0">
 						</div>
 						<div
@@ -2992,8 +3018,8 @@ transform
 								class="-cx-PRIVATE-SlimTextInput__input -cx-PRIVATE-TextInput__root"
 								aria-describedby="" aria-label="비밀번호" aria-required="true"
 								autocapitalize="off" autocorrect="off" name="pass"
-								placeholder="비밀번호" type="password" value=""
-								data-reactid=".0.1.0.1.0.1.0.1.0">
+								placeholder="비밀번호" type="password" value="" id="pwInput"
+								data-reactid=".0.1.0.1.0.1.0.1.0" >
 							<div class="-cx-PRIVATE-SlimTextInput__indicators"
 								data-reactid=".0.1.0.1.0.1.0.1.1">
 								<a href ="pw_forget.jsp" class="-cx-PRIVATE-SlimTextInput__forgot"
