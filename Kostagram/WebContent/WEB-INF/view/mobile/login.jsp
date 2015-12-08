@@ -20,23 +20,18 @@
 	$(function() {
 		$("[data-role=page]").live("pageshow", function(event) {
 			if (this.id == "loginform") {
-				alert("로그인 페이지입니다.");
 			}
 			else if (this.id == "emailCheck" ) {
-				alert("이메일 체크 페이지 입니다.");
-				alert("안녕");
 				$('#emailCheckBtn').click(function() {
 					var idInput = $('[data-role=content] #email');
 					var idValue = trim(idInput.val());
 					var message = $('[data-role=content] #check');
 
 					if (idValue === "") {
-						alert(typeof message);
 						message.text("E-mail ID를 입력하세요.");
 						idInput.select();
 						return false;
 					}
-
 					if (idValue !== "") {
 						if (isEmailChar(idValue)) {
 							message.text("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
@@ -60,7 +55,6 @@
 						success : function(text) {
 							if (text === "availableEmail") {
 								$.mobile.changePage("usercheck");
-								// joinForm.submit();
 							} else if (text === "existedEmail") {
 								message.text("사용할 수 없는 이메일 입니다.");
 							}
@@ -70,8 +64,88 @@
 						}
 					});
 				});
-			} else {
-				alert(this.id);
+			}
+			else if (this.id == "userCheck" ) {
+				$('#joinbutton').click(function() {
+					var idInput = $('[data-role=content] #email');
+					var idValue = trim(idInput.val());
+					var message = $('[data-role=content] #check');
+
+					if (idValue === "") {
+						message.text("E-mail ID를 입력하세요.");
+						idInput.select();
+						return false;
+					} else if (idValue !== "") {
+						if (isEmailChar(idValue)) {
+							message.text("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
+							idInput.select();
+							return false;
+						} else if (idValue.indexOf("@") == -1
+								|| idValue.indexOf(".") == -1
+								|| idValue.indexOf(".") < idValue
+										.indexOf("@")
+								|| isNum(idValue.charAt(0))) {
+							message.text("E-mail ID를 확인 하세요.");
+							idInput.select();
+							return false;
+						}
+					}
+					var idInputName = $('[data-role=content] #name');
+					var idValueName = trim(idInputName.val());
+
+					if (idValueName === "") {
+						message.text("이름을 입력해 주세요.");
+						idInputName.select();
+						return false;
+					}
+
+					var idInputNickName = $('[data-role=content] #usercheck_nickname');
+					var idValueNickName = trim(idInputNickName.val());
+					if (idValueNickName === "") {
+						message.text("사용자이름(닉네임) 을 입력해 주세요.");
+						idInputNickName.select();
+						return false;
+					}
+
+					var pass = $('[data-role=content] #usercheck_pass');
+					if (pass.val() == "") {
+						message.text("비밀번호를 반드시 입력해야 합니다.");
+						pass.focus();
+						return false;
+					}
+					if (pass.val().length < 4 || pass.val().length > 20) {
+						message.text("비밀번호를 4자 이상 20자 이하 입니다.");
+						pass.select();
+						return false;
+					}
+
+					$.ajax({
+						type : 'POST',
+						url : 'validationNickname',
+						dataType : 'text',
+						data : {
+							email : idValue,
+							name : idValueName,
+							nickname : idValueNickName,
+							pass : pass.val()
+						},
+						success : function(text) {
+							if (text === "joinSuccess") {
+								alert("성공적으로 가입되었습니다. 로그인 페이지로 이동합니다.");
+								location.href = "/Kostagram/m/";
+							} else if (text === "existedEmail") {
+								message.text("사용할 수 없는 이메일 입니다.");
+							} else if (text === "existedNickname") {
+								message.text("사용할 수 없는 닉네임 입니다.");
+							} else if (text === "DBerror") {
+								message.text("DB error");
+							}
+						},
+						error : function() {
+							alert("error");
+						}
+					});
+				});
 			}
 		});
 		$('#loginBtn').click(function() {
