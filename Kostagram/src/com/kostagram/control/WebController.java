@@ -218,7 +218,7 @@ public class WebController {
 		session.removeAttribute("nickname");
 		session.setAttribute("loginYn", "N");
 
-		return "web/index";
+		return "redirect:/";
 	}
     
 }
