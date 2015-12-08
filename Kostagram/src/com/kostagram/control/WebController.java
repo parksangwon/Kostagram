@@ -200,8 +200,26 @@ public class WebController {
     
 
     @RequestMapping(value = "/{nickname}")
-    public String userPage(@PathVariable String nickname) {
-	// DAO에서 {name}에 해당하는 자료를 갖고오고
+    public String userPage(@PathVariable String nickname, HttpSession session) {
+	
+    	
+    	if (session != null && session.getAttribute("loginYn") !=null && ((String)session.getAttribute("loginYn")).equals("Y") ) 
+    	{
+    		
+	    	if(null == session.getAttribute(nickname) )
+			{
+				
+			}else if(nickname.equals((String)session.getAttribute(nickname)) )
+			{
+				
+			}
+    	}else
+    	{
+    		
+    	}
+	   
+	
+    	// DAO에서 {name}에 해당하는 자료를 갖고오고
 	// model에 addAttr--
 	return "web/userpage";
     }
