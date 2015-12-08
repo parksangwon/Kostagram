@@ -197,32 +197,51 @@ public class WebController {
     @RequestMapping(value = "/{nickname}")
     public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model) {
 	userInfoVO.setNickname(nickname);
-
+	String check = "NF";
+	String url = "web/userpage";
+	
 	userInfoVO = userInfoDao.findNickname(userInfoVO);
-	if (userInfoVO.getUseYn() == 'Y') {
+	if (userInfoVO.getUseYn() != ' ' && userInfoVO.getUseYn() == 'Y') 
+	{
 	    model.addAttribute("userInfoVO", userInfoVO);
-	} else {
-	    model.addAttribute("check", "NF");
+	    
+	    if (session != null && session.getAttribute("loginYn") != null
+	    		&& ((String) session.getAttribute("loginYn")).equals("Y")) {
+	    	    // 로그인은 했는데 자기자신이 아니고
+	    	    if (((String) session.getAttribute("nickname")).equals(userInfoVO.getNickname())) 
+	    	    {
+	    	    	check = "N";
+	    	    	System.out.println("check =" + check);
+	    	    	model.addAttribute("check", check);
+	    	    }
+	    	    // 자기 자신
+	    	    else if (nickname.equals((String) session.getAttribute(nickname))) 
+	    	    {
+	    	    	check = "Y";
+	    	    	System.out.println("check =" + check);
+	    	    	model.addAttribute("check", check);
+	    	    }
+	    	    // 로그인을 안한거
+	    	} 
+	    	else 
+	    	{
+	    		check = "NN";
+	    		System.out.println("check =" + check);
+	    	    model.addAttribute("check", check);
+	    	}
+	} 
+	else 
+	{
+		url = "redirect:/usernotfound";
+		System.out.println("check =" + check);
+	    model.addAttribute("check", check);
 	}
 
-	if (session != null && session.getAttribute("loginYn") != null
-		&& ((String) session.getAttribute("loginYn")).equals("Y")) {
-	    // 로그인은 했는데 자기자신이 아니고
-	    if (null == session.getAttribute(nickname)) {
-		model.addAttribute("check", "N");
-	    }
-	    // 자기 자신
-	    else if (nickname.equals((String) session.getAttribute(nickname))) {
-		model.addAttribute("check", "Y");
-	    }
-	    // 로그인을 안한거
-	} else {
-	    model.addAttribute("check", "NN");
-	}
+	
 
 	// DAO에서 {name}에 해당하는 자료를 갖고오고
 	// model에 addAttr--
-	return "web/userpage";
+	return url;
     }
 
     @RequestMapping(value = "/userpage")
