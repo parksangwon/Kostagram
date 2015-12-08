@@ -14,12 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kostagram.service.beans.ArticleVO;
-import com.kostagram.service.beans.SearchVO;
-import com.kostagram.service.beans.UserInfoVO;
-import com.kostagram.service.dao.PhotoInfoDAO;
-import com.kostagram.service.dao.SearchDAO;
-import com.kostagram.service.dao.UserInfoDAO;
+import com.kostagram.service.beans.*;
+import com.kostagram.service.dao.*;
 
 @Controller
 public class WebController {
@@ -200,22 +196,35 @@ public class WebController {
     
 
     @RequestMapping(value = "/{nickname}")
-    public String userPage(@PathVariable String nickname, HttpSession session) {
-	
+    public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model) {
+    	userInfoVO.setNickname(nickname);
+    	
+    	userInfoVO = userInfoDao.findNickname(userInfoVO);
+    	if(userInfoVO.getUseYn()=='Y')
+    	{
+    		model.addAttribute("userInfoVO",userInfoVO);
+    	}
+    	else
+    	{
+    		model.addAttribute("check", "NF");
+    	}
     	
     	if (session != null && session.getAttribute("loginYn") !=null && ((String)session.getAttribute("loginYn")).equals("Y") ) 
     	{
-    		
+    		//로그인은 했는데 자기자신이 아니고
 	    	if(null == session.getAttribute(nickname) )
 			{
-				
-			}else if(nickname.equals((String)session.getAttribute(nickname)) )
-			{
-				
+	    		model.addAttribute("check", "N");
 			}
+	    	//자기 자신
+	    	else if(nickname.equals((String)session.getAttribute(nickname)) )
+			{
+				model.addAttribute("check", "Y");
+			}
+	    //로그인을 안한거
     	}else
     	{
-    		
+    		model.addAttribute("check", "NN");
     	}
 	   
 	
