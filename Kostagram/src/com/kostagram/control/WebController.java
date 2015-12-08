@@ -201,7 +201,7 @@ public class WebController {
 	String url = "redirect:/usernotfound";
 	
 	userInfoVO = userInfoDao.findNickname(userInfoVO);
-	if(userInfoVO==null || userInfoVO.getUseYn() == 'N' || ((String) session.getAttribute("loginYn")).equals("N"))
+	if(userInfoVO==null || userInfoVO.getUseYn() == 'N')
 	{
 		return url;
 	}
