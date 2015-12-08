@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.kostagram.service.beans.UserInfoVO" %>
 	
 <%
-String nickname = (String)session.getAttribute("nickname");
+	UserInfoVO userInfoVO = (UserInfoVO)request.getAttribute("userInfoVO");
+	String check = request.getParameter("check");
 %>
 	
 <html
@@ -4777,11 +4779,25 @@ transform
 						<div class="-cx-PRIVATE-ProfilePage__usernameAndFollow"
 							data-reactid=".0.1.0.0:0.1.0">
 							<h1 class="-cx-PRIVATE-ProfilePage__username"
-								data-reactid=".0.1.0.0:0.1.0.0"><%=nickname %></h1>
+								data-reactid=".0.1.0.0:0.1.0.0"><%=userInfoVO.getNickname()%></h1>
 							<a class="-cx-PRIVATE-ProfilePage__editProfileLink"
-								href="/accounts/edit/" data-reactid=".0.1.0.0:0.1.0.2"><button
+								href="/accounts/edit/" data-reactid=".0.1.0.0:0.1.0.2">
+							<%
+								if(!check.equals("Y"))
+								{
+							%>
+							
+							<%
+								}
+								else
+								{
+							%>
+								<button
 									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
 									data-reactid=".0.1.0.0:0.1.0.2.0">프로필 편집</button></a>
+							<% 
+								}
+							%>
 						</div>
 						<div class="-cx-PRIVATE-ProfilePage__biography"
 							data-reactid=".0.1.0.0:0.1.1">
