@@ -26,9 +26,7 @@
 				alert("이메일 체크 페이지 입니다.");
 				alert("안녕");
 				$('#emailCheckBtn').click(function() {
-					var idInput = $('#email');
-					//alert("idInput:"+idInput.get(0).id);
-					alert(idInput.val());
+					var idInput = $('[data-role=content] #email');
 					var idValue = trim(idInput.val());
 					var message = $('[data-role=content] #check');
 
@@ -61,7 +59,7 @@
 						},
 						success : function(text) {
 							if (text === "availableEmail") {
-								location.href = "usercheck";
+								$.mobile.changePage("usercheck");
 								// joinForm.submit();
 							} else if (text === "existedEmail") {
 								message.text("사용할 수 없는 이메일 입니다.");
