@@ -19,6 +19,7 @@
 <script type="text/javascript">
 	$(function() {
 		$("[data-role=page]").live("pageshow", function(event) {
+			// emailcheck 시작
 			if (this.id == "loginform") {
 			}
 			else if (this.id == "emailCheck" ) {
@@ -65,6 +66,8 @@
 					});
 				});
 			}
+			// emailcheck 끝
+			// usercheck 시작
 			else if (this.id == "userCheck" ) {
 				$('#joinbutton').click(function() {
 					var idInput = $('[data-role=content] #email');
@@ -132,7 +135,7 @@
 						success : function(text) {
 							if (text === "joinSuccess") {
 								alert("성공적으로 가입되었습니다. 로그인 페이지로 이동합니다.");
-								location.href = "/Kostagram/m/";
+								$.mobile.changePage("/Kostagram/m/");
 							} else if (text === "existedEmail") {
 								message.text("사용할 수 없는 이메일 입니다.");
 							} else if (text === "existedNickname") {
@@ -147,7 +150,37 @@
 					});
 				});
 			}
+			// usercheck 끝
+			// mynews 시작
+			else if (this.id == "following") {
+				var followingPage = $("following");
+				var mynewsPage = $("mynews");
+				$('#followingButton').click(function() {
+					alert("눌림");
+					$.mobile.changePage(followingPage);
+				});
+				
+				$('#mynewsButton').click(function() {
+					alert("눌림");
+					$.mobile.changePage(mynewsPage);
+				});
+				/*
+				function following(){
+					$.mobile.changePage("./m/mynews#following");
+				}
+				
+				function mynews(){
+					$.mobile.changePage("./m/mynews#mynews");
+				}*/
+			}
+			// mynews 끝
+			// timeline 시작
+			else if (this.id == "timeline") {
+
+			}
+			// timeline 끝
 		});
+		
 		$('#loginBtn').click(function() {
 			var idInput = $('input:text[name=nickname]');
 			var idValue = trim(idInput.val());
@@ -180,7 +213,7 @@
 				},
 				success : function(text) {
 					if (text === "loginSuccess") {
-						location.href = "/Kostagram/m"
+						$.mobile.changePage("/Kostagram/m");
 					} else if (text === "loginFail") {
 						message.text("사용자의 이름과 비밀번호가 정확하지 않습니다.");
 					}
