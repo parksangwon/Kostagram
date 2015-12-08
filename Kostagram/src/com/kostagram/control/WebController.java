@@ -197,25 +197,29 @@ public class WebController {
     @RequestMapping(value = "/{nickname}")
     public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model) {
 	userInfoVO.setNickname(nickname);
-	String check = "NF";
-	String url = "web/userpage";
+	String check = "N";
+	String url = "redirect:/usernotfound";
 	
 	userInfoVO = userInfoDao.findNickname(userInfoVO);
-	if (userInfoVO.getUseYn() != ' ' && userInfoVO.getUseYn() == 'Y') 
+	if(userInfoVO==null || userInfoVO.getUseYn() == 'N')
 	{
+		return url;
+	}
+	
 	    model.addAttribute("userInfoVO", userInfoVO);
 	    
 	    if (session != null && session.getAttribute("loginYn") != null
-	    		&& ((String) session.getAttribute("loginYn")).equals("Y")) {
+	    		&& ((String) session.getAttribute("loginYn")).equals("Y")) 
+	    	{
 	    	    // 로그인은 했는데 자기자신이 아니고
-	    	    if (((String) session.getAttribute("nickname")).equals(userInfoVO.getNickname())) 
+	    	    if (((String) session.getAttribute("nickname")).equals(nickname)) 
 	    	    {
 	    	    	check = "N";
 	    	    	System.out.println("check =" + check);
 	    	    	model.addAttribute("check", check);
 	    	    }
 	    	    // 자기 자신
-	    	    else if (nickname.equals((String) session.getAttribute(nickname))) 
+	    	    else if (nickname.equals((String) session.getAttribute("nickname"))) 
 	    	    {
 	    	    	check = "Y";
 	    	    	System.out.println("check =" + check);
@@ -229,19 +233,7 @@ public class WebController {
 	    		System.out.println("check =" + check);
 	    	    model.addAttribute("check", check);
 	    	}
-	} 
-	else 
-	{
-		url = "redirect:/usernotfound";
-		System.out.println("check =" + check);
-	    model.addAttribute("check", check);
-	}
-
-	
-
-	// DAO에서 {name}에 해당하는 자료를 갖고오고
-	// model에 addAttr--
-	return url;
+	    return "web/userpage";
     }
 
     @RequestMapping(value = "/userpage")
