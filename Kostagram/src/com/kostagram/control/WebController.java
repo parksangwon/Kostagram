@@ -248,6 +248,11 @@ public class WebController {
     public String userPage() {
 	return "web/userpage";
     }
+    
+    @RequestMapping(value = "/usernotfound")
+    public String userNotfound() {
+	return "web/usernotfound";
+    }
 
     @RequestMapping("/logout") // ·Î±×¾Æ¿ô
     public String logout(HttpSession session) {
