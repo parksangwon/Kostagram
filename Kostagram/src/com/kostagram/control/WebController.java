@@ -201,7 +201,7 @@ public class WebController {
 	String url = "redirect:/usernotfound";
 	
 	userInfoVO = userInfoDao.findNickname(userInfoVO);
-	if(userInfoVO==null || userInfoVO.getUseYn() == 'N')
+	if(userInfoVO==null || userInfoVO.getUseYn() == 'N' || ((String) session.getAttribute("loginYn")).equals("N"))
 	{
 		return url;
 	}
@@ -211,28 +211,20 @@ public class WebController {
 	    if (session != null && session.getAttribute("loginYn") != null
 	    		&& ((String) session.getAttribute("loginYn")).equals("Y")) 
 	    	{
-	    	    // 로그인은 했는데 자기자신이 아니고
+	    	    // 자기자신 
 	    	    if (((String) session.getAttribute("nickname")).equals(nickname)) 
 	    	    {
-	    	    	check = "N";
-	    	    	System.out.println("check =" + check);
+	    	    	check = "Y";
 	    	    	model.addAttribute("check", check);
 	    	    }
-	    	    // 자기 자신
-	    	    else if (nickname.equals((String) session.getAttribute("nickname"))) 
+	    	    // 로그인은 했는데 자기자신이 아니고
+	    	    else 
 	    	    {
-	    	    	check = "Y";
-	    	    	System.out.println("check =" + check);
+	    	    	check = "N";
 	    	    	model.addAttribute("check", check);
 	    	    }
 	    	    // 로그인을 안한거
 	    	} 
-	    	else 
-	    	{
-	    		check = "NN";
-	    		System.out.println("check =" + check);
-	    	    model.addAttribute("check", check);
-	    	}
 	    return "web/userpage";
     }
 
