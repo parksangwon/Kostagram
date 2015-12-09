@@ -8,7 +8,9 @@
 	</insert>
 
 	<update id="update" parameterType="com.kostagram.service.beans.UserInfoVO">
-		
+		UPDATE MEMBER
+		SET NAME = #{name}, EMAIL = #{email}, NICKNAME = #{nickname}, MOBILE = #{mobile}, GENDER = #{gender}, MESSAGE = #{message}
+		WHERE NICKNAME = #{nickname}
 	</update>
 
 	<select id="findEmail" parameterType="com.kostagram.service.beans.UserInfoVO"
