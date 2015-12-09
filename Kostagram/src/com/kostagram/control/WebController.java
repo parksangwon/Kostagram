@@ -128,11 +128,12 @@ public class WebController {
     public String profileEdit(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest reqeuest, Model model) {
 	String method = reqeuest.getMethod();
 	if (method.equals("POST")) {
-	    boolean result = userInfoDao.update(userInfoVO);
+		boolean result = userInfoDao.update(userInfoVO);
 	    if (result) {
 		model.addAttribute("send", "성공적으로 업데이트 되었습니다.");
 	    } else {
 		model.addAttribute("send", "업데이트하는 도중 에러가 발생하였습니다.");
+		
 	    }
 	}
 	String nickname = (String) session.getAttribute("nickname");
