@@ -63,4 +63,9 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 	List<PhotoInfoVO> selectList = sqlSession.selectList("photoInfo.selectList", user);
 	return selectList;
     }
+
+    @Override
+    public List<PhotoInfoVO> getMyPhotoList(UserInfoVO user) {
+	return sqlSession.selectList("photoInfo.getMyPhotoList", user);
+    }
 }

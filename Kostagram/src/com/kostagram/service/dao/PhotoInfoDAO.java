@@ -13,4 +13,5 @@ public interface PhotoInfoDAO {
 	public boolean delete(PhotoInfoVO photo);
 	public ArrayList<ArticleVO> getTimeline(UserInfoVO user);
 	public List<PhotoInfoVO> selectList(UserInfoVO user);
+	public List<PhotoInfoVO> getMyPhotoList(UserInfoVO user);
 }
