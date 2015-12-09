@@ -244,7 +244,7 @@
     <h1>프로필 편집</h1>
     </header>
     <%	
-    	if(request.getParameter("send")!=null)
+    	if(request.getAttribute("send")!=null)
     	{
     %>
 	    <div id="alerts" class="alerts">
@@ -260,7 +260,7 @@
 
 
     
-<form  method="POST" accept-charset="utf-8" class="adjacent bordered" action="">
+<form  method="POST" accept-charset="utf-8" class="adjacent bordered" action="/Kostagram/profileupdate">
 
 
    
