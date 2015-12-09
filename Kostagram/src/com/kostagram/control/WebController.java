@@ -124,11 +124,11 @@ public class WebController {
 	return "pwupdate";
     }
 
-    @RequestMapping(value = "/accounts/profileupdate/")
-    public String profileEdit(UserInfoVO vo, HttpSession session, HttpServletRequest reqeuest, Model model) {
+    @RequestMapping(value = "/profileupdate")
+    public String profileEdit(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest reqeuest, Model model) {
 	String method = reqeuest.getMethod();
 	if (method.equals("POST")) {
-	    boolean result = userInfoDao.update(vo);
+	    boolean result = userInfoDao.update(userInfoVO);
 	    if (result) {
 		model.addAttribute("message", "성공적으로 업데이트 되었습니다.");
 	    } else {
@@ -136,10 +136,11 @@ public class WebController {
 	    }
 	}
 	String nickname = (String) session.getAttribute("nickname");
-	UserInfoVO userinfo = userInfoDao.findNickname(new UserInfoVO(nickname));
+	userInfoVO.setNickname(nickname);
+	UserInfoVO userinfo = userInfoDao.findNickname(userInfoVO);
 	model.addAttribute("userinfo", userinfo);
 
-	return "profileupdate";
+	return "common/profileupdate";
     }
 
     @RequestMapping("/searchWordAutoComplete/")
@@ -184,15 +185,6 @@ public class WebController {
 	return "web/search_result";
     }
 
-    @RequestMapping(value = "/profileupdate")
-    public String profileupdate() {
-	return "common/profileupdate";
-    }
-
-    @RequestMapping(value = "/pwupdate")
-    public String pwupdate() {
-	return "common/pwupdate";
-    }
 
     @RequestMapping(value = "/{nickname}")
     public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model) {
