@@ -10,6 +10,16 @@ public class UserInfoVO {
 	private String mobile;
 	private String message;
 	private String profile_img;
+	private String gender;
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	private char adminYn;
 	private char useYn;
 	private Date join_date;
@@ -146,7 +156,7 @@ public class UserInfoVO {
 	public String toString() {
 		return "UserInfoVO [email=" + email + ", name=" + name + ", nickname=" + nickname + ", pass=" + pass
 				+ ", mobile=" + mobile + ", message=" + message + ", profile_img=" + profile_img + ", adminYn="
-				+ adminYn + ", useYn=" + useYn + ", join_date=" + join_date + ", upd_date=" + upd_date + "]";
+				+ adminYn + ", useYn=" + useYn + ", join_date=" + join_date + ", upd_date=" + upd_date + ",gender=" + gender + "]";
 	}
 
 }
