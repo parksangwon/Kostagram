@@ -14,13 +14,19 @@
 <body>
 	<div>
 		<div data-role="header" data-theme="b">
-			<table>
+			<table width="100%">
 				<tr>
-					<td><a href="#" data-rel="back"><img
-							src="./image/icon/back.png" width="20"
-							style="padding-left: 10px;" /></a> <span
+					<td width="95%"><a href="#" data-rel="back"><image
+								src="./image/icon/back.png" width="20"
+								style="padding-left:10px;" /></a> <span
 						style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
-							프로필 수정 </span></td>
+							프로필 수정 </span>
+					</td>
+					<td width="5%" align="right">
+						<a href="#" data-rel="back"><image
+								src="./image/icon/tick.png" width="20"
+								style="padding-left:10px;" /></a>
+					</td>
 				</tr>
 			</table>
 		</div>
