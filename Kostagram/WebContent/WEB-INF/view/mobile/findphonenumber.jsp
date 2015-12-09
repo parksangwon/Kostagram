@@ -15,10 +15,21 @@
 	<div id="loginform" data-role="page" data-theme="e">
 
 		<div data-role="header" data-theme="b">
-			<h2>연락처 찾기</h2>
-			<a data-icon="check" class="ui-btn-right" data-iconpos="notext"></a>
-			<a href="./option" data-icon="delete" class="ui-btn-left"
-				data-iconpos="notext"></a>
+			<table width="100%">
+				<tr>
+					<td width="95%"><a href="#" data-rel="back"><image
+								src="./image/icon/back.png" width="20"
+								style="padding-left:10px;" /></a> <span
+						style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
+							연락처찾기 </span>
+					</td>
+					<td width="5%" align="right">
+						<a href="#" data-rel="back"><image
+								src="./image/icon/tick.png" width="20"
+								style="padding-left:10px;" /></a>
+					</td>
+				</tr>
+			</table>
 		</div>
 
 		<center>
