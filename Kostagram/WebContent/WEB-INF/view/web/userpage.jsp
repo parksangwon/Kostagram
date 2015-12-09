@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.kostagram.service.beans.UserInfoVO" %>
+<%@ page import="java.util.*" %>
 	
 <%
+	ArrayList articleList = (ArrayList)request.getAttribute("articleList");
 	UserInfoVO userInfoVO = (UserInfoVO)request.getAttribute("userInfoVO");
-	String check = request.getParameter("check");
+	String check = (String)request.getAttribute("check");
 %>
 	
 <html
@@ -1462,6 +1464,11 @@ transform
 
 .-cx-PRIVATE-IGButton__neutral {
 	border-color: #818488;
+	color: #818488
+}
+
+.-cx-PRIVATE-IGButton__neutral1 {
+	border-color: blue;
 	color: #818488
 }
 
@@ -4754,12 +4761,13 @@ transform
 	}
 }
 </style>
+
 <script
 	type="text/javascript" charset="utf-8" async=""></script>
 </head>
 <body>
 
-
+	<jsp:include page="userpageTop.jsp" flush="true" />
 
 	<span id="react-root" aria-hidden="false"><section
 			class="-cx-PRIVATE-Shell__main" data-reactid=".0">
@@ -4770,7 +4778,7 @@ transform
 					data-reactid=".0.1.0.0:0">
 					<div class="-cx-PRIVATE-ProfilePage__avatarWrapper"
 						data-reactid=".0.1.0.0:0.0">
-						<img class="-cx-PRIVATE-ProfilePage__avatar"
+						<img src="img/web/1.PNG"class="-cx-PRIVATE-ProfilePage__avatar"
 							
 							data-reactid=".0.1.0.0:0.0.0">
 					</div>
@@ -4780,12 +4788,31 @@ transform
 							data-reactid=".0.1.0.0:0.1.0">
 							<h1 class="-cx-PRIVATE-ProfilePage__username"
 								data-reactid=".0.1.0.0:0.1.0.0"><%=userInfoVO.getNickname()%></h1>
-							<a class="-cx-PRIVATE-ProfilePage__editProfileLink"
-								href="/Kostagram/profileupdate" data-reactid=".0.1.0.0:0.1.0.2">
 							
-								<button
+								<% 	
+					
+									if(check=="Y")
+									{
+								%>	
+								
+								<a class="-cx-PRIVATE-ProfilePage__editProfileLink"
+								href="/Kostagram/profileupdate" data-reactid=".0.1.0.0:0.1.0.2">		
+									<button
 									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
-									data-reactid=".0.1.0.0:0.1.0.2.0">프로필 편집</button></a>
+									data-reactid=".0.1.0.0:0.1.0.2.0" >프로필 편집</button></a>
+					
+								<%
+								  	}
+									else
+								  	{
+								%>
+								&nbsp;&nbsp;<button
+									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
+									data-reactid=".0.1.0.0:0.1.0.2.0" style="color: blue">팔로우</button>
+								<% 	
+									}
+								%>
+								
 							
 						</div>
 						<div class="-cx-PRIVATE-ProfilePage__biography"
@@ -4794,7 +4821,7 @@ transform
 								data-reactid=".0.1.0.0:0.1.1.0"></h2>
 							<span data-reactid=".0.1.0.0:0.1.1.1"> </span><span
 								data-reactid=".0.1.0.0:0.1.1.2"><span
-								data-reactid=".0.1.0.0:0.1.1.2.0">상태메세지</span></span><span
+								data-reactid=".0.1.0.0:0.1.1.2.0"><%=userInfoVO.getMessage()%></span></span><span
 								data-reactid=".0.1.0.0:0.1.1.3"> </span>
 						</div>
 						<ul class="-cx-PRIVATE-ProfilePage__statistics"
@@ -4827,14 +4854,31 @@ transform
 					<div data-reactid=".0.1.0.1:$mostRecentSection/=10">
 					<div class="-cx-PRIVATE-PostsGrid__root"
 						data-reactid=".0.1.0.1:$mostRecentSection/=10.0">
+						
+						
+						
 						<div class="-cx-PRIVATE-PostsGrid__row"
 							data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0">
+							
 							<a
 								class="-cx-PRIVATE-PostsGridItem__root -cx-PRIVATE-PostsGrid__item"
-								href="/p/9-gVz8Hbv-/?taken-by=jungwoo91_1"
-								data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134"><div
+								href=""
+								data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134">
+								<div
 									class="-cx-PRIVATE-Photo__root"
 									data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0">
+									
+									<%
+										if (articleList == null || articleList.size() == 0 ) {
+											
+									%>
+											<div style="min-height:300"><center>표시할 사진이 없습니다.</center></div>
+									<%	
+										} else {
+											for ( int i = 0; i < articleList.size(); i++ ) {
+									%>
+									
+									
 									<div class="-cx-PRIVATE-Photo__placeholder"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.0">
 
@@ -4843,7 +4887,7 @@ transform
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.2"></div>
 								</div></a><a
 								class="-cx-PRIVATE-PostsGridItem__root -cx-PRIVATE-PostsGrid__item"
-								href="/p/2fmFfbnbmD/?taken-by=jungwoo91_1"
+								href=""
 								data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$981670746904181123"><div
 									class="-cx-PRIVATE-Photo__root"
 									data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$981670746904181123.0">
@@ -4858,7 +4902,7 @@ transform
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$981670746904181123.0.2"></div>
 								</div></a><a
 								class="-cx-PRIVATE-PostsGridItem__root -cx-PRIVATE-PostsGrid__item"
-								href="/p/0aGkJ7nbvp/?taken-by=jungwoo91_1"
+								href=""
 								data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$944095944731638761"><div
 									class="-cx-PRIVATE-Photo__root"
 									data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$944095944731638761.0">
@@ -4874,12 +4918,18 @@ transform
 								</div></a>
 						</div>
 						
+					<%
+							}
+						}
+					%>
+						
 				</div>
 				
 				
 			</article>
+			
+
 			</main>
-			<jsp:include page="userpageTop.jsp" flush="true" />
 			<noscript data-reactid=".0.4"></noscript>
 		</section></span>
 
@@ -4888,28 +4938,8 @@ transform
 
 
 
-	<noscript></noscript>
 
 
 
-
-	<div class=" fb_reset" id="fb-root">
-		<div
-			style="top: -10000px; width: 0px; height: 0px; position: absolute;">
-			<div>
-				<iframe name="fb_xdm_frame_https" tabindex="-1"
-					title="Facebook Cross Domain Communication Frame"
-					id="fb_xdm_frame_https" aria-hidden="true"
-					
-					frameborder="0" scrolling="no" allowfullscreen="true"
-					style="border: currentColor; border-image: none;"
-					allowtransparency="true"></iframe>
-			</div>
-		</div>
-		<div
-			style="top: -10000px; width: 0px; height: 0px; position: absolute;">
-			<div></div>
-		</div>
-	</div>
 </body>
 </html>
