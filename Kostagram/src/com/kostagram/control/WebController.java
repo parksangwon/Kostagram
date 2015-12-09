@@ -125,13 +125,11 @@ public class WebController {
     }
 
     @RequestMapping(value = "/profileupdate")
-    public String profileEdit(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest reqeuest, Model model) {
+    public String profileEdit(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest request, Model model) {
     	String nickname = (String) session.getAttribute("nickname");
     	userInfoVO.setUpdatenickname(nickname);
     	
-    
-    	
-    	String method = reqeuest.getMethod();
+    	String method = request.getMethod();
 		if (method.equals("POST")) 
 		{
 			boolean result = userInfoDao.update(userInfoVO);
