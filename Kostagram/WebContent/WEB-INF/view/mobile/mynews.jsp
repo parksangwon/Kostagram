@@ -29,8 +29,8 @@
 			<div>
 				<table width="100%">
 					<tr>
-						<td align="center"><a href="/Kostagram/m/following" data-transition="fade">팔로잉</a></td>
-						<td align="center"><a href="/Kostagram/m/mynews" data-transition="fade">내게시물</a></td>
+						<td align="center"><a href="/Kostagram/m/following" data-transition="fade" style="text-decoration: none;">팔로잉</a></td>
+						<td align="center"><a href="/Kostagram/m/mynews" data-transition="fade" style="text-decoration: none;">내게시물</a></td>
 					</tr>
 				</table>
 			</div>
@@ -46,21 +46,17 @@
 					if (newsList != null && newsList.size() >= 0) {
 						for (int i = 0; i < newsList.size(); i++) {
 				%>
-				<table width="100%">
+				<br>
+				<table width="100%" cellpadding="2" cellspacing="0">
 					<tr>
-						<td align="center"><a href="./detail"><img
-									src="./image/test.jpg" width="40"
-									style="-webkit-border-radius: 100px; 
-										border-radius: 100px;" /></a>
-							<a href="#"
-							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">성경쓰</a>
-							님이 회원님의 사진에 댓글을 남겼습니다. <a href="./detail"><img
-									src="./image/park.jpg" width="40" /></a></td>
+						<td align="left" width="15%"><a href="./detail"><img src="./image/test.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a></td>
+						<td width="70%"><a href="#"style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">성경쓰</a>님이 회원님의 사진에 댓글을 남겼습니다.</td>
+						<td align="right" width="15%"><a href="./detail"><img	src="./image/park.jpg" width="40" /></a></td>
 					</tr>
 				</table>
-				<hr>
+				<img src="./image/line.png" width="100%">
 				<%
-					}
+						}
 					} else {
 				%>
 				<div>활동 내역이 없습니다.</div>
