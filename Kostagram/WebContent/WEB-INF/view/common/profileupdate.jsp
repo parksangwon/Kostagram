@@ -6,8 +6,8 @@
 <%
 	UserInfoVO user = (UserInfoVO)request.getAttribute("userinfo");
 	
-	String gender = request.getParameter("gender"); 
-	if(request.getParameter("gender")==null){
+	String gender = user.getGender(); 
+	if(gender == null){
 		gender = "3";
 	}
 %>
@@ -19,16 +19,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <title>프로필 편집 &bull; Kostagram</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 		<script type="text/javascript">
-				<%
-					if(session.getAttribute("nickname")==null)
-					{
-				%>
-					
-				<%
-					}
-				%>			
+			
 			  WebFontConfig = {
 			    custom: {
 			      families: ['proxima-nova:n3,n4,n6,n7'],
@@ -244,7 +238,7 @@
     <h1>프로필 편집</h1>
     </header>
     <%	
-    	if(request.getAttribute("send")!=null)
+    	if(session.getAttribute("send")!=null)
     	{
     %>
 	    <div id="alerts" class="alerts">
@@ -287,9 +281,9 @@
     <p name="gender_section" class="form-select">
         <label for="gender">성별</label>
         <span><select name="gender" id="gender">
-		<option value="3" "<%if(gender.equals("3")){%>selected=selected<%}%>">--------</option>
-		<option value="1" "<%if(gender.equals("1")){%>selected=selected<%}%>">남성</option>
-		<option value="2" "<%if(gender.equals("2")){%>selected=selected<%}%>">여성</option>
+		<option value="3"<%if(gender.equals("3")){%>selected="selected"<%}%>>--------</option>
+		<option value="1"<%if(gender.equals("1")){%>selected="selected"<%}%>>남성</option>
+		<option value="2"<%if(gender.equals("2")){%>selected="selected"<%}%>>여성</option>
 		</select></span>
     </p>
     
@@ -303,7 +297,7 @@
 
 </form>
 
-
+<% session.removeAttribute("send"); %>
    
 
             </section>
