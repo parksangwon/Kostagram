@@ -181,22 +181,6 @@ public class MobileController {
 
 	}
 
-	// 포토리스트 (회원정보에 있음)
-	@RequestMapping("/photolist")
-	public String photolist(HttpServletRequest request, HttpSession session, Model model) {
-
-		if (session == null || session.getAttribute("email") == null || session.getAttribute("loginYn") == null
-				|| session.getAttribute("loginYn").equals("N")) {
-			return "mobile/login";
-		}
-		String email = (String) session.getAttribute("email");
-		List<ArticleVO> photoList = photoInfoDao.getTimeline(new UserInfoVO(email));
-		model.addAttribute("photoList", photoList);
-
-		return "mobile/photolist";
-
-	}
-
 	// 비밀번호 변경 페이지 가기
 	@RequestMapping("/pwupdate")
 	public String pwupdate(HttpServletRequest request, HttpSession session, Model model) {
