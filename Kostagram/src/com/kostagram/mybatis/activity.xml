@@ -6,6 +6,6 @@
 	</insert>
 	
 	<select id="selectList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="com.kostagram.service.beans.ActivityVO">
-		select * from activity_log where to_email = #{to_email} and <!-- [CDATA[rownum <= 30]] -->
+		select * from activity_log where to_email = #{email} and <![CDATA[rownum <= 30]]>
 	</select>
 </mapper>
