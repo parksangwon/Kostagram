@@ -242,9 +242,18 @@ public class MobileController {
     }
 
     @RequestMapping("/profileupdate")
-    public String profileupdate() {
-	return "mobile/profileupdate";
-    }
+	public String profileupdate(HttpSession session, UserInfoVO userInfoVO, Model model) {
+		//session¿¡¼­ nicknameÀ» ¹Þ¾Æ DB °¬´Ù¿È
+		String nickname = (String) session.getAttribute("nickname");
+		userInfoVO.setNickname(nickname);
+		//findNickname ¸Þ¼Òµå ½ÇÇà
+		UserInfoVO userinfo = userInfoDao.findNickname(userInfoVO);
+		
+		//profileupdate.jsp·Î userinfo Á¤º¸ º¸³¿
+		model.addAttribute("userinfo", userinfo);
+		System.out.println("controller²¨ userinfo= " + userinfo);
+		return "mobile/profileupdate";
+	}
 
     @RequestMapping("/option")
     public String option() {
