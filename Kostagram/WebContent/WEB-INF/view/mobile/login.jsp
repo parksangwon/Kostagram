@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	String email = (String) session.getAttribute("email");
-	System.out.println("로그잉 jsp " + email);
+    String email = (String) session.getAttribute("email");
+			System.out.println("로그잉 jsp " + email);
 %>
 <html>
 <head>
@@ -18,140 +18,183 @@
 	type="text/css" />
 <script type="text/javascript">
 	$(function() {
-		$("[data-role=page]").live("pageshow", function(event) {
-			// emailcheck 시작
-			if (this.id == "loginform") {
-			}
-			else if (this.id == "emailCheck" ) {
-				$('#emailCheckBtn').click(function() {
-					var idInput = $('[data-role=content] #email');
-					var idValue = trim(idInput.val());
-					var message = $('[data-role=content] #check');
+		$("[data-role=page]")
+				.live(
+						"pageshow",
+						function(event) {
+							// emailcheck 시작
+							if (this.id == "loginform") {
+							} else if (this.id == "emailCheck") {
+								$('#emailCheckBtn')
+										.click(
+												function() {
+													var idInput = $('[data-role=content] #email');
+													var idValue = trim(idInput
+															.val());
+													var message = $('[data-role=content] #check');
 
-					if (idValue === "") {
-						message.text("E-mail ID를 입력하세요.");
-						idInput.select();
-						return false;
-					}
-					if (idValue !== "") {
-						if (isEmailChar(idValue)) {
-							message.text("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
-							idInput.select();
-							return false;
-						} else if (idValue.indexOf("@") == -1 || idValue.indexOf(".") == -1
-								|| idValue.indexOf(".") < idValue.indexOf("@")
-								|| isNum(idValue.charAt(0))) {
-							message.text("E-mail ID를 확인 하세요.");
-							idInput.select();
-							return false;
-						}
-					}
-					$.ajax({
-						type : 'POST',
-						url : 'validationEmail',
-						dataType : 'text',
-						data : {
-							email : idValue
-						},
-						success : function(text) {
-							if (text === "availableEmail") {
-								$.mobile.changePage("usercheck");
-							} else if (text === "existedEmail") {
-								message.text("사용할 수 없는 이메일 입니다.");
+													if (idValue === "") {
+														message
+																.text("E-mail ID를 입력하세요.");
+														idInput.select();
+														return false;
+													}
+													if (idValue !== "") {
+														if (isEmailChar(idValue)) {
+															message
+																	.text("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
+															idInput.select();
+															return false;
+														} else if (idValue
+																.indexOf("@") == -1
+																|| idValue
+																		.indexOf(".") == -1
+																|| idValue
+																		.indexOf(".") < idValue
+																		.indexOf("@")
+																|| isNum(idValue
+																		.charAt(0))) {
+															message
+																	.text("E-mail ID를 확인 하세요.");
+															idInput.select();
+															return false;
+														}
+													}
+													$
+															.ajax({
+																type : 'POST',
+																url : 'validationEmail',
+																dataType : 'text',
+																data : {
+																	email : idValue
+																},
+																success : function(
+																		text) {
+																	if (text === "availableEmail") {
+																		$.mobile
+																				.changePage("usercheck");
+																	} else if (text === "existedEmail") {
+																		message
+																				.text("사용할 수 없는 이메일 입니다.");
+																	}
+																},
+																error : function() {
+																	alert("error");
+																}
+															});
+												});
 							}
-						},
-						error : function() {
-							alert("error");
-						}
-					});
-				});
-			}
-			// emailcheck 끝
-			// usercheck 시작
-			else if (this.id == "userCheck" ) {
-				$('#joinbutton').click(function() {
-					var idInput = $('[data-role=content] #email');
-					var idValue = trim(idInput.val());
-					var message = $('[data-role=content] #check');
+							// emailcheck 끝
+							// usercheck 시작
+							else if (this.id == "userCheck") {
+								$('#joinbutton')
+										.click(
+												function() {
+													var idInput = $('[data-role=content] #email');
+													var idValue = trim(idInput
+															.val());
+													var message = $('[data-role=content] #check');
 
-					if (idValue === "") {
-						message.text("E-mail ID를 입력하세요.");
-						idInput.select();
-						return false;
-					} else if (idValue !== "") {
-						if (isEmailChar(idValue)) {
-							message.text("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
-							idInput.select();
-							return false;
-						} else if (idValue.indexOf("@") == -1
-								|| idValue.indexOf(".") == -1
-								|| idValue.indexOf(".") < idValue
-										.indexOf("@")
-								|| isNum(idValue.charAt(0))) {
-							message.text("E-mail ID를 확인 하세요.");
-							idInput.select();
-							return false;
-						}
-					}
-					var idInputName = $('[data-role=content] #name');
-					var idValueName = trim(idInputName.val());
+													if (idValue === "") {
+														message
+																.text("E-mail ID를 입력하세요.");
+														idInput.select();
+														return false;
+													} else if (idValue !== "") {
+														if (isEmailChar(idValue)) {
+															message
+																	.text("E-mail ID 에는 영문 소문자와 숫자, '@', '.' 만이 입력가능합니다.");
+															idInput.select();
+															return false;
+														} else if (idValue
+																.indexOf("@") == -1
+																|| idValue
+																		.indexOf(".") == -1
+																|| idValue
+																		.indexOf(".") < idValue
+																		.indexOf("@")
+																|| isNum(idValue
+																		.charAt(0))) {
+															message
+																	.text("E-mail ID를 확인 하세요.");
+															idInput.select();
+															return false;
+														}
+													}
+													var idInputName = $('[data-role=content] #name');
+													var idValueName = trim(idInputName
+															.val());
 
-					if (idValueName === "") {
-						message.text("이름을 입력해 주세요.");
-						idInputName.select();
-						return false;
-					}
+													if (idValueName === "") {
+														message
+																.text("이름을 입력해 주세요.");
+														idInputName.select();
+														return false;
+													}
 
-					var idInputNickName = $('[data-role=content] #usercheck_nickname');
-					var idValueNickName = trim(idInputNickName.val());
-					if (idValueNickName === "") {
-						message.text("사용자이름(닉네임) 을 입력해 주세요.");
-						idInputNickName.select();
-						return false;
-					}
+													var idInputNickName = $('[data-role=content] #usercheck_nickname');
+													var idValueNickName = trim(idInputNickName
+															.val());
+													if (idValueNickName === "") {
+														message
+																.text("사용자이름(닉네임) 을 입력해 주세요.");
+														idInputNickName
+																.select();
+														return false;
+													}
 
-					var pass = $('[data-role=content] #usercheck_pass');
-					if (pass.val() == "") {
-						message.text("비밀번호를 반드시 입력해야 합니다.");
-						pass.focus();
-						return false;
-					}
-					if (pass.val().length < 4 || pass.val().length > 20) {
-						message.text("비밀번호를 4자 이상 20자 이하 입니다.");
-						pass.select();
-						return false;
-					}
+													var pass = $('[data-role=content] #usercheck_pass');
+													if (pass.val() == "") {
+														message
+																.text("비밀번호를 반드시 입력해야 합니다.");
+														pass.focus();
+														return false;
+													}
+													if (pass.val().length < 4
+															|| pass.val().length > 20) {
+														message
+																.text("비밀번호를 4자 이상 20자 이하 입니다.");
+														pass.select();
+														return false;
+													}
 
-					$.ajax({
-						type : 'POST',
-						url : 'validationNickname',
-						dataType : 'text',
-						data : {
-							email : idValue,
-							name : idValueName,
-							nickname : idValueNickName,
-							pass : pass.val()
-						},
-						success : function(text) {
-							if (text === "joinSuccess") {
-								alert("성공적으로 가입되었습니다. 로그인 페이지로 이동합니다.");
-								$.mobile.changePage("/Kostagram/m/");
-							} else if (text === "existedEmail") {
-								message.text("사용할 수 없는 이메일 입니다.");
-							} else if (text === "existedNickname") {
-								message.text("사용할 수 없는 닉네임 입니다.");
-							} else if (text === "DBerror") {
-								message.text("DB error");
+													$
+															.ajax({
+																type : 'POST',
+																url : 'validationNickname',
+																dataType : 'text',
+																data : {
+																	email : idValue,
+																	name : idValueName,
+																	nickname : idValueNickName,
+																	pass : pass
+																			.val()
+																},
+																success : function(
+																		text) {
+																	if (text === "joinSuccess") {
+																		alert("성공적으로 가입되었습니다. 로그인 페이지로 이동합니다.");
+																		$.mobile
+																				.changePage("/Kostagram/m/");
+																	} else if (text === "existedEmail") {
+																		message
+																				.text("사용할 수 없는 이메일 입니다.");
+																	} else if (text === "existedNickname") {
+																		message
+																				.text("사용할 수 없는 닉네임 입니다.");
+																	} else if (text === "DBerror") {
+																		message
+																				.text("DB error");
+																	}
+																},
+																error : function() {
+																	alert("error");
+																}
+															});
+												});
 							}
-						},
-						error : function() {
-							alert("error");
-						}
-					});
-				});
-			}
-			// usercheck 끝
-		});
+							// usercheck 끝
+						});
 		// login 시작
 		$('#loginBtn').click(function() {
 			var idInput = $('input:text[name=nickname]');
@@ -198,12 +241,40 @@
 		// login 끝
 	});
 </script>
+<style>
+.myPhotoListByGrid {
+	padding: 0.0em;
+	overflow: hidden;
+}
+
+.myPhotoListByGrid li {
+	float: left;
+	width: 33%;
+	padding-bottom: 0.2em;
+}
+
+.myPhotoListByGrid img {
+	max-width: 100%;
+	display: block;
+}
+
+.myPhotoListByGrid li:nth-child(3n+1) {
+	clear: left;
+}
+.myPhotoListByGrid li:nth-child(odd) {
+	clear: none;
+}
+.myPhotoListByGrid li:nth-child(3n+2) {
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+}
+
+</style>
 </head>
 <body>
 	<div id="loginform" data-role="page" data-theme="e">
 		<div align="center">
-			<br>
-			<img src="./image/banner.png" width="200" />
+			<br> <img src="./image/banner.png" width="200" />
 		</div>
 
 		<div data-role="content">
@@ -211,9 +282,8 @@
 				<div align="center">
 					<input id="nickname" type="text" name="nickname"
 						placeholder="사용자 이름" /> <br> <input id="pass"
-						type="password" name="pass" placeholder="비밀번호" /> <br>
-						<input id="loginBtn" type="button" value="로그인" data-inline="true" />
-					<br>
+						type="password" name="pass" placeholder="비밀번호" /> <br> <input
+						id="loginBtn" type="button" value="로그인" data-inline="true" /> <br>
 					<p align="center" id="check" style="color: red"></p>
 				</div>
 			</form>
