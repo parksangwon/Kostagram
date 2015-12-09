@@ -304,9 +304,21 @@ public class MobileController {
 		return "mobile/userpage";
 	}
 
-	@RequestMapping("/search")
-	public String search() {
-		return "mobile/search";
+	@RequestMapping("/search_home")
+	public String search_home() {
+		return "mobile/search_home";
+	}
+	@RequestMapping("/search_people")
+	public String search_people() {
+		return "mobile/search_people";
+	}
+	@RequestMapping("/search_hashtag")
+	public String search_hashtag() {
+		return "mobile/search_hashtag";
+	}
+	@RequestMapping("/search_place")
+	public String search_place() {
+		return "mobile/search_place";
 	}
 
 	@RequestMapping("/findfriend")
