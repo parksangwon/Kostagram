@@ -249,9 +249,7 @@ public class MobileController {
 		//findNickname 메소드 실행
 		UserInfoVO userinfo = userInfoDao.findNickname(userInfoVO);
 		
-		//profileupdate.jsp로 userinfo 정보 보냄
 		model.addAttribute("userinfo", userinfo);
-		System.out.println("controller꺼 userinfo= " + userinfo);
 		return "mobile/profileupdate";
 	}
 
