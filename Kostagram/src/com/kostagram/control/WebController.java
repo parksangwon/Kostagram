@@ -99,7 +99,7 @@ public class WebController {
 	System.out.println("login ³¡");
     }
 
-    @RequestMapping("/accounts/password/change/")
+    @RequestMapping("/pwupdate")
     public String pwChange(HttpServletRequest request, Model model) {
 	if (request.getMethod().equals("POST") && request.getAttribute("id_old_password") != null) {
 	    String oldPw = (String) request.getAttribute("id_old_password");
@@ -121,7 +121,7 @@ public class WebController {
 	    model.addAttribute("message", message);
 	}
 
-	return "pwupdate";
+	return "common/pwupdate";
     }
 
     @RequestMapping(value = "/profileupdate")
