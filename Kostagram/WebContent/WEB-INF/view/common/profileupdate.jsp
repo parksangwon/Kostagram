@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ page import="com.kostagram.service.beans.UserInfoVO" %>
 <%@ page import="java.util.*" %>
 	
 <%
+	UserInfoVO user = (UserInfoVO)request.getAttribute("userinfo");
+	
 	String gender = request.getParameter("gender"); 
 	if(request.getParameter("gender")==null){
 		gender = "3";
@@ -23,7 +25,7 @@
 					if(session.getAttribute("nickname")==null)
 					{
 				%>
-					alert("디진다");
+					
 				<%
 					}
 				%>			
@@ -236,12 +238,12 @@
     <h1>프로필 편집</h1>
     </header>
     <%	
-    	if(request.getParameter("message")!=null)
+    	if(request.getParameter("send")!=null)
     	{
     %>
 	    <div id="alerts" class="alerts">
 	
-	    <p class="alert-green"><%= request.getParameter("message") %></p>
+	    <p class="alert-green">${send}</p>
 	    
 		</div>
     <%
@@ -258,12 +260,12 @@
    
     <p name="first_name_section" class="form-text">
         <label for="first_name">이름</label>
-        <span><input id="first_name" autocorrect="off" type="text" name="name" maxlength="30" value="${name}"/></span>
+        <span><input id="first_name" autocorrect="off" type="text" name="name" maxlength="30" value="${userinfo.name}"/></span>
     </p>
     
     <p name="email_section" class="form-text">
         <label for="email">이메일</label>
-        <span><input type="email" name="email" value="${eamil }" id="email" /></span>
+        <span><input type="email" name="email" value="${userinfo.email}" id="email" /></span>
     </p>
     
     <p name="username_section" class="form-text">
@@ -273,7 +275,7 @@
  
     <p name="phone_number_section" class="form-text">
         <label for="phone_number">전화번호</label>
-        <span><input type="tel" name="mobile" id="phone_number" value="${mobile}" /></span>
+        <span><input type="tel" name="mobile" id="phone_number" value="${userinfo.mobile}" /></span>
     </p>
 
     <p name="gender_section" class="form-select">
@@ -288,19 +290,15 @@
     
     <p name="biography_section" class="form-textarea">
         <label for="biography">소개</label>
-        <span><textarea id="biography" rows="10" cols="40" name="message">${message }</textarea></span>
+        <span><textarea id="biography" rows="10" cols="40" name="message">${userinfo.message}</textarea></span>
     </p>    
 
-    <p class="form-actions"><input type="submit" class="button-green" value="제출" /></p>
+    <p class="form-actions"><input type="submit" class="button-green" value="수정" /></p>
 
 </form>
 
 
-    <p class="remove-account">
-        <a href="/accounts/remove/request/temporary/">
-            계정을 일시적으로 비활성화
-        </a>
-    </p>
+   
 
             </section>
         </div> <!-- .main -->
@@ -312,18 +310,7 @@
             
             <footer class="page-footer" role="contentinfo">
                 <div class="wrapper">
-                    <nav>
-                        <ul>
-                            <li><a href="/about/us/">소개</a></li>
-                            <li><a href="http://help.instagram.com/">지원</a></li>
-                            <li><a href="http://blog.instagram.com/">블로그</a></li>
-                            <li><a href="http://instagram.com/press/">관련 기사</a></li>
-                            <li><a href="/developer/">API</a></li>
-                            <li><a href="/about/jobs/">채용 정보</a></li>
-                            <li><a href="/legal/privacy/">개인 정보 보호</a></li>
-                            <li><a href="/legal/terms/">약관</a></li>
-                        </ul>
-                    </nav>
+                    
 
                     <p class="copyright">&copy; 2015 Kostagram</p>
                 </div>
