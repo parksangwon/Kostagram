@@ -1,5 +1,15 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.kostagram.service.beans.UserInfoVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	UserInfoVO userInfo = (UserInfoVO)request.getAttribute("userinfo");
+	
+	String email = (String)userInfo.getEmail();
+	String nickname = (String)userInfo.getNickname();
+	String name = (String)userInfo.getName();
+	
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
@@ -37,12 +47,12 @@
 						<table border="0" width="90%">
 							<tr>
 								<td width="10%"><img src="image/icon/user.png"></td>
-								<td><input type="text" id="name" placeholder="name">
+								<td><input type="text" id="name" placeholder="name" value="<%= name %>">
 								</td>
 							</tr>
 							<tr>
 								<td width="10%"><img src="image/icon/stamp.png"></td>
-								<td><input type="text" id="nickname" placeholder="nickname">
+								<td><input type="text" id="nickname" placeholder="nickname" value="<%= nickname %>">
 								</td>
 							</tr>
 							<tr>
@@ -63,7 +73,7 @@
 						<table width="90%">
 							<tr>
 								<td width="10%"><img src="image/icon/pencil.png"></td>
-								<td><input type="text" id="email" placeholder="email-id">
+								<td><input type="text" id="email" placeholder="email-id" value="<%= email %>">
 								</td>
 							</tr>
 							<tr>
