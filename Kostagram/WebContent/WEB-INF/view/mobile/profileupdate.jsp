@@ -72,15 +72,15 @@
 					<div>
 						<table width="90%">
 							<tr>
-								<td width="10%"><img src="image/icon/pencil.png"></td>
+								<td width="10%"><img src="image/icon/address_book.png"></td>
 								<td><input type="text" id="email" placeholder="email-id" value="<%= email %>">
 								</td>
 							</tr>
 							<tr>
-								<td width="10%"><img src="image/icon/address_book.png">
+								<td width="10%"><img src="image/icon/proper-fucking-phone.png">
 								</td>
-								<td><input type="text" id="email"
-									placeholder="phone number"></td>
+								<td><input type="text" id="mobile"
+									placeholder="( - )를 제외한 숫자만 입력해주십시오."></td>
 							</tr>
 							<tr>
 								<td width="10%"><img src="image/icon/heart.png"></td>
