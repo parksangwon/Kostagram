@@ -130,9 +130,9 @@ public class WebController {
 	if (method.equals("POST")) {
 	    boolean result = userInfoDao.update(userInfoVO);
 	    if (result) {
-		model.addAttribute("message", "성공적으로 업데이트 되었습니다.");
+		model.addAttribute("send", "성공적으로 업데이트 되었습니다.");
 	    } else {
-		model.addAttribute("message", "업데이트하는 도중 에러가 발생하였습니다.");
+		model.addAttribute("send", "업데이트하는 도중 에러가 발생하였습니다.");
 	    }
 	}
 	String nickname = (String) session.getAttribute("nickname");
