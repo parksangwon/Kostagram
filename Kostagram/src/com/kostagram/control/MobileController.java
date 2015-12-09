@@ -164,6 +164,33 @@ public class MobileController {
 
 	}
 
+	@RequestMapping("/round")
+	public String round() {
+		return "mobile/round";
+	}
+	
+	@RequestMapping("/search_home")
+	public String search_home() {
+		return "mobile/search_home";
+	}
+	@RequestMapping("/search_people")
+	public String search_people() {
+		return "mobile/search_people";
+	}
+	@RequestMapping("/search_hashtag")
+	public String search_hashtag() {
+		return "mobile/search_hashtag";
+	}
+	@RequestMapping("/search_place")
+	public String search_place() {
+		return "mobile/search_place";
+	}
+
+	@RequestMapping("/detail")
+	public String detail() {
+		return "mobile/detail";
+	}
+	
 	// 팔로잉 로그 (좋아요 팔로우)
 	@RequestMapping("/following")
 	public String following(HttpServletRequest request, HttpSession session, Model model) {
@@ -179,6 +206,31 @@ public class MobileController {
 
 		return "mobile/following";
 
+	}
+
+	@RequestMapping("/mynews")
+	public String mynews() {
+		return "mobile/mynews";
+	}
+	
+	@RequestMapping("/userpage")
+	public String userpage() {
+		return "mobile/userpage";
+	}
+
+	@RequestMapping("/profileupdate")
+	public String profileupdate() {
+		return "mobile/profileupdate";
+	}
+
+	@RequestMapping("/option")
+	public String option() {
+		return "mobile/option";
+	}
+
+	@RequestMapping("/findphonenumber")
+	public String findphonenumber() {
+		return "mobile/findphonenumber";
 	}
 
 	// 비밀번호 변경 페이지 가기
@@ -283,80 +335,4 @@ public class MobileController {
 
 	}
 
-	@RequestMapping("/userpage")
-	public String userpage() {
-		return "mobile/userpage";
-	}
-
-	@RequestMapping("/search_home")
-	public String search_home() {
-		return "mobile/search_home";
-	}
-	@RequestMapping("/search_people")
-	public String search_people() {
-		return "mobile/search_people";
-	}
-	@RequestMapping("/search_hashtag")
-	public String search_hashtag() {
-		return "mobile/search_hashtag";
-	}
-	@RequestMapping("/search_place")
-	public String search_place() {
-		return "mobile/search_place";
-	}
-
-	@RequestMapping("/findfriend")
-	public String findfriend(HttpServletRequest request, UserInfoVO user) {
-		String email = (String) request.getParameter("email");
-		String name = (String) request.getParameter("name");
-		String nickname = (String) request.getParameter("nickname");
-		String pass = (String) request.getParameter("pass");
-		System.out.println("id=" + email + " name=" + name + " nickname=" + nickname + " pass=" + pass);
-
-		UserInfoVO emailcheck = userInfoDao.findEmail(new UserInfoVO(email));
-		System.out.println(emailcheck);
-
-		/*
-		 * boolean result = userInfoDao.insert(user); if (result) {
-		 * System.out.println("회원가입 완료"); } else { System.out.println("회원가입 실패"
-		 * ); }
-		 */
-
-		return "mobile/findfriend";
-	}
-
-	@RequestMapping("/numbersearch")
-	public String numbersearch() {
-		return "mobile/numbersearch";
-	}
-
-	@RequestMapping("/profileupdate")
-	public String profileupdate() {
-		return "mobile/profileupdate";
-	}
-
-	@RequestMapping("/option")
-	public String option() {
-		return "mobile/option";
-	}
-
-	@RequestMapping("/findphonenumber")
-	public String findphonenumber() {
-		return "mobile/findphonenumber";
-	}
-
-	@RequestMapping("/round")
-	public String round() {
-		return "mobile/round";
-	}
-
-	@RequestMapping("/detail")
-	public String detail() {
-		return "mobile/detail";
-	}
-
-	@RequestMapping("/mynews")
-	public String mynews() {
-		return "mobile/mynews";
-	}
 }
