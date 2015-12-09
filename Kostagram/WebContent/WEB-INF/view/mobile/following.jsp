@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 
-<%
-	ArrayList followingList =(ArrayList)request.getAttribute("followingList"); ;
-%>
-
 <title>Kostagram</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
@@ -17,87 +13,74 @@
 	type="text/css" />
 
 <body>
-	<div data-role="page" data-theme="d">
-
+	<div id="following" data-role="page" data-theme="d">
 		<div data-role="header" data-theme="b">
-				<table>
+			<table>
+				<tr>
+					<td><span
+						style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
+							활동 </span></td>
+				</tr>
+			</table>
+		</div>
+
+		<div data-role="content">
+			<div>
+				<table width="100%">
 					<tr>
-						<td>
-							<span style="height:35px;
-							font-size:20px;
-							color:#ffffff;
-							line-height:35px;
-							text-align:left;
-							background-color:transparent;
-							border:0px;
-							text-shadow: 0px 0px 0px black;
-							padding-left:5px;">
-							활동
-							</span>
-						</td>
+						<td align="center"><a href="/Kostagram/m/following" data-transition="fade">팔로잉</a></td>
+						<td align="center"><a href="/Kostagram/m/mynews" data-transition="fade">내게시물</a></td>
 					</tr>
 				</table>
 			</div>
-		
-			<div data-role="content" data-theme="d">
-				<table width="100%">
-						<tr>
-							<td onclick="window.location.href = './following.jsp'" align="center">팔로잉</td>
-							<td onclick="window.location.href = './mynews.jsp'" align="center">내 게시물</td>
-						</tr>
-				</table>
-			</div>	
-		
-			<div data-role="content" data-theme="d">
+			<div>
 				<%
-					if (followingList == null || followingList.size() == 0 ) {
+					// 임시로 활동 리스트 추가
+					ArrayList follwingList = new ArrayList();
+					for (int i = 0; i < 10; i++) {
+						follwingList.add(i);
+					}
+
+					if (follwingList != null && follwingList.size() >= 0) {
+						for (int i = 0; i < follwingList.size(); i++) {
 				%>
-						<center>
-							<h3>내가 팔로우 하는 사람들의 활동</h3>
-							<font size="2">내가 팔로우 하는 사람이 게시물에 댓글을 달거나 좋아요를 클릭하면 표시됩니다.</font>
-						</center>
-						
-				<%	
+				<table width="100%">
+					<tr>
+						<td align="center"><a href="./detail"><img
+									src="./image/test.jpg" width="40"
+									style="-webkit-border-radius: 100px; 
+										border-radius: 100px;" /></a>
+							<a href="#" style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">성경쓰</a>님이 <a href="#"
+							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">조영갱</a>
+							님의 사진을 좋아합니다. <a href="./detail"><img
+									src="./image/park.jpg" width="40" /></a></td>
+					</tr>
+				</table>
+				<hr>
+				<%
+					}
 					} else {
-						for ( int i = 0; i < followingList.size(); i++ ) {
-				%>	
-		
-					
-				<ul data-role="listview">
-					<li>
-						<a href="./detail"><img src="./m/image/testImage3.jpg" class="ul-li-icon" />
-							<table width="100%">
-								<tr>
-									<td><font size="2"><!-- 나를 좋아요한 아이디 --></font></td>
-								</tr>
-								
-								<tr>
-									<td><font size="1">회원님을 팔로잉</font></td>
-								</tr>
-
-							</table>		
-						</a>
-					</li>					
-				</ul>
-			<%  }
-				}	%>
+				%>
+				<div>팔로잉이 없습니다.</div>
+				<%
+					}
+				%>
 			</div>
-
-
+		</div>
 
 		<div data-role="footer" data-theme="b" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./"><image src="./image/icon/house.png"
-								width="20" /></a></li>
-					<li><a href="./round"><image src="./image/icon/search.png"
-								width="20" /></a></li>
-					<li><a href="#"><image src="./image/icon/camera.png"
-								width="20" /></a></li>
-					<li><a href="./mynews"><image src="./image/icon/info.png"
-								width="20" /></a></li>
-					<li><a href="./userpage"><image
-								src="./image/icon/user.png" width="20" /></a></li>
+					<li><a href="./"><img src="./image/icon/house.png"
+							width="20" /></a></li>
+					<li><a href="./round"><img src="./image/icon/search.png"
+							width="20" /></a></li>
+					<li><a href="#"><img src="./image/icon/camera.png"
+							width="20" /></a></li>
+					<li><a href="./mynews"><img src="./image/icon/info.png"
+							width="20" /></a></li>
+					<li><a href="./userpage"><img src="./image/icon/user.png"
+							width="20" /></a></li>
 				</ul>
 			</div>
 		</div>

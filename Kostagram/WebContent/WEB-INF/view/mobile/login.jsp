@@ -151,53 +151,8 @@
 				});
 			}
 			// usercheck 끝
-			// mynews 시작
-			else if (this.id == "following") {
-				$('#followingButton').click(function() {
-					$.mobile.changePage("/Kostagram/m/mynews");
-				});
-				
-				$('#mynewsButton').click(function() {
-					$.mobile.changePage("/Kostagram/m/mynews#mynews");
-				});
-				/*
-				function following(){
-					$.mobile.changePage("./m/mynews#following");
-				}
-				
-				function mynews(){
-					$.mobile.changePage("./m/mynews#mynews");
-				}*/
-			}
-			
-			else if (this.id == "mynews") {
-				alert("mynews페이지");
-				$('#followingButton').click(function() {
-					alert("followingButton")
-					$.mobile.changePage("/Kostagram/m/mynews");
-				});
-				
-				$('#mynewsButton').click(function() {
-					alert("mynewsButton");
-					$.mobile.changePage("/Kostagram/m/mynews#mynews");
-				});
-				/*
-				function following(){
-					$.mobile.changePage("./m/mynews#following");
-				}
-				
-				function mynews(){
-					$.mobile.changePage("./m/mynews#mynews");
-				}*/
-			}
-			// mynews 끝
-			// timeline 시작
-			else if (this.id == "timeline") {
-
-			}
-			// timeline 끝
 		});
-		
+		// login 시작
 		$('#loginBtn').click(function() {
 			var idInput = $('input:text[name=nickname]');
 			var idValue = trim(idInput.val());
@@ -240,9 +195,8 @@
 				}
 			});
 		});
+		// login 끝
 	});
-
-	
 </script>
 </head>
 <body>
