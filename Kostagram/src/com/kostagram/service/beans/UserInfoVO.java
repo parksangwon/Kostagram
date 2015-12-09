@@ -11,6 +11,29 @@ public class UserInfoVO {
 	private String message;
 	private String profile_img;
 	private String gender;
+	private String updatenickname;
+	private String send;
+	
+	public String getSend() {
+		return send;
+	}
+
+
+	public void setSend(String send) {
+		this.send = send;
+	}
+
+
+	public String getUpdatenickname() {
+		return updatenickname;
+	}
+
+
+	public void setUpdatenickname(String updatenickname) {
+		this.updatenickname = updatenickname;
+	}
+
+
 	public String getGender() {
 		return gender;
 	}
