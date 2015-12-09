@@ -156,15 +156,24 @@
 				<FORM name="searchForm">
 				
 					<tr  class="TOP_SEARCH_ITEMS" >
-						<td width="200" style="vertical-align: middle;">
+						<td width="90" style="vertical-align: middle;">
 							<a href=""><img src="img/web/kostagram3.png" style="display:block;"></a>
 						</td>
+						
+						<td width="150" style="vertical-align: middle;">
+							
+						</td>
+						
 						<td width="200" align="center" style="vertical-align: middle;">
 							<INPUT type="text" size="25" name="word"  style="display:block;" id="searchWord" class="search"  placeholder="  검색  "  onkeyup="wordComplete();"  onclick="wordComplete();" >
 						</td>
 						
-						<td width="200" align="right" style="vertical-align: middle;">
-						<a href="<%= nickname %>"><span style="display:block; color:rgb(0,72,126); font-weight:700; font-size:15pt;" ><%= nickname%></span></a>
+						<td width="180" align="center" style="vertical-align: middle;">
+			
+						</td>
+						
+						<td width="20" align="right" style="vertical-align: middle;">
+						<a href="<%= nickname %>"><div  style="display:block; color:rgb(0,72,126); font-weight:700; font-size:15pt; max-width:20 " ><%= nickname%></div></a>
 						</td>
 						
 					</tr>
