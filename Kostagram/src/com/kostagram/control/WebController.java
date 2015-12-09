@@ -126,22 +126,32 @@ public class WebController {
 
     @RequestMapping(value = "/profileupdate")
     public String profileEdit(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest reqeuest, Model model) {
-	String method = reqeuest.getMethod();
-	if (method.equals("POST")) {
-		boolean result = userInfoDao.update(userInfoVO);
-	    if (result) {
-		model.addAttribute("send", "성공적으로 업데이트 되었습니다.");
-	    } else {
-		model.addAttribute("send", "업데이트하는 도중 에러가 발생하였습니다.");
-		
-	    }
-	}
-	String nickname = (String) session.getAttribute("nickname");
-	userInfoVO.setNickname(nickname);
-	UserInfoVO userinfo = userInfoDao.findNickname(userInfoVO);
-	model.addAttribute("userinfo", userinfo);
+    	String nickname = (String) session.getAttribute("nickname");
+    	userInfoVO.setUpdatenickname(nickname);
+    	
+    
+    	
+    	String method = reqeuest.getMethod();
+		if (method.equals("POST")) 
+		{
+			boolean result = userInfoDao.update(userInfoVO);
+		    if (result) 
+		    {
+				session.removeAttribute("nickname");
+				session.setAttribute("nickname", userInfoVO.getNickname());
+				session.setAttribute("send", "수정이 성공적으로 되었습니다.");
+		    } else 
+		    {
+		    	session.setAttribute("send", "수정이 성공적으로 안되었습니다.");
+		    }
+		    return "redirect:/profileupdate";
+		}
+		nickname = (String) session.getAttribute("nickname");
+		userInfoVO.setNickname(nickname);
+		UserInfoVO userinfo = userInfoDao.findNickname(userInfoVO);
+		model.addAttribute("userinfo", userinfo);
 
-	return "common/profileupdate";
+		return "common/profileupdate";
     }
 
     @RequestMapping("/searchWordAutoComplete/")
