@@ -24,6 +24,10 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 
     @Override
     public boolean update(UserInfoVO user) {
+    	int update =  sqlSession.update("userInfo.update", user);
+    	if(update == 1)
+    		return true;
+    	
 	return false;
     }
 
