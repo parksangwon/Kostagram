@@ -132,7 +132,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/apple-touch-icon-114x114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/apple-touch-icon-144x144-precomposed.png">
     
-    	<link href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/styles/public/public-main.css" type="text/css" rel="stylesheet"></link>
+    	<link href="./CSS/edit.css" type="text/css" rel="stylesheet"></link>
 
     <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/jquery.js" type="text/javascript"></script>
     <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/bluebar.js" type="text/javascript"></script>
@@ -155,7 +155,7 @@
         <div class="top-bar-left">
             <ul class="top-bar-actions">
                 <li>
-                    <a class="top-bar-home" href="/" label=홈><i></i></a>
+                    <a class="top-bar-home" href="/Kostagram" label=홈><i></i></a>
                 </li>
             </ul>
         </div>
@@ -180,9 +180,10 @@
                             <i></i>
 
                             <ul role="navigation">
-                                <li><a href="??????????????????">프로필 보기</a></li>
-                                <li><a href="/accounts/profileupdate/">프로필 편집</a></li>
-                                <li><span id='rC0'></span></li>
+                                <li><a href="#">프로필 보기</a></li>
+                                <li><a href="/Kostagram/profileupdate">프로필 편집</a></li>
+                                 <li><a href="/Kostagram/logout">로그아웃</a></li>
+                               
                             </ul>
                         </div>
                     </li>
@@ -202,27 +203,32 @@
     <h2><i></i>회원님의 계정<span class="separator"> &bull; </span><span class="subtitle"></span></h2>
     <ul>
         <li class="active">
-        <a href="/accounts/profileupdate/">
-            
-            프로필 편집
-            
-            <i class="disclosure"></i>
-        </a>
+	        <a href="/Kostagram/profileupdate">
+	            
+	            프로필 편집
+	            
+	            <i class="disclosure"></i>
+	        </a>
         
-    </li>
+    	</li>
         <li >
-        <a href="/accounts/password/change/">
+        <a href="/Kostagram/pwupdate">
             
             비밀번호 변경
             
             <i class="disclosure"></i>
             
         </a>
+        </li>
         
-    </li>
-        
-        <li>
-            <span id='rC1'></span>
+        <li >
+        <a href="/Kostagram/logout">
+            
+            로그아웃
+            
+            <i class="disclosure"></i>
+            
+        </a>
         </li>
     </ul>
 
