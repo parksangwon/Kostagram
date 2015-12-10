@@ -1,31 +1,31 @@
 package com.kostagram.service.beans;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
 
 public class ArticleVO {
 
 	private PhotoInfoVO photo;
-	private List<Properties> likeList;
-	private List<Properties> commentList;
+	private List<HashMap> likeList;
+	private List<HashMap> commentList;
 
 	public ArticleVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Properties> getLikeList() {
+	public List<HashMap> getLikeList() {
 		return likeList;
 	}
 
-	public void setLikeList(List<Properties> likeList) {
+	public void setLikeList(List<HashMap> likeList) {
 		this.likeList = likeList;
 	}
 
-	public List<Properties> getCommentList() {
+	public List<HashMap> getCommentList() {
 		return commentList;
 	}
 
-	public void setCommentList(List<Properties> commentList) {
+	public void setCommentList(List<HashMap> commentList) {
 		this.commentList = commentList;
 	}
 
