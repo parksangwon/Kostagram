@@ -237,10 +237,10 @@
 							
 							//profileupdate 시작
 							else if (this.id == "profileupdate") {
-								alert("profileupdate에 들어옴");
+								//alert("profileupdate에 들어옴");
 								$('#submit').click(function() {
 														
-									alert("Aaa");
+									//alert("Aaa");
 									var nameValue = $('#name').val();
 									var nicknameValue = $('#nickname2').val();
 									var messageValue = $('#message').val();
