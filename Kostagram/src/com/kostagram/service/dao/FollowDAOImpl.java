@@ -22,5 +22,11 @@ public class FollowDAOImpl implements FollowDAO {
 		return false;
 	}
 	
+	@Override
+	public FollowVO check(FollowVO follow)
+	{
+		
+		return sqlSession.selectOne("follow.check", follow);
+	}
 	
 }
