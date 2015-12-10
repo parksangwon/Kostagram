@@ -46,4 +46,11 @@ public class ArticleVO {
 		this.commentList = commentList;
 	}
 
+	@Override
+	public String toString() {
+		return "ArticleVO [userInfo=" + userInfo + ", photo=" + photo
+				+ ", likeList=" + likeList + ", commentList=" + commentList
+				+ "]";
+	}
+	
 }
