@@ -244,7 +244,9 @@ public class MobileController {
     @RequestMapping("/profileupdate")
 	public String profileupdate(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest request, Model model) {
     	String method = request.getMethod();
+    	System.out.println(method);
     	if (method.equals("POST")) {
+    		System.out.println("POST ====" + userInfoVO);
     		boolean result = userInfoDao.update(userInfoVO);
     	    if (result) {
     		model.addAttribute("send", "성공적으로 업데이트 되었습니다.");
