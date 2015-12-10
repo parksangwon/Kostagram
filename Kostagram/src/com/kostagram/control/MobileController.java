@@ -219,6 +219,7 @@ public class MobileController {
 	return "mobile/userpage";
     }
     
+    @RequestMapping("/getMyPhotoList")
     public void getMyPhotoList(HttpSession session, HttpServletRequest req,
 			HttpServletResponse res) throws IOException {
 		String type = (String) req.getParameter("type");
