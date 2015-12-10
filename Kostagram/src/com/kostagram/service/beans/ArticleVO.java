@@ -1,39 +1,39 @@
 package com.kostagram.service.beans;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 public class ArticleVO {
 
-    private PhotoInfoVO photo;
-    private List<LikeVO> like;
-    private List<CommentVO> comment;
+	private PhotoInfoVO photo;
+	private List<Properties> likeList;
+	private List<Properties> commentList;
 
-    public ArticleVO() {
-	// TODO Auto-generated constructor stub
-    }
+	public ArticleVO() {
+		// TODO Auto-generated constructor stub
+	}
 
-    public List<LikeVO> getLike() {
-	return like;
-    }
+	public List<Properties> getLikeList() {
+		return likeList;
+	}
 
-    public void setLike(List<LikeVO> like) {
-	this.like = like;
-    }
+	public void setLikeList(List<Properties> likeList) {
+		this.likeList = likeList;
+	}
 
-    public List<CommentVO> getComment() {
-	return comment;
-    }
+	public List<Properties> getCommentList() {
+		return commentList;
+	}
 
-    public void setComment(List<CommentVO> comment) {
-	this.comment = comment;
-    }
+	public void setCommentList(List<Properties> commentList) {
+		this.commentList = commentList;
+	}
 
-    public void setPhoto(PhotoInfoVO photo) {
-	this.photo = photo;
-    }
+	public void setPhoto(PhotoInfoVO photo) {
+		this.photo = photo;
+	}
 
-    public PhotoInfoVO getPhoto() {
-	return photo;
-    }
+	public PhotoInfoVO getPhoto() {
+		return photo;
+	}
 }
