@@ -17,58 +17,11 @@
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
 
-<style TYPE="text/css">
-.ui-bar-f {
-	color: #004879;
-	background-color: #004879;
-}
-
-#someone {
-	position: relative;
-	background: #e0e0e0;
-}
-
-#someone:after {
-	right: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: rgba(224, 224, 224, 0);
-	border-right-color: #e0e0e0;
-	border-width: 5px;
-	margin-top: -5px;
-}
-
-#me {
-	position: relative;
-	background: #e0e0e0;
-}
-
-#me:after {
-	left: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-color: rgba(224, 224, 224, 0);
-	border-left-color: #e0e0e0;
-	border-width: 5px;
-	margin-top: -5px;
-}
-</style>
-
 <body>
 
-	<div data-role="page">
+	<div id="chatting" data-role="page" data-theme="a">
 
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table>
 				<tr>
 					<td>
@@ -167,7 +120,7 @@
 				
 			</div>
 
-		<div data-role="footer" data-theme="c" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<table width="100%">
 					<tr>
@@ -181,5 +134,4 @@
 		</div>
 
 	</div>
-
 </body>
