@@ -12,6 +12,10 @@
     }
 %>
 
+<%
+	String profileImg = (String)request.getAttribute("profileImg");
+%>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
@@ -79,15 +83,6 @@
 	</div>
 	<br>
 	<div id="photoArea">
-		<ul class="myPhotoListByGrid">
-			<li><a href="./detail"><img src="./image/test.jpg" alt="Product Name" /></a></li>
-			<li><a href="./detail"><img src="./image/test.jpg" alt="Product Name" /></a></li>
-			<li><a href="./detail"><img src="./image/test.jpg" alt="Product Name" /></a></li>
-			<li><a href="./detail"><img src="./image/test.jpg" alt="Product Name" /></a></li>
-			<li><a href="./detail"><img src="./image/test.jpg" alt="Product Name" /></a></li>
-			<li><a href="./detail"><img src="./image/test.jpg" alt="Product Name" /></a></li>
-			<li><a href="./detail"><img src="./image/test.jpg" alt="Product Name" /></a></li>
-		</ul>
 	</div>
 
 	<div data-role="footer" data-theme="b" data-position="fixed">
