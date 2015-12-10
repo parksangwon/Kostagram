@@ -12,7 +12,7 @@
 /* A
 -----------------------------------------------------------------------------------------------------------*/
 
-/* 헤더바*/
+/* �뿤�뜑諛�*/
 .ui-bar-a {
 	/* border: 1px solid 		#2A2A2A {a-bar-border}; */
 	/*background: #030091 /*{a-bar-background-color}*/;
@@ -26,7 +26,7 @@
 	background-image:      -o-linear-gradient(#517fa4, #306088);
 	background-image:         linear-gradient(#517fa4, #306088);
 }
-/* 헤더바*/
+/* �뿤�뜑諛�*/
 .ui-bar-a, 
 .ui-bar-a input, 
 .ui-bar-a select, 
@@ -70,7 +70,7 @@
 	background-image:         linear-gradient(top, #021A63 0%, #4374D9 44%, #6799FF 58%, #B2CCFF 87%, #D9E5FF 100%);	
 } */
 
-/* login.jsp 시작*/
+/* login.jsp �떆�옉*/
 #loginform {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -90,8 +90,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* login.jsp 끝 */
-/* emailcheck.jsp 시작*/
+/* login.jsp �걹 */
+/* emailcheck.jsp �떆�옉*/
 #emailCheck {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -111,8 +111,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* emailcheck.jsp 끝*/
-/* usercheck.jsp 시작*/
+/* emailcheck.jsp �걹*/
+/* usercheck.jsp �떆�옉*/
 #userCheck {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -132,8 +132,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* usercheck.jsp 끝*/
-/* chatting.jsp 시작 */
+/* usercheck.jsp �걹*/
+/* chatting.jsp �떆�옉 */
 #someone {
 	position: relative;
 	background: #e0e0e0;
@@ -173,8 +173,8 @@
 	border-width: 5px;
 	margin-top: -5px;
 }
-/* chatting.jsp 끝 */
-/* userpage.jsp 시작 */
+/* chatting.jsp �걹 */
+/* userpage.jsp �떆�옉 */
 .myPhotoListByGrid {
 	padding: 0.0em;
 	overflow: hidden;
@@ -183,7 +183,7 @@
 .myPhotoListByGrid li {
 	float: left;
 	width: 33%;
-	padding-bottom: 0.2em;
+	padding-bottom: 0.1em;
 }
 
 .myPhotoListByGrid img {
@@ -198,10 +198,10 @@
 	clear: none;
 }
 .myPhotoListByGrid li:nth-child(3n+2) {
-	padding-left: 0.2em;
-	padding-right: 0.2em;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
 }
-/* userpage.jsp 끝 */
+/* userpage.jsp �걹 */
 
 .ui-body-a input,
 .ui-body-a select,
@@ -230,7 +230,7 @@
     color: #2489CE {a-body-link-visited};
 } */
 
-/* 버튼에 마우스를 안올렸을때 */
+/* 踰꾪듉�뿉 留덉슦�뒪瑜� �븞�삱�졇�쓣�븣 */
 .ui-btn-up-a {
 	border: 1px solid #8c8c8c /*{a-bup-border}*/;
 	/* background: #030091 {a-bup-background-color}; */
@@ -244,7 +244,7 @@
 	background-image:      -o-linear-gradient(#517fa4, #306088);
 	background-image:         linear-gradient(#517fa4, #306088);
 }
-/* 버튼에 마우스를 안올렸을때 */
+/* 踰꾪듉�뿉 留덉슦�뒪瑜� �븞�삱�졇�쓣�븣 */
 
 .ui-btn-hover-a {
 	border: 1px solid #8c8c8c /*{a-bhover-border}*/;
@@ -297,7 +297,7 @@ a.ui-link-inherit {
 
 /* button inner top highlight
 -----------------------------------------------------------------------------------------------------------*/
-/* 버튼, 푸터바(왠지모르겠음) */
+/* 踰꾪듉, �뫖�꽣諛�(�솧吏�紐⑤Ⅴ寃좎쓬) */
 
 /*  .ui-btn-inner {
 	background-color: #000000;
@@ -1269,7 +1269,7 @@ Built by David Kaneda and maintained by Jonathan Stark.
 
 .ui-select .ui-btn { opacity: 1; }
 
-/* Fixes #2588 — When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select—including “inherit”—without explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
+/* Fixes #2588 �� When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select�봧ncluding �쐇nherit�앪�봶ithout explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
 .ui-select .ui-btn select { cursor: pointer; -webkit-appearance: button; left: 0; top:0; width: 100%;  min-height: 1.5em; min-height: 100%; height: 3em; max-height: 100%; opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; filter: alpha(opacity=0); z-index: 2; }
 
 .ui-select .ui-disabled { opacity: .3; }
