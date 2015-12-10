@@ -234,7 +234,7 @@ public class WebController {
     }
 
     @RequestMapping(value = "/userpage")
-    public void userpage(FollowVO followVO, HttpSession session, HttpServletResponse response) throws IOException  {
+    public void follow(FollowVO followVO, HttpSession session, HttpServletResponse response) throws IOException  {
     	String nickname = (String) session.getAttribute("nickname");
     	
     	PrintWriter out = response.getWriter();
