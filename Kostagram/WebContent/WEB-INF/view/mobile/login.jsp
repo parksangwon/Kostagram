@@ -234,6 +234,44 @@
 									});
 								});
 							}
+							
+							//profileupdate 시작
+							else if (this.id == "profileupdate") {
+								alert("profileupdate에 들어옴");
+								$('#submit').click(function() {
+														
+									alert("Aaa");
+									var nameValue = $('#name').val();
+									var nicknameValue = $('#nickname2').val();
+									var messageValue = $('#message').val();
+									var mobileValue = $('#mobile').val();
+									var genderValue = $('#gender').val();
+									
+									var  resultMessage= $('#resultMessage');
+									
+									$.ajax({
+										type:'POST',
+										url:'ajaxprofileupdate',
+										dataType:'text',
+										data:{name:nameValue, nickname:nicknameValue, message:messageValue, mobile:mobileValue, gender:genderValue},
+										success:function(text){
+										  if ( text === "updateSuccess" ) {
+											  resultMessage.text("성공적으로 업데이트 하였습니다.");
+										  } else if ( text === "updateFail" ) {
+											  resultMessage.text("업데이트 도중 에러가 발생하였습니다.");
+										  } else if ( text === "nicknameduplication")
+											  {
+											  	$('#nickname').focus();
+											  	resultMessage.text("중복된 닉네임 입니다.");
+											  }
+										},
+										error:function() {
+											alert("error");
+										}
+									});
+								});
+							}
+							//profileupdate끝
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
