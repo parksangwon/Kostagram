@@ -16,7 +16,7 @@
 		gender = "x";
 	}
 	
-	System.out.println("gender = "+gender);
+	
 	
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,6 +29,35 @@
 <script src="js/common.js"></script>
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
+<script>
+function updateAction(){
+	
+	var nameValue = $('#name').val();
+	var nicknameValue = $('#nickname').val();
+	var massegeValue = $('#massege').val();
+	var mobileValue = $('#mobile').val();
+	var genderValue = $('#gender').val();
+	
+	var  resultMassege= $('#resultMessage');
+	
+	$.ajax({
+		type:'POST',
+		url:'./profileupdate',
+		dataType:'text',
+		data:{name:nameValue, nickname:idValue, massege:massegeValue, mobile:mobileValue, gender:genderValue},
+		success:function(text){
+		  if ( text === "updateSuccess" ) {
+			  resultMassege.text("성공적으로 업데이트 하였습니다.");
+		  } else if ( text === "updateFail" ) {
+			  resultMassege.text("업데이트 도중 에러가 발생하였습니다.");
+		  }
+		},
+		error:function() {
+			alert("error");
+		}
+	});
+}
+</script>
 
 <body>
 	<div>
