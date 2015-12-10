@@ -11,6 +11,14 @@
 	String mobile = (String)userInfo.getMobile();
 	String message = (String)userInfo.getMessage();
 	String gender = (String)userInfo.getGender();
+	if (mobile == null)
+	{
+		mobile="";
+	}
+	if (message == null)
+	{
+		message="";
+	}
 	if(gender == null)
 	{
 		gender = "x";
@@ -28,9 +36,9 @@
 	type="text/css" />
 
 <body>
-	<div id="profileupdate" data-role="page">
+	<div id="profileupdate" data-theme="a" data-role="page">
 	<form  method="POST" accept-charset="utf-8">
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table width="100%">
 				<tr>
 					<td width="95%"><a href="userpage" data-rel="back"><image
@@ -97,13 +105,12 @@
 								<td colspan="2"><input type="button" id="submit" name="submit" value="수정" size="10"/></td>
 							</tr>
 							<Tr>
-								<Td><p id="resultMessage"></p></Td>
+								<Td colspan="2"><center><font color="red"><p id="resultMessage"></p></font></center></Td>
 							</Tr>
 						</table>
 						
 					</div>
-				
-		</div>
+			</div>
 		</form>
 	</div>
 </body>
