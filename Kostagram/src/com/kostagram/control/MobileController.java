@@ -333,37 +333,55 @@ public class MobileController {
 
     @RequestMapping("/profileupdate")
 	public String profileupdate(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException  {
-    	String method = request.getMethod();
-    	System.out.println(method);
-    	if (method.equals("POST")) {
-    		PrintWriter out = response.getWriter();
-
-			response.setCharacterEncoding("utf-8");
-			response.setContentType("text/html");
-			response.setHeader("Cache-Control", "no-cache");
-			boolean result = userInfoDao.update(userInfoVO);
-			if (result) 
-			{
-				out.print("updateSuccess");
-
-				session.removeAttribute("nickname");
-				session.setAttribute("nickname", userInfoVO.getNickname());
-			
-			} else 
-			
-			{
-				out.print("updateFail");
-			}
-			return "";
-    	}
-		//session¿¡¼­ nicknameÀ» ¹Þ¾Æ DB °¬´Ù¿È
-		String nickname = (String) session.getAttribute("nickname");
+    	//session¿¡¼­ nicknameÀ» ¹Þ¾Æ DB °¬´Ù¿È
+    	String nickname = (String) session.getAttribute("nickname");
 		userInfoVO.setNickname(nickname);
 		//findNickname ¸Þ¼Òµå ½ÇÇà
 		UserInfoVO userinfo = userInfoDao.findNickname(userInfoVO);
 		
 		model.addAttribute("userinfo", userinfo);
 		return "mobile/profileupdate";
+	}
+    
+    @RequestMapping("/ajaxprofileupdate")
+	public void profileupdate(UserInfoVO userInfoVO, HttpSession session, HttpServletResponse response, Model model) throws IOException  {
+    	String nickname = (String) session.getAttribute("nickname");
+    	
+    	PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-cache");
+		
+		UserInfoVO findUserVO = new UserInfoVO();
+		findUserVO.setNickname(userInfoVO.getNickname());
+		
+		findUserVO = userInfoDao.findNickname(findUserVO);
+		
+		System.out.println("select :"+ userInfoVO);
+		if(userInfoVO.getNickname()== null || findUserVO.getNickname().equals(nickname))
+		{
+			userInfoVO.setUpdatenickname(nickname);
+			boolean result = userInfoDao.update(userInfoVO);
+			if (result) 
+			{
+				out.print("updateSuccess");
+	
+				session.removeAttribute("nickname");
+				session.setAttribute("nickname", userInfoVO.getNickname());
+				
+			} else 
+				
+			{
+				out.print("updateFail");
+			}
+		}
+		else
+		{
+			out.print("nicknameduplication");
+		}
+    	
+		//session¿¡¼­ nicknameÀ» ¹Þ¾Æ DB °¬´Ù¿È
+		
 	}
 
     @RequestMapping("/option")
