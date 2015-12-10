@@ -15,9 +15,6 @@
 	{
 		gender = "x";
 	}
-	
-	
-	
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
@@ -29,42 +26,9 @@
 <script src="js/common.js"></script>
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
-<script>
-function updateAction(){
-	alert("Aaa");
-	var nameValue = $('#name').val();
-	var nicknameValue = $('#nickname').val();
-	var messageValue = $('#message').val();
-	var mobileValue = $('#mobile').val();
-	var genderValue = $('#gender').val();
-	
-	var  resultMessage= $('#resultMessage');
-	
-	$.ajax({
-		type:'POST',
-		url:'ajaxprofileupdate',
-		dataType:'text',
-		data:{name:nameValue, nickname:nicknameValue, message:messageValue, mobile:mobileValue, gender:genderValue},
-		success:function(text){
-		  if ( text === "updateSuccess" ) {
-			  resultMessage.text("성공적으로 업데이트 하였습니다.");
-		  } else if ( text === "updateFail" ) {
-			  resultMessage.text("업데이트 도중 에러가 발생하였습니다.");
-		  } else if ( text === "nicknameduplication")
-			  {
-			  	$('#nickname').focus();
-			  	resultMessage.text("중복된 닉네임 입니다.");
-			  }
-		},
-		error:function() {
-			alert("error");
-		}
-	});
-}
-</script>
 
 <body>
-	<div>
+	<div id="profileupdate" data-role="page">
 	<form  method="POST" accept-charset="utf-8">
 		<div data-role="header" data-theme="b">
 			<table width="100%">
@@ -94,7 +58,7 @@ function updateAction(){
 							</tr>
 							<tr>
 								<td width="18%"><img src="image/icon/stamp.png"></td>
-								<td><inpyt type="label" value="닉네임" /><input type="text" id="nickname" name="nickname" placeholder="nickname" value="<%= nickname %>">
+								<td><inpyt type="label" value="닉네임" /><input type="text" id="nickname2" name="nickname2" placeholder="nickname" value="<%= nickname %>">
 								</td>
 							</tr>
 							<tr>
@@ -130,7 +94,7 @@ function updateAction(){
 								</select></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="button" onclick="updateAction();" id="submit" name="submit" value="수정" size="10"/></td>
+								<td colspan="2"><input type="button" id="submit" name="submit" value="수정" size="10"/></td>
 							</tr>
 							<Tr>
 								<Td><p id="resultMessage"></p></Td>
