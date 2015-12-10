@@ -1,6 +1,7 @@
 package com.kostagram.service.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -41,18 +42,20 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
     	
     	List<PhotoInfoVO> photoList = sqlSession.selectList("photoInfo.getTimeline", user);
     	for(PhotoInfoVO photo : photoList) {
-    	    List<CommentVO> commentList = sqlSession.selectList("comment.getCommentByPhotoId", photo);
-    	    List<LikeVO> likeList = sqlSession.selectList("like.getLikeByPhotoId", photo);
+    		HashMap userInfo = sqlSession.selectOne("userInfo.getProfileNickname", photo);
+    	    List<HashMap> commentList = sqlSession.selectList("comment.getCommentByPhotoId", photo);
+    	    List<HashMap> likeList = sqlSession.selectList("like.getLikeByPhotoId", photo);
     	    
     	    ArticleVO article = new ArticleVO();
+    	    article.setUserInfo(userInfo);
     	    article.setPhoto(photo);
-    	    article.setComment(commentList);
-    	    article.setLike(likeList);
+    	    article.setLikeList(likeList);
+    	    article.setCommentList(commentList);
     	    
     	    timeline.add(article);
     	}
     	
-	return timeline;
+    	return timeline;
     }
 
     @Override
@@ -75,12 +78,6 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 	    List<CommentVO> commentList = sqlSession.selectList("comment.getCommentByPhotoId", photo);
     	    List<LikeVO> likeList = sqlSession.selectList("like.getLikeByPhotoId", photo);
     	    
-    	    ArticleVO article = new ArticleVO();
-    	    article.setPhoto(photo);
-    	    article.setComment(commentList);
-    	    article.setLike(likeList);
-    	    
-    	    myPhotoList.add(article);
 	}
 	return myPhotoList;
     }
