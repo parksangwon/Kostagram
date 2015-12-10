@@ -37,9 +37,6 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 
     @Override
     public ArrayList<ArticleVO> getTimeline(UserInfoVO user) {
-
-    	System.out.println("PhotoDAO getTimeline : " + user);
-    	
     	ArrayList<ArticleVO> timeline = new ArrayList<ArticleVO>();
     	
     	List<PhotoInfoVO> photoList = sqlSession.selectList("photoInfo.getTimeline", user);
@@ -67,5 +64,24 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
     @Override
     public List<PhotoInfoVO> getMyPhotoList(UserInfoVO user) {
 	return sqlSession.selectList("photoInfo.getMyPhotoList", user);
+    }
+
+    @Override
+    public ArrayList<ArticleVO> getMyPhotoListForArticle(UserInfoVO user) {
+	ArrayList<ArticleVO> myPhotoList = new ArrayList<ArticleVO>(); 
+	
+	List<PhotoInfoVO> photoList = sqlSession.selectList("photoInfo.getMyPhotoList", user);
+	for (PhotoInfoVO photo : photoList) {
+	    List<CommentVO> commentList = sqlSession.selectList("comment.getCommentByPhotoId", photo);
+    	    List<LikeVO> likeList = sqlSession.selectList("like.getLikeByPhotoId", photo);
+    	    
+    	    ArticleVO article = new ArticleVO();
+    	    article.setPhoto(photo);
+    	    article.setComment(commentList);
+    	    article.setLike(likeList);
+    	    
+    	    myPhotoList.add(article);
+	}
+	return myPhotoList;
     }
 }

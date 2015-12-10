@@ -14,4 +14,5 @@ public interface PhotoInfoDAO {
 	public ArrayList<ArticleVO> getTimeline(UserInfoVO user);
 	public List<PhotoInfoVO> selectList(UserInfoVO user);
 	public List<PhotoInfoVO> getMyPhotoList(UserInfoVO user);
+	public ArrayList<ArticleVO> getMyPhotoListForArticle(UserInfoVO user);
 }
