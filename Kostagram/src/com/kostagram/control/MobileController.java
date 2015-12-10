@@ -242,7 +242,17 @@ public class MobileController {
     }
 
     @RequestMapping("/profileupdate")
-	public String profileupdate(HttpSession session, UserInfoVO userInfoVO, Model model) {
+	public String profileupdate(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest request, Model model) {
+    	String method = request.getMethod();
+    	if (method.equals("POST")) {
+    		boolean result = userInfoDao.update(userInfoVO);
+    	    if (result) {
+    		model.addAttribute("send", "성공적으로 업데이트 되었습니다.");
+    	    } else {
+    		model.addAttribute("send", "업데이트하는 도중 에러가 발생하였습니다.");
+    		
+    	    }
+    	}
 		//session에서 nickname을 받아 DB 갔다옴
 		String nickname = (String) session.getAttribute("nickname");
 		userInfoVO.setNickname(nickname);
