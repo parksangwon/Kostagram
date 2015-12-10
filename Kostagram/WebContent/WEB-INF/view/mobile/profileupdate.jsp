@@ -31,7 +31,7 @@
 	type="text/css" />
 <script>
 function updateAction(){
-	
+	alert("Aaa");
 	var nameValue = $('#name').val();
 	var nicknameValue = $('#nickname').val();
 	var massegeValue = $('#massege').val();
@@ -61,7 +61,7 @@ function updateAction(){
 
 <body>
 	<div>
-	<form  method="POST" accept-charset="utf-8" action="./profileupdate">
+	<form  method="POST" accept-charset="utf-8">
 		<div data-role="header" data-theme="b">
 			<table width="100%">
 				<tr>
@@ -126,9 +126,13 @@ function updateAction(){
 								</select></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="submit" id="submit" name="submit" value="수정" size="10"/></td>
+								<td colspan="2"><input type="button" onclick="updateAction();" id="submit" name="submit" value="수정" size="10"/></td>
 							</tr>
+							<Tr>
+								<Td><p id="resultMassege"></p></Td>
+							</Tr>
 						</table>
+						
 					</div>
 				
 		</div>
