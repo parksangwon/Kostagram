@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.kostagram.service.beans.UserInfoVO" %>
 <%@ page import="java.util.*" %>
+
+
 	
 <%
 	ArrayList articleList = (ArrayList)request.getAttribute("articleList");
@@ -14,6 +16,7 @@
 	lang="ko">
 <!--<![endif]-->
 <head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -4762,8 +4765,43 @@ transform
 }
 </style>
 
-<script
-	type="text/javascript" charset="utf-8" async=""></script>
+<scripttype="text/javascript" charset="utf-8" async=""></script>
+<script>
+
+		$(function(){
+			
+			$('#followBtn').click(function(){
+				followaction();
+			});
+
+			
+			function followaction(){
+				$.ajax({
+	    			type:'POST',
+	    			url:'userpage',
+	    			dataType:'text',
+	    			data:{from_email:'<%=(String)session.getAttribute("email")%>',to_email:'<%=userInfoVO.getEmail()%>'},
+	    			success:function(text){
+	    				if(text==="follwing")
+	    					{
+	    						$('#followBtn').text("팔로잉");
+	    						$('#followBtn').css('background','green');
+	    						$('#followBtn').css('border','green');
+	    						$('#followBtn').css('color','white');
+	    					}
+	    				else
+	    					{
+	    						alert("팔로우중에 실패하였습니다.");
+	    					}
+	    				
+	    			},
+	    			error:function() {
+	    				alert("error");
+	    			}
+	    		});
+			}
+		});
+</script>
 </head>
 <body>
 
@@ -4808,7 +4846,7 @@ transform
 								%>
 								&nbsp;&nbsp;<button
 									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
-									data-reactid=".0.1.0.0:0.1.0.2.0" style="color: blue">팔로우</button>
+									data-reactid=".0.1.0.0:0.1.0.2.0" style="color: blue" id="followBtn">팔로우</button>
 								<% 	
 									}
 								%>
