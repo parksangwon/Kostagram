@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kostagram.mail.Mail;
 import com.kostagram.mail.MailService;
 import com.kostagram.service.beans.ArticleVO;
+import com.kostagram.service.beans.FollowVO;
 import com.kostagram.service.beans.SearchVO;
 import com.kostagram.service.beans.UserInfoVO;
+import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.SearchDAO;
 import com.kostagram.service.dao.UserInfoDAO;
@@ -33,6 +35,8 @@ public class WebController {
     private PhotoInfoDAO photoInfoDao;
     @Autowired
     private SearchDAO searchDao;
+    @Autowired
+    private FollowDAO followDao;
     @Autowired
     private MailService mailService;
     @Autowired
@@ -230,10 +234,26 @@ public class WebController {
     }
 
     @RequestMapping(value = "/userpage")
-    public String userPage() {
-	return "web/userpage";
-    }
-    
+    public void userpage(FollowVO followVO, HttpSession session, HttpServletResponse response) throws IOException  {
+    	String nickname = (String) session.getAttribute("nickname");
+    	
+    	PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-cache");
+		
+		if(followDao.insert(followVO))
+		{
+			out.print("follwing");
+		}
+		else
+		{
+			out.print("팔로우중에 실패하였습니다.");
+		}
+		
+		
+		
+	}
     @RequestMapping(value = "/usernotfound")
     public String userNotfound() {
 	return "web/usernotfound";
