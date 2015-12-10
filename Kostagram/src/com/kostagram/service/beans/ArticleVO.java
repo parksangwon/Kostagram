@@ -5,12 +5,29 @@ import java.util.List;
 
 public class ArticleVO {
 
+	private HashMap userInfo;
 	private PhotoInfoVO photo;
 	private List<HashMap> likeList;
 	private List<HashMap> commentList;
 
 	public ArticleVO() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public HashMap getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(HashMap userInfo) {
+		this.userInfo = userInfo;
+	}
+
+	public PhotoInfoVO getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(PhotoInfoVO photo) {
+		this.photo = photo;
 	}
 
 	public List<HashMap> getLikeList() {
@@ -29,11 +46,4 @@ public class ArticleVO {
 		this.commentList = commentList;
 	}
 
-	public void setPhoto(PhotoInfoVO photo) {
-		this.photo = photo;
-	}
-
-	public PhotoInfoVO getPhoto() {
-		return photo;
-	}
 }
