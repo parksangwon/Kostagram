@@ -34,23 +34,27 @@ function updateAction(){
 	alert("Aaa");
 	var nameValue = $('#name').val();
 	var nicknameValue = $('#nickname').val();
-	var massegeValue = $('#massege').val();
+	var messageValue = $('#message').val();
 	var mobileValue = $('#mobile').val();
 	var genderValue = $('#gender').val();
 	
-	var  resultMassege= $('#resultMessage');
+	var  resultMessage= $('#resultMessage');
 	
 	$.ajax({
 		type:'POST',
-		url:'./profileupdate',
+		url:'ajaxprofileupdate',
 		dataType:'text',
-		data:{name:nameValue, nickname:idValue, massege:massegeValue, mobile:mobileValue, gender:genderValue},
+		data:{name:nameValue, nickname:nicknameValue, message:messageValue, mobile:mobileValue, gender:genderValue},
 		success:function(text){
 		  if ( text === "updateSuccess" ) {
-			  resultMassege.text("성공적으로 업데이트 하였습니다.");
+			  resultMessage.text("성공적으로 업데이트 하였습니다.");
 		  } else if ( text === "updateFail" ) {
-			  resultMassege.text("업데이트 도중 에러가 발생하였습니다.");
-		  }
+			  resultMessage.text("업데이트 도중 에러가 발생하였습니다.");
+		  } else if ( text === "nicknameduplication")
+			  {
+			  	$('#nickname').focus();
+			  	resultMessage.text("중복된 닉네임 입니다.");
+			  }
 		},
 		error:function() {
 			alert("error");
@@ -129,7 +133,7 @@ function updateAction(){
 								<td colspan="2"><input type="button" onclick="updateAction();" id="submit" name="submit" value="수정" size="10"/></td>
 							</tr>
 							<Tr>
-								<Td><p id="resultMassege"></p></Td>
+								<Td><p id="resultMessage"></p></Td>
 							</Tr>
 						</table>
 						
