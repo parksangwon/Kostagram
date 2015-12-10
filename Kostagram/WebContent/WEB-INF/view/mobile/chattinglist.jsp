@@ -18,9 +18,9 @@
 
 <body>
 
-	<div data-role="page" data-theme="d">
+	<div id="chattinglist" data-role="page" data-theme="a">
 
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table>
 				<tr>
 					<td>
@@ -66,7 +66,7 @@
 		
 			</div>
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
 					<li><a href="./"><image src="./image/icon/house.png"
@@ -84,5 +84,4 @@
 		</div>
 
 	</div>
-
 </body>

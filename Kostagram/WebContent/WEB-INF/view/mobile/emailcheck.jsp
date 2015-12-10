@@ -12,14 +12,14 @@
 	type="text/css" />
 
 <body>
-	<div id="emailCheck" data-role="page" data-theme="e">
+	<div id="emailCheck" data-role="page" data-theme="a">
 
 		<div align="center">
 			<br>
-			<img src="./image/banner.png" width="200" />
+			<img src="./image/white_banner.png" width="200" />
 		</div>
 
-		<div data-role="content" align="center">
+		<div id="emailcheck_content" data-role="content" align="center">
 			<form id="joinForm" method="post" action="usercheck">
 				<div align="center">
 					<input type="text" id="email" name="email" placeholder="이메일" /> <br>
@@ -29,12 +29,10 @@
 			</form>
 		</div>
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #fff; font-weight: normal;">이미
-							계정이 있으신가요? 로그인.</a></li>
+					<li><a href="./" style="color: #dfe1e3;">이미 계정이 있으신가요? 로그인.</a></li>
 				</ul>
 			</div>
 		</div>

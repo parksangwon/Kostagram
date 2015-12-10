@@ -12,9 +12,9 @@
 	type="text/css" />
 
 <body>
-	<div data-role="page">
+	<div id="option" data-role="page" data-theme="a">
 
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table>
 				<tr>
 					<td><a href="#" data-rel="back"><image
@@ -64,7 +64,7 @@
 			</ul>
 		</div>
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
 					<li><a href="./"><image src="./image/icon/house.png"

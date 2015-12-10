@@ -15,9 +15,9 @@
 	type="text/css" />
 
 <body>
-	<div data-role="page" data-theme="d">
+	<div id="pwupdate" data-role="page" data-theme="a">
 
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table width="100%">
 				<tr>
 					<td>
@@ -38,7 +38,7 @@
 		</div>
 
 
-		<div data-role="content" data-theme="d">
+		<div data-role="content">
 			<p>
 				<font color="#004879">비밀번호를 잊으셨나요??</font>
 			</p>
@@ -52,7 +52,7 @@
 
 		</div>
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
 					<li><a href="./"><img src="./image/icon/house.png"

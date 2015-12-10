@@ -4,10 +4,6 @@
 
 <%
 	int count=0;
-	//ArrayList likeNoticeList =(ArrayList)request.getAttribute("likeNoticeList"); ;
-%>
-
-<%
 	ArrayList likeNoticeList = new ArrayList();
 	for(int i=0; i<11; i++)
 	{
@@ -16,35 +12,21 @@
 %>
 
 
-<title>jQuery Mobile</title>
-<meta charset="euc-kr" />
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-
-
-
-
+	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
+<TITLE>Kostagram</TITLE>
 <script src="jquery-mobile/jquery-1.6.4.js"></script>
 <script src="jquery-mobile/jquery.mobile-1.0.js"></script>
 <script src="js/common.js"></script>
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
 
-
-<style>
-.ui-bar-f {
-	color: #004879;
-	background-color: #004879;
-}
-</style>
-
-
-
 <body>
-	<div data-role="page" data-theme="d">
+	<div id="likenotice" data-role="page" data-theme="a">
 
 
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table>
 				<tr>
 					<td>
@@ -58,47 +40,38 @@
 			</table>
 		</div>
 
-		<div data-rol="content">
-			<center>
-				<%
-					if (likeNoticeList == null || likeNoticeList.size() == 0 ) {
-					%>
-
-				좋아요 한 글이 없습니다.
-
-
-				<%
-					}else{
-					%>
-				<table cellspacing="0" cellpadding="0" width="100%">
-					<tr>
-						<% 
-							for(int i=0; i<likeNoticeList.size(); i++)
-							{
-					%>
-						<td><a href="./detail"><image
-									src="./m/image/testImage3.jpg" width="100%" /></a></td>
-
-
-
+		<div data-rol="content" align="center">
+		<%
+			if (likeNoticeList == null || likeNoticeList.size() == 0 ) {
+		%>
+			좋아요 한 글이 없습니다.
+		<%
+			} else{
+		%>
+			<table cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+				<% 
+					for(int i=0; i<likeNoticeList.size(); i++)
+					{
+				%>
+					<td><a href="./detail"><image
+								src="./m/image/testImage3.jpg" width="100%" /></a></td>
 						<%	count++;
-								if(count==3 )
-								{
-									count=0;
+						if(count==3 )
+						{
+							count=0;
 						%>
-					</tr>
-
-					<% 	
-								}
-							}
+				</tr>
+				<% 	
 						}
-					%>
-				</table>
-			</center>
+					}
+				}
+				%>
+			</table>
 		</div>
 
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
 					<li><a href="./"><image src="./image/icon/house.png"
@@ -116,6 +89,4 @@
 		</div>
 
 	</div>
-
-
 </body>

@@ -241,44 +241,16 @@
 		// login 끝
 	});
 </script>
-<style>
-.myPhotoListByGrid {
-	padding: 0.0em;
-	overflow: hidden;
-}
 
-.myPhotoListByGrid li {
-	float: left;
-	width: 33%;
-	padding-bottom: 0.2em;
-}
-
-.myPhotoListByGrid img {
-	max-width: 100%;
-	display: block;
-}
-
-.myPhotoListByGrid li:nth-child(3n+1) {
-	clear: left;
-}
-.myPhotoListByGrid li:nth-child(odd) {
-	clear: none;
-}
-.myPhotoListByGrid li:nth-child(3n+2) {
-	padding-left: 0.2em;
-	padding-right: 0.2em;
-}
-
-</style>
 </head>
 <body>
-	<div id="loginform" data-role="page" data-theme="e">
+	<div id="loginform" data-role="page" data-theme="a">
 		<div align="center">
-			<br> <img src="./image/banner.png" width="200" />
+			<br> <img src="./image/white_banner.png" width="200" />
 		</div>
 
 		<div data-role="content">
-			<form id="loginForm" method="post" action="#">
+			<form id="login_form" method="post" action="#">
 				<div align="center">
 					<input id="nickname" type="text" name="nickname"
 						placeholder="사용자 이름" /> <br> <input id="pass"
@@ -289,16 +261,13 @@
 			</form>
 		</div>
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./emailcheck"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #fff; font-weight: normal;">계정이
-							없으신가요? 가입하기.</a></li>
+					<li><a href="./emailcheck" style="color: #DFE1E3;">계정이 없으신가요? 가입하기.</a></li>
 				</ul>
 			</div>
 		</div>
-
 	</div>
 </body>
 </html>

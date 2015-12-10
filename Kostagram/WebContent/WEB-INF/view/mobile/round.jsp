@@ -13,9 +13,9 @@
 	type="text/css" />
 
 <body>
-	<div id="loginform" data-role="page" data-theme="b">
+	<div id="round" data-role="page" data-theme="a">
 
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table onclick="$.mobile.changePage('search_home')">
 				<tr>
 					<td><image src="./image/icon/search.png" width="20"
@@ -28,35 +28,33 @@
 		</div>
 
 		<div>
-			<center>
-				<table width="100%" align="center">
-					<tr>
-						<td align="left">&nbsp;&nbsp;<span
-							style="font-size: 11pt; font-weight: bolder;">사람찾아보기</span><br>
-							&nbsp;&nbsp;<span style="font-size: 7pt;">새로 팔로우할 사람을
-								찾아보세요</span>
-						</td>
-						<td align="right">
-							<%
-							    // 리스트 받아오기 전, 임시로 값 준 것
-							    // 이 부분은 리스트가 null 값인 경우가 없어서 null 체크안함
-							    ArrayList profilelist = new ArrayList();
-							    for (int i = 0; i < 4; i++) {
-									profilelist.add(i);
-							    }
+			<table width="100%" align="center">
+				<tr>
+					<td align="left">&nbsp;&nbsp;<span
+						style="font-size: 11pt; font-weight: bolder;">사람찾아보기</span><br>
+						&nbsp;&nbsp;<span style="font-size: 7pt;">새로 팔로우할 사람을
+							찾아보세요</span>
+					</td>
+					<td align="right">
+						<%
+						    // 리스트 받아오기 전, 임시로 값 준 것
+						    // 이 부분은 리스트가 null 값인 경우가 없어서 null 체크안함
+						    ArrayList profilelist = new ArrayList();
+						    for (int i = 0; i < 4; i++) {
+								profilelist.add(i);
+						    }
 
-							    for (int i = 0; i < profilelist.size(); i++) {
-							%> <a href="./detail"><image src="./image/test.jpg"
-									width="45"
-									style="-webkit-border-radius: 100px; 
-								border-radius: 100px;" /></a>
-							<%
-							    }
-							%>
-						</td>
-					</tr>
-				</table>
-			</center>
+						    for (int i = 0; i < profilelist.size(); i++) {
+						%> <a href="./detail"><image src="./image/test.jpg"
+								width="45"
+								style="-webkit-border-radius: 100px; 
+							border-radius: 100px;" /></a>
+						<%
+						    }
+						%>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<%
 		    int count = 0;
@@ -97,7 +95,7 @@
 			</center>
 		</div>
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
 					<li><a href="./"><image src="./image/icon/house.png"

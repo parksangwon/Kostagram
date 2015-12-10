@@ -12,9 +12,9 @@
 	type="text/css" />
 
 <body>
-	<div id="loginform" data-role="page" data-theme="e">
+	<div id="findphonenumber" data-role="page" data-theme="a">
 
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table width="100%">
 				<tr>
 					<td width="95%"><a href="#" data-rel="back"><image
@@ -39,7 +39,7 @@
 			<br> <font color="gray"><h5>친구들의 게시물 / 사진을 확인해보세요.</h5></font>
 		</center>
 		<div data-role="content">
-			<form id="joinForm" method="post" action="#" align="center">
+			<form id="findphonenumber_form" method="post" action="#" align="center">
 				<hr>
 				+ 모두 팔로우
 				<hr>
@@ -72,7 +72,7 @@
 			</form>
 		</div>
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
 					<li><a href="./"><image src="./image/icon/house.png"

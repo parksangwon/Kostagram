@@ -13,9 +13,9 @@
 	type="text/css" />
 
 <body>
-	<div id="hashtag" data-role="page" data-theme="c">
+	<div id="hashtag" data-role="page" data-theme="a">
 		
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table class="search">
 				<tr>
 					<td><img src="./image/icon/search.png" width="20"
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
 					<li><a href="./"><img src="./image/icon/house.png"

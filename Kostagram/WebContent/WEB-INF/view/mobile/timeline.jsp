@@ -24,7 +24,7 @@
 <body>
 	<div id="timeline" data-role="page">
 
-		<div data-role="header" data-theme="b">
+		<div data-role="header">
 			<table>
 				<tr>
 					<td><span
@@ -153,12 +153,12 @@
 		</div>
 		<br>
 		<%
-			}
+				}
 			}
 		%>
 
 
-		<div data-role="footer" data-theme="b" data-position="fixed">
+		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
 					<li><a href="/Kostagram/m/"><img src="/Kostagram/m/image/icon/house.png"
