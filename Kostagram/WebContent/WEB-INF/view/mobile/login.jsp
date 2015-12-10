@@ -194,6 +194,46 @@
 												});
 							}
 							// usercheck 끝
+							else if (this.id == 'userpage') {
+								// 버튼마다 ajax통신 다르게
+								$(document).ready(function(){
+									$.ajax({
+										type : 'POST',
+										url : 'getMyPhotoList',
+										dataType : 'text',
+										data : {
+											type : 'grid'
+										},
+										success : function(text){
+											if ( $('#photoArea > div:first-child ').get(0) != null ) {
+												$('#photoArea > div:first-child ').get(0).remove();
+											}
+											$('#userpage > #photoArea').append(text);	
+										}
+									});
+								});
+								$('#userpage .getPhotoList').each(function(){
+									$(this).click(function(){
+										var option = $(this).attr("value");
+										$.ajax({
+											type : 'POST',
+											url : 'getMyPhotoList',
+			 								dataType : 'text',
+											data : {
+												type : option
+											},
+											success : function(text){
+												alert($('#photoArea').find("#photoList").get(0).id+"삭제시작");
+												$('#photoArea').find("#photoList").get(0).remove();
+												alert("삭제 끝");
+												alert($('#userpage > #photoArea').id+"추가 시작");
+												$('#userpage > #photoArea').append(text);
+												alert("추가 끝");
+											}
+										});
+									});
+								});
+							}
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
