@@ -8,4 +8,11 @@
    <insert id="delete" parameterType="com.kostagram.service.beans.FollowVO">
       update follow set dispYn="N" where to_email= #{to_email}
    </insert>
+   
+   <select id="check" parameterType="com.kostagram.service.beans.FollowVO" 
+   resultType="com.kostagram.service.beans.FollowVO">
+   		SELECT *
+   		FROM FOLLOW
+   		WHERE FROM_EMAIL = #{from_email} AND TO_EMAIL=#{to_email}
+   </select>
 </mapper>
