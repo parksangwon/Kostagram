@@ -200,38 +200,51 @@ public class WebController {
 
 
     @RequestMapping(value = "/{nickname}")
-    public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model) {
+    public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model, FollowVO followVO) {
 	userInfoVO.setNickname(nickname);
 	String check = "N";
 	String url = "redirect:/usernotfound";
 	
+	//회원찾기
 	userInfoVO = userInfoDao.findNickname(userInfoVO);
+	//회원이 아니거나 사용중지 된 회원이면
 	if(userInfoVO==null || userInfoVO.getUseYn() == 'N')
 	{
 		return url;
 	}
 	
-	    model.addAttribute("userInfoVO", userInfoVO);
+	model.addAttribute("userInfoVO", userInfoVO);
 	    
-	    if (session != null && session.getAttribute("loginYn") != null
-	    		&& ((String) session.getAttribute("loginYn")).equals("Y")) 
+    if (session != null && session.getAttribute("loginYn") != null && ((String) session.getAttribute("loginYn")).equals("Y")) 
+	{
+	    // 자기자신 
+	    if (((String) session.getAttribute("nickname")).equals(nickname)) 
+	    {
+	    	check = "Y";
+	    	model.addAttribute("check", check);
+	    }
+	    // 로그인은 했는데 자기자신이 아니고
+	    else 
+	    {
+	    	followVO.setFrom_email((String)session.getAttribute("email"));
+	    	followVO.setTo_email(userInfoVO.getEmail());
+	    	followVO = followDao.check(followVO);
+	    	if(followVO.getFrom_email()==null)
 	    	{
-	    	    // 자기자신 
-	    	    if (((String) session.getAttribute("nickname")).equals(nickname)) 
-	    	    {
-	    	    	check = "Y";
-	    	    	model.addAttribute("check", check);
-	    	    }
-	    	    // 로그인은 했는데 자기자신이 아니고
-	    	    else 
-	    	    {
-	    	    	check = "N";
-	    	    	model.addAttribute("check", check);
-	    	    }
-	    	    // 로그인을 안한거
-	    	} 
-	    return "web/userpage";
+	    		check="FN";
+	    	}
+	    	
+	    	model.addAttribute("check", check);
+	    }
+	    // 로그인을 안한거
+	}
+    // 로그인을 안한거
+    else
+    {
+    	
     }
+    return "web/userpage";
+}
 
     @RequestMapping(value = "/userpage")
     public void follow(FollowVO followVO, HttpSession session, HttpServletResponse response) throws IOException  {
