@@ -225,6 +225,7 @@ public class MobileController {
 		String type = (String) req.getParameter("type");
 		String email = (String) session.getAttribute("email");
 
+		System.out.println(type);
 		UserInfoVO user = new UserInfoVO(email);
 
 		PrintWriter out = res.getWriter();
@@ -233,6 +234,7 @@ public class MobileController {
 		res.setContentType("text/html");
 		res.setHeader("Cache-Control", "no-cache");
 
+		out.print("<div id='photoList'>");
 		if (type.equals("grid")) {
 			List<PhotoInfoVO> myPhotoList = photoInfoDao.getMyPhotoList(user);
 			if (myPhotoList != null && myPhotoList.size() > 0) {
@@ -252,7 +254,6 @@ public class MobileController {
 		} else if (type.equals("list")) {
 			ArrayList<ArticleVO> myPhotoList = photoInfoDao
 					.getMyPhotoListForArticle(user);
-
 			for (int i = 0; i < myPhotoList.size(); i++) {
 				ArticleVO article = myPhotoList.get(i);
 				PhotoInfoVO photo = article.getPhoto();
@@ -326,6 +327,7 @@ public class MobileController {
 		} else {
 			out.print("로딩 중 에러가 발생했습니다. 다시 시도해 주세요.");
 		}
+		out.print("</div>");
 
 	}
 
