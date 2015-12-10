@@ -2,6 +2,7 @@ package com.kostagram.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kostagram.service.beans.ActivityVO;
 import com.kostagram.service.beans.ArticleVO;
+import com.kostagram.service.beans.CommentVO;
 import com.kostagram.service.beans.ConversationVO;
+import com.kostagram.service.beans.LikeVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.ActivityDAO;
@@ -225,20 +228,80 @@ public class MobileController {
 	String type = (String) req.getParameter("type");
 	String email = (String) session.getAttribute("email");
 
-	List<PhotoInfoVO> myPhotoList = photoInfoDao.getMyPhotoList(new UserInfoVO(email));
-
+	UserInfoVO user = new UserInfoVO(email);
+	
 	PrintWriter out = res.getWriter();
 
 	res.setCharacterEncoding("utf-8");
 	res.setContentType("text/html");
 	res.setHeader("Cache-Control", "no-cache");
 
-	if ( myPhotoList != null && myPhotoList.size() > 0 ) {
-	    out.print("");
-	} else {
-	    out.print("<span>소중한 순간을 포착하여 공유해보세요</span>");
-	}
-	
+        if (type.equals("grid")) {
+            List<PhotoInfoVO> myPhotoList = photoInfoDao.getMyPhotoList(user);
+            if (myPhotoList != null && myPhotoList.size() > 0) {
+                out.print("<ul class='myPhotoListByGrid'>");
+                for (int i = 0; i < myPhotoList.size(); i++) {
+                    PhotoInfoVO photo = myPhotoList.get(i);
+                    String seq_photo = photo.getSeq_photo();
+                    out.print("<li><a href='./detail?pid=" + seq_photo + "'><img src='../personalImg/" + email + "/" + seq_photo + ".jpg' alt='" + seq_photo + "' /></a></li>");
+                }
+                out.print("</ul>");
+            } else {
+        	out.print("<span>소중한 순간을 포착하여 공유해보세요</span>");
+            }
+        } else if (type.equals("list")) {
+            ArrayList<ArticleVO> myPhotoList = photoInfoDao.getMyPhotoListForArticle(user);
+            
+            for (int i = 0; i < myPhotoList.size(); i++) {
+        	ArticleVO article = myPhotoList.get(i);
+        	PhotoInfoVO photo = article.getPhoto();
+        	String seq_photo = photo.getSeq_photo();
+        	
+        	
+                out.print("<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
+                out.print("<img src='./image/test.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필 이미지
+                out.print("</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+                out.print("이성경 존나이뻐요");// 닉네임
+                out.print("</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+                out.print(photo.getReg_date());// 올린시간
+                out.print("</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
+                out.print("<img src='../personalImg/"+email+"/"+seq_photo+".jpg' width='100%' />");// 올린 사진
+                out.print("</td></tr></table></div><div class='CMTnLIK'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
+                out.print("</a><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
+                out.print("<img src='./image/icon/warning.png' width='25' /></a></td></tr><tr>");
+                
+                List<LikeVO> likeList = article.getLike();
+                if (likeList.size() < 6) {
+                    out.print("<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
+                    for (int j = 0; j < likeList.size(); j++) {
+                	out.print(likeList.get(j));
+                    }
+                    out.print("</a></td>");
+                } else {
+                    out.print("<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥"); 
+                    out.print(likeList.size() + "개</a></td></tr>");
+                }
+                out.print("<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+                out.print("닉네임");
+		out.print("</a>" + photo.getContent());
+		out.print("</td></tr><tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a></td></tr>");
+
+        	List<CommentVO> commentList = article.getComment();
+        	
+                if (commentList != null && commentList.size() > 0) {
+                    for (int j = 0; j < commentList.size(); j++) {
+                	CommentVO comment = commentList.get(j);
+                	out.print("<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+            		out.print("댓글단사람닉네임");
+                	out.print("</a>댓글</td></tr>");
+                    }
+                }
+                out.print("</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div>");
+            }
+        } else {
+            out.print("로딩 중 에러가 발생했습니다. 다시 시도해 주세요.");
+        }
+
     }
 
     @RequestMapping("/profileupdate")
