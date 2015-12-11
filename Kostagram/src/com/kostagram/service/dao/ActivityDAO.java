@@ -10,4 +10,5 @@ public interface ActivityDAO {
 	public boolean insert(ActivityVO activity);
 	public List<ActivityVO> activityList(UserInfoVO user);
 	public List<HashMap> mynewsList(UserInfoVO user);
+	public List<HashMap> followingList(UserInfoVO user);
 }
