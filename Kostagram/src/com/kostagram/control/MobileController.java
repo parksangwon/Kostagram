@@ -302,9 +302,8 @@ public class MobileController {
 
 	// ÆÈ·ÎÀ× ·Î±× (ÁÁ¾Æ¿ä ÆÈ·Î¿ì)
 	@RequestMapping("/following")
-	public String following(HttpServletRequest request, HttpSession session,
-			Model model) {
-
+	public String following(HttpServletRequest request, HttpSession session,Model model) {
+		
 		if (session == null || session.getAttribute("email") == null
 				|| session.getAttribute("loginYn") == null
 				|| session.getAttribute("loginYn").equals("N")) {
@@ -312,8 +311,9 @@ public class MobileController {
 		}
 
 		String email = (String) session.getAttribute("email");
-		List<HashMap> followingList = activityDao
-				.followingList(new UserInfoVO(email));
+		//System.out.println(email);
+		List<HashMap> followingList = activityDao.followingList(new UserInfoVO(email));
+		//System.out.println(followingList);
 		model.addAttribute("followingList", followingList);
 
 		return "mobile/following";
