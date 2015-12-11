@@ -33,8 +33,8 @@
 			<div>
 				<table width="100%">
 					<tr>
-						<td align="center"><a href="/Kostagram/m/following" data-transition="fade" style="text-decoration: none;">팔로잉</a></td>
-						<td align="center"><a href="/Kostagram/m/mynews" data-transition="fade" style="text-decoration: none;">내게시물</a></td>
+						<td align="center"><a href="/Kostagram/m/following" data-transition="fade" style="text-decoration: none; color: #004879;">팔로잉</a></td>
+						<td align="center"><a href="/Kostagram/m/mynews" data-transition="fade" style="text-decoration: none; color: #004879;">내게시물</a></td>
 					</tr>
 				</table>
 			</div>
