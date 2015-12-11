@@ -84,7 +84,7 @@ public class MobileController {
 			out.print("loginFail");
 		}
 	}
-	
+
 	@RequestMapping("/timeline")
 	public void getTimeline(HttpSession session, HttpServletResponse res) throws IOException {
 		String email = (String) session.getAttribute("email");
@@ -98,89 +98,94 @@ public class MobileController {
 		res.setHeader("Cache-Control", "no-cache");
 
 		out.print("<div id='photoList'>");
-		ArrayList<ArticleVO> myPhotoList = photoInfoDao
+		ArrayList<ArticleVO> timeline = photoInfoDao
 				.getTimeline(user);
-		for (int i = 0; i < myPhotoList.size(); i++) {
-			ArticleVO article = myPhotoList.get(i);
-			PhotoInfoVO photo = article.getPhoto();
-			String seq_photo = photo.getSeq_photo();
-
-			System.out.println(article);
-			out.print(
-					"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
-
-			HashMap userInfo = article.getUserInfo();
-			String photoNickname = (String) userInfo.get("NICKNAME");
-			String profile = (String) userInfo.get("PROFILE");
-			if (profile == null) {
+		if ( timeline.size() != 0 ) {
+			for (int i = 0; i < timeline.size(); i++) {
+				ArticleVO article = timeline.get(i);
+				PhotoInfoVO photo = article.getPhoto();
+				String seq_photo = photo.getSeq_photo();
+		
+				System.out.println(article);
 				out.print(
-						"<img src='../personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
-			} else {
-				out.print("<img src='../personalImg/" + email
-						+ "/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
-				// 이미지
-			}
-			out.print(
-					"</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-			out.print(photoNickname);// 닉네임
-			out.print(
-					"</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-			out.print(photo.getReg_date());// 올린시간
-			out.print(
-					"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
-			out.print("<img src='../personalImg/" + email + "/" + seq_photo
-					+ ".jpg' width='100%' />");// 올린 사진
-			out.print(
-					"</td></tr></table></div><div class='CMTnLIK'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
-			out.print(
-					"</a><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
-			out.print(
-					"<img src='./image/icon/warning.png' width='25' /></a></td></tr><tr>");
-
-			List<HashMap> likeList = article.getLikeList();
-			if (likeList.size() < 6) {
-				out.print(
-						"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
-				if (likeList.size() == 0) {
-					out.print("좋아요");
-				}
-				for (int j = 0; j < likeList.size(); j++) {
-					HashMap like = likeList.get(j);
-					String cmtNickname = (String) like.get("NICKNAME");
-					out.print(cmtNickname);
-				}
-				out.print("</a></td>");
-			} else {
-				out.print(
-						"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
-				out.print(likeList.size() + "개</a></td></tr>");
-			}
-			if (photo.getContent() != null) {
-				out.print(
-						"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-				out.print("닉네임");
-				out.print("</a>" + photo.getContent() + "</td></tr>");
-			}
-
-			List<HashMap> commentList = article.getCommentList();
-			if (commentList != null && commentList.size() > 0) {
-				if (commentList.size() > 6) {
+						"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
+		
+				HashMap userInfo = article.getUserInfo();
+				String photoNickname = (String) userInfo.get("NICKNAME");
+				String profile = (String) userInfo.get("PROFILE");
+				String photoEmail = (String) userInfo.get("EMAIL");
+				if (profile == null) {
 					out.print(
-							"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a></td></tr>");
+							"<img src='personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
+				} else {
+					out.print("<img src='personalImg/" + photoEmail
+							+ "/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
+					// 이미지
 				}
-				for (int j = 0; j < commentList.size(); j++) {
-					HashMap comment = commentList.get(j);
-					String nickname = (String) comment.get("NICKNAME");
-					String content = (String) comment.get("CONTENT");
-					System.out.println(nickname + "/" + content);
+				out.print(
+						"</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+				out.print(photoNickname);// 닉네임
+				out.print(
+						"</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+				out.print(photo.getReg_date());// 올린시간
+				out.print(
+						"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
+				out.print("<img src='personalImg/" + photoEmail + "/" + seq_photo
+						+ ".jpg' width='100%' />");// 올린 사진
+				out.print(
+						"</td></tr></table></div><div class='CMTnLIK'><table><tr><td align='left'><a href='#'><img src='m/image/icon/heart.png' width='25' />");
+				out.print(
+						"</a><a href='#'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
+				out.print(
+						"<img src='m/image/icon/warning.png' width='25' /></a></td></tr><tr>");
+		
+				List<HashMap> likeList = article.getLikeList();
+				if (likeList.size() < 6) {
+					out.print(
+							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
+					if (likeList.size() == 0) {
+						out.print("좋아요");
+					}
+					for (int j = 0; j < likeList.size(); j++) {
+						HashMap like = likeList.get(j);
+						String cmtNickname = (String) like.get("NICKNAME");
+						out.print(cmtNickname);
+					}
+					out.print("</a></td>");
+				} else {
+					out.print(
+							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
+					out.print(likeList.size() + "개</a></td></tr>");
+				}
+				if (photo.getContent() != null) {
 					out.print(
 							"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-					out.print(nickname);
-					out.print("</a>" + content + "</td></tr>");
+					out.print("닉네임");
+					out.print("</a>" + photo.getContent() + "</td></tr>");
 				}
+		
+				List<HashMap> commentList = article.getCommentList();
+				if (commentList != null && commentList.size() > 0) {
+					if (commentList.size() > 6) {
+						out.print(
+								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a></td></tr>");
+					}
+					for (int j = 0; j < commentList.size(); j++) {
+						HashMap comment = commentList.get(j);
+						String nickname = (String) comment.get("NICKNAME");
+						String content = (String) comment.get("CONTENT");
+						System.out.println(nickname + "/" + content);
+						out.print(
+								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+						out.print(nickname);
+						out.print("</a>" + content + "</td></tr>");
+					}
+				}
+				out.print(
+						"</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
 			}
-			out.print(
-					"</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
+		} else {
+			out.print("<br/><span>소중한 순간을 포착하여 공유해보세요</span>");
 		}
 		out.print("</div>");
 	}
@@ -396,87 +401,91 @@ public class MobileController {
 		} else if (type.equals("list")) {
 			ArrayList<ArticleVO> myPhotoList = photoInfoDao
 					.getMyPhotoListForArticle(user);
-			for (int i = 0; i < myPhotoList.size(); i++) {
-				ArticleVO article = myPhotoList.get(i);
-				PhotoInfoVO photo = article.getPhoto();
-				String seq_photo = photo.getSeq_photo();
+			if (myPhotoList.size() != 0) {
+				for (int i = 0; i < myPhotoList.size(); i++) {
+					ArticleVO article = myPhotoList.get(i);
+					PhotoInfoVO photo = article.getPhoto();
+					String seq_photo = photo.getSeq_photo();
 
-				System.out.println(article);
-				out.print(
-						"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
+					System.out.println(article);
+					out.print(
+							"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
 
-				HashMap userInfo = article.getUserInfo();
-				String photoNickname = (String) userInfo.get("NICKNAME");
-				String profile = (String) userInfo.get("PROFILE");
-				if (profile == null) {
-					out.print(
-							"<img src='../personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
-				} else {
-					out.print("<img src='../personalImg/" + email
-							+ "/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
-					// 이미지
-				}
-				out.print(
-						"</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-				out.print(photoNickname);// 닉네임
-				out.print(
-						"</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-				out.print(photo.getReg_date());// 올린시간
-				out.print(
-						"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
-				out.print("<img src='../personalImg/" + email + "/" + seq_photo
-						+ ".jpg' width='100%' />");// 올린 사진
-				out.print(
-						"</td></tr></table></div><div class='CMTnLIK'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
-				out.print(
-						"</a><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
-				out.print(
-						"<img src='./image/icon/warning.png' width='25' /></a></td></tr><tr>");
-
-				List<HashMap> likeList = article.getLikeList();
-				if (likeList.size() < 6) {
-					out.print(
-							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
-					if (likeList.size() == 0) {
-						out.print("좋아요");
-					}
-					for (int j = 0; j < likeList.size(); j++) {
-						HashMap like = likeList.get(j);
-						String cmtNickname = (String) like.get("NICKNAME");
-						out.print(cmtNickname);
-					}
-					out.print("</a></td>");
-				} else {
-					out.print(
-							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
-					out.print(likeList.size() + "개</a></td></tr>");
-				}
-				if (photo.getContent() != null) {
-					out.print(
-							"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-					out.print("닉네임");
-					out.print("</a>" + photo.getContent() + "</td></tr>");
-				}
-
-				List<HashMap> commentList = article.getCommentList();
-				if (commentList != null && commentList.size() > 0) {
-					if (commentList.size() > 6) {
+					HashMap userInfo = article.getUserInfo();
+					String photoNickname = (String) userInfo.get("NICKNAME");
+					String profile = (String) userInfo.get("PROFILE");
+					if (profile == null) {
 						out.print(
-								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a></td></tr>");
+								"<img src='../personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
+					} else {
+						out.print("<img src='../personalImg/" + email
+								+ "/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
+						// 이미지
 					}
-					for (int j = 0; j < commentList.size(); j++) {
-						HashMap comment = commentList.get(j);
-						String nickname = (String) comment.get("NICKNAME");
-						String content = (String) comment.get("CONTENT");
-						System.out.println(nickname + "/" + content);
+					out.print(
+							"</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+					out.print(photoNickname);// 닉네임
+					out.print(
+							"</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+					out.print(photo.getReg_date());// 올린시간
+					out.print(
+							"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
+					out.print("<img src='../personalImg/" + email + "/"
+							+ seq_photo + ".jpg' width='100%' />");// 올린 사진
+					out.print(
+							"</td></tr></table></div><div class='CMTnLIK'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
+					out.print(
+							"</a><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
+					out.print(
+							"<img src='./image/icon/warning.png' width='25' /></a></td></tr><tr>");
+
+					List<HashMap> likeList = article.getLikeList();
+					if (likeList.size() < 6) {
+						out.print(
+								"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
+						if (likeList.size() == 0) {
+							out.print("좋아요");
+						}
+						for (int j = 0; j < likeList.size(); j++) {
+							HashMap like = likeList.get(j);
+							String cmtNickname = (String) like.get("NICKNAME");
+							out.print(cmtNickname);
+						}
+						out.print("</a></td>");
+					} else {
+						out.print(
+								"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
+						out.print(likeList.size() + "개</a></td></tr>");
+					}
+					if (photo.getContent() != null) {
 						out.print(
 								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-						out.print(nickname);
-						out.print("</a>" + content + "</td></tr>");
+						out.print("닉네임");
+						out.print("</a>" + photo.getContent() + "</td></tr>");
 					}
+
+					List<HashMap> commentList = article.getCommentList();
+					if (commentList != null && commentList.size() > 0) {
+						if (commentList.size() > 6) {
+							out.print(
+									"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a></td></tr>");
+						}
+						for (int j = 0; j < commentList.size(); j++) {
+							HashMap comment = commentList.get(j);
+							String nickname = (String) comment.get("NICKNAME");
+							String content = (String) comment.get("CONTENT");
+							System.out.println(nickname + "/" + content);
+							out.print(
+									"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+							out.print(nickname);
+							out.print("</a>" + content + "</td></tr>");
+						}
+					}
+					out.print(
+							"</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
 				}
-				out.print(
-						"</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
+			}  else {
+				out.print("<span>소중한 순간을 포착하여 공유해보세요</span>");
 			}
 		} else {
 			out.print("잘못된 요청입니다. 다시 시도해 주세요.");
