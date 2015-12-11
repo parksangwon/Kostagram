@@ -193,6 +193,26 @@
 															});
 												});
 							}
+							
+							else if (this.id == 'timeline') {
+								$(document).ready(function(){
+									alert("timeline");
+									$.ajax({
+										type : 'POST',
+										url : '/Kostagram/m/timeline',
+										dataType : 'html',
+										success : function(data) {
+											if ( $('#photoArea > #photoList') != null ) {
+												$('#photoArea').empty();
+											}
+											$('#timeline > #photoArea').html(data);	
+										},
+										error : function() {
+											alert("error");
+										}
+									});
+								});
+							}
 							// usercheck 끝
 							else if (this.id == 'userpage') {
 								// 버튼마다 ajax통신 다르게
