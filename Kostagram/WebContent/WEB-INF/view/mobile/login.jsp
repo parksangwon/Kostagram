@@ -200,15 +200,19 @@
 									$.ajax({
 										type : 'POST',
 										url : 'getMyPhotoList',
-										dataType : 'text',
+										dataType : 'html',
 										data : {
 											type : 'grid'
 										},
-										success : function(text){
-											if ( $('#photoArea > div:first-child ').get(0) != null ) {
-												$('#photoArea > div:first-child ').get(0).remove();
+										success : function(data){
+											alert(data);
+											if ( $('#photoArea > #photoList') != null ) {
+												$('#photoArea').empty();
 											}
-											$('#userpage > #photoArea').append(text);	
+											$('#userpage > #photoArea').html(data);	
+										},
+										error : function() {
+											alert("error");
 										}
 									});
 								});
@@ -218,17 +222,17 @@
 										$.ajax({
 											type : 'POST',
 											url : 'getMyPhotoList',
-			 								dataType : 'text',
+			 								dataType : 'html',
 											data : {
 												type : option
 											},
-											success : function(text){
-												alert($('#photoArea').find("#photoList").get(0).id+"삭제시작");
-												$('#photoArea').find("#photoList").get(0).remove();
-												alert("삭제 끝");
-												alert($('#userpage > #photoArea').id+"추가 시작");
-												$('#userpage > #photoArea').append(text);
-												alert("추가 끝");
+											success : function(data){
+												alert(data);
+												$('#photoArea').empty();
+												$('#userpage > #photoArea').html(data);
+											},
+											error : function() {
+												alert("error");
 											}
 										});
 									});
