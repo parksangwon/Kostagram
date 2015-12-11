@@ -196,7 +196,6 @@
 							
 							else if (this.id == 'timeline') {
 								$(document).ready(function(){
-									alert("timeline");
 									$.ajax({
 										type : 'POST',
 										url : '/Kostagram/m/timeline',
