@@ -3,8 +3,8 @@
 <%@ page import="java.util.*"%>
 
 <%
-	List<HashMap> followingList = (List<HashMap>)request.getAttribute("followingList");
-	System.out.println(followingList);
+	List<HashMap> followingList = (List<HashMap>) request.getAttribute("followingList");
+	System.out.println("followingList = " + followingList);
 %>
 
 <title>Kostagram</title>
@@ -33,55 +33,75 @@
 			<div>
 				<table width="100%">
 					<tr>
-						<td align="center"><a href="/Kostagram/m/following" data-transition="fade" style="text-decoration: none;">팔로잉</a></td>
-						<td align="center"><a href="/Kostagram/m/mynews" data-transition="fade" style="text-decoration: none;">내게시물</a></td>
+						<td align="center"><a href="/Kostagram/m/following"
+							data-transition="fade"
+							style="text-decoration: none; color: #004879;">팔로잉</a></td>
+						<td align="center"><a href="/Kostagram/m/mynews"
+							data-transition="fade"
+							style="text-decoration: none; color: #004879;">내게시물</a></td>
 					</tr>
 				</table>
 			</div>
 			<div>
 				<%
 					if (followingList != null && followingList.size() > 0) {
-							for ( HashMap news : followingList ) {
-							String readyn = (String)news.get("READYN");
-							String seq_photo = (String)news.get("SEQ_PHOTO");
-							String kind = (String)news.get("KIND");
-							String to_nickname = (String)news.get("TO_NICKNAME");
-							String from_nickname = (String)news.get("FROM_NICKNAME");
-							//String to_email = (String)news.get("TO_EMAIL");
-							String from_email = (String)news.get("FROM_EMAIL");
-							String from_profile = (String)news.get("FROM_PROFILE");
+						for (HashMap news : followingList) {
+							String readyn = (String) news.get("READYN");
+							String seq_photo = (String) news.get("SEQ_PHOTO");
+							String kind = (String) news.get("KIND");
+							String to_nickname = (String) news.get("TO_NICKNAME");
+							String from_nickname = (String) news.get("FROM_NICKNAME");
+							String to_email = (String) news.get("TO_EMAIL");
+							String from_email = (String) news.get("FROM_EMAIL");
+							String from_profile = (String) news.get("FROM_PROFILE");
 							String comment = "을 남기셨습니다.";
-							if(kind.equals("C"))
-							{
-								kind = "댓글";
-							}
-							else if(kind.equals("L"))
-							{
-								kind = "좋아요";
-								comment = "를 하셨습니다.";
-								
+							if (kind.equals("C")) {
+								kind = "에 댓글";
+							} else if (kind.equals("L")) {
+								kind = "을 좋아";
+								comment = "하셨습니다.";
+
 							}
 				%>
-				<%= seq_photo %>, <%= kind %>, <%= to_nickname %>, <%= from_nickname %>, <%= from_email %>, <%= from_profile %> 
+
 				<br>
 				<table width="100%" cellpadding="2" cellspacing="0">
 					<tr>
-						<td align="left" width="15%"><a href="./detail"><img src="./image/test.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a></td>
-						<td width="70%"><a href="#" style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">성경쓰</a>님이 
-											<a href="#" style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">조영갱</a>님의 사진을 좋아합니다.</td>
-						<td align="right" width="15%"><a href="./detail"><img	src="./image/park.jpg" width="40" /></a></td>
+						<%
+							if (from_profile == null) {
+						%>
+						<td align="left" width="15%"><a href="./detail"><img
+								src="/Kostagram/personalImg/profile.jpg" width="40"
+								style="-webkit-border-radius: 100px; border-radius: 100px;" /></a></td>
+						<%
+							} else {
+						%>
+						<td align="left" width="15%"><a href="./detail"><img
+								src="/Kostagram/personalImg/<%=from_email%>/<%=from_profile%>.jpg"
+								width="40"
+								style="-webkit-border-radius: 100px; border-radius: 100px;" /></a></td>
+						<%
+							}
+						%>
+						<td width="70%"><a href="#"
+							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%=from_nickname%></a>님이
+							<a href="#"
+							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%=to_nickname%></a>님의
+							사진<%=kind%><%=comment%></td>
+						<td align="right" width="15%"><a href="./detail"><img
+								src="/Kostagram/personalImg/<%=to_email%>/<%=seq_photo%>.jpg"
+								width="40" /></a></td>
 					</tr>
 				</table>
 				<img src="./image/line.png" width="100%">
 				<%
-						}
-						}else {
+					}
+					} else {
 				%>
-						<div>팔로잉이 없습니다.</div>
+				<br>
+				<div align="center">팔로잉이 없습니다.</div>
 				<%
-							}
-						
-				
+					}
 				%>
 			</div>
 		</div>
