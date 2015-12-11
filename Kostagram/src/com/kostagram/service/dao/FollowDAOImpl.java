@@ -34,14 +34,12 @@ public class FollowDAOImpl implements FollowDAO {
 
 	@Override
 	public int getMyFollowing(UserInfoVO user) {
-		HashMap count = sqlSession.selectOne("follow.getMyFollowing", user);
-		return (int)count.get("COUNT");
+		return sqlSession.selectOne("follow.getMyFollowing", user);
 	}
 
 	@Override
 	public int getMyFollower(UserInfoVO user) {
-		HashMap count = sqlSession.selectOne("follow.getMyFollower", user);
-		return (int)count.get("COUNT");
+		return sqlSession.selectOne("follow.getMyFollower", user);
 	}
 	
 }

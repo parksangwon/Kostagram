@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kostagram.service.beans.ArticleVO;
-import com.kostagram.service.beans.CommentVO;
-import com.kostagram.service.beans.LikeVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.UserInfoVO;
 
@@ -92,7 +90,6 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 
 	@Override
 	public int countMyPhoto(UserInfoVO user) {
-		HashMap count = sqlSession.selectOne("userInfo.countMyPhoto", user);
-		return (int) count.get("COUNT");
+		return sqlSession.selectOne("userInfo.countMyPhoto", user);
 	}
 }
