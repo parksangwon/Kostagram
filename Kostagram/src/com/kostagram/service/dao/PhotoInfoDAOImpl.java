@@ -73,7 +73,7 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 	
 	List<PhotoInfoVO> photoList = sqlSession.selectList("photoInfo.getMyPhotoList", user);
 	for (PhotoInfoVO photo : photoList) {
-		HashMap userInfo = sqlSession.selectOne("userInfo.getProfileNickname", photo);
+		HashMap userInfo = sqlSession.selectOne("userInfo.getProfileNicknameEmail", photo);
 	    List<HashMap> commentList = sqlSession.selectList("comment.getCommentByPhotoId", photo);
 	    List<HashMap> likeList = sqlSession.selectList("like.getLikeByPhotoId", photo);
 	    
