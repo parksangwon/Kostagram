@@ -32,8 +32,8 @@
 		select pass from member where nickname = #{token} or email = #{token}
 	</select>
 	
-	<select id="getProfileNickname" parameterType="com.kostagram.service.beans.PhotoInfoVO"
+	<select id="getProfileNicknameEmail" parameterType="com.kostagram.service.beans.PhotoInfoVO"
 		resultType="java.util.HashMap">
-		select nickname, profile from member where email = #{email}
+		select nickname, profile, email from member where email = #{email}
 	</select>
 </mapper>
