@@ -81,8 +81,7 @@
 					<table width="80%" border="0">
 						<tr>
 							<td width="18%"><img src="image/icon/address_book.png"></td>
-							<td><input type="text" id="email" name="email"
-								placeholder="email-id" value="<%= email %>"></td>
+							<td><%= email %>
 						</tr>
 						<tr>
 							<td width="18%"><img
