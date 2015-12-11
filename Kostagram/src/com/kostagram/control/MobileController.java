@@ -275,9 +275,13 @@ public class MobileController {
 				HashMap userInfo = article.getUserInfo();
 				String photoNickname = (String) userInfo.get("NICKNAME");
 				String profile = (String) userInfo.get("PROFILE");
-				out.print("<img src='../personalImg/" + email
-						+ "/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
+				if ( profile == null ) {
+					out.print("<img src='../personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
+				} else {
+					out.print("<img src='../personalImg/" + email
+							+ "/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
 				// 이미지
+				}
 				out.print(
 						"</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 				out.print(photoNickname);// 닉네임
@@ -316,12 +320,13 @@ public class MobileController {
 					out.print("닉네임");
 					out.print("</a>" + photo.getContent() + "</td></tr>");
 				}
-				out.print(
-						"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a></td></tr>");
 
 				List<HashMap> commentList = article.getCommentList();
-
 				if (commentList != null && commentList.size() > 0) {
+					if ( commentList.size() > 6) {
+						out.print(
+								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a></td></tr>");
+					}
 					for (int j = 0; j < commentList.size(); j++) {
 						HashMap comment = commentList.get(j);
 						String nickname = (String) comment.get("NICKNAME");
