@@ -8,4 +8,11 @@
 	<select id="selectList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="com.kostagram.service.beans.ActivityVO">
 		select * from activity_log where to_email = #{email} and <![CDATA[rownum <= 30]]>
 	</select>
+	
+	<select id="mynewsList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
+		select seq_photo, kind, readyn, a.nickname to_nickname, b.nickname from_nickname, b.email from_email, b.profile from_profile
+		from activity_log, member a, member b
+		where activity_log.to_email = #{email} and a.email = activity_log.to_email and activity_log.from_email = b.email
+		order by activity_log.reg_date desc
+	</select>
 </mapper>
