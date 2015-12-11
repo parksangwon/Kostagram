@@ -247,27 +247,41 @@ public class WebController {
 }
 
     @RequestMapping(value = "/userpage")
-    public void follow(FollowVO followVO, HttpSession session, HttpServletResponse response) throws IOException  {
+    public void follow(FollowVO followVO, HttpSession session, HttpServletResponse response ,
+    		HttpServletRequest request ) throws IOException  {
     	String nickname = (String) session.getAttribute("nickname");
+    	String followState = (String)request.getParameter("followState");
+    	System.out.println("팔로우상태:" +followState);
     	
     	PrintWriter out = response.getWriter();
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
 		response.setHeader("Cache-Control", "no-cache");
 		
-		if(followDao.insert(followVO))
+		
+		if(followState.equals("UF"))
 		{
-			out.print("follwing");
+			if(followDao.insert(followVO))
+			{
+				out.print("following");
+			}
+			else
+			{
+				out.print("팔로잉중에 실패하였습니다.");
+			}
 		}
-		else
+		else if(followState.equals("F"))
 		{
-			out.print("팔로우중에 실패하였습니다.");
+			System.out.println("followStata는 F...");
+			if(followDao.delete(followVO.getTo_email()))
+			{
+				out.print("follow");
+			}
+			else
+			{
+				out.print("팔로우중에 실패하였습니다.");
+			}			
 		}
-		
-		
-		
-		
-		
 	}
     @RequestMapping(value = "/usernotfound")
     public String userNotfound() {
