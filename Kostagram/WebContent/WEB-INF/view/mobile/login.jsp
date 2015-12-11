@@ -205,7 +205,6 @@
 											type : 'grid'
 										},
 										success : function(data){
-											alert(data);
 											if ( $('#photoArea > #photoList') != null ) {
 												$('#photoArea').empty();
 											}
@@ -227,7 +226,6 @@
 												type : option
 											},
 											success : function(data){
-												alert(data);
 												$('#photoArea').empty();
 												$('#userpage > #photoArea').html(data);
 											},

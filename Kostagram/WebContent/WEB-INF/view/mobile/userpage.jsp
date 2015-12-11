@@ -3,10 +3,30 @@
 	pageEncoding="UTF-8"%>
 
 <%
+	String profile = "";
+	String message = "";
+	int photoCnt = 0;
+	int followerCnt = 0;
+	int followingCnt = 0;
+	
 	String nickname = (String)session.getAttribute("nickname");
-	String photoCnt = (String)request.getAttribute("photoCnt");
-	String followerCnt = (String)request.getAttribute("followerCnt");
-	String followingCnt = (String)request.getAttribute("followingCnt");
+	if ( request.getAttribute("profile") != null ) {
+		profile = (String)session.getAttribute("email") + "/" + (String)request.getAttribute("profile");
+	} else {
+		profile = "profile.jpg";
+	}
+	if ( request.getAttribute("message") != null ) {
+		message = (String)request.getAttribute("message");
+	}
+	if ( request.getAttribute("photoCnt") != null ) {
+		photoCnt = (Integer)request.getAttribute("photoCnt");
+	}
+	if ( request.getAttribute("followerCnt") != null ) {
+		followerCnt = (Integer)request.getAttribute("followerCnt");
+	}
+	if ( request.getAttribute("followingCnt") != null ) {
+		followingCnt = (Integer)request.getAttribute("followingCnt");
+	}
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,9 +45,11 @@
 		<div data-role="header" data-theme="a">
 			<table width="100%">
 				<tr>
-					<td><span
-						style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">Park
-							Sang Won </span></td>
+					<td>
+						<span style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
+						<%= nickname%>
+						</span>
+						</td>
 					<td align="right"><a href="./option"><img
 							src="./image/icon/settings.png" width="20"
 							style="padding-right: 10px;" /></a></td>
@@ -38,9 +60,9 @@
 			<div>
 				<table border="0" width="100%">
 					<tr>
-						<td rowspan="2" width="30%"><img width=200
-							src="image/test.jpg"
-							style="-webkit-border-radius: 100px; border-radius: 100px;" /></td>
+						<td rowspan="2" width="30%"><img width=90
+							src="../personalImg/<%= profile %>"
+							style="-webkit-border-radius: 100px; border-radius: 100px; padding: 1em" /></td>
 						<td align="center"><%= photoCnt %><br>게시물
 						</td>
 						<td align="center"><%= followingCnt %><br> 팔로잉
@@ -53,7 +75,7 @@
 							onclick="$.mobile.changePage('./profileupdate')">프로필 수정</td>
 					</tr>
 					<tr>
-						<td align="left" colspan="3">프로필 메시지</td>
+						<td align="left" colspan="3"><%= message %></td>
 					</tr>
 				</table>
 			</div>
