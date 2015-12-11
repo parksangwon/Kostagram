@@ -12,13 +12,13 @@
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PhotoMap</title>
 
 <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no"/>
 <!-- 구글 맵 api -->
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<!--  -->
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
@@ -91,8 +91,6 @@
             padding: 0px;
         }
 </style>
-
-</head>
 
 <body>
 	<div data-role="page" id="page" >
