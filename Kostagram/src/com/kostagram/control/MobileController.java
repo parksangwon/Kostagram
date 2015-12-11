@@ -244,13 +244,10 @@ public class MobileController {
 		public String userpage(HttpSession session, Model model) {
 			UserInfoVO user = new UserInfoVO((String)session.getAttribute("email"));
 			
-			user = userInfoDao.findEmail(user);
-			
 			int photoCnt = photoInfoDao.countMyPhoto(user);
 			int followerCnt = followDao.getMyFollower(user);
 			int followingCnt = followDao.getMyFollowing(user);
 			
-			model.addAttribute("userInfo", user);
 			model.addAttribute("photoCnt", photoCnt);
 			model.addAttribute("followerCnt", followerCnt);
 			model.addAttribute("followingCnt", followingCnt);
