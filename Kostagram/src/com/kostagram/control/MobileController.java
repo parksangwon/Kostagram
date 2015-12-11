@@ -218,10 +218,23 @@ public class MobileController {
 
 	}
 
-	@RequestMapping("/mynews")
-	public String mynews() {
-		return "mobile/mynews";
-	}
+	 @RequestMapping("/mynews")
+	    public String mynews(HttpSession session, ActivityVO activityVO, Model model) {
+	    	
+	    	//DB에서 내(현제 세션에 저장되어있는 email) 게시물에 댓글 또는 좋아요를 한 사람의 닉네임, 사진, find(댓글 or 좋아요)인지 목록을 가져와야한다.
+	    	//session에서 이메일을 받아옴.
+	    	String email = (String) session.getAttribute("email");
+	    	
+	    	UserInfoVO user = new UserInfoVO(email);
+			
+			//DB에서 정보 가져오기.
+			//mynewsList메소드 실행
+			List<HashMap> mynews = activityDao.mynewsList(user);
+			
+	    	//jsp에서 꺼낼수 잇게 보내줌
+			model.addAttribute("mynews", mynews);
+			return "mobile/mynews";
+	    }
 
 	@RequestMapping("/userpage")
 	public String userpage() {
