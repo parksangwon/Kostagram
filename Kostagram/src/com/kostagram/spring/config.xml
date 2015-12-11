@@ -8,8 +8,13 @@
 	<!-- 스프링 환경설정 -->
 
 	<!-- 스프링MVC를 어노테이션기반으로 사용 -->
-	<mvc:annotation-driven />
-
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value="text/plain;charset=UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 	<!-- JSP페이지 요청이 있었을 시에 Tomcat컨테이너에서 처리하겠음 -->
 	<mvc:default-servlet-handler />
 
@@ -56,7 +61,7 @@
 	<bean id="mailService" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
-  		<property name="protocol" value="smtp"/>
+		<property name="protocol" value="smtp" />
 		<property name="defaultEncoding" value="utf-8" />
 		<property name="username" value="kostagram1@gmail.com" />
 		<property name="password" value="dhQkckQhqdkTek" />
@@ -65,7 +70,7 @@
 			<props>
 				<prop key="mail.smtp.starttls.enable">true</prop>
 				<prop key="mail.smtp.auth">true</prop>
-                <prop key="mail.smtps.debug">true</prop>
+				<prop key="mail.smtps.debug">true</prop>
 			</props>
 		</property>
 
