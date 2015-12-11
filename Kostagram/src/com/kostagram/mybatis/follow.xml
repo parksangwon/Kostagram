@@ -17,15 +17,15 @@
 	</select>
 
 	<select id="getMyFollower" parameterType="com.kostagram.service.beans.UserInfoVO"
-		resultType="int">
-		SELECT COUNT(*)
+		resultType="java.lang.HashMap">
+		SELECT COUNT(*) COUNT
 		FROM FOLLOW
 		WHERE TO_EMAIL = #{email}
 	</select>
 	
 	<select id="getMyFollowing" parameterType="com.kostagram.service.beans.UserInfoVO"
-		resultType="int">
-		SELECT COUNT(*)
+		resultType="java.lang.HashMap">
+		SELECT COUNT(*) COUNT
 		FROM FOLLOW
 		WHERE FROM_EMAIL = #{email}
 	</select>
