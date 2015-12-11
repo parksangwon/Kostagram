@@ -229,7 +229,7 @@ public class WebController {
 	    	followVO.setFrom_email((String)session.getAttribute("email"));
 	    	followVO.setTo_email(userInfoVO.getEmail());
 	    	followVO = followDao.check(followVO);
-	    	if(followVO.getFrom_email()==null)
+	    	if(followVO==null)
 	    	{
 	    		check="FN";
 	    	}
@@ -263,6 +263,8 @@ public class WebController {
 		{
 			out.print("팔로우중에 실패하였습니다.");
 		}
+		
+		
 		
 		
 		
