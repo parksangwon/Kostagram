@@ -41,7 +41,7 @@ public class MobileController {
 
 	@Autowired
 	private ConversationDAO conversationDao;
-	
+
 	@Autowired
 	private FollowDAO followDao;
 
@@ -204,7 +204,8 @@ public class MobileController {
 
 	// 팔로잉 로그 (좋아요 팔로우)
 	@RequestMapping("/following")
-	public String following(HttpServletRequest request, HttpSession session, Model model) {
+	public String following(HttpServletRequest request, HttpSession session,
+			Model model) {
 
 		if (session == null || session.getAttribute("email") == null
 				|| session.getAttribute("loginYn") == null
@@ -213,45 +214,60 @@ public class MobileController {
 		}
 
 		String email = (String) session.getAttribute("email");
-		List<HashMap> followingList = activityDao.followingList(new UserInfoVO(email));
+		List<HashMap> followingList = activityDao
+				.followingList(new UserInfoVO(email));
 		model.addAttribute("followingList", followingList);
 
 		return "mobile/following";
 
 	}
 
-	 @RequestMapping("/mynews")
-	    public String mynews(HttpSession session, ActivityVO activityVO, Model model) {
-	    	
-	    	//DB에서 내(현제 세션에 저장되어있는 email) 게시물에 댓글 또는 좋아요를 한 사람의 닉네임, 사진, find(댓글 or 좋아요)인지 목록을 가져와야한다.
-	    	//session에서 이메일을 받아옴.
-	    	String email = (String) session.getAttribute("email");
-	    	
-	    	UserInfoVO user = new UserInfoVO(email);
-			
-			//DB에서 정보 가져오기.
-			//mynewsList메소드 실행
-			List<HashMap> mynews = activityDao.mynewsList(user);
-			
-	    	//jsp에서 꺼낼수 잇게 보내줌
-			model.addAttribute("mynews", mynews);
-			return "mobile/mynews";
-	    }
+	@RequestMapping("/mynews")
+	public String mynews(HttpSession session, ActivityVO activityVO,
+			Model model) {
 
-	 @RequestMapping("/userpage")
-		public String userpage(HttpSession session, Model model) {
-			UserInfoVO user = new UserInfoVO((String)session.getAttribute("email"));
-			
+		// DB에서 내(현제 세션에 저장되어있는 email) 게시물에 댓글 또는 좋아요를 한 사람의 닉네임, 사진, find(댓글 or
+		// 좋아요)인지 목록을 가져와야한다.
+		// session에서 이메일을 받아옴.
+		String email = (String) session.getAttribute("email");
+
+		UserInfoVO user = new UserInfoVO(email);
+
+		// DB에서 정보 가져오기.
+		// mynewsList메소드 실행
+		List<HashMap> mynews = activityDao.mynewsList(user);
+
+		// jsp에서 꺼낼수 잇게 보내줌
+		model.addAttribute("mynews", mynews);
+		return "mobile/mynews";
+	}
+
+	@RequestMapping("/userpage")
+	public String userpage(HttpSession session, Model model) {
+
+		if (session.getAttribute("email") != null) {
+
+			UserInfoVO user = new UserInfoVO(
+					(String) session.getAttribute("email"));
+
+			user = userInfoDao.findEmail(user);
+			String profile = user.getProfile_img();
+			String message = user.getMessage();
 			int photoCnt = photoInfoDao.countMyPhoto(user);
 			int followerCnt = followDao.getMyFollower(user);
 			int followingCnt = followDao.getMyFollowing(user);
-			
+
+			model.addAttribute("profile", profile);
+			model.addAttribute("message", message);
 			model.addAttribute("photoCnt", photoCnt);
 			model.addAttribute("followerCnt", followerCnt);
 			model.addAttribute("followingCnt", followingCnt);
-			
+
 			return "mobile/userpage";
+		} else {
+			return "redirect:/m/";
 		}
+	}
 
 	@RequestMapping("/getMyPhotoList")
 	public void getMyPhotoList(HttpSession session, HttpServletRequest req,
@@ -300,12 +316,13 @@ public class MobileController {
 				HashMap userInfo = article.getUserInfo();
 				String photoNickname = (String) userInfo.get("NICKNAME");
 				String profile = (String) userInfo.get("PROFILE");
-				if ( profile == null ) {
-					out.print("<img src='../personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
+				if (profile == null) {
+					out.print(
+							"<img src='../personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
 				} else {
 					out.print("<img src='../personalImg/" + email
 							+ "/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
-				// 이미지
+					// 이미지
 				}
 				out.print(
 						"</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
@@ -327,7 +344,10 @@ public class MobileController {
 				List<HashMap> likeList = article.getLikeList();
 				if (likeList.size() < 6) {
 					out.print(
-							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
+							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
+					if (likeList.size() == 0) {
+						out.print("좋아요");
+					}
 					for (int j = 0; j < likeList.size(); j++) {
 						HashMap like = likeList.get(j);
 						String cmtNickname = (String) like.get("NICKNAME");
@@ -348,7 +368,7 @@ public class MobileController {
 
 				List<HashMap> commentList = article.getCommentList();
 				if (commentList != null && commentList.size() > 0) {
-					if ( commentList.size() > 6) {
+					if (commentList.size() > 6) {
 						out.print(
 								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a></td></tr>");
 					}
@@ -364,7 +384,7 @@ public class MobileController {
 					}
 				}
 				out.print(
-						"</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div>");
+						"</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
 			}
 		} else {
 			out.print("로딩 중 에러가 발생했습니다. 다시 시도해 주세요.");
