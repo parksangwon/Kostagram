@@ -4,7 +4,7 @@
 
 <%
 	int count=0;
-	//ArrayList photoList =(ArrayList)request.getAttribute("likeNoticeList");
+	//ArrayList photoList =(ArrayList)request.getAttribute("photoList");
 	ArrayList photoList = new ArrayList();
 	for(int i=0; i<4; i++)
 	{
@@ -13,9 +13,9 @@
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<head>
+
 <meta charset="UTF-8">
-<title>PhotoMap</title>
+<title>SearchPhotoMap</title>
 <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no"/>
 <!-- 구글 맵 api -->
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
@@ -23,74 +23,54 @@
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 <script>
+	$(document).bind('pagecreate',function(){
+
+		if( navigator.geolocation == undefined ) {
 	
-	//마커 변수
-    var markers = [
-                   {	
-                   	//좌표
-                       "lat": '37.478683',
-                       "lng": '126.880501',
-                       //마커  내용
-                       "description": '<a href=./detail><img src=./m/image/1.jpg width=60px></a>'
-                   },
-                   {
-                       "lat": '37.478683',
-                       "lng": '126.880550',
-                       "description": '<a href=./detail><img src=./m/image/2.jpg width=60px></a>'
-                   },
-                   {
-                       "lat": '37.478683',
-                       "lng": '126.880600',
-                       "description": '<a href=./detail><img src=./m/image/3.jpg width=60px></a>'
-                   },
-                   {
-                       "lat": '37.478683',
-                       "lng": '126.880650',
-                       "description": '<a href=./detail><img src=./m/image/4.jpg width=60px></a>'
-                   },
-                   {
-                       "lat": '37.478683',
-                       "lng": '126.880700',
-                       "description": '<a href=./detail><img src=./m/image/2.jpg width=60px></a>'
-                   }
-    				];
+			alert(" 위치 정보를 이용할 수 없습니다. ");
 	
-	    window.onload = function () {
-	        LoadMap();
-	    }
-	    
-	    function LoadMap() {
-	        var mapOptions = {
-	            center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
-	            zoom: 16,
-	            mapTypeId: google.maps.MapTypeId.ROADMAP
-	        };
-	        var map = new google.maps.Map(document.getElementById("Map"), mapOptions);
-	 
-	        var infoWindow = new google.maps.InfoWindow();
-	 
-	        for (var i = 0; i < markers.length; i++) {
-	            var data = markers[i];
-	            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-	            var marker = new google.maps.Marker({
-	                position: myLatlng,
-	                map: map,
-	            });
-	 
-	            (function (marker, data) {
-	                google.maps.event.addListener(marker, "click", function (e) {
-	                	//마커에 넣을 내용 가져오기
-	                    infoWindow.setContent(data.description);
-	                	//
-	                    infoWindow.open(map, marker);
-	                });
-	            })(marker, data);
-	        }
-	    }
+			return; 
 	
+		}
+	//구글맵을 생성시킬 DIV값 받아오기
+	var myMap = document.getElementById("Map");
+	
+	//임시로 준 좌표 값
+	var loc = new google.maps.LatLng(37.478683, 126.880691);
+
+	//	div 에 구글맵 보이기
+	var gmap = new google.maps.Map(
+			myMap,	//지도가 보여질 div
+			{
+				zoom:16,//	지도 확대 정보
+			 	center:loc,
+				mapTypeId:google.maps.MapTypeId.ROADMAP //	지도타입
+			}
+	);
+	
+	//	위치에 마커 표시하기
+	var gmarker = new google.maps.Marker(
+		{
+			position:loc,
+			map:gmap,
+			
+		});
+	
+	// 말풍선 안에 들어갈 사진과 사진갯수
+	var content = "<a href=./detail><img src=./m/image/3.jpg width=70px></a> <br> <font size=1><%= photoList.size() %>개의 사진이 있습니다.</font>";
+	
+	//마커 클릭시 말풍선이 뜸
+	var infowindow = new google.maps.InfoWindow({ content: content});
+	 
+       google.maps.event.addListener(gmarker, "click", function() {
+           infowindow.open(gmap,gmarker);
+       });
+});	
 </script>
-</head>
+
+
 
 <body>
 	<div data-role="page">
@@ -105,7 +85,7 @@
 		</div>
 		
 		<div data-role="content">
-			<div id="Map" style="width:100%;height:200px;"></div>
+			<div id="Map" style="width:100%;height:270px;"></div>
 				<p align="left"><font color="gray" size="2">최신글</font></p>
 			
 			<%
