@@ -90,6 +90,6 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 
 	@Override
 	public int countMyPhoto(UserInfoVO user) {
-		return sqlSession.selectOne("userInfo.countMyPhoto", user);
+		return sqlSession.selectOne("photoInfo.countMyPhoto", user);
 	}
 }
