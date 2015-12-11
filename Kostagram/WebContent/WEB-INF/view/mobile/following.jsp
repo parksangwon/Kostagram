@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 
+<%
+	List<HashMap> followingList = (List<HashMap>)request.getAttribute("followingList");
+	System.out.println(followingList);
+%>
+
 <title>Kostagram</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
@@ -35,15 +40,29 @@
 			</div>
 			<div>
 				<%
-					// 임시로 활동 리스트 추가
-					ArrayList follwingList = new ArrayList();
-					for (int i = 0; i < 10; i++) {
-						follwingList.add(i);
-					}
-
-					if (follwingList != null && follwingList.size() >= 0) {
-						for (int i = 0; i < follwingList.size(); i++) {
+					if (followingList != null && followingList.size() > 0) {
+							for ( HashMap news : followingList ) {
+							String readyn = (String)news.get("READYN");
+							String seq_photo = (String)news.get("SEQ_PHOTO");
+							String kind = (String)news.get("KIND");
+							String to_nickname = (String)news.get("TO_NICKNAME");
+							String from_nickname = (String)news.get("FROM_NICKNAME");
+							//String to_email = (String)news.get("TO_EMAIL");
+							String from_email = (String)news.get("FROM_EMAIL");
+							String from_profile = (String)news.get("FROM_PROFILE");
+							String comment = "을 남기셨습니다.";
+							if(kind.equals("C"))
+							{
+								kind = "댓글";
+							}
+							else if(kind.equals("L"))
+							{
+								kind = "좋아요";
+								comment = "를 하셨습니다.";
+								
+							}
 				%>
+				<%= seq_photo %>, <%= kind %>, <%= to_nickname %>, <%= from_nickname %>, <%= from_email %>, <%= from_profile %> 
 				<br>
 				<table width="100%" cellpadding="2" cellspacing="0">
 					<tr>
@@ -56,11 +75,13 @@
 				<img src="./image/line.png" width="100%">
 				<%
 						}
-					} else {
+						}else {
 				%>
-				<div>팔로잉이 없습니다.</div>
+						<div>팔로잉이 없습니다.</div>
 				<%
-					}
+							}
+						
+				
 				%>
 			</div>
 		</div>
