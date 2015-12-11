@@ -70,19 +70,19 @@
 				 <table width="100%" cellpadding="2" cellspacing="0">
 					<tr>
 				<%
-						if (from_profile == null)
-						{
+							if (from_profile == null)
+							{
 						
 				%>
 						<td align="left" width="15%"><a href="./detail"><img src="/Kostagram/personalImg/profile.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a></td>
 				<%
-						}
-						else
-						{
+							}
+							else
+							{
 				%>
 						<td align="left" width="15%"><a href="./detail"><img src="/Kostagram/personalImg/<%=from_email %>/profile.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a></td>
 				<%
-						}
+							}
 				%>
 						<td width="70%"><a href="#"style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%= from_nickname %></a>님이 회원님의 사진에 <%= kind %><%= comment %></td>
 						<td align="right" width="15%"><a href="./detail"><img	src="/Kostagram/personalImg/<%=to_email %>/<%=seq_photo %>.jpg" width="40" /></a></td>
@@ -91,9 +91,9 @@
 				<img src="./image/line.png" width="100%">
 				<%
 						}
-					} else if (mynewsList.size() == 0 && mynewsList.equals("")){
+					} else {
 				%>
-				<div>활동 내역이 없습니다.</div>
+				<br><div align="center">활동 내역이 없습니다.</div>
 				<%
 					}
 				%>
