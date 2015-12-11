@@ -106,7 +106,6 @@ public class MobileController {
 				PhotoInfoVO photo = article.getPhoto();
 				String seq_photo = photo.getSeq_photo();
 		
-				System.out.println(article);
 				out.print(
 						"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
 		
@@ -174,7 +173,6 @@ public class MobileController {
 						HashMap comment = commentList.get(j);
 						String nickname = (String) comment.get("NICKNAME");
 						String content = (String) comment.get("CONTENT");
-						System.out.println(nickname + "/" + content);
 						out.print(
 								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 						out.print(nickname);
@@ -407,7 +405,6 @@ public class MobileController {
 					PhotoInfoVO photo = article.getPhoto();
 					String seq_photo = photo.getSeq_photo();
 
-					System.out.println(article);
 					out.print(
 							"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
 
@@ -474,7 +471,6 @@ public class MobileController {
 							HashMap comment = commentList.get(j);
 							String nickname = (String) comment.get("NICKNAME");
 							String content = (String) comment.get("CONTENT");
-							System.out.println(nickname + "/" + content);
 							out.print(
 									"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 							out.print(nickname);
