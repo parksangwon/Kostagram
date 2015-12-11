@@ -231,7 +231,7 @@ public class MobileController {
 		PrintWriter out = res.getWriter();
 
 		res.setCharacterEncoding("utf-8");
-		res.setContentType("text/html");
+		res.setContentType("text/xml");
 		res.setHeader("Cache-Control", "no-cache");
 
 		out.print("<div id='photoList'>");
@@ -259,12 +259,13 @@ public class MobileController {
 				PhotoInfoVO photo = article.getPhoto();
 				String seq_photo = photo.getSeq_photo();
 
+				System.out.println(article);
 				out.print(
 						"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
 
 				HashMap userInfo = article.getUserInfo();
-				String photoNickname = (String)userInfo.get("nickname");
-				String profile = (String)userInfo.get("profile");
+				String photoNickname = (String)userInfo.get("NICKNAME");
+				String profile = (String)userInfo.get("PROFILE");
 				out.print(
 						"<img src='../personalImg/"+email+"/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />");// 프로필
 																																					// 이미지
@@ -291,7 +292,7 @@ public class MobileController {
 							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
 					for (int j = 0; j < likeList.size(); j++) {
 						HashMap like = likeList.get(j);
-						String cmtNickname = (String)like.get("nickname");
+						String cmtNickname = (String)like.get("NICKNAME");
 						out.print(cmtNickname);
 					}
 					out.print("</a></td>");
@@ -312,9 +313,9 @@ public class MobileController {
 				if (commentList != null && commentList.size() > 0) {
 					for (int j = 0; j < commentList.size(); j++) {
 						HashMap comment = commentList.get(j);
-						String nickname = (String)comment.get("nickname");
-						String content = (String)comment.get("content");
-						
+						String nickname = (String)comment.get("NICKNAME");
+						String content = (String)comment.get("CONTENT");
+						System.out.println(nickname + "/" + content);
 						out.print(
 								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 						out.print(nickname);
