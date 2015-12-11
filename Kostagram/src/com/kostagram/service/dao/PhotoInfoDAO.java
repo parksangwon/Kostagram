@@ -15,4 +15,5 @@ public interface PhotoInfoDAO {
 	public List<PhotoInfoVO> selectList(UserInfoVO user);
 	public List<PhotoInfoVO> getMyPhotoList(UserInfoVO user);
 	public ArrayList<ArticleVO> getMyPhotoListForArticle(UserInfoVO user);
+	public int countMyPhoto(UserInfoVO user);
 }

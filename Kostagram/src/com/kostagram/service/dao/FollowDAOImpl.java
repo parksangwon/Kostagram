@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kostagram.service.beans.FollowVO;
+import com.kostagram.service.beans.UserInfoVO;
 
 public class FollowDAOImpl implements FollowDAO {
 	@Autowired
@@ -27,6 +28,16 @@ public class FollowDAOImpl implements FollowDAO {
 	{
 		
 		return sqlSession.selectOne("follow.check", follow);
+	}
+
+	@Override
+	public int getMyFollowing(UserInfoVO user) {
+		return sqlSession.selectOne("follow.getMyFollowing", user);
+	}
+
+	@Override
+	public int getMyFollower(UserInfoVO user) {
+		return sqlSession.selectOne("follow.getMyFollower", user);
 	}
 	
 }
