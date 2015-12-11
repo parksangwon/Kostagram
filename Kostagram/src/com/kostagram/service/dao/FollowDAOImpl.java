@@ -21,7 +21,9 @@ public class FollowDAOImpl implements FollowDAO {
 	}
 	
 	@Override
-	public boolean delete(FollowVO follow) {
+	public boolean delete(String email) {
+		int delete= sqlSession.delete("follow.delete",email);
+		if(delete==1)return true;
 		return false;
 	}
 	
