@@ -5125,14 +5125,14 @@ transform
 								data-reactid=".0.1.0.0:0.1.3.0.0"><span
 									data-reactid=".0.1.0.0:0.1.3.0.0.0">게시물 </span><span
 									class="-cx-PRIVATE-PostsStatistic__count"
-									data-reactid=".0.1.0.0:0.1.3.0.0.1">0</span><span
+									data-reactid=".0.1.0.0:0.1.3.0.0.1">${photoCnt}</span><span
 									data-reactid=".0.1.0.0:0.1.3.0.0.2">개</span></span></li>
 							<li class="-cx-PRIVATE-ProfilePage__statistic"
 								data-reactid=".0.1.0.0:0.1.3.1"><span
 								data-reactid=".0.1.0.0:0.1.3.1.0"><span
 									data-reactid=".0.1.0.0:0.1.3.1.0.0">팔로워 </span><span title="60"
 									class="-cx-PRIVATE-FollowedByStatistic__count"
-									data-reactid=".0.1.0.0:0.1.3.1.0.1">1</span><span
+									data-reactid=".0.1.0.0:0.1.3.1.0.1">${followerCnt}</span><span
 									data-reactid=".0.1.0.0:0.1.3.1.0.2">명</span></span></li>
 							<li class="-cx-PRIVATE-ProfilePage__statistic"
 								data-reactid=".0.1.0.0:0.1.3.2"><span
@@ -5140,7 +5140,7 @@ transform
 								data-reactid=".0.1.0.0:0.1.3.2.0"><span
 									data-reactid=".0.1.0.0:0.1.3.2.0.0">팔로우 </span><span
 									class="-cx-PRIVATE-FollowsStatistic__count"
-									data-reactid=".0.1.0.0:0.1.3.2.0.1">0</span><span
+									data-reactid=".0.1.0.0:0.1.3.2.0.1">${followingCnt}</span><span
 									data-reactid=".0.1.0.0:0.1.3.2.0.2">명</span></span></li>
 						</ul>
 					</div>

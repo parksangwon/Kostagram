@@ -227,6 +227,7 @@ public class WebController {
     @RequestMapping(value = "/{nickname}")
     public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model, FollowVO followVO) {
 	userInfoVO.setNickname(nickname);
+	
 	String check = "N";
 	String url = "redirect:/usernotfound";
 	
@@ -238,8 +239,16 @@ public class WebController {
 		return url;
 	}
 	
+	int photoCnt = photoInfoDao.countMyPhoto(userInfoVO);
+	int followerCnt = followDao.getMyFollower(userInfoVO);
+	int followingCnt = followDao.getMyFollowing(userInfoVO);
+	
+	model.addAttribute("photoCnt", photoCnt);
+	model.addAttribute("followerCnt", followerCnt);
+	model.addAttribute("followingCnt", followingCnt);
+	
 	model.addAttribute("userInfoVO", userInfoVO);
-	    
+	
     if (session != null && session.getAttribute("loginYn") != null && ((String) session.getAttribute("loginYn")).equals("Y")) 
 	{
 	    // 자기자신 
