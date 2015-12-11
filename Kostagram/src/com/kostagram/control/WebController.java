@@ -285,7 +285,7 @@ public class WebController {
     		HttpServletRequest request ) throws IOException  {
     	String nickname = (String) session.getAttribute("nickname");
     	String followState = (String)request.getParameter("followState");
-    	System.out.println("팔로우상태:" +followState);
+    	
     	
     	PrintWriter out = response.getWriter();
 		response.setCharacterEncoding("utf-8");

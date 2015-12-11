@@ -5018,7 +5018,7 @@ transform
 						followState : followState
 				},
 				success : function(text) {
-					alert('[' + text + ']');
+					
 					if (text === "following") {
 						$('#followBtn').text("팔로잉");
 						$('#followBtn').attr("value", "F");
