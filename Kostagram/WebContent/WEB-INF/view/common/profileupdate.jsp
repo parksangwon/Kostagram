@@ -311,12 +311,12 @@
         <span><input type="tel" name="mobile" id="mobile" value="${userinfo.mobile}" /></span>
     </p>
 
-    <p name="gender" class="form-select" id="gender">
+    <p  class="form-select" >
         <label for="gender">성별</label>
         <span><select name="gender" id="gender">
-		<option value="3"<%if(gender.equals("3")){%>selected="selected"<%}%>>--------</option>
-		<option value="1"<%if(gender.equals("1")){%>selected="selected"<%}%>>남성</option>
-		<option value="2"<%if(gender.equals("2")){%>selected="selected"<%}%>>여성</option>
+		<option value="x"<%if(gender.equals("x")){%>selected="selected"<%}%>>--------</option>
+		<option value="m"<%if(gender.equals("m")){%>selected="selected"<%}%>>남성</option>
+		<option value="w"<%if(gender.equals("w")){%>selected="selected"<%}%>>여성</option>
 		</select></span>
     </p>
     
