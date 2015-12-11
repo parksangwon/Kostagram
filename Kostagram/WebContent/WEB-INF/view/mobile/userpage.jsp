@@ -2,18 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <%
-    int count = 0;
-    // 리스트 받아오기 전, 임시로 값 준 것
-    ArrayList list = new ArrayList();
-    for (int i = 0; i < 2; i++) {
-		list.add(i);
-    }
-%>
-
-<%
-	String profileImg = (String)request.getAttribute("profileImg");
+	String nickname = (String)session.getAttribute("nickname");
+	String photoCnt = (String)request.getAttribute("photoCnt");
+	String followerCnt = (String)request.getAttribute("followerCnt");
+	String followingCnt = (String)request.getAttribute("followingCnt");
 %>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -48,11 +41,11 @@
 						<td rowspan="2" width="30%"><img width=200
 							src="image/test.jpg"
 							style="-webkit-border-radius: 100px; border-radius: 100px;" /></td>
-						<td align="center">0<br>게시물
+						<td align="center"><%= photoCnt %><br>게시물
 						</td>
-						<td align="center">30<br> 팔로잉
+						<td align="center"><%= followingCnt %><br> 팔로잉
 						</td>
-						<td align="center">30<br> 팔로워
+						<td align="center"><%= followerCnt %><br> 팔로워
 						</td>
 					</tr>
 					<tr>
