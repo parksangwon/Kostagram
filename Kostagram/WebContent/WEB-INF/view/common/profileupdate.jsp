@@ -28,7 +28,7 @@
 		});
 		
 		function updateAction(){
-			alert("Aaa");
+			
 			var nameValue = $('#name').val();
 			var nicknameValue = $('#nickname').val();
 			var messageValue = $('#message').val();
