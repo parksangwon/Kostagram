@@ -17,14 +17,14 @@
 	</select>
 	
 	<select id="followingList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
-		select seq_photo, kind, readyn, b.nickname from_nickname, c.nickname to_nickname, b.email from_email, b.profile from_profile
+		select seq_photo, kind, readyn, b.nickname from_nickname, c.nickname to_nickname, b.email from_email, b.profile from_profile, c.email to_email
 		from activity_log,
 		    (select follow.to_email email
 		    from member, follow
 		    where member.email = follow.from_email and member.email = #{email}) a,
 		    member b,
 		    member c
-		where activity_log.from_email = a.email and a.email = b.email and activity_log.to_email = c.email
+		where activity_log.from_email = a.email and a.email = b.email and activity_log.to_email = c.email and c.email != #{email}
 		order by activity_log.reg_date desc
 	</select>
 </mapper>
