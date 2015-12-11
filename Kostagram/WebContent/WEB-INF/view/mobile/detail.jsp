@@ -29,7 +29,7 @@
 							border:0px;
 							text-shadow: 0px 0px 0px black;
 							padding-left:5px;">
-							옵션
+							확대 보기
 							</span>
 						</td>
 					</tr>
