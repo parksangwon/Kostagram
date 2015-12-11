@@ -49,8 +49,8 @@
 	</select>
 	
 	<select id="countMyPhoto" parameterType="com.kostagram.service.beans.UserInfoVO"
-		resultType="java.util.HashMap">
-		SELECT COUNT(*) COUNT
+		resultType="java.lang.Integer">
+		SELECT NVL(COUNT(*), 0) COUNT
 		FROM PHOTO
 		WHERE EMAIL = #{email}
 	</select>
