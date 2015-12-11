@@ -1,5 +1,6 @@
 package com.kostagram.service.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,21 +11,27 @@ import com.kostagram.service.beans.UserInfoVO;
 
 public class ActivityDAOImpl implements ActivityDAO {
 
-    @Autowired
-    private SqlSession sqlSession;
+	@Autowired
+	private SqlSession sqlSession;
 
-    public boolean insert(ActivityVO activity) {
+	public boolean insert(ActivityVO activity) {
 
-	int result = sqlSession.insert("activity.insert", activity);
-	if (result == 1)
-	    return true;
-	return false;
-    }
+		int result = sqlSession.insert("activity.insert", activity);
+		if (result == 1)
+			return true;
+		return false;
+	}
 
-    @Override
-    public List<ActivityVO> activityList(UserInfoVO user) {
-	List<ActivityVO> activityList = sqlSession.selectList("activity.selectList", user);
-	return activityList;
-    }
+	@Override
+	public List<ActivityVO> activityList(UserInfoVO user) {
+		List<ActivityVO> activityList = sqlSession.selectList("activity.selectList", user);
+		return activityList;
+	}
+
+	@Override
+	public List<HashMap> mynewsList(UserInfoVO user) {
+		List<HashMap> mynewsList = sqlSession.selectList("activity.mynewsList", user);
+		return mynewsList;
+	}
 
 }
