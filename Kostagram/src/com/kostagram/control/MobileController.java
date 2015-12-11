@@ -22,6 +22,7 @@ import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.ActivityDAO;
 import com.kostagram.service.dao.ConversationDAO;
+import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.UserInfoDAO;
 
@@ -40,6 +41,9 @@ public class MobileController {
 
 	@Autowired
 	private ConversationDAO conversationDao;
+	
+	@Autowired
+	private FollowDAO followDao;
 
 	// 타임 라인 (메인)
 	@RequestMapping("/")
@@ -236,10 +240,23 @@ public class MobileController {
 			return "mobile/mynews";
 	    }
 
-	@RequestMapping("/userpage")
-	public String userpage() {
-		return "mobile/userpage";
-	}
+	 @RequestMapping("/userpage")
+		public String userpage(HttpSession session, Model model) {
+			UserInfoVO user = new UserInfoVO((String)session.getAttribute("email"));
+			
+			user = userInfoDao.findEmail(user);
+			
+			int photoCnt = photoInfoDao.countMyPhoto(user);
+			int followerCnt = followDao.getMyFollower(user);
+			int followingCnt = followDao.getMyFollowing(user);
+			
+			model.addAttribute("userInfo", user);
+			model.addAttribute("photoCnt", photoCnt);
+			model.addAttribute("followerCnt", followerCnt);
+			model.addAttribute("followingCnt", followingCnt);
+			
+			return "mobile/userpage";
+		}
 
 	@RequestMapping("/getMyPhotoList")
 	public void getMyPhotoList(HttpSession session, HttpServletRequest req,
