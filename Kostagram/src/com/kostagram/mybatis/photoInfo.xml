@@ -47,4 +47,9 @@
 		WHERE EMAIL = #{email} AND DISPYN = 'Y'
 		ORDER BY PHOTO.REG_DATE	
 	</select>
+	
+	<select id="countMyPhoto" parameterType="com.kostagram.service.beans.UserInfoVO"
+		resultType="int">
+		SELECT COUNT(*) FROM PHOTO WHERE EMAIL = #{email}
+	</select>
 </mapper>
