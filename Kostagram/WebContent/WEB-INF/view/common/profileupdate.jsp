@@ -19,7 +19,47 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <title>프로필 편집 &bull; Kostagram</title>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+		<script>
+	
+		$(function(){
+			$('.alerts').hide();
+		});
+		
+		function updateAction(){
+			alert("Aaa");
+			var nameValue = $('#name').val();
+			var nicknameValue = $('#nickname').val();
+			var messageValue = $('#message').val();
+			var mobileValue = $('#mobile').val();
+			var genderValue = $('#gender').val();
+			
+			var  resultMessage= $('.alert-green');
+			
+			$.ajax({
+				type:'POST',
+				url:'ajaxprofileupdate',
+				dataType:'text',
+				data:{name:nameValue, nickname:nicknameValue, message:messageValue, mobile:mobileValue, gender:genderValue},
+				success:function(text){
+					$('.alerts').show();
+				  if ( text === "updateSuccess" ) {
+					  resultMessage.text("성공적으로 업데이트 하였습니다.");
+				  } else if ( text === "updateFail" ) {
+					  resultMessage.text("업데이트 도중 에러가 발생하였습니다.");
+				  } else if ( text === "nicknameduplication")
+					  {
+					  	$('#nickname').focus();
+					  	resultMessage.text("중복된 닉네임 입니다.");
+					  }
+				},
+				error:function() {
+					alert("error");
+				}
+			});
+		}
+</script>
 
 		<script type="text/javascript">
 			
@@ -237,30 +277,23 @@
     <header>
     <h1>프로필 편집</h1>
     </header>
-    <%	
-    	if(session.getAttribute("send")!=null)
-    	{
-    %>
+   
 	    <div id="alerts" class="alerts">
 	
-	    <p class="alert-green">${send}</p>
+	    <p class="alert-green"></p>
 	    
 		</div>
-    <%
-    	}
-    %>
-    
 
 
 
     
-<form  method="POST" accept-charset="utf-8" class="adjacent bordered" action="/Kostagram/profileupdate">
+<form  method="POST" accept-charset="utf-8" class="adjacent bordered" >
 
 
    
     <p name="first_name_section" class="form-text">
         <label for="first_name">이름</label>
-        <span><input id="first_name" autocorrect="off" type="text" name="name" maxlength="30" value="${userinfo.name}"/></span>
+        <span><input id="name" autocorrect="off" type="text" name="name" maxlength="30" value="${userinfo.name}"/></span>
     </p>
     
     <p name="email_section" class="form-text">
@@ -270,15 +303,15 @@
     
     <p name="username_section" class="form-text">
         <label for="username">사용자 이름</label>
-        <span><input name="nickname" maxlength="30" autocapitalize="off" autocorrect="off" type="text" id="username" value="${nickname}" /></span>
+        <span><input name="nickname" maxlength="30" autocapitalize="off" autocorrect="off" type="text" id="nickname" value="${nickname}" /></span>
     </p>
  
     <p name="phone_number_section" class="form-text">
         <label for="phone_number">전화번호</label>
-        <span><input type="tel" name="mobile" id="phone_number" value="${userinfo.mobile}" /></span>
+        <span><input type="tel" name="mobile" id="mobile" value="${userinfo.mobile}" /></span>
     </p>
 
-    <p name="gender_section" class="form-select">
+    <p name="gender" class="form-select" id="gender">
         <label for="gender">성별</label>
         <span><select name="gender" id="gender">
 		<option value="3"<%if(gender.equals("3")){%>selected="selected"<%}%>>--------</option>
@@ -290,10 +323,10 @@
     
     <p name="biography_section" class="form-textarea">
         <label for="biography">소개</label>
-        <span><textarea id="biography" rows="10" cols="40" name="message">${userinfo.message}</textarea></span>
+        <span><textarea id="message" rows="10" cols="40" name="message">${userinfo.message}</textarea></span>
     </p>    
 
-    <p class="form-actions"><input type="submit" class="button-green" value="수정" /></p>
+    <p class="form-actions"><input type="button" onclick="updateAction();" class="button-green" value="수정" /></p>
 
 </form>
 
