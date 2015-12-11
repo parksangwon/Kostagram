@@ -15,4 +15,10 @@
 		where activity_log.to_email = #{email} and a.email = activity_log.to_email and activity_log.from_email = b.email
 		order by activity_log.reg_date desc
 	</select>
+	
+	<select id="followingList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
+		
+
+
+	</select>
 </mapper>
