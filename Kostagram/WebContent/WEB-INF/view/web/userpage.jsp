@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.kostagram.service.beans.UserInfoVO" %>
-<%@ page import="java.util.*" %>
+<%@ page import="com.kostagram.service.beans.UserInfoVO"%>
+<%@ page import="java.util.*"%>
 
 
-	
+
 <%
-	ArrayList articleList = (ArrayList)request.getAttribute("articleList");
-	UserInfoVO userInfoVO = (UserInfoVO)request.getAttribute("userInfoVO");
-	String check = (String)request.getAttribute("check");
+	ArrayList articleList = (ArrayList) request.getAttribute("articleList");
+	UserInfoVO userInfoVO = (UserInfoVO) request.getAttribute("userInfoVO");
+	String check = (String) request.getAttribute("check");
 %>
-	
+
 <html
 	class="js logged-in wf-proximanova-n3-active wf-proximanova-n4-active wf-proximanova-n6-active wf-proximanova-n7-active wf-active"
 	lang="ko">
 <!--<![endif]-->
 <head>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -502,7 +503,11 @@
 opacity
 
 
+
+
 :
+
+
 
 
 1
@@ -511,14 +516,22 @@ opacity
 -webkit-transform
 
 
+
+
 :scale(1)
+
+
 
 
 ;
 transform
 
 
+
+
 :scale(1)
+
+
 
 
 }
@@ -526,7 +539,11 @@ transform
 opacity
 
 
+
+
 :
+
+
 
 
 0
@@ -542,7 +559,11 @@ keyframes like-heart-animation { 0%{
 opacity
 
 
+
+
 :
+
+
 
 
 1
@@ -551,14 +572,22 @@ opacity
 -webkit-transform
 
 
+
+
 :scale(1)
+
+
 
 
 ;
 transform
 
 
+
+
 :scale(1)
+
+
 
 
 }
@@ -566,7 +595,11 @@ transform
 opacity
 
 
+
+
 :
+
+
 
 
 0
@@ -749,10 +782,8 @@ opacity
 }
 
 .coreSpriteNavigationBrandSmall {
-	background-image:
-		url("img/web/kostagram1.png");
+	background-image: url("img/web/kostagram1.png");
 	background-repeat: no-repeat;
-	
 	height: 28px;
 	width: 102px;
 }
@@ -1104,14 +1135,22 @@ opacity
 -webkit-transform
 
 
+
+
 :rotate(360deg)
+
+
 
 
 ;
 transform
 
 
+
+
 :rotate(360deg)
+
+
 
 
 }
@@ -1126,14 +1165,22 @@ keyframes AutoloadingPostsGridMoreLoadingIndicatorAnimation { 0%{
 -webkit-transform
 
 
+
+
 :rotate(360deg)
+
+
 
 
 ;
 transform
 
 
+
+
 :rotate(360deg)
+
+
 
 
 }
@@ -1544,38 +1591,82 @@ transform
 <style type="text/css" data-isostyle-id="is-c90c454">
 @
 -webkit-keyframes
+
  
+
 '
 spin8
+
  
+
 '{
 0%{
 -webkit-transform
+
+
 :
+
  
+
 rotate
-(180deg);
+
+
+(180
+deg
+);
+
 
 	
+
 -moz-transform
+
+
 :
+
  
+
 rotate
-(180deg);
+
+
+(180
+deg
+);
+
 
 	
+
 -o-transform
+
+
 :
+
  
+
 rotate
-(180deg);
+
+
+(180
+deg
+);
+
 
 	
+
 transform
+
+
 :
+
  
+
 rotate
-(180deg)
+
+
+(180
+deg
+)
+
+
 
 
 }
@@ -1583,28 +1674,44 @@ rotate
 -webkit-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -moz-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -o-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 }
@@ -1621,28 +1728,44 @@ transform
 -webkit-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -moz-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -o-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 }
@@ -1659,28 +1782,44 @@ transform
 -webkit-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -moz-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -o-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 }
@@ -1697,66 +1836,126 @@ transform
 -webkit-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -moz-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -o-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 }
 }
 @
 keyframes
+
  
+
 '
 spin8
+
  
+
 '{
 0%{
 -webkit-transform
+
+
 :
+
  
+
 rotate
-(180deg);
+
+
+(180
+deg
+);
+
 
 	
+
 -moz-transform
+
+
 :
+
  
+
 rotate
-(180deg);
+
+
+(180
+deg
+);
+
 
 	
+
 -o-transform
+
+
 :
+
  
+
 rotate
-(180deg);
+
+
+(180
+deg
+);
+
 
 	
+
 transform
+
+
 :
+
  
+
 rotate
-(180deg)
+
+
+(180
+deg
+)
+
+
 
 
 }
@@ -1764,28 +1963,44 @@ rotate
 -webkit-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -moz-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 -o-transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 ;
 transform
 
 
+
+
 :rotate(540deg)
+
+
 
 
 }
@@ -4237,7 +4452,11 @@ keyframes rotateSpinner { 0%{
 transform
 
 
+
+
 :rotate(360deg)
+
+
 
 
 }
@@ -4459,7 +4678,7 @@ transform
 	margin: 0 auto
 }
 </style>
-<style type="text/css" data-isostyle-id="is5c823b6c">
+<style type="text/css" data-isostyle-id="">
 .-cx-PRIVATE-ProfilePage__root {
 	-webkit-box-flex: 1;
 	-webkit-flex-grow: 1;
@@ -4765,42 +4984,54 @@ transform
 }
 </style>
 
-<scripttype="text/javascript" charset="utf-8" async=""></script>
-<script>
+<scripttype ="text/javascript" charset="utf-8" async="">
+</script> <script>
+
 
 		$(function(){
 			
 			$('#followBtn').click(function(){
 				followaction();
 			});
-
 			
+			
+
 			function followaction(){
+			var followState = $('#followBtn').val();
 				$.ajax({
 	    			type:'POST',
 	    			url:'userpage',
 	    			dataType:'text',
-	    			data:{from_email:'<%=(String)session.getAttribute("email")%>',to_email:'<%=userInfoVO.getEmail()%>'},
-	    			success:function(text){
-	    				if(text==="follwing")
-	    					{
-	    						$('#followBtn').text("팔로잉");
-	    						$('#followBtn').css('background','green');
-	    						$('#followBtn').css('border','green');
-	    						$('#followBtn').css('color','white');
-	    					}
-	    				else
-	    					{
-	    						alert("팔로우중에 실패하였습니다.");
-	    					}
-	    				
-	    			},
-	    			error:function() {
-	    				alert("error");
-	    			}
-	    		});
-			}
-		});
+	    			data:{
+	    				from_email:'<%=(String) session.getAttribute("email")%>',
+	    				to_email:'<%=userInfoVO.getEmail()%>',
+						followState : followState
+				},
+				success : function(text) {
+					alert('[' + text + ']');
+					if (text === "following") {
+						$('#followBtn').text("팔로잉");
+						$('#followBtn').attr("value", "F");
+						$('#followBtn').css('background', 'green');
+						$('#followBtn').css('border', 'green');
+						$('#followBtn').css('color', 'white');
+					} else if (text === 'follow') {
+						$('#followBtn').text("팔로우");
+						$('#followBtn').attr("value", "UF");
+						$('#followBtn').css('border', 'white');
+						$('#followBtn').css('color', 'blue');
+					}
+
+				},
+
+				error : function() {
+					location.href = "/Kostagram";
+				}
+			});
+		}
+
+		
+	});
 </script>
 </head>
 <body>
@@ -4816,8 +5047,7 @@ transform
 					data-reactid=".0.1.0.0:0">
 					<div class="-cx-PRIVATE-ProfilePage__avatarWrapper"
 						data-reactid=".0.1.0.0:0.0">
-						<img src="img/web/1.PNG"class="-cx-PRIVATE-ProfilePage__avatar"
-							
+						<img src="img/web/1.PNG" class="-cx-PRIVATE-ProfilePage__avatar"
 							data-reactid=".0.1.0.0:0.0.0">
 					</div>
 					<div class="-cx-PRIVATE-ProfilePage__authorInfo"
@@ -4826,32 +5056,46 @@ transform
 							data-reactid=".0.1.0.0:0.1.0">
 							<h1 class="-cx-PRIVATE-ProfilePage__username"
 								data-reactid=".0.1.0.0:0.1.0.0"><%=userInfoVO.getNickname()%></h1>
-							
-								<% 	
-					
-									if(check=="Y")
-									{
-								%>	
-								
-								<a class="-cx-PRIVATE-ProfilePage__editProfileLink"
-								href="/Kostagram/profileupdate" data-reactid=".0.1.0.0:0.1.0.2">		
-									<button
+
+							<%
+								if (check == "Y") {
+							%>
+
+							<a class="-cx-PRIVATE-ProfilePage__editProfileLink"
+								href="/Kostagram/profileupdate" data-reactid=".0.1.0.0:0.1.0.2">
+								<button
 									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
-									data-reactid=".0.1.0.0:0.1.0.2.0" >프로필 편집</button></a>
-					
+									data-reactid=".0.1.0.0:0.1.0.2.0">프로필 편집</button>
+							</a>
+
+							<%
+								} else {
+							%>
+							&nbsp;&nbsp;
+							<button
+								class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
+								data-reactid=".0.1.0.0:0.1.0.2.0"
+								value="<%if (check == "FN") {%>UF<%} else {%>F<%}%>"
+								<%if (check == "FN") {%> style="color: blue;" <%} else {%>
+								style="color:white; background-color:green; border-color:green"
+								<%}%> id="followBtn">
 								<%
-								  	}
-									else
-								  	{
+									if (check == "FN") {
 								%>
-								&nbsp;&nbsp;<button
-									class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
-									data-reactid=".0.1.0.0:0.1.0.2.0" style="color: blue" id="followBtn">팔로우</button>
-								<% 	
+								팔로우
+								<%
+									} else {
+								%>
+								팔로잉
+								<%
 									}
 								%>
-								
-							
+							</button>
+							<%
+								}
+							%>
+
+
 						</div>
 						<div class="-cx-PRIVATE-ProfilePage__biography"
 							data-reactid=".0.1.0.0:0.1.1">
@@ -4869,14 +5113,14 @@ transform
 								data-reactid=".0.1.0.0:0.1.3.0.0"><span
 									data-reactid=".0.1.0.0:0.1.3.0.0.0">게시물 </span><span
 									class="-cx-PRIVATE-PostsStatistic__count"
-									data-reactid=".0.1.0.0:0.1.3.0.0.1">??</span><span
+									data-reactid=".0.1.0.0:0.1.3.0.0.1">0</span><span
 									data-reactid=".0.1.0.0:0.1.3.0.0.2">개</span></span></li>
 							<li class="-cx-PRIVATE-ProfilePage__statistic"
 								data-reactid=".0.1.0.0:0.1.3.1"><span
 								data-reactid=".0.1.0.0:0.1.3.1.0"><span
 									data-reactid=".0.1.0.0:0.1.3.1.0.0">팔로워 </span><span title="60"
 									class="-cx-PRIVATE-FollowedByStatistic__count"
-									data-reactid=".0.1.0.0:0.1.3.1.0.1">??</span><span
+									data-reactid=".0.1.0.0:0.1.3.1.0.1">1</span><span
 									data-reactid=".0.1.0.0:0.1.3.1.0.2">명</span></span></li>
 							<li class="-cx-PRIVATE-ProfilePage__statistic"
 								data-reactid=".0.1.0.0:0.1.3.2"><span
@@ -4884,46 +5128,47 @@ transform
 								data-reactid=".0.1.0.0:0.1.3.2.0"><span
 									data-reactid=".0.1.0.0:0.1.3.2.0.0">팔로우 </span><span
 									class="-cx-PRIVATE-FollowsStatistic__count"
-									data-reactid=".0.1.0.0:0.1.3.2.0.1">??</span><span
+									data-reactid=".0.1.0.0:0.1.3.2.0.1">0</span><span
 									data-reactid=".0.1.0.0:0.1.3.2.0.2">명</span></span></li>
 						</ul>
 					</div>
 				</header>
-					<div data-reactid=".0.1.0.1:$mostRecentSection/=10">
+				<div data-reactid=".0.1.0.1:$mostRecentSection/=10">
 					<div class="-cx-PRIVATE-PostsGrid__root"
 						data-reactid=".0.1.0.1:$mostRecentSection/=10.0">
-						
-						
-						
+
+
+
 						<div class="-cx-PRIVATE-PostsGrid__row"
 							data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0">
-							
+
 							<a
 								class="-cx-PRIVATE-PostsGridItem__root -cx-PRIVATE-PostsGrid__item"
 								href=""
 								data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134">
-								<div
-									class="-cx-PRIVATE-Photo__root"
+								<div class="-cx-PRIVATE-Photo__root"
 									data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0">
-									
+
 									<%
-										if (articleList == null || articleList.size() == 0 ) {
-											
+										if (articleList == null || articleList.size() == 0) {
 									%>
-											<div style="min-height:300"><center>표시할 사진이 없습니다.</center></div>
-									<%	
+									<div style="min-height: 300">
+										<center>표시할 사진이 없습니다.</center>
+									</div>
+									<%
 										} else {
-											for ( int i = 0; i < articleList.size(); i++ ) {
+											for (int i = 0; i < articleList.size(); i++) {
 									%>
-									
-									
+
+
 									<div class="-cx-PRIVATE-Photo__placeholder"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.0">
 
 									</div>
 									<div class="-cx-PRIVATE-Photo__clickShield"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.2"></div>
-								</div></a><a
+								</div>
+							</a><a
 								class="-cx-PRIVATE-PostsGridItem__root -cx-PRIVATE-PostsGrid__item"
 								href=""
 								data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$981670746904181123"><div
@@ -4955,17 +5200,15 @@ transform
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$944095944731638761.0.2"></div>
 								</div></a>
 						</div>
-						
-					<%
+
+						<%
 							}
 						}
 					%>
-						
-				</div>
-				
-				
+
+					</div>
 			</article>
-			
+
 
 			</main>
 			<noscript data-reactid=".0.4"></noscript>
