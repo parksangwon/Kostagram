@@ -91,10 +91,10 @@
 						<img src="./image/icon/stamp.png" width="20" />
 					</td>
 					<td align="center">
-						<img src="./image/icon/pin.png" width="20" />
+						<img src="./image/icon/pin.png" width="20" /></a>
 					</td>
 					<td align="center">
-						<a href="./phototaged"><img src="./image/icon/bookmark.png" width="20" /></a>
+						<a href="/Kostagram/m/likenotice"><img src="./image/icon/bookmark.png" width="20" /></a>
 					</td>
 				</tr>
 			</table>
