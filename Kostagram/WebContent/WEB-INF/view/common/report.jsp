@@ -1,5 +1,13 @@
+<%@page import="com.kostagram.service.beans.ReportVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+
+
+<%
+	List<ReportVO> findList = (List<ReportVO>)request.getAttribute("findList");
+	System.out.println(findList);
+%>
 
 <!DOCTYPE html>
 <html lang="ko" class="no-js logged-in ">
@@ -7,7 +15,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <title>비밀번호 변경 &bull; Instagram</title>
+        <title>신고 관리 &bull; Kostagram</title>
 
         <script type="text/javascript">
 		  WebFontConfig = {
@@ -123,6 +131,7 @@
     
     
         <link rel="Shortcut Icon" type="image/x-icon" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/favicon.ico"><link rel="mask-icon" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/favicon.svg" color="#125688">
+    
         <link rel="apple-touch-icon-precomposed" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/apple-touch-icon-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/apple-touch-icon-72x72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/apple-touch-icon-114x114-precomposed.png">
@@ -181,6 +190,7 @@
                                 <li><a href="#">프로필 보기</a></li>
                                 <li><a href="/Kostagram/profileupdate">프로필 편집</a></li>
                                 <li><a href="/Kostagram/logout">로그아웃</a></li>     
+                                <li><a href="/Kostagram/report">신고 관리</a></li>  
                             </ul>
                         </div>
                     </li>
@@ -250,7 +260,70 @@
     <div class="main">
         <div class="wrapper">
             <section class="nav-page-content" role="main">
+            	 <header>
+			    	<h1>신고 관리 (관리자 전용)</h1>
+			    </header>
+			    
+                <table >
+                	<tr align="center">
+                		<td>신고 번호</td>
+                		<td width="150px">신고된 사진</td>
+                		<td>종류</td>
+                		<td>날짜</td>
+                		<td>신고된 사람</td>
+                		<td>삭제</td>
+                	</tr>
+                	
+<!--  신고가 들어오는 공간 -->
+				<% 
+						if (findList != null && findList.size() > 0) {
+							for ( ReportVO report : findList ) {
+								String content_id ="욕설";
+								if(report.getContent_id() == 2){
+									content_id = "음란물";
+								}
+								else if(report.getContent_id() == 3){
+									content_id = "개인정보 유출";
+								}
+								
+				%>
+                	
+                	<tr align="center">
+                		<td>
+                			<!-- 신고 번호 -->
+             				<%= report.getSeq_report() %>
+                		</td>
+                		
+                		<td >
+                			<!-- 신고된 사진-->
+                			<img src="/Kostagram/personalImg/<%= report.getEmail() %>/<%= report.getSeq_photo() %>.jpg" width='100%' />
                 
+                		
+                		<td>
+                			<!-- 신고 사유 -->
+                			<%= content_id %>
+                		</td>
+                		
+                		<td>
+                			<!-- 신고된 날짜 -->
+                			<%= report.getReg_date() %>
+                		</td>
+                		
+                		<td>
+                			<!-- 신고당한 사람 이름 -->
+                			<%= report.getEmail() %>
+                		</td>
+                		
+                		<td>
+                			<input type="button" value="삭제">
+                		</td>
+                		
+                	</tr>
+ 				<%
+ 					} 
+ 				} 
+ 				%>
+                </table>
 			
     		
 
