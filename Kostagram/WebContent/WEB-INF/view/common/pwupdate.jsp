@@ -197,82 +197,6 @@
 
 
 
-<<<<<<< .mine
-=======
-                             <ul role="navigation">
-                                <li><a href="#">프로필 보기</a></li>
-                                <li><a href="/Kostagram/profileupdate">프로필 편집</a></li>
-                                 <li><a href="/Kostagram/logout">로그아웃</a></li>
-                                 <li><a href="/Kostagram/report">신고 관리</a></li>          
-                            </ul>
-                        </div>
-                    </li>
-                    
-                </ul>
-            </div>
-        
-    </div>
-</header> <!-- .top-bar -->
-                    
-                
->>>>>>> .r497
-
-<<<<<<< .mine
-<link rel="Shortcut Icon" type="image/x-icon"
-	href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/favicon.ico">
-<link rel="mask-icon"
-	href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/favicon.svg"
-	color="#125688">
-=======
-                
-    <div class="sidebar">
-        <div class="wrapper">
-            <nav class="sidebar-nav">
-                <div class="sidebar-content">
-                
-    <h2><i></i>회원님의 계정<span class="separator"> &bull; </span><span class="subtitle"></span></h2>
-    <ul>
-        <li class="active">
-	        <a href="/Kostagram/profileupdate">
-	            
-	            프로필 편집
-	            
-	            <i class="disclosure"></i>
-	        </a>
-        
-    	</li>
-        <li >
-        <a href="/Kostagram/pwupdate">
-            
-            비밀번호 변경
-            
-            <i class="disclosure"></i>
-            
-        </a>
-        </li>
-        
-        <li >
-        <a href="/Kostagram/logout">
-            
-            로그아웃
-            
-            <i class="disclosure"></i>
-            
-        </a>
-        </li>
-        
-        <li >
-        <a href="/Kostagram/report">
-            
-       	신고 관리
-            
-            <i class="disclosure"></i>
-            
-        </a>
-        </li>
-    </ul>
->>>>>>> .r497
-
 
 <link rel="apple-touch-icon-precomposed"
 	href="//instagramstatic-a.akamaihd.net/bluebar/5829dff/images/ico/apple-touch-icon-precomposed.png">
@@ -374,6 +298,10 @@
 								</a></li>
 
 								<li><a href="/Kostagram/logout"> 로그아웃 <i
+										class="disclosure"></i>
+
+								</a></li>
+								<li><a href="/Kostagram/report"> 신고관리 <i
 										class="disclosure"></i>
 
 								</a></li>
