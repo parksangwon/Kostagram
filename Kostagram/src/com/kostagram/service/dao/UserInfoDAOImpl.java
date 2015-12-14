@@ -35,6 +35,11 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     public UserInfoVO findEmail(UserInfoVO user) {
 	return sqlSession.selectOne("userInfo.findEmail", user);
     }
+    
+    @Override
+    public UserInfoVO findPass(UserInfoVO user) {
+	return sqlSession.selectOne("userInfo.findPass", user);
+    }
 
     @Override
     public UserInfoVO findNickname(UserInfoVO user) {
@@ -60,6 +65,10 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 
     @Override
     public boolean pwUpdate(UserInfoVO user) {
+    	int update =  sqlSession.update("userInfo.pwupdate", user);
+    	if(update == 1)
+    	return true;
+    	
 	return false;
     }
 
