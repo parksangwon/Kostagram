@@ -6,6 +6,6 @@
    </insert>
    	    
    <select id="findList" resultType="com.kostagram.service.beans.ReportVO">
-   	  select * from report a, reportItem b where a.content_id = b.content_id
+   	  select * from report a, report_Item b where a.content_id = b.content_id
    </select>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 </mapper>
