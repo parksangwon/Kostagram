@@ -384,8 +384,7 @@ public class WebController {
 			out.print("fail");
 		}
 	}
-    
-    
+
 	 //신고 페이지 가기
     @RequestMapping("/report")
     public String report(ReportVO report,HttpSession session, Model model) {
@@ -396,14 +395,27 @@ public class WebController {
 	return "common/report";
     }
     
-    
+    //신고 삭제
     @RequestMapping("/report_delete")
     public String report_delete(ReportVO report,HttpSession session, Model model, HttpServletRequest request) {
     //System.out.println("신고삭제");
     	
     //신고 삭제
-    System.out.println(report);
+    //System.out.println(report);
     boolean result = reportDao.delete(report);
+    
+	return "redirect:report";
+    }
+    
+    
+    //신고된 게시물 삭제
+    @RequestMapping("/photo_delete")
+    public String photo_delete(ReportVO report,HttpSession session, Model model, HttpServletRequest request) {
+    System.out.println("게시물 삭제");
+    	
+    //신고 삭제
+   // System.out.println(report);
+    boolean result = reportDao.delete2(report);
     
 	return "redirect:report";
     }
