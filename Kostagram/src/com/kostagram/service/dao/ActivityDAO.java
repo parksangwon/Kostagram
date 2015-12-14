@@ -12,4 +12,6 @@ public interface ActivityDAO {
 	public List<HashMap> mynewsList(UserInfoVO user);
 	public List<HashMap> followingList(UserInfoVO user);
 	public List<HashMap> mylikeList(UserInfoVO user);
+	public List<HashMap> roundList(UserInfoVO user);
+	public List<HashMap> round_profileList(UserInfoVO user);
 }

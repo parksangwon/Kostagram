@@ -45,4 +45,16 @@ public class ActivityDAOImpl implements ActivityDAO {
 		List<HashMap> mylikeList = sqlSession.selectList("activity.mylikeList", user);
 		return mylikeList;
 	}
+	
+	@Override
+	public List<HashMap> roundList(UserInfoVO user) {
+		List<HashMap> roundList = sqlSession.selectList("activity.roundList", user);
+		return roundList;
+	}
+	
+	@Override
+	public List<HashMap> round_profileList(UserInfoVO user) {
+		List<HashMap> round_profileList = sqlSession.selectList("activity.round_profileList", user);
+		return round_profileList;
+	}
 }
