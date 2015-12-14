@@ -9,10 +9,15 @@
    	    select a.seq_report, a.seq_photo, a.content_id, a.email to_email, c.email from_email, a.reg_date
 		 from report a, report_Item b, photo c
 		 where 
-		 a.content_id = b.content_id and c.seq_photo = a.seq_photo
+		 a.content_id = b.content_id and c.seq_photo = a.seq_photo and
+		 c.dispyn = 'Y'
    </select>
    
    <delete id="delete" parameterType="com.kostagram.service.beans.ReportVO">
 		delete from report where seq_report=#{seq_report}
-   </delete>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+   </delete>
+   
+   <update id="update" parameterType="com.kostagram.service.beans.ReportVO">
+   		update photo set dispyn = 'N' where seq_photo = #{seq_photo}
+   </update>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 </mapper>
