@@ -34,4 +34,12 @@ public class ReportDAOImpl implements ReportDAO {
 		
 		return false;
 	}
+	
+	@Override
+	public boolean delete2(ReportVO report) {
+		int delete= sqlSession.delete("report.update",report);
+		if(delete==1)return true;
+		
+		return false;
+	}
 }
