@@ -217,6 +217,7 @@
                                 <li><a href="#">프로필 보기</a></li>
                                 <li><a href="/Kostagram/profileupdate">프로필 편집</a></li>
                                  <li><a href="/Kostagram/logout">로그아웃</a></li>
+                                 <li><a href="/Kostagram/report">신고 관리</a></li>  
                                
                             </ul>
                         </div>
@@ -259,6 +260,15 @@
         <a href="/Kostagram/logout">
             
             로그아웃
+            
+            <i class="disclosure"></i>
+            
+        </a>
+        </li>
+        <li >
+        <a href="/Kostagram/report">
+            
+       	신고 관리
             
             <i class="disclosure"></i>
             
