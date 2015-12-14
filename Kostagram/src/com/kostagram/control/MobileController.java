@@ -14,16 +14,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kostagram.service.beans.ActivityVO;
 import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.ConversationVO;
 import com.kostagram.service.beans.PhotoInfoVO;
+import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.ActivityDAO;
 import com.kostagram.service.dao.ConversationDAO;
 import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
+import com.kostagram.service.dao.ReportDAO;
 import com.kostagram.service.dao.UserInfoDAO;
 
 @Controller
@@ -44,6 +47,9 @@ public class MobileController {
 
 	@Autowired
 	private FollowDAO followDao;
+	
+	@Autowired
+	private ReportDAO reportDao;
 
 	// 타임 라인 (메인)
 	@RequestMapping("/")
@@ -662,6 +668,25 @@ public class MobileController {
 		return "mobile/likenotice";
 	}
 
+	@RequestMapping("/reportPhoto")
+	public void reportPhoto(@RequestParam String pid, @RequestParam String rid, HttpSession session, HttpServletResponse res) throws IOException {
+		PrintWriter out = res.getWriter();
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html");
+		res.setHeader("Cache-Control", "no-cache");
+		
+		ReportVO report = new ReportVO();
+		report.setSeq_photo(pid);
+		report.setEmail((String)session.getAttribute("email"));
+		report.setContent_id(rid);
+		
+		if ( reportDao.insert(report) ) {
+			out.print("reportSuccess");
+		} else {
+			out.print("reportFailed");
+		}
+	}
+	
 	// 채팅 리스트
 	@RequestMapping("/chatting")
 	public String chatting(HttpServletRequest request, HttpSession session,
