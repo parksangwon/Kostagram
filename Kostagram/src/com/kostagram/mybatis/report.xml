@@ -5,7 +5,14 @@
       insert into report values (#{seq_report}, #{seq_photo}, #{comment_id},SYSDATE, #{email})
    </insert>
    	    
-   <select id="findList" resultType="com.kostagram.service.beans.ReportVO">
-   	  select * from report a, report_Item b where a.content_id = b.content_id
-   </select>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+   <select id="findList" resultType="java.util.HashMap">
+   	    select a.seq_report, a.seq_photo, a.content_id, a.email to_email, c.email from_email, b.reg_date
+		 from report a, report_Item b, photo c
+		 where 
+		 a.content_id = b.content_id and c.seq_photo = a.seq_photo
+   </select>
+   
+   <delete id="delete" parameterType="com.kostagram.service.beans.ReportVO">
+		delete from report where seq_report=#{seq_report}
+   </delete>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 </mapper>
