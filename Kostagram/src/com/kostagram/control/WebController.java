@@ -19,10 +19,12 @@ import com.kostagram.mail.Mail;
 import com.kostagram.mail.MailService;
 import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.FollowVO;
+import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.SearchVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
+import com.kostagram.service.dao.ReportDAO;
 import com.kostagram.service.dao.SearchDAO;
 import com.kostagram.service.dao.UserInfoDAO;
 
@@ -41,6 +43,8 @@ public class WebController {
     private MailService mailService;
     @Autowired
     private Mail mail;
+    @Autowired
+    private ReportDAO reportDao;
 
     @RequestMapping("/")
     public String goToMainPage(HttpSession session, Model model) {
@@ -359,5 +363,18 @@ public class WebController {
 	} else {
 	    out.print("fail");
 	}
+    }
+    
+    
+    //신고 페이지 가기
+    @RequestMapping("/report")
+    public String report(ReportVO report,HttpSession session, Model model) {
+    
+    	
+    //신고 리스트 가져오기
+    List<ReportVO> findList = reportDao.findList(report);
+    model.addAttribute("findList", findList);
+    
+	return "common/report";
     }
 }
