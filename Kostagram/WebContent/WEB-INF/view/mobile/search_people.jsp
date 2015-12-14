@@ -30,7 +30,6 @@
 		<div data-role="content">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="search_home" data-transition="fade">검색</a></li>
 					<li><a href="search_people" data-transition="fade">사람 검색</a></li>
 					<li><a href="search_hashtag" data-transition="fade">해시태그 검색</a></li>
 					<li><a href="search_place" data-transition="fade">장소 검색</a></li>

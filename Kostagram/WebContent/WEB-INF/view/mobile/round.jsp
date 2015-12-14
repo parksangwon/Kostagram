@@ -25,7 +25,7 @@
 	<div id="round" data-role="page" data-theme="a">
 
 		<div data-role="header">
-			<table onclick="$.mobile.changePage('search_home')">
+			<table onclick="$.mobile.changePage('search_people')">
 				<tr>
 					<td><image src="./image/icon/search.png" width="20"
 							style="padding-left:10px;" /></td>
@@ -35,48 +35,53 @@
 				</tr>
 			</table>
 		</div>
-		
+
 		<div data-rol="content" align="center">
 			<div>
 				<table width="100%">
+					<%
+						if (round_profileList != null && round_profileList.size() > 0) {
+					%>
 					<td align="left">&nbsp;&nbsp;<span
-							style="font-size: 11pt; font-weight: bolder;">사람찾아보기</span><br>
-							&nbsp;&nbsp;<span style="font-size: 7pt;">새로 팔로우할 사람을
-								찾아보세요</span></td>
+						style="font-size: 11pt; font-weight: bolder;">사람찾아보기</span><br>
+						&nbsp;&nbsp;<span style="font-size: 7pt;">새로 팔로우할 사람을 찾아보세요</span></td>
 					<td align="right">
-							<%
-							if (round_profileList != null && round_profileList.size() > 0) {
-								for ( HashMap news : round_profileList ) {
-									String email = (String)news.get("EMAIL");
-									String profile = (String)news.get("PROFILE");
+						<%
+							for (HashMap round_profile : round_profileList) {
+									String email = (String) round_profile.get("EMAIL");
+									String profile = (String) round_profile.get("PROFILE");
 									System.out.println("PROFILE =" + email + "/" + profile);
-							%>
-								<a href="./detail"><img src="/Kostagram/personalImg/profile.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a>
-							<%
-								}
-							}
-							%>
+						%> <a href="./detail"><img
+							src="/Kostagram/personalImg/profile.jpg" width="40"
+							style="-webkit-border-radius: 100px; border-radius: 100px;" /></a> <%
+					 		}
+					 	}
+					 %>
 					</td>
 				</table>
 			</div>
-			
+
 			<div id="photoArea">
 				<div id='photoList'>
 					<ul class='myPhotoListByGrid'>
 						<%
 							// 활동 리스트
 							if (roundList != null && roundList.size() > 0) {
-								for ( HashMap news : roundList ) {
-									String seq_photo = (String)news.get("SEQ_PHOTO");
-									String email = (String)news.get("EMAIL");
-									String profile = (String)news.get("PROFILE");
+								for (HashMap round : roundList) {
+									String seq_photo = (String) round.get("SEQ_PHOTO");
+									String email = (String) round.get("EMAIL");
+									String profile = (String) round.get("PROFILE");
 						%>
-												<li>
-										<a href="./detail?pid=<%= seq_photo%>"><img src="../personalImg/<%= email%>/<%= seq_photo%>.jpg" alt="<%= seq_photo%>"/></a>
-						</li>
+						<li><a href="./detail?pid=<%=seq_photo%>"><img
+								src="../personalImg/<%=email%>/<%=seq_photo%>.jpg"
+								alt="<%=seq_photo%>" /></a></li>
 						<%
-									}
 								}
+							} else {
+						%>
+						<span>팔로우를 추가해 주세요.</span>
+						<%
+							}
 						%>
 					</ul>
 				</div>
