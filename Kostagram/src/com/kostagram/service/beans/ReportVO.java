@@ -5,7 +5,7 @@ import java.util.Date;
 public class ReportVO {
 	private String seq_report;
 	private String seq_photo;
-	private int content_id;
+	private String content_id;
 	private Date reg_date;
 	private String email;
 	
@@ -13,7 +13,7 @@ public class ReportVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReportVO(String seq_report, String seq_photo, int content_id, Date reg_date, String email) {
+	public ReportVO(String seq_report, String seq_photo, String content_id, Date reg_date, String email) {
 		super();
 		this.seq_report = seq_report;
 		this.seq_photo = seq_photo;
@@ -38,11 +38,11 @@ public class ReportVO {
 		this.seq_photo = seq_photo;
 	}
 
-	public int getContent_id() {
+	public String getContent_id() {
 		return content_id;
 	}
 
-	public void setContent_id(int content_id) {
+	public void setContent_id(String content_id) {
 		this.content_id = content_id;
 	}
 
