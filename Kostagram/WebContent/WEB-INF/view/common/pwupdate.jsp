@@ -22,8 +22,6 @@
 	$(function() {
 		$('.alerts').hide();
 	});
-	
-	
 
 	function pwCheck() {
 		var oldPw = $("#id_old_password").val();
@@ -49,19 +47,25 @@
 				$('.alerts').show();
 				if (text === "updateSuccess") {
 					resultMessage.text("성공적으로 비밀번호가 변경되었습니다.");
-					
+					resultMessage.css("color", "#468847");
+					resultMessage.css("background-color", "#dff0d8");
+					resultMessage.css("border-color", "#d6e9c6");
+
 				} else if (text === "updatefail") {
 					resultMessage.text("새로운 비밀번호가 서로 다릅니다.");
 				} else if (text === "empty1") {
 					$('#id_old_password').focus();
-					resultMessage.text("기존의 비밀번호를 입력하세요");	
+					resultMessage.text("기존의 비밀번호를 입력하세요");
 				} else if (text === "empty2") {
 					resultMessage.text("새로운 비밀번호를 입력하세요");
 				} else if (text === "pw1pw2fail") {
 					resultMessage.text("새로운비밀번호가 서로다릅니다.");
 				} else if (text === "fail") {
 					resultMessage.text("기존의 비밀번호가 다릅니다.");
-				} 
+				}
+				  else if (text === "empty3") {
+					resultMessage.text("비밀번호 4자리에서 20자리 사이입니다.");
+				}
 			},
 			error : function() {
 				alert("error");
@@ -262,8 +266,8 @@
 									<i></i>
 
 									<ul role="navigation">
-										<li><a href="#">프로필 보기</a></li>
 										<li><a href="/Kostagram/profileupdate">프로필 편집</a></li>
+										<li><a href="/Kostagram/pwupdate">비밀번호 변경</a></li>
 										<li><a href="/Kostagram/logout">로그아웃</a></li>
 									</ul>
 								</div></li>
@@ -321,8 +325,9 @@
 						</header>
 
 						<div id="alerts" class="alerts">
-					    	<p id="alert-red" class="alert-red"></p>
+							<p id="alert-red" class="alert-red"></p>
 						</div>
+
 
 
 
