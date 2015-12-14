@@ -7,7 +7,6 @@
 
 <%
 	List<HashMap> findList = (List<HashMap>)request.getAttribute("findList");
-	System.out.println(findList);
 %>
 
 <!DOCTYPE html>
@@ -31,15 +30,19 @@
 					} 
 			  });
 		  });
+		  var photo_form=$('#photo_form'); 
+		  $('.photoDel').each(function(){
+			  $(this).click(function(){
+				  if(confirm("신고된 게시물을 삭제 하시겠습니까?"))
+					{	
+					  	$('input:hidden[name=seq_photo]').val($(this).attr('seq'));
+					  	photo_form.submit();
+					} 
+			  });
+		  });
 	  });
 		  
-		  function photo_delete()
-		  {
-			  if(confirm("신고된 게시물을 삭제 하시겠습니까?"))
-				{
-				  
-				}
-		  }
+		  
 		</script>
 		
 <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/webfont.js" type="text/javascript" async></script>
@@ -262,7 +265,10 @@
     </div>
     
 	<form id="report_form" name="report_form" action="report_delete">
-		<input type="hidden" name="seq_report" value="">	
+		<input type="hidden" name="seq_report" value="">
+	</form>
+	<form id="photo_form" name="photo_form" action="photo_delete">
+		<input type="hidden" name="seq_photo" value="">	
 	</form>
 	
     <div class="main">
@@ -288,18 +294,12 @@
 						if (findList != null && findList.size() > 0) {
 							for ( HashMap report : findList ) {
 								String seq_report = (String)report.get("SEQ_REPORT");
-								System.out.println(seq_report);
 								String seq_photo = (String)report.get("SEQ_PHOTO");
-								System.out.println(seq_photo);
 								String content_id = (String)report.get("CONTENT_ID");
-								System.out.println(content_id);
 								String to_email = (String)report.get("TO_EMAIL");
-								System.out.println(to_email);
 								String from_email = (String)report.get("FROM_EMAIL");
-								System.out.println(from_email);
 								Timestamp reg_date = (Timestamp)report.get("REG_DATE");
 								
-								System.out.println(reg_date);
 								String content ="욕설";
 								if(content_id.equals("2"))
 								{
@@ -318,7 +318,7 @@
              				<%= seq_report %>
                 		</td>
                 		
-                		<td >
+                		<td width="300">
                 			<!-- 신고된 사진-->
                 			<img src="/Kostagram/personalImg/<%= from_email %>/<%= seq_photo %>.jpg" width='100%' />
                 
@@ -343,7 +343,7 @@
                 		</td>
                 		
                 		<td>
-                			<input type="button" value="게시물 삭제" onclick="photo_delete()">
+                			<input type="button" value="게시물 삭제" class="photoDel" seq="<%=seq_photo%>">
                 		</td>
                 	</tr>
  				<%
