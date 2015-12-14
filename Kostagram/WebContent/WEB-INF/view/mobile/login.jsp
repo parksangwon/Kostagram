@@ -291,6 +291,21 @@
 										}
 									});
 								});
+							} else if (thid.id == "reportPage") {
+								$('#reportPage #report').click(function(){
+									$.ajax({
+										type: 'POST',
+										url: '../reportPhoto',
+										dataType: 'html',
+										data: {
+											// 신고문항
+											// 신고할 사진
+										},
+										success: function(text) {
+											
+										}
+									});
+								});
 							}
 							//profileupdate끝
 						});
