@@ -1,3 +1,4 @@
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.kostagram.service.beans.ReportVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,7 +6,7 @@
 
 
 <%
-	List<ReportVO> findList = (List<ReportVO>)request.getAttribute("findList");
+	List<HashMap> findList = (List<HashMap>)request.getAttribute("findList");
 	System.out.println(findList);
 %>
 
@@ -16,29 +17,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <title>신고 관리 &bull; Kostagram</title>
-
-        <script type="text/javascript">
-		  WebFontConfig = {
-		    custom: {
-		      families: ['proxima-nova:n3,n4,n6,n7'],
-		    }
-		  };
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script> 
+	  $(function(){
+		  var report_form=$('#report_form'); 
+		  $('.reportDel').each(function(){
+			  $(this).click(function(){
+				  if(confirm("이 신고를 삭제 하시겠습니까?"))
+					{	
+					  	$('input:hidden[name=seq_report]').val($(this).attr('seq'));
+						report_form.submit();
+					} 
+			  });
+		  });
+	  });
 		  
-		  function pwCheck() {
-			var pw1 = $("#id_new_password1").val();
-			var pw2 = $("#id_new_password2").val();
-			
-			if(pw1=!pw2)
+		  function photo_delete()
+		  {
+			  if(confirm("신고된 게시물을 삭제 하시겠습니까?"))
 				{
-					alert("새로설정하는 비밀번호가 틀렸습니다.");
-					return false;
+				  
 				}
-			else
-				{
-					$(".adjacent bordered wide").submit();
-				}
-		}
+		  }
 		</script>
+		
 <script src="//instagramstatic-a.akamaihd.net/bluebar/5829dff/scripts/webfont.js" type="text/javascript" async></script>
 
 <style type="text/css">
@@ -257,6 +260,11 @@
             </nav>
         </div>
     </div>
+    
+	<form id="report_form" name="report_form" action="report_delete">
+		<input type="hidden" name="seq_report" value="">	
+	</form>
+	
     <div class="main">
         <div class="wrapper">
             <section class="nav-page-content" role="main">
@@ -271,53 +279,72 @@
                 		<td>종류</td>
                 		<td>날짜</td>
                 		<td>신고된 사람</td>
-                		<td>삭제</td>
+                		<td>신고 삭제</td>
+                		<td>게시물 삭제</td>
                 	</tr>
                 	
-<!--  신고가 들어오는 공간 -->
+			<!--  신고가 들어오는 공간 -->
 				<% 
 						if (findList != null && findList.size() > 0) {
-							for ( ReportVO report : findList ) {
-								String content_id ="욕설";
-								if(report.getContent_id() == 2){
-									content_id = "음란물";
-								}
-								else if(report.getContent_id() == 3){
-									content_id = "개인정보 유출";
-								}
+							for ( HashMap report : findList ) {
+								String seq_report = (String)report.get("SEQ_REPORT");
+								System.out.println(seq_report);
+								String seq_photo = (String)report.get("SEQ_PHOTO");
+								System.out.println(seq_photo);
+								String content_id = (String)report.get("CONTENT_ID");
+								System.out.println(content_id);
+								String to_email = (String)report.get("TO_EMAIL");
+								System.out.println(to_email);
+								String from_email = (String)report.get("FROM_EMAIL");
+								System.out.println(from_email);
+								Timestamp reg_date = (Timestamp)report.get("REG_DATE");
 								
+								System.out.println(reg_date);
+								String content ="욕설";
+								if(content_id.equals("2"))
+								{
+									content = "음란물";
+								}
+								else if (content_id.equals("3"))
+								{
+									content = "개인정보 유출";
+								}				
+							
 				%>
                 	
                 	<tr align="center">
                 		<td>
                 			<!-- 신고 번호 -->
-             				<%= report.getSeq_report() %>
+             				<%= seq_report %>
                 		</td>
                 		
                 		<td >
                 			<!-- 신고된 사진-->
-                			<img src="/Kostagram/personalImg/<%= report.getEmail() %>/<%= report.getSeq_photo() %>.jpg" width='100%' />
+                			<img src="/Kostagram/personalImg/<%= from_email %>/<%= seq_photo %>.jpg" width='100%' />
                 
                 		
                 		<td>
                 			<!-- 신고 사유 -->
-                			<%= content_id %>
+                			<%= content %>
                 		</td>
                 		
                 		<td>
                 			<!-- 신고된 날짜 -->
-                			<%= report.getReg_date() %>
+                			<%= reg_date %>
                 		</td>
                 		
                 		<td>
                 			<!-- 신고당한 사람 이름 -->
-                			<%= report.getEmail() %>
+                			<%= to_email %>
                 		</td>
                 		
                 		<td>
-                			<input type="button" value="삭제">
+                			<input type="button" value="신고 삭제" class="reportDel" seq="<%=seq_report%>">
                 		</td>
                 		
+                		<td>
+                			<input type="button" value="게시물 삭제" onclick="photo_delete()">
+                		</td>
                 	</tr>
  				<%
  					} 
@@ -351,7 +378,7 @@
                         </ul>
                     </nav>
 
-                    <p class="copyright">&copy; 2015 Instagram</p>
+                    <p class="copyright">&copy; 2015 Kostagram</p>
                 </div>
             </footer>
             
