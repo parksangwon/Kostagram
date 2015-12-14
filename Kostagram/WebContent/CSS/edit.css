@@ -1621,6 +1621,13 @@ body.thirdparty .root {
   border: solid 1px;
   min-height: 0; }
 
+
+.alert-green {
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
 .alert-red {
   color: #b94a5c;
   background-color: #f2dede;
