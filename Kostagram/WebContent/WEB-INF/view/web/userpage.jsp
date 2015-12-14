@@ -505,7 +505,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -518,7 +526,15 @@ opacity
 
 
 
+
+
+
+
 :scale(1)
+
+
+
+
 
 
 
@@ -529,7 +545,15 @@ transform
 
 
 
+
+
+
+
 :scale(1)
+
+
+
+
 
 
 
@@ -541,7 +565,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -561,7 +593,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -574,7 +614,15 @@ opacity
 
 
 
+
+
+
+
 :scale(1)
+
+
+
+
 
 
 
@@ -585,7 +633,15 @@ transform
 
 
 
+
+
+
+
 :scale(1)
+
+
+
+
 
 
 
@@ -597,7 +653,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -1137,7 +1201,15 @@ opacity
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -1148,7 +1220,15 @@ transform
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -1167,7 +1247,15 @@ keyframes AutoloadingPostsGridMoreLoadingIndicatorAnimation { 0%{
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -1178,7 +1266,15 @@ transform
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -1524,13 +1620,9 @@ transform
 
 .follow {
 	border-color: green;
-	background-color:green;
+	background-color: green;
 	color: white
 }
-
-
-
-
 
 .-cx-PRIVATE-IGButton__neutral:focus, .-cx-PRIVATE-IGButton__neutral:hover,
 	.-cx-PRIVATE-IGButton__neutral.zeroclipboard-is-hover {
@@ -1602,83 +1694,139 @@ transform
 @
 -webkit-keyframes
 
+
+
  
+
+
 
 '
 spin8
 
+
+
  
+
+
 
 '{
 0%{
 -webkit-transform
 
 
+
+
+
+
 :
 
+
+
  
+
+
 
 rotate
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 );
-
-
-	
-
 -moz-transform
 
 
+
+
+
+
 :
 
+
+
  
+
+
 
 rotate
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 );
-
-
-	
-
 -o-transform
 
 
+
+
+
+
 :
 
+
+
  
+
+
 
 rotate
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 );
-
-
-	
-
 transform
 
 
+
+
+
+
 :
 
+
+
  
+
+
 
 rotate
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 )
-
-
-
-
 }
 100%{
 -webkit-transform
@@ -1686,7 +1834,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1697,7 +1853,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1708,7 +1872,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1719,7 +1891,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1740,7 +1920,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1751,7 +1939,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1762,7 +1958,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1773,7 +1977,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1794,7 +2006,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1805,7 +2025,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1816,7 +2044,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1827,7 +2063,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1848,7 +2092,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1859,7 +2111,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1870,7 +2130,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1881,7 +2149,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1891,83 +2167,139 @@ transform
 @
 keyframes
 
+
+
  
+
+
 
 '
 spin8
 
+
+
  
+
+
 
 '{
 0%{
 -webkit-transform
 
 
+
+
+
+
 :
 
+
+
  
+
+
 
 rotate
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 );
-
-
-	
-
 -moz-transform
 
 
+
+
+
+
 :
 
+
+
  
+
+
 
 rotate
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 );
-
-
-	
-
 -o-transform
 
 
+
+
+
+
 :
 
+
+
  
+
+
 
 rotate
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 );
-
-
-	
-
 transform
 
 
+
+
+
+
 :
 
+
+
  
+
+
 
 rotate
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 )
-
-
-
-
 }
 100%{
 -webkit-transform
@@ -1975,7 +2307,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1986,7 +2326,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1997,7 +2345,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2008,7 +2364,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -4464,7 +4828,15 @@ transform
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -4994,8 +5366,7 @@ transform
 }
 </style>
 
-<scripttype ="text/javascript" charset="utf-8" async="">
-</script> <script>
+<scripttype ="text/javascript" charset="utf-8" async=""> </script> <script>
 
 
 		$(function(){
@@ -5014,23 +5385,19 @@ transform
 	    			dataType:'text',
 	    			data:{
 	    				from_email:'<%=(String) session.getAttribute("email")%>',
-	    				to_email:'<%=userInfoVO.getEmail()%>',
-						followState : followState
+	    				to_email:'<%= userInfoVO.getEmail()%>',
+					followState : followState
 				},
 				success : function(text) {
-					
+
 					if (text === "following") {
 						$('#followBtn').text("팔로잉");
 						$('#followBtn').attr("value", "F");
-						
-						
-						
-						
+
 					} else if (text === 'follow') {
 						$('#followBtn').text("팔로우");
 						$('#followBtn').attr("value", "UF");
-						
-						
+
 					}
 
 				},
@@ -5041,7 +5408,6 @@ transform
 			});
 		}
 
-		
 	});
 </script>
 </head>
@@ -5083,27 +5449,24 @@ transform
 								} else {
 							%>
 							&nbsp;&nbsp;
+
+							<%
+								if (check == "FN") 
+								{
+							%>
 							<button
 								class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled "
-								data-reactid=".0.1.0.0:0.1.0.2.0"
-								
-								value="<%if (check == "FN") {%>UF<%} else {%>F<%}%>"
-								
-								
-								id="followBtn">
-								<%
-									if (check == "FN") {
-								%>
-								팔로우
-								<%
-									} else {
-								%>
-								팔로잉
-								<%
-									}
-								%>
-							</button>
+								data-reactid=".0.1.0.0:0.1.0.2.0" value="UF" id="followBtn">팔로우</button>
 							<%
+								} else {
+							%>
+							
+							<button
+								class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled "
+								data-reactid=".0.1.0.0:0.1.0.2.0" value="F" id="followBtn">팔로잉</button>
+
+							<%
+									}
 								}
 							%>
 
@@ -5215,8 +5578,8 @@ transform
 
 						<%
 							}
-						}
-					%>
+							}
+						%>
 
 					</div>
 			</article>
