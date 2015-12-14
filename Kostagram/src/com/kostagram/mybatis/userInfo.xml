@@ -17,6 +17,11 @@
 		resultType="com.kostagram.service.beans.UserInfoVO">
 		select email from member where email=#{email}
 	</select>
+	
+	<select id="findPass" parameterType="com.kostagram.service.beans.UserInfoVO"
+		resultType="com.kostagram.service.beans.UserInfoVO">
+		select * from member where email=#{email}
+	</select>
 
 	<select id="findNickname" parameterType="com.kostagram.service.beans.UserInfoVO"
 		resultType="com.kostagram.service.beans.UserInfoVO">
@@ -36,4 +41,10 @@
 		resultType="java.util.HashMap">
 		select nickname, profile, email from member where email = #{email}
 	</select>
+	
+	<update id="pwupdate" parameterType="com.kostagram.service.beans.UserInfoVO">
+		update member
+		set pass = #{pass}
+		where email= #{email}
+	</update>
 </mapper>
