@@ -5,11 +5,20 @@ import java.util.Date;
 public class ActivityVO {
 	private String from_email;
 	private String to_email;
+	private String profile;
 	private String seq_photo;
 	private String kind;
 	private char readYn;
 	private Date reg_date;
 	
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
 	public ActivityVO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -17,6 +26,14 @@ public class ActivityVO {
 	public ActivityVO(String to_email) {
 	    super();
 	    this.to_email = to_email;
+	}
+	
+	public ActivityVO(String from_email, String to_email, String seq_photo, Date reg_date) {
+		super();
+		this.from_email = from_email;
+		this.to_email = to_email;
+		this.seq_photo = seq_photo;
+		this.reg_date = reg_date;
 	}
 	
 	public ActivityVO(String from_email, String to_email, String seq_photo, String kind, char readYn, Date reg_date) {

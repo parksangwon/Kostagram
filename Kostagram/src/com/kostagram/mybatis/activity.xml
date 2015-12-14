@@ -34,4 +34,29 @@
 		where activity_log.from_email = #{email} and a.email = activity_log.from_email and activity_log.to_email = b.email
 		order by activity_log.reg_date desc
 	</select>
+	
+	<select id="roundList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
+		select e.email, e.seq_photo, e.reg_date
+		from photo e,
+			(select distinct b.to_email, c.profile
+			 from follow b, member c,
+				(select a.to_email
+				 from follow a
+				 where a.from_email = #{email})d
+			 where not b.to_email = #{email} and not d.to_email = b.to_email) f
+		where e.email = f.to_email
+		order by e.reg_date desc
+	</select>
+	
+	<select id="round_profileList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
+		select d.email, d.profile
+		from member d,
+			(select distinct b.to_email
+			 from follow b,
+			 	(select a.to_email
+				 from follow a
+				 where a.from_email=#{email})c
+			 where not b.to_email=#{email} and not c.to_email=b.to_email) f
+		where d.email = f.to_email and <![CDATA[rownum <= 4]]>
+	</select>
 </mapper>

@@ -282,7 +282,20 @@ public class MobileController {
 	}
 
 	@RequestMapping("/round")
-	public String round() {
+	public String round(HttpSession session, ActivityVO activityVO,
+			Model model) {
+		String email = (String) session.getAttribute("email");
+
+		UserInfoVO user = new UserInfoVO(email);
+
+		// DB에서 정보 가져오기.
+		// mynewsList메소드 실행
+		List<HashMap> roundList = activityDao.roundList(user);
+		List<HashMap> round_profileList = activityDao.round_profileList(user);
+		
+		// jsp에서 꺼낼수 잇게 보내줌
+		model.addAttribute("roundList", roundList);
+		model.addAttribute("round_profileList", round_profileList);
 		return "mobile/round";
 	}
 
