@@ -1618,11 +1618,7 @@ transform
 	color: blue
 }
 
-.follow {
-	border-color: green;
-	background-color: green;
-	color: white
-}
+
 
 .-cx-PRIVATE-IGButton__neutral:focus, .-cx-PRIVATE-IGButton__neutral:hover,
 	.-cx-PRIVATE-IGButton__neutral.zeroclipboard-is-hover {
@@ -5393,11 +5389,15 @@ transform
 					if (text === "following") {
 						$('#followBtn').text("팔로잉");
 						$('#followBtn').attr("value", "F");
+						location.reload(true);
+					
+						
 
 					} else if (text === 'follow') {
 						$('#followBtn').text("팔로우");
 						$('#followBtn').attr("value", "UF");
-
+						location.reload(true);
+						
 					}
 
 				},
@@ -5455,7 +5455,7 @@ transform
 								{
 							%>
 							<button
-								class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled "
+								class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
 								data-reactid=".0.1.0.0:0.1.0.2.0" value="UF" id="followBtn">팔로우</button>
 							<%
 								} else {
@@ -5463,7 +5463,7 @@ transform
 							
 							<button
 								class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled "
-								data-reactid=".0.1.0.0:0.1.0.2.0" value="F" id="followBtn">팔로잉</button>
+								data-reactid=".0.1.0.0:0.1.0.2.0" value="F" id="followBtn" style="border-color:green; color:white; background-color:green;  ">팔로잉</button>
 
 							<%
 									}
