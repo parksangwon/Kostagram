@@ -38,14 +38,14 @@
 						<%
 							// 활동 리스트
 							if (mylikeList != null && mylikeList.size() > 0) {
-								for ( HashMap news : mylikeList ) {
-									String readyn = (String)news.get("READYN");
-									String seq_photo = (String)news.get("SEQ_PHOTO");
-									String kind = (String)news.get("KIND");
-									String to_nickname = (String)news.get("TO_NICKNAME");
-									String from_nickname = (String)news.get("FROM_NICKNAME");
-									String to_email = (String)news.get("TO_EMAIL");
-									String from_email = (String)news.get("FROM_EMAIL");
+								for ( HashMap like : mylikeList ) {
+									String readyn = (String)like.get("READYN");
+									String seq_photo = (String)like.get("SEQ_PHOTO");
+									String kind = (String)like.get("KIND");
+									String to_nickname = (String)like.get("TO_NICKNAME");
+									String from_nickname = (String)like.get("FROM_NICKNAME");
+									String to_email = (String)like.get("TO_EMAIL");
+									String from_email = (String)like.get("FROM_EMAIL");
 									if(kind.equals("L"))
 									{
 						%>
