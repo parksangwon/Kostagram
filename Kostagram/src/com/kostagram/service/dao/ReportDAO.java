@@ -9,4 +9,5 @@ public interface ReportDAO {
 	public boolean insert(ReportVO report);
 	public List<HashMap> findList(ReportVO report);
 	public boolean delete(ReportVO report);
+	public boolean delete2(ReportVO report);
 }
