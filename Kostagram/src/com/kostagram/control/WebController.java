@@ -386,21 +386,20 @@ public class WebController {
 	}
     
     
-    //신고 페이지 가기
+	 //신고 페이지 가기
     @RequestMapping("/report")
     public String report(ReportVO report,HttpSession session, Model model) {
 	
     //신고 리스트 가져오기
     List<HashMap> findList = reportDao.findList(report);
     model.addAttribute("findList", findList);
-    System.out.println("신고페이지 들어옴");
 	return "common/report";
     }
     
     
     @RequestMapping("/report_delete")
     public String report_delete(ReportVO report,HttpSession session, Model model, HttpServletRequest request) {
-    	System.out.println("신고삭제");
+    //System.out.println("신고삭제");
     	
     //신고 삭제
     System.out.println(report);
