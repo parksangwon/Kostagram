@@ -11,4 +11,5 @@ public interface ActivityDAO {
 	public List<ActivityVO> activityList(UserInfoVO user);
 	public List<HashMap> mynewsList(UserInfoVO user);
 	public List<HashMap> followingList(UserInfoVO user);
+	public List<HashMap> mylikeList(UserInfoVO user);
 }

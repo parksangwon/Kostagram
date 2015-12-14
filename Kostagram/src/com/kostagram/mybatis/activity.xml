@@ -27,4 +27,11 @@
 		where activity_log.from_email = a.email and a.email = b.email and activity_log.to_email = c.email and c.email != #{email}
 		order by activity_log.reg_date desc
 	</select>
+	
+	<select id="mylikeList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
+		select seq_photo, kind, readyn, a.nickname to_nickname, b.nickname from_nickname, b.email from_email, b.profile from_profile, a.email to_email
+		from activity_log, member a, member b
+		where activity_log.from_email = #{email} and a.email = activity_log.from_email and activity_log.to_email = b.email
+		order by activity_log.reg_date desc
+	</select>
 </mapper>

@@ -600,7 +600,7 @@ public class MobileController {
 
 	// 좋아한 게시물 보여주기
 	@RequestMapping("/likenotice")
-	public String likenotice(HttpServletRequest request, HttpSession session,
+	public String likenotice(HttpSession session, ActivityVO activityVO,
 			Model model) {
 
 		// 로그인을 안한 상태면 로그인 페이지로 강제이동
@@ -612,16 +612,15 @@ public class MobileController {
 
 		// 로그인을 한 상태면 자신의 아이디를 가져와서 DAO로 보낸 다음 자신의 아이디에 맞는 likeNoticeList를 가져온다.
 		String email = (String) session.getAttribute("email");
-		List<PhotoInfoVO> likePhotoList = photoInfoDao
-				.selectList(new UserInfoVO(email)); // LikeDAO에
-		// selectList
-		// 추가
+		UserInfoVO user = new UserInfoVO(email);
+		
+		List<HashMap> mylikeList = activityDao.mylikeList(user);
 
 		// 가져온 likeNoticeList 를 뷰와 공유
+		
+		model.addAttribute("mylikeList", mylikeList);
 
-		model.addAttribute("likePhotoList", likePhotoList);
 		return "mobile/likenotice";
-
 	}
 
 	// 채팅 리스트
