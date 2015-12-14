@@ -150,13 +150,17 @@ public class WebController {
 				
 				out.print("empty2"); // 새로운 비밀번호 없을때
 				
-			} else if (!newPw1.equals(newPw2)) {
+			} else if (newPw1.length() < 4 || newPw1.length() >20 ) {
+				
+				out.print("empty3"); //  4자에서 20자까지
+				
+			}else if (!newPw1.equals(newPw2)) {
 				
 				out.print("updatefail"); // 새로운 비밀 번호 다를때
 				// 새비밀번호 일치X
 				
 			} else if (oldPw.equals(userInfoVO.getPass())) {
-				System.out.println("뭐찍힐까:"+userInfoVO);
+				
 				userInfoVO.setPass(newPw1);
 				boolean result = userInfoDao.pwUpdate(userInfoVO);
 				
