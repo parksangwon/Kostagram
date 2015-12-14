@@ -126,17 +126,30 @@ public class MobileController {
 				out.print(photoNickname);// 닉네임
 				out.print(
 						"</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-				out.print(photo.getReg_date());// 올린시간
+
+				long uploadTime = System.currentTimeMillis() - photo.getReg_date().getTime();
+				if ( uploadTime/(1000*60*60*24*7) != 0 ) {
+					out.print( uploadTime/1000*60*60*24*7 +"주 전" );
+				} else if ( uploadTime/(1000*60*60*24) != 0 ) {
+					out.print( uploadTime/(1000*60*60*24) + "일 전" );
+				} else if ( uploadTime/(1000*60*60) != 0 ) {
+					out.print( uploadTime/(1000*60*60) + "분 전" );
+				} else if ( uploadTime/(1000*60) != 0 ) {
+					out.print( uploadTime/(1000*60) + "초 전");
+				} else if ( uploadTime/(1000*30) != 0 ) {
+					out.print( "방금" );
+				}
+				
 				out.print(
 						"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
 				out.print("<img src='personalImg/" + photoEmail + "/" + seq_photo
 						+ ".jpg' width='100%' />");// 올린 사진
 				out.print(
-						"</td></tr></table></div><div class='CMTnLIK'><table><tr><td align='left'><a href='#'><img src='m/image/icon/heart.png' width='25' />");
+						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='m/image/icon/heart.png' width='25' />");
 				out.print(
-						"</a><a href='#'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
+						"</a></td><td align='left'><a href='#'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
 				out.print(
-						"<img src='m/image/icon/warning.png' width='25' /></a></td></tr><tr>");
+						"<img src='m/image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
 		
 				List<HashMap> likeList = article.getLikeList();
 				if (likeList.size() < 6) {
@@ -180,7 +193,7 @@ public class MobileController {
 					}
 				}
 				out.print(
-						"</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
+						"</table></div><div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
 			}
 		} else {
 			out.print("<br/><span>소중한 순간을 포착하여 공유해보세요</span>");
@@ -424,17 +437,30 @@ public class MobileController {
 					out.print(photoNickname);// 닉네임
 					out.print(
 							"</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
-					out.print(photo.getReg_date());// 올린시간
+					
+					long uploadTime = System.currentTimeMillis() - photo.getReg_date().getTime();
+					if ( uploadTime/(1000*60*60*24*7) != 0 ) {
+						out.print( uploadTime/1000*60*60*24*7 +"주 전" );
+					} else if ( uploadTime/(1000*60*60*24) != 0 ) {
+						out.print( uploadTime/(1000*60*60*24) + "일 전" );
+					} else if ( uploadTime/(1000*60*60) != 0 ) {
+						out.print( uploadTime/(1000*60*60) + "분 전" );
+					} else if ( uploadTime/(1000*60) != 0 ) {
+						out.print( uploadTime/(1000*60) + "초 전");
+					} else if ( uploadTime/(1000*30) != 0 ) {
+						out.print( "방금" );
+					}
+					
 					out.print(
 							"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
 					out.print("<img src='../personalImg/" + email + "/"
 							+ seq_photo + ".jpg' width='100%' />");// 올린 사진
 					out.print(
-							"</td></tr></table></div><div class='CMTnLIK'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
+							"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
 					out.print(
-							"</a><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
+							"</a></td><td align='left'><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
 					out.print(
-							"<img src='./image/icon/warning.png' width='25' /></a></td></tr><tr>");
+							"<img src='./image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
 
 					List<HashMap> likeList = article.getLikeList();
 					if (likeList.size() < 6) {
@@ -474,11 +500,11 @@ public class MobileController {
 							out.print(
 									"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 							out.print(nickname);
-							out.print("</a>" + content + "</td></tr>");
+							out.print("</a> " + content + "</td></tr>");
 						}
 					}
 					out.print(
-							"</table></div><div class='addCmt'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
+							"</table></div><div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div>");
 				}
 			}  else {
 				out.print("<span>소중한 순간을 포착하여 공유해보세요</span>");
