@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -370,33 +371,6 @@ public class MobileController {
 		return "mobile/mynews";
 	}
 
-	@RequestMapping("/userpage")
-	public String userpage(HttpSession session, Model model) {
-
-		if (session.getAttribute("email") != null) {
-
-			UserInfoVO user = new UserInfoVO(
-					(String) session.getAttribute("email"));
-
-			user = userInfoDao.findEmail(user);
-			String profile = user.getProfile_img();
-			String message = user.getMessage();
-			int photoCnt = photoInfoDao.countMyPhoto(user);
-			int followerCnt = followDao.getMyFollower(user);
-			int followingCnt = followDao.getMyFollowing(user);
-
-			model.addAttribute("profile", profile);
-			model.addAttribute("message", message);
-			model.addAttribute("photoCnt", photoCnt);
-			model.addAttribute("followerCnt", followerCnt);
-			model.addAttribute("followingCnt", followingCnt);
-
-			return "mobile/userpage";
-		} else {
-			return "redirect:/m/";
-		}
-	}
-
 	@RequestMapping("/getMyPhotoList")
 	public void getMyPhotoList(HttpSession session, HttpServletRequest req,
 			HttpServletResponse res) throws IOException {
@@ -667,8 +641,14 @@ public class MobileController {
 
 		return "mobile/likenotice";
 	}
-
-	@RequestMapping("/reportPhoto")
+	
+	@RequestMapping("/report")
+	public String goToReportPage(@RequestParam String pid, Model model) {
+		model.addAttribute("pid", pid);
+		return "mobile/report";
+	}
+	
+	@RequestMapping("/reportphoto")
 	public void reportPhoto(@RequestParam String pid, @RequestParam String rid, HttpSession session, HttpServletResponse res) throws IOException {
 		PrintWriter out = res.getWriter();
 		res.setCharacterEncoding("utf-8");
@@ -730,9 +710,28 @@ public class MobileController {
 		return "mobile/chattinglist";
 
 	}
+	
+	@RequestMapping("/{nickname}")
+	public String userpage(@PathVariable String nickname, Model model) {
 
-	@RequestMapping("/report")
-	public String report() {
-		return "mobile/report";
+		UserInfoVO user = new UserInfoVO();
+		user.setNickname(nickname);
+
+		user = userInfoDao.findNickname(user);
+		
+		if (user != null) {
+			model.addAttribute("email", user.getEmail());
+			model.addAttribute("nickname", user.getNickname());
+			model.addAttribute("profile", user.getProfile_img());
+			model.addAttribute("message", user.getMessage());
+			model.addAttribute("photoCnt", photoInfoDao.countMyPhoto(user));
+			model.addAttribute("followerCnt", followDao.getMyFollower(user));
+			model.addAttribute("followingCnt", followDao.getMyFollowing(user));
+	
+			return "mobile/userpage";
+		} else {
+			model.addAttribute("nickname", nickname);
+			return "mobile/usernotfound";
+		}
 	}
 }
