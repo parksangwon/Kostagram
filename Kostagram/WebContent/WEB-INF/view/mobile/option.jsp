@@ -42,7 +42,7 @@
 						</tr>
 						<tr>
 							<Td>
-								<h4>비밀번호 변경</h4>
+								<a href="/Kostagram/m/pwupdate">비밀번호 변경</a>
 							</Td>
 						</tr>
 						</tr>
