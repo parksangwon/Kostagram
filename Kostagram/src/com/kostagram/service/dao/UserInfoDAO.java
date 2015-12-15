@@ -16,4 +16,5 @@ public interface UserInfoDAO {
     public List<UserInfoVO> searchNickname(UserInfoVO user);
     public boolean pwCheck(UserInfoVO user);
     public boolean pwUpdate(UserInfoVO user);
+    public List<UserInfoVO> findFriend(UserInfoVO user);
 }

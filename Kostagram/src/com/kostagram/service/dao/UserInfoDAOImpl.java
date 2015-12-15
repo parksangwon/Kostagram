@@ -77,5 +77,10 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     public List<UserInfoVO> searchNickname(UserInfoVO user) {
     	return sqlSession.selectList("userInfo.searchNickname", user);
     }
+    
+    @Override
+    public List<UserInfoVO> findFriend(UserInfoVO user) {
+	return sqlSession.selectList("userInfo.findFriend", user);
+    }
 
 }
