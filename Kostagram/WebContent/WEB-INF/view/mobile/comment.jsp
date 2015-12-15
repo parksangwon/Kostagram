@@ -1,3 +1,5 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -11,9 +13,8 @@
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
 <%
-	
+	List<HashMap> commentList = (List<HashMap>)request.getAttribute("commentList");
 %>
-<body>
 	<div id="option" data-role="page" data-theme="a">
 
 		<div data-role="header">
@@ -29,7 +30,41 @@
 		</div>
 
 		<div data-rol="content">
-			
+			<table border="0">
+		<%
+			if (commentList != null && commentList.size() > 0)
+			{
+				for ( HashMap comment : commentList ) 
+					{
+						String content = (String)comment.get("CONTENT");
+						String nickname = (String)comment.get("NICKNAME");
+						String email = (String)comment.get("EMAIL");
+						String profile = (String)comment.get("PROFILE_IMG");
+		%>
+				<tr>
+		<%
+					if(profile == null)
+					{
+		%>
+					<td ><img src="/Kostagram/personalImg/profile.jpg" width="55" style="-webkit-border-radius: 100px; border-radius: 100px;" /></td>
+		<%
+					}
+					else
+					{
+		%>
+					<td ><img src="/Kostagram/personalImg/<%=email %>/profile.jpg" width="55" style="-webkit-border-radius: 100px; border-radius: 100px;"></td>
+		<%
+					}
+		%>
+					<td> <a><%=nickname %></a></td>
+					<td width="100%"><%= content %></td>
+				</tr>
+		<%
+					}
+			}
+		%>
+				
+			</table>
 		</div>
 		
 		<div data-role="footer" data-position="fixed">
