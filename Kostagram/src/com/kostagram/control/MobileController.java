@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kostagram.service.beans.ActivityVO;
 import com.kostagram.service.beans.ArticleVO;
+import com.kostagram.service.beans.CommentVO;
 import com.kostagram.service.beans.ConversationVO;
 import com.kostagram.service.beans.HashtagVO;
 import com.kostagram.service.beans.PhotoInfoVO;
@@ -27,10 +28,10 @@ import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.ActivityDAO;
 import com.kostagram.service.dao.ConversationDAO;
 import com.kostagram.service.dao.FollowDAO;
+import com.kostagram.service.dao.HashtagDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.ReportDAO;
 import com.kostagram.service.dao.UserInfoDAO;
-import com.kostagram.service.dao.HashtagDAO;
 
 @Controller
 @RequestMapping("/m")
@@ -780,6 +781,21 @@ public class MobileController {
 
 	}
 	
+	@RequestMapping("/comment")
+	public String comment(@RequestParam String pid, Model model, CommentVO comment) {
+		
+		System.out.println(pid);
+		//CommentVO comment = new CommentVO(pid);
+
+		// DB에서 정보 가져오기.
+		//List<CommentVO> commentList = commentDao.getCommentByPhotoId(pid);
+		
+		
+		
+		model.addAttribute("pid", pid);
+		return "mobile/comment";
+	}
+	
 	@RequestMapping("/{nickname}")
 	public String userpage(@PathVariable String nickname, Model model) {
 
@@ -802,10 +818,5 @@ public class MobileController {
 			model.addAttribute("nickname", nickname);
 			return "mobile/usernotfound";
 		}
-	}
-	
-	@RequestMapping("/comment")
-	public String comment() {
-		return "mobile/comment";
 	}
 }
