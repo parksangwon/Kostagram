@@ -28,6 +28,11 @@
 		select * from member where nickname = #{nickname}
 	</select>
 	
+	<select id="searchNickname" parameterType="com.kostagram.service.beans.UserInfoVO"
+		resultType="com.kostagram.service.beans.UserInfoVO">
+		select * from member where nickname like '%'||#{nickname}||'%'
+	</select>
+	
 	<select id="findUser" parameterType="java.lang.String" resultType="com.kostagram.service.beans.UserInfoVO">
 		select * from member where nickname = #{token} or email = #{token}
 	</select>
