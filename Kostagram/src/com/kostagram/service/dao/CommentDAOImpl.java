@@ -1,9 +1,13 @@
 package com.kostagram.service.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.kostagram.service.beans.ActivityVO;
 import com.kostagram.service.beans.CommentVO;
+import com.kostagram.service.beans.UserInfoVO;
 
 public class CommentDAOImpl implements CommentDAO {
 	@Autowired
@@ -20,6 +24,12 @@ public class CommentDAOImpl implements CommentDAO {
 	@Override
 	public boolean delete(CommentVO comment) {
 		return false;
+	}
+	
+	@Override
+	public List<CommentVO> getCommentByPhotoId(CommentVO comment) {
+		List<CommentVO> getCommentByPhotoId = sqlSession.selectList("comment.getCommentByPhotoId", comment);
+		return getCommentByPhotoId;
 	}
 	
 
