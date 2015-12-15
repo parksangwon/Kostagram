@@ -278,10 +278,10 @@
 			    	<h1>신고 관리 (관리자 전용)</h1>
 			    </header>
 			    
-                <table >
+                <table border="1">
                 	<tr align="center">
                 		<td>신고 번호</td>
-                		<td width="150px">신고된 사진</td>
+                		<td>신고된 사진</td>
                 		<td>종류</td>
                 		<td>날짜</td>
                 		<td>신고된 사람</td>
