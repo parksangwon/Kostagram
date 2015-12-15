@@ -605,7 +605,7 @@ public class MobileController {
 		List<UserInfoVO> userinfo = userInfoDao.findFriend(findUserVO);
 		
 		model.addAttribute("userinfo", userinfo);
-		
+		System.out.println(userinfo);
 		return "mobile/findphonenumber";
 	}
 
