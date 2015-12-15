@@ -599,7 +599,13 @@ public class MobileController {
 	}
 
 	@RequestMapping("/findphonenumber")
-	public String findphonenumber() {
+	public String findphonenumber(UserInfoVO userInfoVO, Model model) {
+		
+		UserInfoVO findUserVO = new UserInfoVO();
+		List<UserInfoVO> userinfo = userInfoDao.findFriend(findUserVO);
+		
+		model.addAttribute("userinfo", userinfo);
+		
 		return "mobile/findphonenumber";
 	}
 
