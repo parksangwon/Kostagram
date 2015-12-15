@@ -6,7 +6,10 @@
 <%
 	UserInfoVO user = (UserInfoVO)request.getAttribute("userinfo");
 	
-	String gender = user.getGender(); 
+	String gender = user.getGender();
+	
+	char adminYn = user.getAdminYn();
+	
 	if(gender == null){
 		gender = "3";
 	}
@@ -217,8 +220,14 @@
                                 <li><a href="#">프로필 보기</a></li>
                                 <li><a href="/Kostagram/profileupdate">프로필 편집</a></li>
                                  <li><a href="/Kostagram/logout">로그아웃</a></li>
+                             <%
+                             	if (adminYn == 'Y')
+                             	{
+                             %>
                                  <li><a href="/Kostagram/report">신고 관리</a></li>  
-                               
+                             <%
+                             	}
+                             %>
                             </ul>
                         </div>
                     </li>
@@ -255,7 +264,10 @@
             
         </a>
         </li>
-        
+<%
+	if(adminYn == 'Y')
+	{
+%>
           <li >
         <a href="/Kostagram/report">
             
@@ -265,7 +277,9 @@
             
         </a>
         </li>
-        
+ <%
+	}
+ %>       
         <li >
         <a href="/Kostagram/logout">
             
