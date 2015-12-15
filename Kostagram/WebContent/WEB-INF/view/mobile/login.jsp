@@ -364,6 +364,29 @@
 								});
 							}
 							// search_hashtag 끝
+							else if (this.id == "report") {
+								$('#reportBtn > ul > li a').each(function() {
+									$(this).click(function(){
+										var reportValue = $(this).attr("value");
+										var reportPid = $('#report > input:hidden[name=reportPid]').val();
+										$.ajax({
+											type: 'POST',
+											url: 'reportphoto',
+											dataType: 'text',
+											data: {
+												rid: reportValue,
+												pid: reportPid
+											},
+											success: function(data) {
+												alert("성공적으로 신고가 접수되었습니다. 게시물이 부적합한지 확인 후 게시물을 삭제하도록 하겠습니다.");
+											},
+											error: function() {
+												alert("error");
+											}
+										});
+									});
+								});
+							}
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
