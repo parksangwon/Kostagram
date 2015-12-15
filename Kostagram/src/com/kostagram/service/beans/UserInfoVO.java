@@ -13,6 +13,42 @@ public class UserInfoVO {
 	private String gender;
 	private String updatenickname;
 	private String send;
+	private char adminYn;
+	private char useYn;
+	private Date join_date;
+	private Date upd_date;
+
+	public UserInfoVO() {}
+
+	public UserInfoVO(String email,String pass) {
+	    super();
+	    this.email = email;
+	    this.pass=pass;
+	}
+
+	public UserInfoVO(String email, String name, String nickname, String pass) {
+	    super();
+	    this.email = email;
+	    this.name = name;
+	    this.nickname = nickname;
+	    this.pass = pass;
+	}
+
+	public UserInfoVO(String email, String name, String nickname, String pass, String mobile, String message,
+			String profile_img, char adminYn, char useYn, Date join_date, Date upd_date) {
+		super();
+		this.email = email;
+		this.name = name;
+		this.nickname = nickname;
+		this.pass = pass;
+		this.mobile = mobile;
+		this.message = message;
+		this.profile_img = profile_img;
+		this.adminYn = adminYn;
+		this.useYn = useYn;
+		this.join_date = join_date;
+		this.upd_date = upd_date;
+	}
 	
 	public String getSend() {
 		return send;
@@ -42,49 +78,13 @@ public class UserInfoVO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-	private char adminYn;
-	private char useYn;
-	private Date join_date;
-	private Date upd_date;
 	
-	public UserInfoVO() {}
 	
 	
 	public UserInfoVO(String email) {
 	    super();
 	    this.email = email;
 
-	}
-	
-	public UserInfoVO(String email,String pass) {
-	    super();
-	    this.email = email;
-	    this.pass=pass;
-	}
-
-	public UserInfoVO(String email, String name, String nickname, String pass) {
-	    super();
-	    this.email = email;
-	    this.name = name;
-	    this.nickname = nickname;
-	    this.pass = pass;
-	}
-
-	public UserInfoVO(String email, String name, String nickname, String pass, String mobile, String message,
-			String profile_img, char adminYn, char useYn, Date join_date, Date upd_date) {
-		super();
-		this.email = email;
-		this.name = name;
-		this.nickname = nickname;
-		this.pass = pass;
-		this.mobile = mobile;
-		this.message = message;
-		this.profile_img = profile_img;
-		this.adminYn = adminYn;
-		this.useYn = useYn;
-		this.join_date = join_date;
-		this.upd_date = upd_date;
 	}
 
 	public String getEmail() {
@@ -178,8 +178,9 @@ public class UserInfoVO {
 	@Override
 	public String toString() {
 		return "UserInfoVO [email=" + email + ", name=" + name + ", nickname=" + nickname + ", pass=" + pass
-				+ ", mobile=" + mobile + ", message=" + message + ", profile_img=" + profile_img + ", adminYn="
-				+ adminYn + ", useYn=" + useYn + ", join_date=" + join_date + ", upd_date=" + upd_date + ",gender=" + gender + "]";
+				+ ", mobile=" + mobile + ", message=" + message + ", profile_img=" + profile_img + ", gender=" + gender
+				+ ", updatenickname=" + updatenickname + ", send=" + send + ", adminYn=" + adminYn + ", useYn=" + useYn
+				+ ", join_date=" + join_date + ", upd_date=" + upd_date + "]";
 	}
 
 }
