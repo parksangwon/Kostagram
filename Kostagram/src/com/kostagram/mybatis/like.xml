@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="like">
 	<insert id="insert" parameterType="com.kostagram.service.beans.LikeVO">
-		insert into likeit values (seq_likeit.nextval, #{seq_photo} ,#{dispYn} ,#{email}, SYSDATE, SYSDATE) 
+		insert into likeit values (to_char(SYSDATE, 'YYYYMMDDHHMISS')||lpad(seq_likeit.nextval, 16, '0'), #{seq_photo} ,'Y' ,#{email}, SYSDATE, SYSDATE) 
 	</insert>
 
 	<delete id ="delete" parameterType="com.kostagram.service.beans.LikeVO">
