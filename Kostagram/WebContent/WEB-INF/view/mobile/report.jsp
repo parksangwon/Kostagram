@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%
+	String pid = (String)request.getAttribute("pid");
+%>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
@@ -13,7 +17,8 @@
 	type="text/css" />
 
 <body>
-	<div id="m_report" data-theme="a" data-role="page">
+	<div id="report" data-theme="a" data-role="page">
+		<input type="hidden" name="reportPid" value="<%= pid %>"/>
 		<div data-role="header">
 			<table width="100%">
 				<tr>
@@ -26,13 +31,13 @@
 			</table>
 		</div>
 
-		<div data-rol="content" align="center" id="m_report">
+		<div data-rol="content" align="center" id="reportBtn">
 			<ul data-role="listview" data-theme="d">
-				<li><a href="#"> 욕설</a></li>
+				<li><a href="#" value="1"> 욕설</a></li>
 
-				<li><a href="#"> 음란물</a></li>
+				<li><a href="#" value="2"> 음란물</a></li>
 					
-				<li><a href="#"> 개인정보 유출</a></li>
+				<li><a href="#" vaule="3"> 개인정보 유출</a></li>
 					
 			</ul>
 		</div>
