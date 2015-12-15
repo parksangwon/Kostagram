@@ -31,24 +31,19 @@
 				<div>
 					<table width="90%" border="0">
 						<tr>
-							<td
-							onclick="$.mobile.changePage('./profileupdate')">프로필 수정</td>
+							<td>
+								<a href="/Kostagram/m/profileupdate">프로필 수정</a>
+							</td>
 						</tr>
 						<tr>
-							<Td>
-								<h4>
-									<a href="./findphonenumber">연락처로 친구 찾기</a>
-								</h4>
-							</Td>
+							<td>
+								<a href="/Kostagram/m/findphonenumber">연락처로 친구 찾기</a>
+							</td>
 						</tr>
 						<tr>
 							<Td>
 								<h4>비밀번호 변경</h4>
 							</Td>
-						</tr>
-						<tr>
-							<td
-								onclick="$.mobile.changePage('./likenotice')">프로필 수정</td>
 						</tr>
 						</tr>
 						<tr>
