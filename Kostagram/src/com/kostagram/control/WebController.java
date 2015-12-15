@@ -266,59 +266,7 @@ public class WebController {
 	public String searchresult() {
 		return "web/search_result";
 	}
-
-	@RequestMapping(value = "/{nickname}")
-	public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model,
-			FollowVO followVO) {
-		userInfoVO.setNickname(nickname);
-
-		String check = "N";
-		String url = "redirect:/usernotfound";
-
-		// 회원찾기
-		userInfoVO = userInfoDao.findNickname(userInfoVO);
-		// 회원이 아니거나 사용중지 된 회원이면
-		if (userInfoVO == null || userInfoVO.getUseYn() == 'N') {
-			return url;
-		}
-
-		int photoCnt = photoInfoDao.countMyPhoto(userInfoVO);
-		int followerCnt = followDao.getMyFollower(userInfoVO);
-		int followingCnt = followDao.getMyFollowing(userInfoVO);
-
-		model.addAttribute("photoCnt", photoCnt);
-		model.addAttribute("followerCnt", followerCnt);
-		model.addAttribute("followingCnt", followingCnt);
-
-		model.addAttribute("userInfoVO", userInfoVO);
-
-		if (session != null && session.getAttribute("loginYn") != null
-				&& ((String) session.getAttribute("loginYn")).equals("Y")) {
-			// 자기자신
-			if (((String) session.getAttribute("nickname")).equals(nickname)) {
-				check = "Y";
-				model.addAttribute("check", check);
-			}
-			// 로그인은 했는데 자기자신이 아니고
-			else {
-				followVO.setFrom_email((String) session.getAttribute("email"));
-				followVO.setTo_email(userInfoVO.getEmail());
-				followVO = followDao.check(followVO);
-				if (followVO == null) {
-					check = "FN";
-				}
-
-				model.addAttribute("check", check);
-			}
-			// 로그인을 안한거
-		}
-		// 로그인을 안한거
-		else {
-
-		}
-		return "web/userpage";
-	}
-
+	
 	@RequestMapping(value = "/userpage")
 	public void follow(FollowVO followVO, HttpSession session, HttpServletResponse response, HttpServletRequest request)
 			throws IOException {
@@ -425,4 +373,57 @@ public class WebController {
     
 	return "redirect:report";
     }
+    
+    @RequestMapping(value = "/{nickname}")
+	public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model,
+			FollowVO followVO) {
+		userInfoVO.setNickname(nickname);
+
+		String check = "N";
+		String url = "redirect:/usernotfound";
+
+		// 회원찾기
+		userInfoVO = userInfoDao.findNickname(userInfoVO);
+		// 회원이 아니거나 사용중지 된 회원이면
+		if (userInfoVO == null || userInfoVO.getUseYn() == 'N') {
+			return url;
+		}
+
+		int photoCnt = photoInfoDao.countMyPhoto(userInfoVO);
+		int followerCnt = followDao.getMyFollower(userInfoVO);
+		int followingCnt = followDao.getMyFollowing(userInfoVO);
+
+		model.addAttribute("photoCnt", photoCnt);
+		model.addAttribute("followerCnt", followerCnt);
+		model.addAttribute("followingCnt", followingCnt);
+
+		model.addAttribute("userInfoVO", userInfoVO);
+
+		if (session != null && session.getAttribute("loginYn") != null
+				&& ((String) session.getAttribute("loginYn")).equals("Y")) {
+			// 자기자신
+			if (((String) session.getAttribute("nickname")).equals(nickname)) {
+				check = "Y";
+				model.addAttribute("check", check);
+			}
+			// 로그인은 했는데 자기자신이 아니고
+			else {
+				followVO.setFrom_email((String) session.getAttribute("email"));
+				followVO.setTo_email(userInfoVO.getEmail());
+				followVO = followDao.check(followVO);
+				if (followVO == null) {
+					check = "FN";
+				}
+
+				model.addAttribute("check", check);
+			}
+			// 로그인을 안한거
+		}
+		// 로그인을 안한거
+		else {
+
+		}
+		return "web/userpage";
+	}
+
 }
