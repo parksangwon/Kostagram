@@ -337,6 +337,33 @@
 								});
 							}
 							// search_people 끝
+							// search_hashtag 시작
+							else if (this.id == "search_hashtag") {
+								
+								$("#input_hashtag").keydown(function(){
+									setTimeout(function() {
+										var searchValue = trim($('#input_hashtag').val());
+										if(searchValue!=null && searchValue!="") {
+											$.ajax({
+												type:'POST',
+												url:'ajaxsearch_hashtag',
+												dataType:'text',
+												data:{input_hashtag:searchValue},
+												success:function(data){
+													$('#search_resultArea').empty();
+													$('#search_hashtag > #search_resultArea').html(data);
+												},
+												error:function() {
+													alert("error");
+												}
+											});
+										} else {
+											$('#search_resultArea').empty();
+										}
+									}, 250);
+								});
+							}
+							// search_hashtag 끝
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
