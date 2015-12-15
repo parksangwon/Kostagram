@@ -14,9 +14,9 @@
 		where seq_add = #{seq_add}
 	</delete>
 
-	<select id="getCommentByPhotoId" parameterType="com.kostagram.service.beans.PhotoInfoVO"
+	<select id="getCommentByPhotoId" parameterType="String"
 		resultType="java.util.HashMap">
-		select photo_comment.content, member.nickname, member.email
+		select photo_comment.content, member.nickname, member.email, member.profile_img
 		from photo_comment, member
 		where photo_comment.seq_photo = #{seq_photo} and photo_comment.email = member.email
 		order by photo_comment.reg_date desc
