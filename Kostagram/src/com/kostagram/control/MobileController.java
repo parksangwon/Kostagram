@@ -123,7 +123,7 @@ public class MobileController {
 		
 				HashMap userInfo = article.getUserInfo();
 				String photoNickname = (String) userInfo.get("NICKNAME");
-				String profile = (String) userInfo.get("PROFILE");
+				String profile = (String) userInfo.get("PROFILE_IMG");
 				String photoEmail = (String) userInfo.get("EMAIL");
 				if (profile == null) {
 					out.print(
@@ -159,7 +159,7 @@ public class MobileController {
 				out.print(
 						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='m/image/icon/heart.png' width='25' />");
 				out.print(
-						"</a></td><td align='left'><a href='#'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
+						"</a></td><td align='left'><a href='#'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"' >");
 				out.print(
 						"<img src='m/image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
 		
@@ -489,7 +489,7 @@ public class MobileController {
 						// 이미지
 					}
 					out.print(
-							"</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+							"</td><td align='left'><a href='./m/"+photoNickname+"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 					out.print(photoNickname);// 닉네임
 					out.print(
 							"</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
@@ -514,7 +514,7 @@ public class MobileController {
 					out.print(
 							"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
 					out.print(
-							"</a></td><td align='left'><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='#'>");
+							"</a></td><td align='left'><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"'>");
 					out.print(
 							"<img src='./image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
 
