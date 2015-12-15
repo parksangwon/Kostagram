@@ -13,7 +13,7 @@
 	type="text/css" />
 
 <body>
-	<div id="hashtag" data-role="page" data-theme="a">
+	<div id="search_hashtag" data-role="page" data-theme="a">
 		
 		<div data-role="header">
 			<table class="search">

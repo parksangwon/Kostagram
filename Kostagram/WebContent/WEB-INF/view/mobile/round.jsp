@@ -50,7 +50,6 @@
 							for (HashMap round_profile : round_profileList) {
 									String email = (String) round_profile.get("EMAIL");
 									String profile = (String) round_profile.get("PROFILE");
-									System.out.println("PROFILE =" + email + "/" + profile);
 						%> <a href="./detail"><img
 							src="/Kostagram/personalImg/profile.jpg" width="40"
 							style="-webkit-border-radius: 100px; border-radius: 100px;" /></a> <%
