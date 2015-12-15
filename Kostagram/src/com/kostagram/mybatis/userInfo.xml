@@ -53,7 +53,7 @@
 		where email= #{email}
 	</update>
 	
-	<select id="findfriend" parameterType="com.kostagram.service.beans.UserInfoVO"
+	<select id="findFriend" parameterType="com.kostagram.service.beans.UserInfoVO"
 		resultType="com.kostagram.service.beans.UserInfoVO">
 		select * from member
 	</select>
