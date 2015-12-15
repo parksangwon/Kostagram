@@ -45,16 +45,16 @@
 		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="./"><img src="./image/icon/house.png"
-								width="20" /></a></li>
-					<li><a href="./round"><img src="./image/icon/search.png"
-								width="20" /></a></li>
-					<li><a href="#"><img src="./image/icon/camera.png"
-								width="20" /></a></li>
-					<li><a href="./mynews"><img src="./image/icon/info.png"
-								width="20" /></a></li>
-					<li><a href="./userpage"><img
-								src="./image/icon/user.png" width="20" /></a></li>
+					<li><a href="/Kostagram/m/"><img src="/Kostagram/m/image/icon/house.png"
+							width="20" /></a></li>
+					<li><a href="/Kostagram/m/round"><img src="/Kostagram/m/image/icon/search.png"
+							width="20" /></a></li>
+					<li><a href="#"><img src="/Kostagram/m/image/icon/camera.png"
+							width="20" /></a></li>
+					<li><a href="/Kostagram/m/mynews"><img src="/Kostagram/m/image/icon/info.png"
+							width="20" /></a></li>
+					<li><a href='/Kostagram/m/<%= session.getAttribute("nickname")%>'><img src="/Kostagram/m/image/icon/user.png"
+							width="20" /></a></li>
 				</ul>
 			</div>
 		</div>
