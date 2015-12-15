@@ -20,4 +20,9 @@
 		from hashtag
 		where hashtag=#{hashtag}
 	</select>
+	
+	<select id="searchHashtag" parameterType="com.kostagram.service.beans.HashtagVO"
+		resultType="com.kostagram.service.beans.HashtagVO">
+		select * from hashtag where hashtag like '%'||#{hashtag}||'%'
+	</select>
 </mapper>
