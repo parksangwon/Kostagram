@@ -22,6 +22,7 @@ import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.CommentVO;
 import com.kostagram.service.beans.ConversationVO;
 import com.kostagram.service.beans.HashtagVO;
+import com.kostagram.service.beans.LikeVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.UserInfoVO;
@@ -29,6 +30,7 @@ import com.kostagram.service.dao.ActivityDAO;
 import com.kostagram.service.dao.ConversationDAO;
 import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.HashtagDAO;
+import com.kostagram.service.dao.LikeDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.ReportDAO;
 import com.kostagram.service.dao.UserInfoDAO;
@@ -57,6 +59,9 @@ public class MobileController {
 	
 	@Autowired
 	private HashtagDAO hashtagDao;
+	
+	@Autowired
+	private LikeDAO likeDao;
 
 	// 타임 라인 (메인)
 	@RequestMapping("/")
@@ -157,14 +162,25 @@ public class MobileController {
 						"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
 				out.print("<img src='personalImg/" + photoEmail + "/" + seq_photo
 						+ ".jpg' width='100%' />");// 올린 사진
+				
+				List<HashMap> likeList = article.getLikeList();
+				String likeYn = "heart";
+				if (likeList.size() != 0) {
+					for ( int j = 0; j < likeList.size(); j++ ) {
+						HashMap like = likeList.get(i);
+						if (like.get("email").equals(email)) {
+							likeYn = "heart2";
+						}
+					}
+				}
 				out.print(
-						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='m/image/icon/heart.png' width='25' />");
+						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='m/image/icon/"+likeYn+".png' id='heartBtn' width='25' />");
 				out.print(
 						"</a></td><td align='left'><a href='./m/comment?pid="+seq_photo+"'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"' >");
 				out.print(
 						"<img src='m/image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
 		
-				List<HashMap> likeList = article.getLikeList();
+				
 				if (likeList.size() < 6) {
 					out.print(
 							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
@@ -311,6 +327,45 @@ public class MobileController {
 		model.addAttribute("round_profileList", round_profileList);
 		return "mobile/round";
 	}
+	
+
+	@RequestMapping("/like")
+		public void like(HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
+			String email = (String) session.getAttribute("email");
+			String state = (String) req.getParameter("state");
+			String seq_photo = (String) req.getParameter("seq_photo");
+			
+			System.out.println("aaaaa:"+state);
+			
+			PrintWriter out = res.getWriter();
+			
+			LikeVO like = new LikeVO();
+			like.setEmail(email);
+			like.setSeq_photo(seq_photo);
+			
+			
+			System.out.println(like);
+			res.setCharacterEncoding("utf-8");
+			res.setContentType("text/html");
+			res.setHeader("Cache-Control", "no-cache");
+			
+			if (state.equals("unlike")) {
+				if (likeDao.insert(like)){
+					out.print("like");
+				} else {
+					out.print("fail");
+				}
+			} else if (state.equals("like")) {
+				System.out.println("state는 like...");
+				if (likeDao.delete(like)) {
+					out.print("unlike");
+				} else {
+					out.print("fail");
+				}
+			}
+			
+		}
+	
 
 	@RequestMapping("/search_people")
 	public String search_people() {
