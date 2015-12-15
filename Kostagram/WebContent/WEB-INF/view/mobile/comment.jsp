@@ -46,13 +46,13 @@
 					if(profile == null)
 					{
 		%>
-					<td ><img src="/Kostagram/personalImg/profile.jpg" width="55" style="-webkit-border-radius: 100px; border-radius: 100px;" /></td>
+					<td ><img src="/Kostagram/personalImg/profile.jpg" width="35" style="-webkit-border-radius: 100px; border-radius: 100px;" /></td>
 		<%
 					}
 					else
 					{
 		%>
-					<td ><img src="/Kostagram/personalImg/<%=email %>/profile.jpg" width="55" style="-webkit-border-radius: 100px; border-radius: 100px;"></td>
+					<td ><img src="/Kostagram/personalImg/<%=email %>/profile.jpg" width="35" style="-webkit-border-radius: 100px; border-radius: 100px;"></td>
 		<%
 					}
 		%>
