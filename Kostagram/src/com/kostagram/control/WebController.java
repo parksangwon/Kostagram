@@ -21,6 +21,7 @@ import com.kostagram.mail.Mail;
 import com.kostagram.mail.MailService;
 import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.FollowVO;
+import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.SearchVO;
 import com.kostagram.service.beans.UserInfoVO;
@@ -375,32 +376,36 @@ public class WebController {
     }
     
     @RequestMapping(value = "/{nickname}")
-	public String userPage(@PathVariable String nickname, HttpSession session, UserInfoVO userInfoVO, Model model,
-			FollowVO followVO) {
-		userInfoVO.setNickname(nickname);
+	public String userPage(@PathVariable String nickname, HttpSession session, Model model) {
+		UserInfoVO user = new UserInfoVO();
+		user.setNickname(nickname);
 
 		String check = "N";
 		String url = "redirect:/usernotfound";
 
 		// 회원찾기
-		userInfoVO = userInfoDao.findNickname(userInfoVO);
+		user = userInfoDao.findNickname(user);
 		// 회원이 아니거나 사용중지 된 회원이면
-		if (userInfoVO == null || userInfoVO.getUseYn() == 'N') {
+		if (user == null || user.getUseYn() == 'N') {
 			return url;
 		}
 
-		int photoCnt = photoInfoDao.countMyPhoto(userInfoVO);
-		int followerCnt = followDao.getMyFollower(userInfoVO);
-		int followingCnt = followDao.getMyFollowing(userInfoVO);
+		int photoCnt = photoInfoDao.countMyPhoto(user);	
+		int followerCnt = followDao.getMyFollower(user);
+		int followingCnt = followDao.getMyFollowing(user);
 
+		model.addAttribute("profile", user.getProfile_img());
+		model.addAttribute("message", user.getMessage());
+		model.addAttribute("nickname", user.getNickname());
+		model.addAttribute("email", user.getEmail());
 		model.addAttribute("photoCnt", photoCnt);
 		model.addAttribute("followerCnt", followerCnt);
 		model.addAttribute("followingCnt", followingCnt);
+		
+		List<PhotoInfoVO> myPhotoList = photoInfoDao.getMyPhotoList(user);
+		model.addAttribute("myPhotoList", myPhotoList);
 
-		model.addAttribute("userInfoVO", userInfoVO);
-
-		if (session != null && session.getAttribute("loginYn") != null
-				&& ((String) session.getAttribute("loginYn")).equals("Y")) {
+		if (session != null && session.getAttribute("loginYn") != null && ((String) session.getAttribute("loginYn")).equals("Y")) {
 			// 자기자신
 			if (((String) session.getAttribute("nickname")).equals(nickname)) {
 				check = "Y";
@@ -408,8 +413,9 @@ public class WebController {
 			}
 			// 로그인은 했는데 자기자신이 아니고
 			else {
+				FollowVO followVO = new FollowVO();
 				followVO.setFrom_email((String) session.getAttribute("email"));
-				followVO.setTo_email(userInfoVO.getEmail());
+				followVO.setTo_email(user.getEmail());
 				followVO = followDao.check(followVO);
 				if (followVO == null) {
 					check = "FN";
@@ -417,7 +423,6 @@ public class WebController {
 
 				model.addAttribute("check", check);
 			}
-			// 로그인을 안한거
 		}
 		// 로그인을 안한거
 		else {
