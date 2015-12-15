@@ -141,7 +141,7 @@ public class MobileController {
 
 				long uploadTime = System.currentTimeMillis() - photo.getReg_date().getTime();
 				if ( uploadTime/(1000*60*60*24*7) != 0 ) {
-					out.print( uploadTime/1000*60*60*24*7 +"林 傈" );
+					out.print( uploadTime/(1000*60*60*24*7) +"林 傈" );
 				} else if ( uploadTime/(1000*60*60*24) != 0 ) {
 					out.print( uploadTime/(1000*60*60*24) + "老 傈" );
 				} else if ( uploadTime/(1000*60*60) != 0 ) {
@@ -496,7 +496,7 @@ public class MobileController {
 					
 					long uploadTime = System.currentTimeMillis() - photo.getReg_date().getTime();
 					if ( uploadTime/(1000*60*60*24*7) != 0 ) {
-						out.print( uploadTime/1000*60*60*24*7 +"林 傈" );
+						out.print( uploadTime/(1000*60*60*24*7) +"林 傈" );
 					} else if ( uploadTime/(1000*60*60*24) != 0 ) {
 						out.print( uploadTime/(1000*60*60*24) + "老 傈" );
 					} else if ( uploadTime/(1000*60*60) != 0 ) {
@@ -514,7 +514,7 @@ public class MobileController {
 					out.print(
 							"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
 					out.print(
-							"</a></td><td align='left'><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"'>");
+							"</a></td><td align='left'><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./report?pid="+seq_photo+"'>");
 					out.print(
 							"<img src='./image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
 
