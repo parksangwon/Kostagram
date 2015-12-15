@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="location">
-  <!--  <insert id="insert" parameterType="com.kostagram.service.beans.PersonVO">
+  <insert id="insert" parameterType="com.kostagram.service.beans.LocationVO">
       insert into person values (person_seq.nextval, #{name}, #{age}, #{job})
    </insert>
    
-   <select id="findAll" resultType="com.kostagram.service.beans.PersonVO">
-      select * from person
-   </select> -->
+   <select id="findPhotoMap" parameterType="com.kostagram.service.beans.UserInfoVO" resultType="java.util.HashMap">
+	select e.*, to_Char(f.lat) lat, to_Char(f.lon) lon
+	from
+	(
+		select c.*, to_Char(d.email) email
+		from 
+		(
+			SELECT location, to_char(count(seq_photo)) count, to_char(max(seq_photo)) seq_photo
+			FROM 
+			(
+				select a.location,a.lat,a.lon, b.seq_photo
+				from location a, photo b
+				WHERE a.location = b.location_name and b.email = #{email}
+			)
+			group by location
+		) c, photo d
+		where c.seq_photo = d.seq_photo
+	) e, location f
+	where e.location = f.location
+
+   </select>
+   
+
 </mapper>
