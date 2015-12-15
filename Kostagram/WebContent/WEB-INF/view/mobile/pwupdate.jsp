@@ -16,39 +16,40 @@
 
 <body>
 	<div id="pwupdate" data-role="page" data-theme="a">
-
-		<div data-role="header">
+		
+		<div data-role="header" data-theme="a">
 			<table width="100%">
 				<tr>
 					<td>
-						<!--  뒤로가기  -->
-						<img src="./m/image/icon/back.png" width="20"
-						onclick="window.location.href = './userpage.jsp'"> <span
-						style="height: 35px; font-size: 15px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
-							비밀번호 변경 </span>
-					</td>
-
-					<td align="right">
-						<!--  확인 -->
-						<a href="./detail"><img src="./m/image/icon/tick.png"
-							width="20"></a>
-					</td>
+						<a href="#" data-rel="back"><image
+								src="./image/icon/back.png" width="20"
+								style="padding-left:10px;" /></a> <span
+						style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
+							비밀번호 변경 </span></td>
+					<td align="right"><a href=""><img
+							src="./image/icon/tick.png" width="20"
+							style="padding-right: 10px;" /></a></td>
 				</tr>
 			</table>
 		</div>
-
-
+		
 		<div data-role="content">
-			<p>
-				<font color="#004879">비밀번호를 잊으셨나요??</font>
-			</p>
-
-			<img src="./m/image/icon/lock.png"><input type="password"
-				placeholder="현재 비밀번호"> <br> <img
-				src="./m/image/icon/lock.png"><input type="password"
-				placeholder="새 비밀번호"> <br> <img
-				src="./m/image/icon/lock.png"><input type="password"
-				placeholder="새 비밀번호 다시 입력"> <br>
+			
+			<table>
+				<p><font color="blue">&nbsp;&nbsp;&nbsp; 비밀번호를 재 설정 합니다.</font></p>
+				<tr>
+					<td height="60"><img src="./image/icon/lock.png"></td>
+					<td width="99%"><input type="text" placeholder="현재 비밀번호" /></td>
+				</tr>
+				<tr>
+					<td height="60"><img src="./image/icon/lock.png"></td>
+					<td width="99%"><input type="text" placeholder="새 비밀번호" /></td>
+				</tr>
+				<tr>
+					<td height="60"><img src="./image/icon/lock.png"></td>
+					<td width="99%"><input type="text" placeholder="새 비밀번호 다시 입력" /></td>
+				</tr>
+			</table>
 
 		</div>
 
