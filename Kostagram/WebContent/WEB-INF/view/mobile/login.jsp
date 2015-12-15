@@ -307,7 +307,34 @@
 									});
 								});
 							}
-							//profileupdate끝
+							// profileupdate끝
+							// search_people 시작
+							else if (this.id == "search_people") {
+								
+								$("#input_people").keydown(function(){
+									setTimeout(function() {
+										var searchValue = trim($('#input_people').val());
+										if(searchValue!=null && searchValue!="") {
+											$.ajax({
+												type:'POST',
+												url:'ajaxsearch_people',
+												dataType:'text',
+												data:{input_people:searchValue},
+												success:function(data){
+													$('#search_resultArea').empty();
+													$('#search_people > #search_resultArea').html(data);
+												},
+												error:function() {
+													alert("error");
+												}
+											});
+										} else {
+											$('#search_resultArea').empty();
+										}
+									}, 250);
+								});
+							}
+							// search_people 끝
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
