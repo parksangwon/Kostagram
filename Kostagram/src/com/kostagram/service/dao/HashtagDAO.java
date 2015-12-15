@@ -8,4 +8,5 @@ public interface HashtagDAO {
     public Boolean insert(HashtagVO hashtag);
     public Boolean update(HashtagVO hashtag);
     public List<HashtagVO> findHashtagList(HashtagVO token);
+    public List<HashtagVO> searchHashtag(HashtagVO hashtag);
 }
