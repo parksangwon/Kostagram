@@ -12,7 +12,7 @@
 /* A
 -----------------------------------------------------------------------------------------------------------*/
 
-/* �뿤�뜑諛�*/
+/* 占쎈엘占쎈쐭獄쏉옙*/
 .ui-bar-a {
 	/* border: 1px solid 		#2A2A2A {a-bar-border}; */
 	/*background: #030091 /*{a-bar-background-color}*/;
@@ -26,7 +26,7 @@
 	background-image:      -o-linear-gradient(#517fa4, #306088);
 	background-image:         linear-gradient(#517fa4, #306088);
 }
-/* �뿤�뜑諛�*/
+/* 占쎈엘占쎈쐭獄쏉옙*/
 .ui-bar-a, 
 .ui-bar-a input, 
 .ui-bar-a select, 
@@ -70,7 +70,7 @@
 	background-image:         linear-gradient(top, #021A63 0%, #4374D9 44%, #6799FF 58%, #B2CCFF 87%, #D9E5FF 100%);	
 } */
 
-/* login.jsp �떆�옉*/
+/* login.jsp 占쎈뻻占쎌삂*/
 #loginform {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -90,8 +90,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* login.jsp �걹 */
-/* emailcheck.jsp �떆�옉*/
+/* login.jsp 占쎄국 */
+/* emailcheck.jsp 占쎈뻻占쎌삂*/
 #emailCheck {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -111,8 +111,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* emailcheck.jsp �걹*/
-/* usercheck.jsp �떆�옉*/
+/* emailcheck.jsp 占쎄국*/
+/* usercheck.jsp 占쎈뻻占쎌삂*/
 #userCheck {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -132,8 +132,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* usercheck.jsp �걹*/
-/* chatting.jsp �떆�옉 */
+/* usercheck.jsp 占쎄국*/
+/* chatting.jsp 占쎈뻻占쎌삂 */
 #someone {
 	position: relative;
 	background: #e0e0e0;
@@ -173,8 +173,8 @@
 	border-width: 5px;
 	margin-top: -5px;
 }
-/* chatting.jsp �걹 */
-/* userpage.jsp �떆�옉 */
+/* chatting.jsp 占쎄국 */
+/* userpage.jsp 占쎈뻻占쎌삂 */
 .myPhotoListByGrid {
 	padding: 0.0em;
 	overflow: hidden;
@@ -203,7 +203,7 @@
 	padding-left: 0.1em;
 	padding-right: 0.1em;
 }
-/* userpage.jsp �걹 */
+/* userpage.jsp 占쎄국 */
 
 .ui-body-a input,
 .ui-body-a select,
@@ -232,7 +232,7 @@
     color: #2489CE {a-body-link-visited};
 } */
 
-/* 踰꾪듉�뿉 留덉슦�뒪瑜� �븞�삱�졇�쓣�븣 */
+/* 甕곌쑵�뱣占쎈퓠 筌띾뜆�뒭占쎈뮞�몴占� 占쎈툧占쎌궞占쎌죬占쎌뱽占쎈르 */
 .ui-btn-up-a {
 	border: 1px solid #8c8c8c /*{a-bup-border}*/;
 	/* background: #030091 {a-bup-background-color}; */
@@ -246,7 +246,7 @@
 	background-image:      -o-linear-gradient(#517fa4, #306088);
 	background-image:         linear-gradient(#517fa4, #306088);
 }
-/* 踰꾪듉�뿉 留덉슦�뒪瑜� �븞�삱�졇�쓣�븣 */
+/* 甕곌쑵�뱣占쎈퓠 筌띾뜆�뒭占쎈뮞�몴占� 占쎈툧占쎌궞占쎌죬占쎌뱽占쎈르 */
 
 .ui-btn-hover-a {
 	border: 1px solid #8c8c8c /*{a-bhover-border}*/;
@@ -299,7 +299,7 @@ a.ui-link-inherit {
 
 /* button inner top highlight
 -----------------------------------------------------------------------------------------------------------*/
-/* 踰꾪듉, �뫖�꽣諛�(�솧吏�紐⑤Ⅴ寃좎쓬) */
+/* 甕곌쑵�뱣, 占쎈쳳占쎄숲獄쏉옙(占쎌넦筌욑옙筌뤴뫀�뀮野껋쥙�벉) */
 
 /*  .ui-btn-inner {
 	background-color: #000000;
@@ -1271,7 +1271,7 @@ Built by David Kaneda and maintained by Jonathan Stark.
 
 .ui-select .ui-btn { opacity: 1; }
 
-/* Fixes #2588 �� When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select�봧ncluding �쐇nherit�앪�봶ithout explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
+/* Fixes #2588 占쏙옙 When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select占쎈뇻ncluding 占쎌릥nherit占쎌빁占쎈뉜ithout explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
 .ui-select .ui-btn select { cursor: pointer; -webkit-appearance: button; left: 0; top:0; width: 100%;  min-height: 1.5em; min-height: 100%; height: 3em; max-height: 100%; opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; filter: alpha(opacity=0); z-index: 2; }
 
 .ui-select .ui-disabled { opacity: .3; }
@@ -1411,4 +1411,145 @@ span.ui-slider-label-b { right: -100%;  margin-left: -1px }
 /* IE10+ */
 :-ms-input-placeholder { color: #bdbdbd;}
 
+
+/* D
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-bar-d {
+	border: 1px solid 		#ccc /*{d-bar-border}*/;
+	background: 			#bbb /*{d-bar-background-color}*/;
+	color: 					#333 /*{d-bar-color}*/;
+	text-shadow: 0 /*{d-bar-shadow-x}*/ 1px /*{d-bar-shadow-y}*/ 0 /*{d-bar-shadow-radius}*/ #eee /*{d-bar-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #ddd /*{d-bar-background-start}*/), to( #bbb /*{d-bar-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#ddd /*{d-bar-background-start}*/, #bbb /*{d-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#ddd /*{d-bar-background-start}*/, #bbb /*{d-bar-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#ddd /*{d-bar-background-start}*/, #bbb /*{d-bar-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#ddd /*{d-bar-background-start}*/, #bbb /*{d-bar-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#ddd /*{d-bar-background-start}*/, #bbb /*{d-bar-background-end}*/);
+}
+.ui-bar-d,
+.ui-bar-d input,
+.ui-bar-d select,
+.ui-bar-d textarea,
+.ui-bar-d button {
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+}
+
+.ui-bar-d .ui-link-inherit {
+	color: 	#333333 /*{d-bar-color}*/;
+}
+.ui-bar-d .ui-link {
+	color: #2489CE /*{d-bar-link-color}*/;
+	font-weight: bold;
+}
+
+.ui-bar-d .ui-link:hover {
+	color: #2489CE /*{d-bar-link-hover}*/;
+}
+
+.ui-bar-d .ui-link:active {
+	color: #2489CE /*{d-bar-link-active}*/;
+}
+
+.ui-bar-d .ui-link:visited {
+    color: #2489CE /*{d-bar-link-visited}*/;
+}
+
+.ui-body-d,
+.ui-dialog.ui-overlay-d {
+	border: 1px solid 		#ccc /*{d-body-border}*/;
+	color: 					#333333 /*{d-body-color}*/;
+	text-shadow: 0 /*{d-body-shadow-x}*/ 1px /*{d-body-shadow-y}*/ 0 /*{d-body-shadow-radius}*/ 	#fff /*{d-body-shadow-color}*/;
+	background: 			#ffffff /*{d-body-background-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #fff), to( #fff /*{d-body-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#fff /*{d-body-background-start}*/, #fff /*{d-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#fff /*{d-body-background-start}*/, #fff /*{d-body-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#fff /*{d-body-background-start}*/, #fff /*{d-body-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#fff /*{d-body-background-start}*/, #fff /*{d-body-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#fff /*{d-body-background-start}*/, #fff /*{d-body-background-end}*/);
+}
+.ui-body-d,
+.ui-body-d input,
+.ui-body-d select,
+.ui-body-d textarea,
+.ui-body-d button {
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+}
+
+.ui-body-d .ui-link-inherit {
+	color: 	#333333 /*{d-body-color}*/;
+}
+
+.ui-body-d .ui-link {
+	color: #2489CE /*{d-body-link-color}*/;
+	font-weight: bold;
+}
+
+.ui-body-d .ui-link:hover {
+	color: #2489CE /*{d-body-link-hover}*/;
+}
+
+.ui-body-d .ui-link:active {
+	color: #2489CE /*{d-body-link-active}*/;
+}
+
+.ui-body-d .ui-link:visited {
+    color: #2489CE /*{d-body-link-visited}*/;
+}
+
+.ui-btn-up-d {
+	border: 1px solid 		#ccc /*{d-bup-border}*/;
+	background: 			#fff /*{d-bup-background-color}*/;
+	font-weight: bold;
+	color: 					#444 /*{d-bup-color}*/;
+	text-shadow: 0 /*{d-bup-shadow-x}*/ 1px /*{d-bup-shadow-y}*/ 1px /*{d-bup-shadow-radius}*/ #fff /*{d-bup-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #fff), to( #fff /*{d-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#fff /*{d-bup-background-start}*/, #fff /*{d-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#fff /*{d-bup-background-start}*/, #fff /*{d-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#fff /*{d-bup-background-start}*/, #fff /*{d-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#fff /*{d-bup-background-start}*/, #fff /*{d-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#fff /*{d-bup-background-start}*/, #fff /*{d-bup-background-end}*/);
+}
+.ui-btn-up-d a.ui-link-inherit {
+	color: 					#333 /*{d-bup-color}*/;
+}
+.ui-btn-hover-d {
+	border: 1px solid 		#aaa /*{d-bhover-border}*/;
+	background: 			#eeeeee /*{d-bhover-background-color}*/;
+	font-weight: bold;
+	color: 					#222 /*{d-bhover-color}*/;
+	cursor: pointer;
+	text-shadow: 0 /*{d-bhover-shadow-x}*/ 1px /*{d-bhover-shadow-y}*/ 1px /*{d-bhover-shadow-radius}*/ 	#fff /*{d-bhover-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #fdfdfd), to( #eee /*{d-bhover-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#fdfdfd /*{d-bhover-background-start}*/, #eee /*{d-bhover-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#fdfdfd /*{d-bhover-background-start}*/, #eee /*{d-bhover-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#fdfdfd /*{d-bhover-background-start}*/, #eee /*{d-bhover-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#fdfdfd /*{d-bhover-background-start}*/, #eee /*{d-bhover-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#fdfdfd /*{d-bhover-background-start}*/, #eee /*{d-bhover-background-end}*/);
+}
+.ui-btn-hover-d a.ui-link-inherit {
+	color: 					#222 /*{d-bhover-color}*/;
+}
+.ui-btn-down-d {
+	border: 1px solid 		#aaaaaa /*{d-bdown-border}*/;
+	background: 			#ffffff /*{d-bdown-background-color}*/;
+	font-weight: bold;
+	color: 					#111 /*{d-bdown-color}*/;
+	text-shadow: 0 /*{d-bdown-shadow-x}*/ 1px /*{d-bdown-shadow-y}*/ 1px /*{d-bdown-shadow-radius}*/ 	#ffffff /*{d-bdown-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #eee /*{d-bdown-background-start}*/), to( #fff /*{d-bdown-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#eee /*{d-bdown-background-start}*/, #fff /*{d-bdown-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#eee /*{d-bdown-background-start}*/, #fff /*{d-bdown-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#eee /*{d-bdown-background-start}*/, #fff /*{d-bdown-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#eee /*{d-bdown-background-start}*/, #fff /*{d-bdown-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#eee /*{d-bdown-background-start}*/, #fff /*{d-bdown-background-end}*/);
+}
+.ui-btn-down-d a.ui-link-inherit {
+	color: 					#111 /*{d-bdown-color}*/;
+}
+.ui-btn-up-d,
+.ui-btn-hover-d,
+.ui-btn-down-d {
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+	text-decoration: none;
+}
 
