@@ -216,11 +216,13 @@
 							else if (this.id == 'userpage') {
 								// 버튼마다 ajax통신 다르게
 								$(document).ready(function(){
+									var userpage_email = $('input:hidden[name=userpage_email]');
 									$.ajax({
 										type : 'POST',
 										url : 'getMyPhotoList',
 										dataType : 'html',
 										data : {
+											email : userpage_email.val(),
 											type : 'grid'
 										},
 										success : function(data){
@@ -291,7 +293,7 @@
 										}
 									});
 								});
-							} else if (thid.id == "reportPage") {
+							} else if (this.id == "reportPage") {
 								$('#reportPage #report').click(function(){
 									$.ajax({
 										type: 'POST',
