@@ -15,7 +15,7 @@
 <%
 	List<HashMap> commentList = (List<HashMap>)request.getAttribute("commentList");
 %>
-	<div id="option" data-role="page" data-theme="a">
+	<div id="comment" data-role="page" data-theme="a">
 
 		<div data-role="header">
 			<table>
