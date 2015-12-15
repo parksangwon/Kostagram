@@ -16,7 +16,7 @@
 
 	<select id="getCommentByPhotoId" parameterType="com.kostagram.service.beans.PhotoInfoVO"
 		resultType="java.util.HashMap">
-		select photo_comment.content, member.nickname
+		select photo_comment.content, member.nickname, member.email
 		from photo_comment, member
 		where photo_comment.seq_photo = #{seq_photo} and photo_comment.email = member.email
 		order by photo_comment.reg_date desc
