@@ -36,27 +36,27 @@
 	</select>
 	
 	<select id="roundList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
-		select e.email, e.seq_photo, e.reg_date
+		select e.email, to_char(max(e.seq_photo)) seq_photo
 		from photo e,
-			(select distinct b.to_email, c.profile_img
-			 from follow b, member c,
+			(select b.to_email
+			 from follow b,
 				(select a.to_email
 				 from follow a
 				 where a.from_email = #{email})d
-			 where not b.to_email = #{email} and not d.to_email = b.to_email) f
+			 where  not d.to_email = b.to_email and not b.to_email=#{email}) f
 		where e.email = f.to_email
-		order by e.reg_date desc
+    	group by e.email
 	</select>
 	
 	<select id="round_profileList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
-		select d.email, d.profile_img
-		from member d,
-			(select distinct b.to_email
+		select distinct e.email, g.profile_img
+		from photo e, member g,
+			(select b.to_email
 			 from follow b,
-			 	(select a.to_email
+				(select a.to_email
 				 from follow a
-				 where a.from_email=#{email})c
-			 where not b.to_email=#{email} and not c.to_email=b.to_email) f
-		where d.email = f.to_email and <![CDATA[rownum <= 4]]>
+				 where a.from_email = #{email})d
+			 where  not d.to_email = b.to_email and not b.to_email=#{email}) f
+		where e.email = f.to_email and not g.profile_img='null'
 	</select>
 </mapper>

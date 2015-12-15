@@ -47,9 +47,14 @@
 						&nbsp;&nbsp;<span style="font-size: 7pt;">새로 팔로우할 사람을 찾아보세요</span></td>
 					<td align="right">
 						<%
+							int count=0;
 							for (HashMap round_profile : round_profileList) {
+									if(count==4){
+										break;
+									}
 									String email = (String) round_profile.get("EMAIL");
 									String profile = (String) round_profile.get("PROFILE_IMG");
+									count++;
 						%> <a href="./detail"><img
 							src="/Kostagram/personalImg/profile.jpg" width="40"
 							style="-webkit-border-radius: 100px; border-radius: 100px;" /></a> <%
