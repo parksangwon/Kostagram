@@ -803,4 +803,9 @@ public class MobileController {
 			return "mobile/usernotfound";
 		}
 	}
+	
+	@RequestMapping("/comment")
+	public String comment() {
+		return "mobile/comment";
+	}
 }
