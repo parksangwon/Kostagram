@@ -9,4 +9,5 @@ import com.kostagram.service.beans.UserInfoVO;
 public interface LikeDAO {
 	public boolean insert(LikeVO like);
 	public boolean delete(LikeVO like);
+	public LikeVO check(LikeVO like);
 }
