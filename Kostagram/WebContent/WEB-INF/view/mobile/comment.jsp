@@ -10,7 +10,9 @@
 <script src="js/common.js"></script>
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
-
+<%
+	
+%>
 <body>
 	<div id="option" data-role="page" data-theme="a">
 
@@ -30,7 +32,7 @@
 			
 		</div>
 		
-		<div data-role="footer">
+		<div data-role="footer" data-position="fixed">
 			<table border="0">
 				<tr>
 					<td width="99%"><input type="text" placeholder="댓글 달기..." /></td>
