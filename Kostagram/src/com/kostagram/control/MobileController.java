@@ -731,4 +731,8 @@ public class MobileController {
 
 	}
 
+	@RequestMapping("/report")
+	public String report() {
+		return "mobile/report";
+	}
 }
