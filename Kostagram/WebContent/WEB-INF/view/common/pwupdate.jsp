@@ -5,6 +5,7 @@
 
 <%
 	UserInfoVO user = (UserInfoVO) request.getAttribute("userinfo");
+	char adminYn = user.getAdminYn();
 %>
 <!DOCTYPE html>
 <html lang="ko" class="no-js logged-in ">
@@ -275,6 +276,14 @@
 									<ul role="navigation">
 										<li><a href="/Kostagram/profileupdate">프로필 편집</a></li>
 										<li><a href="/Kostagram/pwupdate">비밀번호 변경</a></li>
+										<%
+			                             	if (adminYn == 'Y')
+			                             	{
+			                             %>
+			                                 <li><a href="/Kostagram/report">신고 관리</a></li>  
+			                             <%
+			                             	}
+			                             %>
 										<li><a href="/Kostagram/logout">로그아웃</a></li>
 								
 									</ul>
@@ -308,13 +317,18 @@
 										class="disclosure"></i>
 
 								</a></li>
-
+							<%
+								if(adminYn == 'Y')
+								{
+							%>
 								
 								<li><a href="/Kostagram/report"> 신고 관리 <i
 										class="disclosure"></i>
 
 								</a></li>
-								
+							<%
+								}
+							%>
 								<li><a href="/Kostagram/logout"> 로그아웃 <i
 										class="disclosure"></i>
 
