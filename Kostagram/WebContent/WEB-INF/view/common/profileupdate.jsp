@@ -217,6 +217,7 @@
                             <i></i>
 
                             <ul role="navigation">
+                     
                                 <li><a href="#">프로필 보기</a></li>
                                 <li><a href="/Kostagram/profileupdate">프로필 편집</a></li>
                                  <li><a href="/Kostagram/logout">로그아웃</a></li>
