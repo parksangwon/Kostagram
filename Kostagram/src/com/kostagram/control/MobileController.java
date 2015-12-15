@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kostagram.service.beans.ActivityVO;
 import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.ConversationVO;
+import com.kostagram.service.beans.HashtagVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.UserInfoVO;
@@ -29,6 +30,7 @@ import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.ReportDAO;
 import com.kostagram.service.dao.UserInfoDAO;
+import com.kostagram.service.dao.HashtagDAO;
 
 @Controller
 @RequestMapping("/m")
@@ -51,6 +53,9 @@ public class MobileController {
 	
 	@Autowired
 	private ReportDAO reportDao;
+	
+	@Autowired
+	private HashtagDAO hashtagDao;
 
 	// 타임 라인 (메인)
 	@RequestMapping("/")
@@ -351,7 +356,34 @@ public class MobileController {
 	public String search_hashtag() {
 		return "mobile/search_hashtag";
 	}
-
+	
+	@RequestMapping("/ajaxsearch_hashtag")
+	public void ajaxsearchhashtag(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response, Model model) throws IOException {
+		String hashtag = (String)request.getParameter("input_hashtag");
+		PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-cache");	
+		
+		HashtagVO findHashtagVO = new HashtagVO();
+		findHashtagVO.setHashtag(hashtag);
+		List<HashtagVO> search_result = hashtagDao.searchHashtag(findHashtagVO);
+		if(search_result!=null && search_result.size()>=1) {
+			System.out.println(search_result);
+			out.print("<table class='search_result'>");
+			for (int i = 0; i < search_result.size(); i++) {
+				String hash_tag = search_result.get(i).getHashtag();
+				out.print("<tr><td align='left' style='padding-left: 15px;'><a>#" + hash_tag + "</a></tr>");
+			}
+			out.print("</table>");
+		} else {
+			out.print("<table class='search_result'>");
+			out.print("<tr><td>검색결과가 없습니닭</td></tr>");
+			out.print("</table>");
+		}
+	}
+	
 	@RequestMapping("/search_place")
 	public String search_place() {
 		return "mobile/search_place";
