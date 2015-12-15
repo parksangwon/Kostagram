@@ -129,7 +129,7 @@ public class MobileController {
 					// 이미지
 				}
 				out.print(
-						"</td><td align='left'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+						"</td><td align='left'><a href='./m/"+photoNickname+"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 				out.print(photoNickname);// 닉네임
 				out.print(
 						"</a></td><td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
