@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kostagram.service.beans.HashtagVO;
+import com.kostagram.service.beans.UserInfoVO;
 
 public class HashtagDAOImpl implements HashtagDAO {
 
@@ -33,5 +34,9 @@ public class HashtagDAOImpl implements HashtagDAO {
 	List<HashtagVO> hashtagList = sqlSession.selectList("hashtag.findAllByToken", token);
 	return hashtagList;
     }
-
+    
+    @Override
+    public List<HashtagVO> searchHashtag(HashtagVO hashtag) {
+    	return sqlSession.selectList("hashtag.searchHashtag", hashtag);
+    }
 }
