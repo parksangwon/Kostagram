@@ -16,65 +16,72 @@
 	List<HashMap> commentList = (List<HashMap>)request.getAttribute("commentList");
 %>
 	<div id="comment" data-role="page" data-theme="a">
-
-		<div data-role="header">
-			<table>
-				<tr>
-					<td><a href="#" data-rel="back"><image
-								src="./image/icon/back.png" width="20"
-								style="padding-left:10px;" /></a> <span
-						style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
-							댓글 </span></td>
-				</tr>
-			</table>
-		</div>
-
-		<div data-rol="content">
-			<table border="0">
-		<%
-			if (commentList != null && commentList.size() > 0)
-			{
-				for ( HashMap comment : commentList ) 
-					{
-						String content = (String)comment.get("CONTENT");
-						String nickname = (String)comment.get("NICKNAME");
-						String email = (String)comment.get("EMAIL");
-						String profile = (String)comment.get("PROFILE_IMG");
-		%>
-				<tr>
-		<%
-					if(profile == null)
-					{
-		%>
-					<td ><img src="/Kostagram/personalImg/profile.jpg" width="35" style="-webkit-border-radius: 100px; border-radius: 100px;" /></td>
-		<%
-					}
-					else
-					{
-		%>
-					<td ><img src="/Kostagram/personalImg/<%=email %>/profile.jpg" width="35" style="-webkit-border-radius: 100px; border-radius: 100px;"></td>
-		<%
-					}
-		%>
-					<td> <a><%=nickname %></a></td>
-					<td width="100%"><%= content %></td>
-				</tr>
-		<%
-					}
-			}
-		%>
-				
-			</table>
-		</div>
-		
-		<div data-role="footer" data-position="fixed">
-			<table border="0">
-				<tr>
-					<td width="99%"><input type="text" placeholder="댓글 달기..." /></td>
-					<td><img src="./image/icon/pencil.png"></td>
-				</tr>
-			</table>
+		<form method="POST" accept-charset="utf-8">
+			<div data-role="header">
+				<table>
+					<tr>
+						<td><a href="#" data-rel="back"><image
+									src="./image/icon/back.png" width="20"
+									style="padding-left:10px;" /></a> <span
+							style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
+								댓글 </span></td>
+					</tr>
+				</table>
+			</div>
+	
+			<div data-rol="content">
+				<table border="0">
+			<%
+				if (commentList != null && commentList.size() > 0)
+				{
+					for ( HashMap comment : commentList ) 
+						{
+							String content = (String)comment.get("CONTENT");
+							String nickname = (String)comment.get("NICKNAME");
+							String email = (String)comment.get("EMAIL");
+							String profile = (String)comment.get("PROFILE_IMG");
+			%>
+					<tr>
+			<%
+						if(profile == null)
+						{
+			%>
+						<td ><img src="/Kostagram/personalImg/profile.jpg" width="35" style="-webkit-border-radius: 100px; border-radius: 100px;" /></td>
+			<%
+						}
+						else
+						{
+			%>
+						<td ><img src="/Kostagram/personalImg/<%=email %>/profile.jpg" width="35" style="-webkit-border-radius: 100px; border-radius: 100px;"></td>
+			<%
+						}
+			%>
+						<td> <a><%=nickname %></a></td>
+						<td width="100%"><%= content %></td>
+					</tr>
+			<%
+						}
+				}
+			%>
 			
-		</div>
+					<Tr>
+						<Td colspan="2"><center>
+							<font color="red"><p id="resultMessage"></p></font>
+						</center></Td>
+					</Tr>
+							
+				</table>
+			</div>
+			
+			<div data-role="footer" data-position="fixed">
+				<table border="0">
+					<tr>
+						<td width="99%"><input type="text" id="comment" name="comment" placeholder="댓글 달기..." /></td>
+						<td><img src="./image/icon/pencil.png"></td>
+					</tr>
+				</table>
+				
+			</div>
+		</form>
 	</div>
 </body>
