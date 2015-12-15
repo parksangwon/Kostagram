@@ -49,7 +49,7 @@
 							width="20" /></a></li>
 					<li><a href="/Kostagram/m/mynews"><img src="/Kostagram/m/image/icon/info.png"
 							width="20" /></a></li>
-					<li><a href="/Kostagram/m/userpage"><img src="/Kostagram/m/image/icon/user.png"
+					<li><a href='/Kostagram/m/<%= session.getAttribute("nickname")%>'><img src="/Kostagram/m/image/icon/user.png"
 							width="20" /></a></li>
 				</ul>
 			</div>

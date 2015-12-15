@@ -5,17 +5,24 @@
 <%
 	String profile = "";
 	String message = "";
+	String nickname = "";
+	String email = "";
 	int photoCnt = 0;
 	int followerCnt = 0;
 	int followingCnt = 0;
 	
-	String nickname = (String)session.getAttribute("nickname");
+	if ( request.getAttribute("email") != null ) {
+		email = (String)request.getAttribute("email");
+	}
+	if ( request.getAttribute("nickname") != null ) {
+		nickname = (String)request.getAttribute("nickname");
+	}
 	if ( request.getAttribute("profile") != null ) {
-		profile = (String)session.getAttribute("email") + "/" + (String)request.getAttribute("profile");
+		profile = (String)request.getAttribute("email") + "/" + (String)request.getAttribute("profile");
 	} else {
 		profile = "profile.jpg";
 	}
-	if ( request.getAttribute("message") != null ) {
+	if ( request.getAttribute("message") != null && !request.getAttribute("message").equals("null") ) {
 		message = (String)request.getAttribute("message");
 	}
 	if ( request.getAttribute("photoCnt") != null ) {
@@ -42,6 +49,7 @@
 
 <body>
 	<div id="userpage" data-role="page" data-theme="a">
+		<input type="hidden" name="userpage_email" value="<%= email %>"/>
 		<div data-role="header" data-theme="a">
 			<table width="100%">
 				<tr>
