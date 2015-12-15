@@ -18,7 +18,7 @@
 
 	<select id="getLikeByPhotoId" parameterType="com.kostagram.service.beans.PhotoInfoVO"
 		resultType="java.util.HashMap">
-		select member.nickname
+		select member.nickname, member.email
 		from likeit, member
 		where likeit.seq_photo = #{seq_photo} and member.email = likeit.email
 		order by likeit.reg_date desc
