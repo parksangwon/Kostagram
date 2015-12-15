@@ -51,6 +51,7 @@
 						String nickname = (String)userInfoList.get(i).getNickname();
 						String name = (String)userInfoList.get(i).getName();
 						String profile = (String)userInfoList.get(i).getProfile_img();
+						System.out.println(profile);
 						String email = (String)userInfoList.get(i).getEmail();
 						
 					
