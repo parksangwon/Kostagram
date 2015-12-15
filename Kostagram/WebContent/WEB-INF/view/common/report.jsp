@@ -234,17 +234,6 @@
             <i class="disclosure"></i>
             
         </a>
-        </li>
-        
-        <li >
-        <a href="/Kostagram/logout">
-            
-            로그아웃
-            
-            <i class="disclosure"></i>
-            
-        </a>
-        </li>
         
         <li >
         <a href="/Kostagram/report">
@@ -256,7 +245,17 @@
         </a>
         </li>
         
+        </li>
         
+        <li >
+        <a href="/Kostagram/logout">
+            
+            로그아웃
+            
+            <i class="disclosure"></i>
+            
+        </a>
+        </li>
     </ul>
 
                 </div>
@@ -278,11 +277,10 @@
 			    	<h1>신고 관리 (관리자 전용)</h1>
 			    </header>
 			    
-                <table border="1">
+                <table border="0">
                 	<tr align="center">
-                		<td>신고 번호</td>
                 		<td>신고된 사진</td>
-                		<td>종류</td>
+                		<td>신고사유</td>
                 		<td>날짜</td>
                 		<td>신고된 사람</td>
                 		<td>신고 삭제</td>
@@ -313,17 +311,13 @@
 				%>
                 	
                 	<tr align="center">
-                		<td>
-                			<!-- 신고 번호 -->
-             				<%= seq_report %>
-                		</td>
                 		
                 		<td width="300">
                 			<!-- 신고된 사진-->
                 			<img src="/Kostagram/personalImg/<%= from_email %>/<%= seq_photo %>.jpg" width='100%' />
                 
                 		
-                		<td>
+                		<td width="100">
                 			<!-- 신고 사유 -->
                 			<%= content %>
                 		</td>

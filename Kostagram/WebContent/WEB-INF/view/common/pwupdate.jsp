@@ -309,11 +309,13 @@
 
 								</a></li>
 
-								<li><a href="/Kostagram/logout"> 로그아웃 <i
+								
+								<li><a href="/Kostagram/report"> 신고 관리 <i
 										class="disclosure"></i>
 
 								</a></li>
-								<li><a href="/Kostagram/report"> 신고관리 <i
+								
+								<li><a href="/Kostagram/logout"> 로그아웃 <i
 										class="disclosure"></i>
 
 								</a></li>

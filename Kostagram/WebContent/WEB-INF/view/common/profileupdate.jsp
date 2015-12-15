@@ -256,6 +256,16 @@
         </a>
         </li>
         
+          <li >
+        <a href="/Kostagram/report">
+            
+       	신고 관리
+            
+            <i class="disclosure"></i>
+            
+        </a>
+        </li>
+        
         <li >
         <a href="/Kostagram/logout">
             
@@ -265,15 +275,7 @@
             
         </a>
         </li>
-        <li >
-        <a href="/Kostagram/report">
-            
-       	신고 관리
-            
-            <i class="disclosure"></i>
-            
-        </a>
-        </li>
+      
     </ul>
 
                 </div>
