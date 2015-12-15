@@ -38,7 +38,7 @@
 	<select id="roundList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
 		select e.email, e.seq_photo, e.reg_date
 		from photo e,
-			(select distinct b.to_email, c.profile
+			(select distinct b.to_email, c.profile_img
 			 from follow b, member c,
 				(select a.to_email
 				 from follow a
@@ -49,7 +49,7 @@
 	</select>
 	
 	<select id="round_profileList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
-		select d.email, d.profile
+		select d.email, d.profile_img
 		from member d,
 			(select distinct b.to_email
 			 from follow b,
