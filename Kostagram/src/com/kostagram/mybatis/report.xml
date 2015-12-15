@@ -11,6 +11,8 @@
 		 where 
 		 a.content_id = b.content_id and c.seq_photo = a.seq_photo and
 		 c.dispyn = 'Y'
+     	order by a.reg_date desc
+		 
    </select>
    
    <delete id="delete" parameterType="com.kostagram.service.beans.ReportVO">
