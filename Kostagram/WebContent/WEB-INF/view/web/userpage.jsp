@@ -6,8 +6,7 @@
 
 
 <%
-	ArrayList articleList = (ArrayList) request.getAttribute("articleList");
-	UserInfoVO userInfoVO = (UserInfoVO) request.getAttribute("userInfoVO");
+	ArrayList myPhotoList = new ArrayList();//(ArrayList) request.getAttribute("myPhotoList");
 	String check = (String) request.getAttribute("check");
 %>
 
@@ -509,7 +508,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -530,7 +537,15 @@ opacity
 
 
 
+
+
+
+
 :scale(1)
+
+
+
+
 
 
 
@@ -549,7 +564,15 @@ transform
 
 
 
+
+
+
+
 :scale(1)
+
+
+
+
 
 
 
@@ -569,7 +592,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -597,7 +628,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -618,7 +657,15 @@ opacity
 
 
 
+
+
+
+
 :scale(1)
+
+
+
+
 
 
 
@@ -637,7 +684,15 @@ transform
 
 
 
+
+
+
+
 :scale(1)
+
+
+
+
 
 
 
@@ -657,7 +712,15 @@ opacity
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -1205,7 +1268,15 @@ opacity
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -1224,7 +1295,15 @@ transform
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -1251,7 +1330,15 @@ keyframes AutoloadingPostsGridMoreLoadingIndicatorAnimation { 0%{
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -1270,7 +1357,15 @@ transform
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -1618,8 +1713,6 @@ transform
 	color: blue
 }
 
-
-
 .-cx-PRIVATE-IGButton__neutral:focus, .-cx-PRIVATE-IGButton__neutral:hover,
 	.-cx-PRIVATE-IGButton__neutral.zeroclipboard-is-hover {
 	border-color: #4b4f54;
@@ -1692,7 +1785,11 @@ transform
 
 
 
+
+
  
+
+
 
 
 
@@ -1701,7 +1798,11 @@ spin8
 
 
 
+
+
  
+
+
 
 
 
@@ -1714,11 +1815,19 @@ spin8
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -1729,8 +1838,16 @@ rotate
 
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 
 
 
@@ -1743,11 +1860,19 @@ deg
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -1758,8 +1883,16 @@ rotate
 
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 
 
 
@@ -1772,11 +1905,19 @@ deg
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -1787,8 +1928,16 @@ rotate
 
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 
 
 
@@ -1801,11 +1950,19 @@ transform
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -1816,8 +1973,16 @@ rotate
 
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 
 
 
@@ -1834,7 +1999,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1853,7 +2026,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1872,7 +2053,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1891,7 +2080,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1920,7 +2117,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1939,7 +2144,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1958,7 +2171,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -1977,7 +2198,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2006,7 +2235,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2025,7 +2262,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2044,7 +2289,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2063,7 +2316,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2092,7 +2353,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2111,7 +2380,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2130,7 +2407,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2149,7 +2434,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2165,7 +2458,11 @@ keyframes
 
 
 
+
+
  
+
+
 
 
 
@@ -2174,7 +2471,11 @@ spin8
 
 
 
+
+
  
+
+
 
 
 
@@ -2187,11 +2488,19 @@ spin8
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -2202,8 +2511,16 @@ rotate
 
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 
 
 
@@ -2216,11 +2533,19 @@ deg
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -2231,8 +2556,16 @@ rotate
 
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 
 
 
@@ -2245,11 +2578,19 @@ deg
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -2260,8 +2601,16 @@ rotate
 
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 
 
 
@@ -2274,11 +2623,19 @@ transform
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -2289,8 +2646,16 @@ rotate
 
 
 
+
+
+
+
 (180
 deg
+
+
+
+
 
 
 
@@ -2307,7 +2672,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2326,7 +2699,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2345,7 +2726,15 @@ deg
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -2364,7 +2753,15 @@ transform
 
 
 
+
+
+
+
 :rotate(540deg)
+
+
+
+
 
 
 
@@ -4828,7 +5225,15 @@ transform
 
 
 
+
+
+
+
 :rotate(360deg)
+
+
+
+
 
 
 
@@ -5380,8 +5785,9 @@ transform
 	    			url:'userpage',
 	    			dataType:'text',
 	    			data:{
-	    				from_email:'<%=(String) session.getAttribute("email")%>',
-	    				to_email:'<%= userInfoVO.getEmail()%>',
+	    				from_email:'<%=(String) session.getAttribute("email")%>
+	',
+					to_email : '${email}',
 					followState : followState
 				},
 				success : function(text) {
@@ -5390,14 +5796,12 @@ transform
 						$('#followBtn').text("팔로잉");
 						$('#followBtn').attr("value", "F");
 						location.reload(true);
-					
-						
 
 					} else if (text === 'follow') {
 						$('#followBtn').text("팔로우");
 						$('#followBtn').attr("value", "UF");
 						location.reload(true);
-						
+
 					}
 
 				},
@@ -5424,7 +5828,18 @@ transform
 					data-reactid=".0.1.0.0:0">
 					<div class="-cx-PRIVATE-ProfilePage__avatarWrapper"
 						data-reactid=".0.1.0.0:0.0">
-						<img src="img/web/1.PNG" class="-cx-PRIVATE-ProfilePage__avatar"
+						<%
+							String profile = "profile.jpg";
+							if (request.getAttribute("email") != null
+									&& request.getAttribute("profile") != null
+									&& !request.getAttribute("email").equals("null")
+									&& !request.getAttribute("profile").equals("null")) {
+								profile = request.getAttribute("email") + "/"
+										+ request.getAttribute("profile");
+							}
+						%>
+						<img src="./personalImg/<%=profile%>"
+							class="-cx-PRIVATE-ProfilePage__avatar"
 							data-reactid=".0.1.0.0:0.0.0">
 					</div>
 					<div class="-cx-PRIVATE-ProfilePage__authorInfo"
@@ -5432,7 +5847,7 @@ transform
 						<div class="-cx-PRIVATE-ProfilePage__usernameAndFollow"
 							data-reactid=".0.1.0.0:0.1.0">
 							<h1 class="-cx-PRIVATE-ProfilePage__username"
-								data-reactid=".0.1.0.0:0.1.0.0"><%=userInfoVO.getNickname()%></h1>
+								data-reactid=".0.1.0.0:0.1.0.0">${nickname}</h1>
 
 							<%
 								if (check == "Y") {
@@ -5451,8 +5866,7 @@ transform
 							&nbsp;&nbsp;
 
 							<%
-								if (check == "FN") 
-								{
+								if (check == "FN") {
 							%>
 							<button
 								class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled"
@@ -5460,13 +5874,14 @@ transform
 							<%
 								} else {
 							%>
-							
+
 							<button
 								class="-cx-PRIVATE-ProfilePage__editProfileButton -cx-PRIVATE-IGButton__root -cx-PRIVATE-IGButton__neutral1 -cx-PRIVATE-IGButton__sizeAuto -cx-PRIVATE-IGButton__enabled "
-								data-reactid=".0.1.0.0:0.1.0.2.0" value="F" id="followBtn" style="border-color:green; color:white; background-color:green;  ">팔로잉</button>
+								data-reactid=".0.1.0.0:0.1.0.2.0" value="F" id="followBtn"
+								style="border-color: green; color: white; background-color: green;">팔로잉</button>
 
 							<%
-									}
+								}
 								}
 							%>
 
@@ -5478,7 +5893,7 @@ transform
 								data-reactid=".0.1.0.0:0.1.1.0"></h2>
 							<span data-reactid=".0.1.0.0:0.1.1.1"> </span><span
 								data-reactid=".0.1.0.0:0.1.1.2"><span
-								data-reactid=".0.1.0.0:0.1.1.2.0"><%=userInfoVO.getMessage()%></span></span><span
+								data-reactid=".0.1.0.0:0.1.1.2.0">${message}</span></span><span
 								data-reactid=".0.1.0.0:0.1.1.3"> </span>
 						</div>
 						<ul class="-cx-PRIVATE-ProfilePage__statistics"
@@ -5511,12 +5926,8 @@ transform
 				<div data-reactid=".0.1.0.1:$mostRecentSection/=10">
 					<div class="-cx-PRIVATE-PostsGrid__root"
 						data-reactid=".0.1.0.1:$mostRecentSection/=10.0">
-
-
-
 						<div class="-cx-PRIVATE-PostsGrid__row"
 							data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0">
-
 							<a
 								class="-cx-PRIVATE-PostsGridItem__root -cx-PRIVATE-PostsGrid__item"
 								href=""
@@ -5524,26 +5935,17 @@ transform
 								<div class="-cx-PRIVATE-Photo__root"
 									data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0">
 
-									<%
-										if (articleList == null || articleList.size() == 0) {
-									%>
-									<div style="min-height: 300">
-										<center>표시할 사진이 없습니다.</center>
-									</div>
-									<%
-										} else {
-											for (int i = 0; i < articleList.size(); i++) {
-									%>
-
-
 									<div class="-cx-PRIVATE-Photo__placeholder"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.0">
-
+										<img class="-cx-PRIVATE-Photo__image" id="pImage_10"
+											alt="#여름이왔구나#덥구나"
+											src="https://igcdn-photos-f-a.akamaihd.net/hphotos-ak-xpf1/t51.2885-15/e15/11252785_648368441961437_224768728_n.jpg"
+											data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$981670746904181123.0.0.$pImage_10">
 									</div>
 									<div class="-cx-PRIVATE-Photo__clickShield"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$1116471994001243134.0.2"></div>
 								</div>
-							</a><a
+							</a> <a
 								class="-cx-PRIVATE-PostsGridItem__root -cx-PRIVATE-PostsGrid__item"
 								href=""
 								data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$981670746904181123"><div
@@ -5558,7 +5960,7 @@ transform
 									</div>
 									<div class="-cx-PRIVATE-Photo__clickShield"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$981670746904181123.0.2"></div>
-								</div></a><a
+								</div> </a> <a
 								class="-cx-PRIVATE-PostsGridItem__root -cx-PRIVATE-PostsGrid__item"
 								href=""
 								data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$944095944731638761"><div
@@ -5573,15 +5975,11 @@ transform
 									</div>
 									<div class="-cx-PRIVATE-Photo__clickShield"
 										data-reactid=".0.1.0.1:$mostRecentSection/=10.0.$0.$944095944731638761.0.2"></div>
-								</div></a>
+								</div> </a>
 						</div>
 
-						<%
-							}
-							}
-						%>
-
 					</div>
+				</div>
 			</article>
 
 
