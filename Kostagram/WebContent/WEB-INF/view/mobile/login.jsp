@@ -238,12 +238,14 @@
 								});
 								$('#userpage .getPhotoList').each(function(){
 									$(this).click(function(){
+										var userpage_email = $('input:hidden[name=userpage_email]');
 										var option = $(this).attr("value");
 										$.ajax({
 											type : 'POST',
 											url : 'getMyPhotoList',
 			 								dataType : 'html',
 											data : {
+												email : userpage_email.val(),
 												type : option
 											},
 											success : function(data){
