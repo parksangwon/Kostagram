@@ -356,6 +356,7 @@ public class WebController {
 
 		session.removeAttribute("email");
 		session.removeAttribute("nickname");
+		session.removeAttribute("adminYn");
 		session.setAttribute("loginYn", "N");
 
 		return "redirect:/";
