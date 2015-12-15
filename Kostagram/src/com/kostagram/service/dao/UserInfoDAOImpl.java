@@ -1,5 +1,6 @@
 package com.kostagram.service.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -70,6 +71,11 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     	return true;
     	
 	return false;
+    }
+    
+    @Override
+    public List<UserInfoVO> searchNickname(UserInfoVO user) {
+    	return sqlSession.selectList("userInfo.searchNickname", user);
     }
 
 }
