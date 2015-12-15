@@ -306,14 +306,45 @@ public class MobileController {
 		return "mobile/round";
 	}
 
-	@RequestMapping("/search_home")
-	public String search_home() {
-		return "mobile/search_home";
-	}
-
 	@RequestMapping("/search_people")
 	public String search_people() {
 		return "mobile/search_people";
+	}
+	
+	@RequestMapping("/ajaxsearch_people")
+	public void ajaxsearchpeople(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response, Model model) throws IOException {
+		String nickname = (String)request.getParameter("input_people");
+		PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-cache");	
+
+		UserInfoVO findUserVO = new UserInfoVO();
+		findUserVO.setNickname(nickname);
+		List<UserInfoVO> search_result = userInfoDao.searchNickname(findUserVO);
+		if(search_result!=null && search_result.size()>=1) {
+			System.out.println(search_result);
+			out.print("<table class='search_result'>");
+			for (int i = 0; i < search_result.size(); i++) {
+				String nick_name = search_result.get(i).getNickname();
+				String name = search_result.get(i).getName();
+				String profile = search_result.get(i).getProfile_img();
+				String email = search_result.get(i).getEmail();
+				if(profile!=null && profile=="") {
+					out.print("<tr><td align='left' style='padding-left: 15px;'><img src='../personalImg/'" + email + "/" + profile + ".jpg' width='40'"
+							+ "style='-webkit-border-radius: 100px; border-radius: 100px;'/></td><td>" + nick_name + "<br><span style='color:#bdbdbd;'>" + name + "</span></td></tr>");
+				} else {
+					out.print("<tr><td align='center' style='padding-left: 15px;'><img src='../personalImg/profile.jpg' width='40'"
+							+ "style='-webkit-border-radius: 100px; border-radius: 100px;'/></td><td>" + nick_name + "<br><span style='color:#bdbdbd;'>" + name + "</span></td></tr>");
+				}
+			}
+			out.print("</table>");
+		} else {
+			out.print("<table class='search_result'>");
+			out.print("<tr><td>검색결과가 없습니닭</td></tr>");
+			out.print("</table>");
+		}
 	}
 
 	@RequestMapping("/search_hashtag")
