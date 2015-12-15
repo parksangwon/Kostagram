@@ -338,10 +338,10 @@ public class MobileController {
 				String email = search_result.get(i).getEmail();
 				if(profile!=null && profile=="") {
 					out.print("<tr><td align='left' style='padding-left: 15px;'><img src='../personalImg/'" + email + "/" + profile + ".jpg' width='40'"
-							+ "style='-webkit-border-radius: 100px; border-radius: 100px;'/></td><td>" + nick_name + "<br><span style='color:#bdbdbd;'>" + name + "</span></td></tr>");
+							+ "style='-webkit-border-radius: 100px; border-radius: 100px;'/></td><td><a href='/Kostagram/m/"+nick_name+"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>"+nick_name+"<br><span style='color:#bdbdbd;'>" + name + "</span></td></tr>");
 				} else {
 					out.print("<tr><td align='center' style='padding-left: 15px;'><img src='../personalImg/profile.jpg' width='40'"
-							+ "style='-webkit-border-radius: 100px; border-radius: 100px;'/></td><td>" + nick_name + "<br><span style='color:#bdbdbd;'>" + name + "</span></td></tr>");
+							+ "style='-webkit-border-radius: 100px; border-radius: 100px;'/></td><td><a href='/Kostagram/m/"+nick_name+"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>"+nick_name+"<br><span style='color:#bdbdbd;'>" + name + "</span></td></tr>");
 				}
 			}
 			out.print("</table>");
