@@ -439,7 +439,7 @@ public class MobileController {
 	public void getMyPhotoList(HttpSession session, HttpServletRequest req,
 			HttpServletResponse res) throws IOException {
 		String type = (String) req.getParameter("type");
-		String email = (String) session.getAttribute("email");
+		String email = (String) req.getParameter("email");
 
 		UserInfoVO user = new UserInfoVO(email);
 
