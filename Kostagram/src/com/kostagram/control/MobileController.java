@@ -106,7 +106,7 @@ public class MobileController {
 	@RequestMapping("/timeline")
 	public void getTimeline(HttpSession session, HttpServletResponse res) throws IOException {
 		String email = (String) session.getAttribute("email");
-
+		
 		UserInfoVO user = new UserInfoVO(email);
 
 		PrintWriter out = res.getWriter();
@@ -167,16 +167,17 @@ public class MobileController {
 				String likeYn = "heart";
 				if (likeList.size() != 0) {
 					for ( int j = 0; j < likeList.size(); j++ ) {
-						HashMap like = likeList.get(i);
-						if (like.get("email").equals(email)) {
+						HashMap like = likeList.get(j);
+						
+						if (email.equals((String)like.get("email"))) {
 							likeYn = "heart2";
 						}
 					}
 				}
 				out.print(
-						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='m/image/icon/"+likeYn+".png' id='heartBtn' width='25' />");
+						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><img src='m/image/icon/"+likeYn+".png' id='heartBtn' width='25' value='"+seq_photo+"'/>");
 				out.print(
-						"</a></td><td align='left'><a href='./m/comment?pid="+seq_photo+"'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"' >");
+						"</td><td align='left'><a href='./m/comment?pid="+seq_photo+"'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"' >");
 				out.print(
 						"<img src='m/image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
 		
@@ -191,6 +192,9 @@ public class MobileController {
 						HashMap like = likeList.get(j);
 						String cmtNickname = (String) like.get("NICKNAME");
 						out.print(cmtNickname);
+						if ( j != likeList.size() - 1 ) {
+							out.print(", ");
+						}
 					}
 					out.print("</a></td>");
 				} else {
@@ -356,7 +360,6 @@ public class MobileController {
 					out.print("fail");
 				}
 			} else if (state.equals("like")) {
-				System.out.println("state는 like...");
 				if (likeDao.delete(like)) {
 					out.print("unlike");
 				} else {
@@ -568,9 +571,9 @@ public class MobileController {
 					out.print("<img src='../personalImg/" + email + "/"
 							+ seq_photo + ".jpg' width='100%' />");// 올린 사진
 					out.print(
-							"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href='#'><img src='./image/icon/heart.png' width='25' />");
+							"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><img src='./image/icon/heart.png' width='25' />");
 					out.print(
-							"</a></td><td align='left'><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./report?pid="+seq_photo+"'>");
+							"</td><td align='left'><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./report?pid="+seq_photo+"'>");
 					out.print(
 							"<img src='./image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
 
