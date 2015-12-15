@@ -1,6 +1,12 @@
+<%@page import="java.util.List"%>
+<%@page import="com.kostagram.service.beans.UserInfoVO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	List<UserInfoVO> userInfoList = (List<UserInfoVO>)request.getAttribute("userinfo");
+%>
+	
 <title>Kostagram</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
@@ -28,7 +34,7 @@
 
 		<center>
 			<h3>
-				연락처에 있는 사람 중 3명이 Instagram을 <br> 사용 중입니다.
+				Kostagram (친구 찾기)
 			</h3>
 			<br> <font color="gray"><h5>친구들의 게시물 / 사진을 확인해보세요.</h5></font>
 		</center>
@@ -37,30 +43,41 @@
 				<hr>
 				+ 모두 팔로우
 				<hr>
+		
 				<table width="100%" border="0">
+			<%
+					for	(int i = 0; i < userInfoList.size(); i++)
+					{
+						String nickname = (String)userInfoList.get(i).getNickname();
+						String name = (String)userInfoList.get(i).getName();
+						String profile = (String)userInfoList.get(i).getProfile_img();
+						String email = (String)userInfoList.get(i).getEmail();
+						
+					
+			%>
 					<tr>
-						<td width="20%" height="5%"><img src=image/noimg.png></td>
-						<td width="50%">abcdefg<br> 조영경
-						</td>
-						<td width="30%"><a href="#"><img src=image/follow.jpg></a>
-						</td>
+			<%
+						if(profile == null)
+						{
+			%>
+							<td ><img src="/Kostagram/personalImg/profile.jpg" width="55"></td>
+			<%
+						}
+						else
+						{
+			%>
+							<td><img src="/Kostagram/personalImg/<%=email %>/profile.jpg" width="55"></td>
+			<%	
+						}
+			%>
+							<td width="55%"><%= nickname %><br> <%= name %>
+							</td>
+							<td ><a href="#"><img src=image/follow.jpg></a>
+							</td>
 					</tr>
-
-					<tr>
-						<td width="20%" height="5%"><img src=image/noimg.png></td>
-						<td width="50%">zxcasd123<br> 장정우
-						</td>
-						<td width="30%"><a href="#"><img src=image/follow.jpg></a>
-						</td>
-					</tr>
-
-					<tr>
-						<td width="20%" height="5%"><img src=image/noimg.png></td>
-						<td width="50%">bbggedd56<br> 박상원
-						</td>
-						<td width="30%"><a href="#"><img src=image/following.jpg></a>
-						</td>
-					</tr>
+			<%
+					}
+			%>
 				</table>
 				<hr>
 			</form>
