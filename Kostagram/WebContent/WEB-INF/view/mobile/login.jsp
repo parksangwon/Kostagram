@@ -595,7 +595,7 @@
 								
 								$('#submit').click(function() {
 									var comment_val = $('input:text[name=comment]').val();
-									var seq_photo_val=$('#seq_photo').val();
+									var seq_photo_val=$('input:hidden[name=seq_photo]').val();
 
 									if(trim(comment_val) != ""){
 										$.ajax({
@@ -605,6 +605,7 @@
 											data:{content:comment_val, seq_photo:seq_photo_val},
 											success:function(html){
 												$('#rrresultMessage').html(html);
+												
 											},
 											error:function() {	
 											}
@@ -612,8 +613,6 @@
 									}
 								});
 							}//댓글 끝
-							
-							
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
