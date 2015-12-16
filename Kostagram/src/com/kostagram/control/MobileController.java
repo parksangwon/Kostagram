@@ -414,7 +414,7 @@ public class MobileController {
 			out.print("</table>");
 		} else {
 			out.print("<table class='search_result'>");
-			out.print("<tr><td>검색결과가 없습니닭</td></tr>");
+			out.print("<tr><td align='left' style='padding-left: 15px;'>검색결과가 없습니닭</td></tr>");
 			out.print("</table>");
 		}
 	}
@@ -425,7 +425,7 @@ public class MobileController {
 	}
 	
 	@RequestMapping("/ajaxsearch_hashtag")
-	public void ajaxsearchhashtag(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest request,
+	public void ajaxsearchhashtag(HttpSession session, HttpServletRequest request,
 			HttpServletResponse response, Model model) throws IOException {
 		String hashtag = (String)request.getParameter("input_hashtag");
 		PrintWriter out = response.getWriter();
@@ -441,14 +441,48 @@ public class MobileController {
 			out.print("<table class='search_result'>");
 			for (int i = 0; i < search_result.size(); i++) {
 				String hash_tag = search_result.get(i).getHashtag();
-				out.print("<tr><td align='left' style='padding-left: 15px;'><a>#" + hash_tag + "</a></tr>");
+				out.print("<tr><td align='left' style='padding-left: 15px;'>#<span class='result_hashtag' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>" + hash_tag + "</span></tr>");
 			}
 			out.print("</table>");
 		} else {
 			out.print("<table class='search_result'>");
-			out.print("<tr><td>검색결과가 없습니닭</td></tr>");
+			out.print("<tr><td align='left' style='padding-left: 15px;'>검색결과가 없습니닭</td></tr>");
 			out.print("</table>");
 		}
+	}
+	
+	@RequestMapping("/ajaxselect_hashtag")
+	public void ajaxselecthashtag(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+		String hashtag = (String)request.getParameter("select_hashtag");
+		PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-cache");
+		
+		List<PhotoInfoVO> select_result = hashtagDao.selectHashtag(hashtag);
+		if(select_result!=null && select_result.size()>=1) {
+			System.out.println("CONTROLLER select_result : " + select_result);
+			out.print("<div id='photoList'>");
+			if (select_result != null && select_result.size() > 0) {
+				out.print("<ul class='myPhotoListByGrid'>");
+				for (int i = 0; i < select_result.size(); i++) {
+					PhotoInfoVO photo = select_result.get(i);
+					String seq_photo = photo.getSeq_photo();
+					String email = photo.getEmail();
+					out.print("<li><a href='./detail?pid=" + seq_photo
+							+ "'><img src='/Kostagram/personalImg/" + email + "/"
+							+ seq_photo + ".jpg'/></a></li>");
+				}
+				out.print("</ul>");
+			}
+		}
+	}
+	
+	@RequestMapping("/hashtag/{select_hashtag}")
+	public String hashtag(@PathVariable String select_hashtag, Model model) throws Exception{
+		String hashtag = new String(select_hashtag.getBytes("8859_1"), "utf-8");
+		model.addAttribute("hashtag", hashtag);
+		return "mobile/search_result";
 	}
 	
 	@RequestMapping("/search_place")
