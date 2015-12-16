@@ -535,17 +535,19 @@
 									var comment_val = $('input:text[name=comment]').val();
 									var seq_photo_val=$('#seq_photo').val();
 
-									$.ajax({
-										type:'POST',
-										url:'ajaxcomment',
-										dataType:'html',
-										data:{content:comment_val, seq_photo:seq_photo_val},
-										success:function(html){
-											$('#rrresultMessage').html(html);
-										},
-										error:function() {	
-										}
-									});
+									if(trim(comment_val) != ""){
+										$.ajax({
+											type:'POST',
+											url:'ajaxcomment',
+											dataType:'html',
+											data:{content:comment_val, seq_photo:seq_photo_val},
+											success:function(html){
+												$('#rrresultMessage').html(html);
+											},
+											error:function() {	
+											}
+										});
+									}
 								});
 							}//댓글 끝
 							
