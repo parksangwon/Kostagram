@@ -111,4 +111,24 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 		}
 	    return article;
 	}
+	
+	@Override
+	public List<HashMap> getUserInformation(String seq_photo) {
+		return sqlSession.selectList("photoInfo.getUserInformation", seq_photo);
+	}
+	
+	@Override
+	public ArrayList<ArticleVO> getPhotoInfo(String seq_photo) {
+		ArrayList<ArticleVO> getPhotoInList = new ArrayList<ArticleVO>(); 
+		
+	    List<HashMap> commentList = sqlSession.selectList("comment.getCommentByPhotoId", seq_photo);
+	    List<HashMap> likeList = sqlSession.selectList("like.getLikeByPhotoId", seq_photo);
+	    
+	    ArticleVO article = new ArticleVO();
+	    article.setLikeList(likeList);
+	    article.setCommentList(commentList);
+	    
+	    getPhotoInList.add(article);
+		return getPhotoInList;
+	}
 }
