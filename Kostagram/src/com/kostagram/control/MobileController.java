@@ -854,19 +854,29 @@ public class MobileController {
 	}
 	
 	@RequestMapping("/ajaxcomment")
-	public void comment(UserInfoVO userInfoVO, HttpSession session,
+	public void comment(CommentVO commentVO, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response, Model model) throws IOException {
-		String nickname = (String) session.getAttribute("nickname");
-
+		
+		String seq_photo = (String)request.getParameter("seq_photo");
+		String email = (String)session.getAttribute("email");
+		String content = (String)request.getParameter("comment");
+		
+		commentVO.setEmail(email);
+		System.out.println(commentVO);
+		boolean result = commentDao.insert(commentVO);
+		
 		PrintWriter out = response.getWriter();
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
 		response.setHeader("Cache-Control", "no-cache");
 
-		UserInfoVO findUserVO = new UserInfoVO();
-		findUserVO.setNickname(userInfoVO.getNickname());
-
-		findUserVO = userInfoDao.findNickname(findUserVO);
+		
+		
+		
+		List<HashMap> commentList = commentDao.getCommentByPhotoId(seq_photo);
+		
+		model.addAttribute("commentList", commentList);
+		/*findUserVO = userInfoDao.findNickname(findUserVO);
 
 		System.out.println("select :" + userInfoVO);
 		if (userInfoVO.getNickname() == null
@@ -886,7 +896,7 @@ public class MobileController {
 			}
 		} else {
 			out.print("nicknameduplication");
-		}
+		}*/
 	}
 	
 	@RequestMapping("/{nickname}")
