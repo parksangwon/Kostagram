@@ -14,9 +14,19 @@
 	type="text/css" />
 <%
 	List<HashMap> commentList = (List<HashMap>)request.getAttribute("commentList");
+	
+	String seq_photo = "";
+	String session_email = (String)session.getAttribute("email");
+	if (commentList.size() != 0)
+	{
+		HashMap comment2 = (HashMap)commentList.get(0);
+		seq_photo = (String)comment2.get("SEQ_PHOTO");
+	}
 %>
 	<div id="comment" data-role="page" data-theme="a">
 		<form method="POST" accept-charset="utf-8">
+			<input type="hidden" value="<%=seq_photo%>" id="seq_photo">
+			<inpyt type="hidden" value="<%= session_email %>" id="session_email1" name="session_email1">
 			<div data-role="header">
 				<table>
 					<tr>
@@ -63,10 +73,10 @@
 						}
 				}
 			%>
-			
+					
 					<Tr>
 						<Td colspan="2"><center>
-							<font color="red"><p id="resultMessage"></p></font>
+							<font color="red"><p id="resultMessage">ssss</p></font>
 						</center></Td>
 					</Tr>
 							
@@ -77,10 +87,9 @@
 				<table border="0">
 					<tr>
 						<td width="99%"><input type="text" id="comment" name="comment" placeholder="댓글 달기..." /></td>
-						<td><img src="./image/icon/pencil.png"></td>
+						<td><img src="./image/icon/pencil.png" id="submit" style="cursor:pointer"></td>
 					</tr>
 				</table>
-				
 			</div>
 		</form>
 	</div>
