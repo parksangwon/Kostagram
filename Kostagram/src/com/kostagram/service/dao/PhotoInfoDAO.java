@@ -1,6 +1,7 @@
 package com.kostagram.service.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.kostagram.service.beans.ArticleVO;
@@ -17,4 +18,6 @@ public interface PhotoInfoDAO {
 	public ArrayList<ArticleVO> getMyPhotoListForArticle(UserInfoVO user);
 	public int countMyPhoto(UserInfoVO user);
 	public ArticleVO getArticleByPhotoId(String pid);
+	public List<HashMap> getUserInformation(String seq_photo);
+	public ArrayList<ArticleVO> getPhotoInfo(String seq_photo);
 }
