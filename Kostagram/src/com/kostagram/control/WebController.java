@@ -2,6 +2,7 @@ package com.kostagram.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class WebController {
 		//
 
 		String email = (String) session.getAttribute("email");
-		List<ArticleVO> timeline = photoInfoDao.getTimeline(new UserInfoVO(email));
+		ArrayList<ArticleVO> timeline = photoInfoDao.getTimeline(new UserInfoVO(email));
 		UserInfoVO user = userInfoDao.findEmail(new UserInfoVO((String) session.getAttribute("email")));
 
 		model.addAttribute("nickname", user.getNickname());
