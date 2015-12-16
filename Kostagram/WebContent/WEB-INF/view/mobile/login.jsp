@@ -464,9 +464,9 @@
 										dataType:'text',
 										data:{content:comment_val, seq_photo:seq_photo_val},
 										success:function(text){
-											alert("refresh1");
+											alert("success 시작");
 												location.reload();
-											alert("refresh2");
+											alert("success 끝");
 										},
 										error:function() {
 											alert("error");
