@@ -444,6 +444,32 @@
 									});
 								});
 							}
+							
+							//comment (댓글)
+							else if (this.id == "comment") {
+								alert("comment에 들어옴");
+								$('#submit').click(function() {
+														
+									alert("Aaa");
+									var commentValue = $('#comment').val();
+									
+									var  resultMessage= $('#resultMessage');
+									
+									$.ajax({
+										type:'POST',
+										url:'ajaxcomment',
+										dataType:'text',
+										data:{comment:commentValue},
+										success:function(text){
+											
+										},
+										error:function() {
+											alert("error");
+										}
+									});
+								});
+							}//댓글 끝
+							
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
