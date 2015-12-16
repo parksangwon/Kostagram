@@ -84,8 +84,8 @@
 				<%
 							}
 				%>
-						<td width="70%"><a href="#"style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%= from_nickname %></a>님이 회원님의 사진에 <%= kind %><%= comment %></td>
-						<td align="right" width="15%"><a href="./detail"><img	src="/Kostagram/personalImg/<%=to_email %>/<%=seq_photo %>.jpg" width="40" /></a></td>
+						<td width="70%"><a href="/Kostagram/m/<%= from_nickname %>" style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%= from_nickname %></a>님이 회원님의 사진에 <%= kind %><%= comment %></td>
+						<td align="right" width="15%"><a href="./detail?pid=<%= seq_photo%>"><img src="/Kostagram/personalImg/<%=to_email %>/<%=seq_photo %>.jpg" width="40" /></a></td>
 					</tr>
 				</table>
 				<img src="./image/line.png" width="100%">
