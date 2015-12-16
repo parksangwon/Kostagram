@@ -27,7 +27,6 @@ import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.ActivityDAO;
-import com.kostagram.service.dao.CommentDAO;
 import com.kostagram.service.dao.ConversationDAO;
 import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.HashtagDAO;
@@ -60,9 +59,6 @@ public class MobileController {
 	
 	@Autowired
 	private HashtagDAO hashtagDao;
-	
-	@Autowired
-	private CommentDAO commentDao;
 	
 	@Autowired
 	private LikeDAO likeDao;
@@ -172,8 +168,7 @@ public class MobileController {
 				if (likeList.size() != 0) {
 					for ( int j = 0; j < likeList.size(); j++ ) {
 						HashMap like = likeList.get(j);
-						
-						if (email.equals((String)like.get("email"))) {
+						if (email.equals((String)like.get("EMAIL"))) {
 							likeYn = "heart2";
 						}
 					}
@@ -230,7 +225,7 @@ public class MobileController {
 					}
 				}
 				out.print(
-						"</table></div><div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='./m/comment?pid="+seq_photo+"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
+						"</table></div><div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
 			}
 		} else {
 			out.print("<br/><span>소중한 순간을 포착하여 공유해보세요</span>");
@@ -846,11 +841,15 @@ public class MobileController {
 	@RequestMapping("/comment")
 	public String comment(@RequestParam String pid, Model model, CommentVO comment) {
 		
+		System.out.println(pid);
+		//CommentVO comment = new CommentVO(pid);
 
 		// DB에서 정보 가져오기.
-		List<HashMap> commentList = commentDao.getCommentByPhotoId(pid);
+		//List<CommentVO> commentList = commentDao.getCommentByPhotoId(pid);
 		
-		model.addAttribute("commentList", commentList);
+		
+		
+		model.addAttribute("pid", pid);
 		return "mobile/comment";
 	}
 	
