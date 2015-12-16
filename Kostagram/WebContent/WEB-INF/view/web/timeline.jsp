@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="java.util.StringTokenizer" %>
+<%@ page import="com.kostagram.service.beans.ArticleVO"%>
+<%@ page import="com.kostagram.service.beans.PhotoInfoVO"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-	ArrayList articleList = (ArrayList)request.getAttribute("articleList");
-	String nickname = (String)request.getParameter("nickname");
+	ArrayList<ArticleVO> articleList = (ArrayList<ArticleVO>) request.getAttribute("timeline");
+	String nickname = (String) request.getParameter("nickname");
 %>
 
 <html>
@@ -14,9 +19,7 @@
 
 <title>Kostagram</title>
 
-<script
-	src="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/scripts/webfont.js"
-	type="text/javascript" async=""></script>
+<script src="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/scripts/webfont.js" type="text/javascript" async=""></script>
 
 <style type="text/css">
 /* @license
@@ -171,130 +174,79 @@
 
 
 
-<meta id="viewport" name="viewport"
-	content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta id="viewport" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 
 <script type="text/javascript">
-	(function() {
-		var docElement = document.documentElement;
-		var classRE = new RegExp('(^|\\s)no-js(\\s|$)');
-		var className = docElement.className;
-		docElement.className = className.replace(classRE, '$1js$2');
-	})();
+  (function() {
+    var docElement = document.documentElement;
+    var classRE = new RegExp('(^|\\s)no-js(\\s|$)');
+    var className = docElement.className;
+    docElement.className = className.replace(classRE, '$1js$2');
+  })();
 </script>
 
 
 
 
 
-<link rel="Shortcut Icon" type="image/x-icon"
-	href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/favicon.ico">
-<link rel="mask-icon"
-	href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/favicon.svg"
-	color="#125688">
+<link rel="Shortcut Icon" type="image/x-icon" href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/favicon.ico">
+<link rel="mask-icon" href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/favicon.svg" color="#125688">
 
 
-<link rel="apple-touch-icon-precomposed"
-	href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/apple-touch-icon-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/apple-touch-icon-72x72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/apple-touch-icon-114x114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/images/ico/apple-touch-icon-144x144-precomposed.png">
 
 
 
 
 
 
-<link href="https://www.instagram.com/" rel="alternate"
-	hreflang="x-default">
-<link href="https://www.instagram.com/?hl=el" rel="alternate"
-	hreflang="el">
-<link href="https://www.instagram.com/?hl=gu" rel="alternate"
-	hreflang="gu">
-<link href="https://www.instagram.com/?hl=en" rel="alternate"
-	hreflang="en">
-<link href="https://www.instagram.com/?hl=af" rel="alternate"
-	hreflang="af">
-<link href="https://www.instagram.com/?hl=vi" rel="alternate"
-	hreflang="vi">
-<link href="https://www.instagram.com/?hl=it" rel="alternate"
-	hreflang="it">
-<link href="https://www.instagram.com/?hl=kn" rel="alternate"
-	hreflang="kn">
-<link href="https://www.instagram.com/?hl=pt-br" rel="alternate"
-	hreflang="pt-br">
-<link href="https://www.instagram.com/?hl=cs" rel="alternate"
-	hreflang="cs">
-<link href="https://www.instagram.com/?hl=id" rel="alternate"
-	hreflang="id">
-<link href="https://www.instagram.com/?hl=es" rel="alternate"
-	hreflang="es">
-<link href="https://www.instagram.com/?hl=ru" rel="alternate"
-	hreflang="ru">
-<link href="https://www.instagram.com/?hl=nl" rel="alternate"
-	hreflang="nl">
-<link href="https://www.instagram.com/?hl=pt" rel="alternate"
-	hreflang="pt">
-<link href="https://www.instagram.com/?hl=zh-tw" rel="alternate"
-	hreflang="zh-tw">
-<link href="https://www.instagram.com/?hl=nb" rel="alternate"
-	hreflang="nb">
-<link href="https://www.instagram.com/?hl=tr" rel="alternate"
-	hreflang="tr">
-<link href="https://www.instagram.com/?hl=ne" rel="alternate"
-	hreflang="ne">
-<link href="https://www.instagram.com/?hl=zh-cn" rel="alternate"
-	hreflang="zh-cn">
-<link href="https://www.instagram.com/?hl=tl" rel="alternate"
-	hreflang="tl">
-<link href="https://www.instagram.com/?hl=pa" rel="alternate"
-	hreflang="pa">
-<link href="https://www.instagram.com/?hl=th" rel="alternate"
-	hreflang="th">
-<link href="https://www.instagram.com/?hl=te" rel="alternate"
-	hreflang="te">
-<link href="https://www.instagram.com/?hl=pl" rel="alternate"
-	hreflang="pl">
-<link href="https://www.instagram.com/?hl=ta" rel="alternate"
-	hreflang="ta">
-<link href="https://www.instagram.com/?hl=fr" rel="alternate"
-	hreflang="fr">
-<link href="https://www.instagram.com/?hl=hr" rel="alternate"
-	hreflang="hr">
-<link href="https://www.instagram.com/?hl=bn" rel="alternate"
-	hreflang="bn">
-<link href="https://www.instagram.com/?hl=de" rel="alternate"
-	hreflang="de">
-<link href="https://www.instagram.com/?hl=da" rel="alternate"
-	hreflang="da">
-<link href="https://www.instagram.com/?hl=hi" rel="alternate"
-	hreflang="hi">
-<link href="https://www.instagram.com/?hl=fi" rel="alternate"
-	hreflang="fi">
-<link href="https://www.instagram.com/?hl=hu" rel="alternate"
-	hreflang="hu">
-<link href="https://www.instagram.com/?hl=ja" rel="alternate"
-	hreflang="ja">
-<link href="https://www.instagram.com/?hl=ml" rel="alternate"
-	hreflang="ml">
-<link href="https://www.instagram.com/?hl=ko" rel="alternate"
-	hreflang="ko">
-<link href="https://www.instagram.com/?hl=sv" rel="alternate"
-	hreflang="sv">
-<link href="https://www.instagram.com/?hl=ur" rel="alternate"
-	hreflang="ur">
-<link href="https://www.instagram.com/?hl=sk" rel="alternate"
-	hreflang="sk">
-<link href="https://www.instagram.com/?hl=si" rel="alternate"
-	hreflang="si">
-<link href="https://www.instagram.com/?hl=ms" rel="alternate"
-	hreflang="ms">
-<link href="https://www.instagram.com/?hl=mr" rel="alternate"
-	hreflang="mr">
+<link href="https://www.instagram.com/" rel="alternate" hreflang="x-default">
+<link href="https://www.instagram.com/?hl=el" rel="alternate" hreflang="el">
+<link href="https://www.instagram.com/?hl=gu" rel="alternate" hreflang="gu">
+<link href="https://www.instagram.com/?hl=en" rel="alternate" hreflang="en">
+<link href="https://www.instagram.com/?hl=af" rel="alternate" hreflang="af">
+<link href="https://www.instagram.com/?hl=vi" rel="alternate" hreflang="vi">
+<link href="https://www.instagram.com/?hl=it" rel="alternate" hreflang="it">
+<link href="https://www.instagram.com/?hl=kn" rel="alternate" hreflang="kn">
+<link href="https://www.instagram.com/?hl=pt-br" rel="alternate" hreflang="pt-br">
+<link href="https://www.instagram.com/?hl=cs" rel="alternate" hreflang="cs">
+<link href="https://www.instagram.com/?hl=id" rel="alternate" hreflang="id">
+<link href="https://www.instagram.com/?hl=es" rel="alternate" hreflang="es">
+<link href="https://www.instagram.com/?hl=ru" rel="alternate" hreflang="ru">
+<link href="https://www.instagram.com/?hl=nl" rel="alternate" hreflang="nl">
+<link href="https://www.instagram.com/?hl=pt" rel="alternate" hreflang="pt">
+<link href="https://www.instagram.com/?hl=zh-tw" rel="alternate" hreflang="zh-tw">
+<link href="https://www.instagram.com/?hl=nb" rel="alternate" hreflang="nb">
+<link href="https://www.instagram.com/?hl=tr" rel="alternate" hreflang="tr">
+<link href="https://www.instagram.com/?hl=ne" rel="alternate" hreflang="ne">
+<link href="https://www.instagram.com/?hl=zh-cn" rel="alternate" hreflang="zh-cn">
+<link href="https://www.instagram.com/?hl=tl" rel="alternate" hreflang="tl">
+<link href="https://www.instagram.com/?hl=pa" rel="alternate" hreflang="pa">
+<link href="https://www.instagram.com/?hl=th" rel="alternate" hreflang="th">
+<link href="https://www.instagram.com/?hl=te" rel="alternate" hreflang="te">
+<link href="https://www.instagram.com/?hl=pl" rel="alternate" hreflang="pl">
+<link href="https://www.instagram.com/?hl=ta" rel="alternate" hreflang="ta">
+<link href="https://www.instagram.com/?hl=fr" rel="alternate" hreflang="fr">
+<link href="https://www.instagram.com/?hl=hr" rel="alternate" hreflang="hr">
+<link href="https://www.instagram.com/?hl=bn" rel="alternate" hreflang="bn">
+<link href="https://www.instagram.com/?hl=de" rel="alternate" hreflang="de">
+<link href="https://www.instagram.com/?hl=da" rel="alternate" hreflang="da">
+<link href="https://www.instagram.com/?hl=hi" rel="alternate" hreflang="hi">
+<link href="https://www.instagram.com/?hl=fi" rel="alternate" hreflang="fi">
+<link href="https://www.instagram.com/?hl=hu" rel="alternate" hreflang="hu">
+<link href="https://www.instagram.com/?hl=ja" rel="alternate" hreflang="ja">
+<link href="https://www.instagram.com/?hl=ml" rel="alternate" hreflang="ml">
+<link href="https://www.instagram.com/?hl=ko" rel="alternate" hreflang="ko">
+<link href="https://www.instagram.com/?hl=sv" rel="alternate" hreflang="sv">
+<link href="https://www.instagram.com/?hl=ur" rel="alternate" hreflang="ur">
+<link href="https://www.instagram.com/?hl=sk" rel="alternate" hreflang="sk">
+<link href="https://www.instagram.com/?hl=si" rel="alternate" hreflang="si">
+<link href="https://www.instagram.com/?hl=ms" rel="alternate" hreflang="ms">
+<link href="https://www.instagram.com/?hl=mr" rel="alternate" hreflang="mr">
 
 
 <style type="text/css" data-isostyle-id="is110a3ca4">
@@ -521,7 +473,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -538,7 +506,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :scale(1)
+
+
+
+
+
+
+
+
 
 
 
@@ -553,7 +537,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :scale(1)
+
+
+
+
+
+
+
+
 
 
 
@@ -569,7 +569,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -593,7 +609,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -610,7 +642,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :scale(1)
+
+
+
+
+
+
+
+
 
 
 
@@ -625,7 +673,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :scale(1)
+
+
+
+
+
+
+
+
 
 
 
@@ -641,7 +705,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -828,10 +908,7 @@ opacity
 }
 
 .coreSpriteNavigationBrandSmall {
-	background-image:
-		
-	background-repeat: no-repeat;
-	
+	background-image: background-repeat: no-repeat;
 	height: 28px;
 	width: 102px;
 }
@@ -1187,7 +1264,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :rotate(360deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1202,7 +1295,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(360deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1225,7 +1334,23 @@ keyframes AutoloadingPostsGridMoreLoadingIndicatorAnimation { 0%{
 
 
 
+
+
+
+
+
+
+
+
 :rotate(360deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1240,7 +1365,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(360deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1652,14 +1793,30 @@ transform
 -webkit-keyframes
 
 
+
+
+
+
  
+
+
+
+
 
 
 '
 spin8
 
 
+
+
+
+
  
+
+
+
+
 
 
 '{
@@ -1669,10 +1826,26 @@ spin8
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
  
+
+
+
+
 
 
 rotate
@@ -1680,8 +1853,24 @@ rotate
 
 
 
+
+
+
+
+
+
+
+
 (180
 deg
+
+
+
+
+
+
+
+
 
 
 );
@@ -1690,10 +1879,26 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
  
+
+
+
+
 
 
 rotate
@@ -1701,8 +1906,24 @@ rotate
 
 
 
+
+
+
+
+
+
+
+
 (180
 deg
+
+
+
+
+
+
+
+
 
 
 );
@@ -1711,10 +1932,26 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
  
+
+
+
+
 
 
 rotate
@@ -1722,8 +1959,24 @@ rotate
 
 
 
+
+
+
+
+
+
+
+
 (180
 deg
+
+
+
+
+
+
+
+
 
 
 );
@@ -1732,10 +1985,26 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
  
+
+
+
+
 
 
 rotate
@@ -1743,8 +2012,24 @@ rotate
 
 
 
+
+
+
+
+
+
+
+
 (180
 deg
+
+
+
+
+
+
+
+
 
 
 )
@@ -1757,7 +2042,23 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1772,7 +2073,23 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1787,7 +2104,23 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1802,7 +2135,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1827,7 +2176,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1842,7 +2207,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1857,7 +2238,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1872,7 +2269,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1897,7 +2310,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1912,7 +2341,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1927,7 +2372,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1942,7 +2403,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1967,7 +2444,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1982,7 +2475,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -1997,7 +2506,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -2012,7 +2537,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -2025,14 +2566,30 @@ transform
 keyframes
 
 
+
+
+
+
  
+
+
+
+
 
 
 '
 spin8
 
 
+
+
+
+
  
+
+
+
+
 
 
 '{
@@ -2042,10 +2599,26 @@ spin8
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
  
+
+
+
+
 
 
 rotate
@@ -2053,8 +2626,24 @@ rotate
 
 
 
+
+
+
+
+
+
+
+
 (180
 deg
+
+
+
+
+
+
+
+
 
 
 );
@@ -2063,10 +2652,26 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
  
+
+
+
+
 
 
 rotate
@@ -2074,8 +2679,24 @@ rotate
 
 
 
+
+
+
+
+
+
+
+
 (180
 deg
+
+
+
+
+
+
+
+
 
 
 );
@@ -2084,10 +2705,26 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
  
+
+
+
+
 
 
 rotate
@@ -2095,8 +2732,24 @@ rotate
 
 
 
+
+
+
+
+
+
+
+
 (180
 deg
+
+
+
+
+
+
+
+
 
 
 );
@@ -2105,10 +2758,26 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :
 
 
+
+
+
+
  
+
+
+
+
 
 
 rotate
@@ -2116,8 +2785,24 @@ rotate
 
 
 
+
+
+
+
+
+
+
+
 (180
 deg
+
+
+
+
+
+
+
+
 
 
 )
@@ -2130,7 +2815,23 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -2145,7 +2846,23 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -2160,7 +2877,23 @@ deg
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -2175,7 +2908,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(540deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -3687,7 +4436,6 @@ a.-cx-PRIVATE-LocationLink__root:hover {
 }
 
 .-cx-PRIVATE-Navigation__menuItems {
-	
 	-webkit-align-content: center;
 	-ms-flex-line-pack: center;
 	align-content: center;
@@ -4636,7 +5384,23 @@ transform
 
 
 
+
+
+
+
+
+
+
+
 :rotate(360deg)
+
+
+
+
+
+
+
+
 
 
 
@@ -5257,294 +6021,155 @@ transform
 </head>
 <body>
 	<span id="react-root" aria-hidden="false">
-		<section
-			class="-cx-PRIVATE-Shell__main" data-reactid=".0">
-			<main
-				class="-cx-PRIVATE-Shell__content" role="main" data-reactid=".0.1">
-				<section class="-cx-PRIVATE-FeedPage__root" data-reactid=".0.1.0">
-					<div class="-cx-PRIVATE-FeedPage__feed" data-reactid=".0.1.0.1">
-						<div data-reactid=".0.1.0.1.0">
-<%
-	if (articleList == null || articleList.size() == 0 ) {
-%>
-		
-<%	
-	} else {
-		for ( int i = 0; i < articleList.size(); i++ ) {
-%>
-							<article
-								class="-cx-PRIVATE-FeedPage__post -cx-PRIVATE-Post__root -cx-PRIVATE-Post__feed"
-								data-reactid=".0.1.0.1.0.$1120663883150392384"> <header
-								class="-cx-PRIVATE-Post__header"
-								data-reactid=".0.1.0.1.0.$1120663883150392384.0"> <img
-								class="-cx-PRIVATE-Post__ownerAvatar"
-								src="https://igcdn-photos-d-a.akamaihd.net/hphotos-ak-xat1/t51.2885-19/10661292_694468040641427_987460838_a.jpg"
-								data-reactid=".0.1.0.1.0.$1120663883150392384.0.0">
-							<div class="-cx-PRIVATE-Post__ownerAndLocation"
-								data-reactid=".0.1.0.1.0.$1120663883150392384.0.1">
-								<a
-									class="-cx-PRIVATE-UserLink__root -cx-PRIVATE-Post__ownerUserLink"
-									title="koreall_model" href="/koreall_model/"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.0.1.0">koreall_model</a>
-							</div>
-							<a class="-cx-PRIVATE-Post__timestamp" href="/p/-NZd07yfxA/"
-								data-reactid=".0.1.0.1.0.$1120663883150392384.0.2"><time
-									class="-cx-PRIVATE-Timestamp__root"
-									datetime="2015-11-18T02:26:07.000Z" title="2015년 11월 18일"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.0.2.0">35분</time></a></header>
-							<div
-								class="ResponsiveBlock -cx-PRIVATE-Post__media -cx-PRIVATE-PhotoWithUserTags__root"
-								data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg">
-								<div
-									class="-cx-PRIVATE-Photo__root -cx-PRIVATE-PhotoWithUserTags__photo"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:0">
-									<div style="padding-bottom: 100%;"
-										class="-cx-PRIVATE-Photo__placeholder"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:0.0">
-										<img class="-cx-PRIVATE-Photo__image" id="pImage_1"
-											src="https://igcdn-photos-a-a.akamaihd.net/hphotos-ak-xap1/t51.2885-15/e35/12276746_776023579176720_123372403_n.jpg"
-											data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:0.0.$pImage_1">
+		<section class="-cx-PRIVATE-Shell__main">
+			<main class="-cx-PRIVATE-Shell__content" role="main">
+				<section class="-cx-PRIVATE-FeedPage__root">
+					<div class="-cx-PRIVATE-FeedPage__feed">
+						<div>
+							<%
+								if (articleList == null || articleList.size() == 0) {
+							%>
+			
+							<%
+								} else {
+									for (int i = 0; i < articleList.size(); i++) {
+										ArticleVO article = articleList.get(i);
+										HashMap userInfo = article.getUserInfo();
+							%>
+							<article class="-cx-PRIVATE-FeedPage__post -cx-PRIVATE-Post__root -cx-PRIVATE-Post__feed">
+								<header class="-cx-PRIVATE-Post__header">
+							<%
+									if (userInfo.get("PROFILE") != null) {
+							%>
+									<img class='-cx-PRIVATE-Post__ownerAvatar' src='./personalImg/<%= userInfo.get("EMAIL")%>/<%= userInfo.get("PROFILE")%>'/>
+							<%
+									} else {
+							%>
+									<img class='-cx-PRIVATE-Post__ownerAvatar' src='./personalImg/profile.jpg'>
+							<%
+									}
+							%>
+									<div class="-cx-PRIVATE-Post__ownerAndLocation">
+										<a class="-cx-PRIVATE-UserLink__root -cx-PRIVATE-Post__ownerUserLink" href="./<%= userInfo.get("NICKNAME") %>"><%= userInfo.get("NICKNAME") %></a>
 									</div>
-									<div class="-cx-PRIVATE-Photo__clickShield"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:0.2"></div>
-								</div>
-								<div class="-cx-PRIVATE-PhotoWithUserTags__tagMeasurementLayer"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:1">
-									<a
-										style="margin-left: -47.5234px; margin-top: 6px; left: 60.3892%; top: 41.4583%;"
-										class="-cx-PRIVATE-UserTag__root" href="/nizinanjjang/"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:1.0:$usertag-nizinanjjang"><span
-										class="-cx-PRIVATE-UserTag__content"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:1.0:$usertag-nizinanjjang.0"><div
-												class="-cx-PRIVATE-UserTag__pointer"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:1.0:$usertag-nizinanjjang.0.0"></div>
-											<span
-											data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:1.0:$usertag-nizinanjjang.0.1">nizinanjjang</span></span></a>
-									<div
-										class="ResponsiveBlock -cx-PRIVATE-PhotoWithUserTags__indicator coreSpriteUserTagIndicator"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:1.$indicator">
-										<div class="rbSensor"
-											data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:1.$indicator.$sensor">
-											<iframe class="rbSensorFrame"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:1.$indicator.$sensor.0"></iframe>
+							<%
+									PhotoInfoVO photo = article.getPhoto();
+									String time = "";
+									long uploadTime = System.currentTimeMillis() - photo.getReg_date().getTime();
+									if ( uploadTime/(1000*60*60*24*7) != 0 ) {
+										time = uploadTime/(1000*60*60*24*7) +"주 전";
+									} else if ( uploadTime/(1000*60*60*24) != 0 ) {
+										time = uploadTime/(1000*60*60*24) + "일 전";
+									} else if ( uploadTime/(1000*60*60) != 0 ) {
+										time = uploadTime/(1000*60*60) + "분 전";
+									} else if ( uploadTime/(1000*60) != 0 ) {
+										time = uploadTime/(1000*60) + "초 전";
+									} else if ( uploadTime/(1000*30) != 0 ) {
+										time = "방금";
+									}
+							%>
+									<a class="-cx-PRIVATE-Post__timestamp" href="">
+										<span class="-cx-PRIVATE-Timestamp__root"><%= time %></span>
+									</a>
+								</header>
+								<div class="ResponsiveBlock -cx-PRIVATE-Post__media -cx-PRIVATE-PhotoWithUserTags__root">
+									<div class="-cx-PRIVATE-Photo__root -cx-PRIVATE-PhotoWithUserTags__photo">
+										<div style="padding-bottom: 100%;" class="-cx-PRIVATE-Photo__placeholder">
+											<img class="-cx-PRIVATE-Photo__image" src='./personalImg/<%= userInfo.get("EMAIL")%>/<%= photo.getSeq_photo()%>.jpg'>
 										</div>
+										<div class="-cx-PRIVATE-Photo__clickShield"></div>
 									</div>
 								</div>
-								<span
-									data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:2"></span><span
-									data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:3"><div
-										class="-cx-PRIVATE-PhotoWithUserTags__indicator coreSpriteUserTagIndicator"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.0:3.$=1$indicator"></div></span>
-								<div class="rbSensor"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.$sensor">
-									<iframe class="rbSensorFrame"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.$https=2//igcdn-photos-a-a=1akamaihd=1net/hphotos-ak-xap1/t51=12885-15/e35/12276746_776023579176720_123372403_n=1jpg.$sensor.0"></iframe>
+								<div class="-cx-PRIVATE-PostInfo__root -cx-PRIVATE-Post__mediaInfo">
+							<%
+								List<HashMap> likeList = article.getLikeList();
+							%>
+									<section class="-cx-PRIVATE-PostInfo__likesAndTimestamp -cx-PRIVATE-PostInfo__likesAndTimestampStackedVariant">
+										<div class="-cx-PRIVATE-PostInfo__likesInfo -cx-PRIVATE-PostLikers__root">
+											<span class="-cx-PRIVATE-PostLikers__likeCount">
+							<%
+									if ( likeList.size() == 0 ) {
+							%>
+										<span>♥ 좋아요</span>
+							<%
+									}
+									else if ( likeList.size() < 6 ) {
+										for ( int j = 0; j < likeList.size(); j++ ) {
+											HashMap like = likeList.get(j);
+							%>
+											<span><a href='./<%= like.get("NICKNAME")%>'><%= like.get("NICKNAME") %></a></span>
+							<%
+											if ( j != likeList.size() - 1 ) {
+												out.print(", ");
+											}
+										}
+							%>
+										<span>님이 좋아합니다.</span>
+							<%
+									} else {
+							%>
+										<span>좋아요 </span>
+										<span><%= likeList.size() %></span>
+										<span>개</span>
+							<%
+									}
+							%>
+											</span>
+										</div>
+									</section>
+									<ul class="-cx-PRIVATE-PostInfo__comments -cx-PRIVATE-PostInfo__commentsStackedVariant">
+										<li class="-cx-PRIVATE-PostInfo__comment">
+											<h1>
+							<%
+									String content = photo.getContent();
+									if ( content != null ) {
+										StringTokenizer stk = new StringTokenizer(content);
+										while(stk.hasMoreTokens()) {
+											String token = stk.nextToken();
+											if ( token.startsWith("#") ) {
+							%>
+												<a href='./hashtag/<%= token.substring(1) %>'><%= token %></a>
+							<%
+											} else if ( token.startsWith("@") ) {
+							%>
+												<a href='./<%= token.substring(1) %>'><%= token %></a>
+							<%
+											} else {
+							%>
+												<%= token %>
+							<%
+											}
+										}
+									}
+							%>
+											</h1>
+										</li>
+									</ul>
+									<section class="-cx-PRIVATE-PostInfo__feedback -cx-PRIVATE-PostInfo__feedbackStackedVariant">
+										<a class="-cx-PRIVATE-PostInfo__likeButton -cx-PRIVATE-LikeButton__root -cx-PRIVATE-Util__hideText coreSpriteHeartOpen" href="#" role="button">좋아요</a>
+										<form class="-cx-PRIVATE-PostInfo__commentCreator">
+											<input class="-cx-PRIVATE-PostInfo__commentCreatorInput" placeholder="댓글 달기..." type="text" value="">
+										</form>
+										<button class="-cx-PRIVATE-PostInfo__optionsButton coreSpriteEllipsis -cx-PRIVATE-Util__hideText">옵션 더 보기</button>
+									</section>
 								</div>
-							</div>
-							<div class="-cx-PRIVATE-PostInfo__root -cx-PRIVATE-Post__mediaInfo"
-								data-reactid=".0.1.0.1.0.$1120663883150392384.2">
-								<section
-									class="-cx-PRIVATE-PostInfo__likesAndTimestamp -cx-PRIVATE-PostInfo__likesAndTimestampStackedVariant"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.2.0">
-								<div
-									class="-cx-PRIVATE-PostInfo__likesInfo -cx-PRIVATE-PostLikers__root"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.2.0.0">
-									<span class="-cx-PRIVATE-PostLikers__likeCount"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.2.0.0.0"><span
-										data-reactid=".0.1.0.1.0.$1120663883150392384.2.0.0.0.0">좋아요
-									</span><span data-reactid=".0.1.0.1.0.$1120663883150392384.2.0.0.0.1">73</span><span
-										data-reactid=".0.1.0.1.0.$1120663883150392384.2.0.0.0.2">개</span></span>
-								</div>
-								</section>
-								<ul
-									class="-cx-PRIVATE-PostInfo__comments -cx-PRIVATE-PostInfo__commentsStackedVariant"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.2.1">
-									<li class="-cx-PRIVATE-PostInfo__comment"
-										data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0"><h1
-											data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0">
-											<a
-												class="-cx-PRIVATE-UserLink__root -cx-PRIVATE-PostInfo__commentUserLink"
-												title="koreall_model" href="/koreall_model/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.0">koreall_model</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1"><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.0">koreall_model</span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline1/=10">
-												<span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.2">오늘의
-													모델에 선정되신 </span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline3/=10">
-												<a href="/nizinanjjang/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text4/=1$entity0/=010">@nizinanjjang</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.5">
-													님 축하드립니다😄</span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline5/=10">
-												<span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.7">코레올모델에
-													도전해주세요!</span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline7/=10">
-												<a href="/koreall_model/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text8/=1$entity0/=010">@koreall_model</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.a">
-													을 팔로우 하시고 </span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline9/=10">
-												<a href="/explore/tags/모델지원/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text10/=1$entity0/=010">#모델지원</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.d">
-											</span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline11/=10">
-												<a href="/explore/tags/코레올모델/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text12/=1$entity0/=010">#코레올모델</a><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline13/=10">
-												<span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.h">해시태그를
-													걸어주세요!</span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline15/=10">
-												<span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.j">오늘의
-													모델을 선정하여 업로드해드립니다!</span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline17/=10">
-												<span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.l">모델지원은
-													페이지상단 링크로 들어오셔서 신청서를 작성해주세요😃</span><br
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$newline19/=10">
-												<span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.n">👉</span><a
-												href="/koreall_health/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity0/=010">@koreall_health</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.p">
-													로 오시면 핫한 트렌드의 운동 영상을 보실 수 있어요!! 검색창에 koreall_ 을 검색하시면 다양한
-													koreall_ 계정의 정보를 볼 수 있답니다! </span><a href="/explore/tags/패피/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity1/=010">#패피</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.r">
-											</span><a href="/explore/tags/패션/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity2/=010">#패션</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.t">
-											</span><a href="/explore/tags/패피남/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity3/=010">#패피남</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.v">
-											</span><a href="/explore/tags/패피녀/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity4/=010">#패피녀</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.x">
-											</span><a href="/explore/tags/패션피플/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity5/=010">#패션피플</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.z">
-											</span><a href="/explore/tags/스타일/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity6/=010">#스타일</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.11">
-											</span><a href="/explore/tags/데일리룩/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity7/=010">#데일리룩</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.13">
-											</span><a href="/explore/tags/ootd/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity8/=010">#ootd</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.15">
-											</span><a href="/explore/tags/fashion/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity9/=010">#fashion</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.17">
-											</span><a href="/explore/tags/style/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity10/=010">#style</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.19">
-											</span><a href="/explore/tags/fashionpeople/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity11/=010">#fashionpeople</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1b">
-											</span><a href="/explore/tags/korean/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity12/=010">#korean</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1d">
-											</span><a href="/explore/tags/koreanmodel/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity13/=010">#koreanmodel</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1f">
-											</span><a href="/explore/tags/koreamodel/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity14/=010">#koreamodel</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1h">
-											</span><a href="/explore/tags/korea/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity15/=010">#korea</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1j">
-											</span><a href="/explore/tags/model/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity16/=010">#model</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1l">
-											</span><a href="/explore/tags/dailylook/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity17/=010">#dailylook</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1n">
-											</span><a href="/explore/tags/일상/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity18/=010">#일상</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1p">
-											</span><a href="/explore/tags/소통/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity19/=010">#소통</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1r">
-											</span><a href="/explore/tags/얼스타그램/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity20/=010">#얼스타그램</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1t">
-											</span><a href="/explore/tags/셀피/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity21/=010">#셀피</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1v">
-											</span><a href="/explore/tags/가을/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity22/=010">#가을</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1x">
-											</span><a href="/explore/tags/selfie/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity23/=010">#selfie</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.1z">
-											</span><a href="/explore/tags/모델/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity24/=010">#모델</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.21">
-											</span><a href="/explore/tags/훈녀/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity25/=010">#훈녀</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.23">
-											</span><a href="/explore/tags/옷스타그램/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity26/=010">#옷스타그램</a><span
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.25">
-											</span><a href="/explore/tags/인생사진/"
-												data-reactid=".0.1.0.1.0.$1120663883150392384.2.1.0.0.1.$text20/=1$entity27/=010">#인생사진</a></span>
-										</h1></li>
-								</ul>
-								<section
-									class="-cx-PRIVATE-PostInfo__feedback -cx-PRIVATE-PostInfo__feedbackStackedVariant"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.2.2"> <a
-									class="-cx-PRIVATE-PostInfo__likeButton -cx-PRIVATE-LikeButton__root -cx-PRIVATE-Util__hideText coreSpriteHeartOpen"
-									href="#" role="button"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.2.2.0">좋아요</a>
-								<form class="-cx-PRIVATE-PostInfo__commentCreator"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.2.2.1">
-									<input class="-cx-PRIVATE-PostInfo__commentCreatorInput"
-										placeholder="댓글 달기..." type="text" value=""
-										data-reactid=".0.1.0.1.0.$1120663883150392384.2.2.1.0">
-								</form>
-								<button
-									class="-cx-PRIVATE-PostInfo__optionsButton coreSpriteEllipsis -cx-PRIVATE-Util__hideText"
-									data-reactid=".0.1.0.1.0.$1120663883150392384.2.2.2">옵션 더
-									보기</button>
-								</section>
-							</div>
 							</article>
-<%
-		}
-	}
-%>
-						</div>
-						<div class="ResponsiveBlock" data-reactid=".0.1.0.1.1">
-							<div class="rbSensor" data-reactid=".0.1.0.1.1.$sensor">
-								<iframe class="rbSensorFrame" data-reactid=".0.1.0.1.1.$sensor.0"></iframe>
-							</div>
-						</div>
-						<div class="-cx-PRIVATE-AutoloadingPostsGrid__moreLoadingIndicator"
-							data-reactid=".0.1.0.1.2">
-							<a class="-cx-PRIVATE-AutoloadingPostsGrid__moreLink" href="#"
-								data-reactid=".0.1.0.1.2.0">더 읽어들이기</a>
+							<%
+									}
+								}
+							%>
 						</div>
 					</div>
 				</section>
 			</main>
 			<jsp:include page="top.jsp" flush="true" />
-			<footer class="-cx-PRIVATE-Shell__footer" role="contentinfo"
-			data-reactid=".0.3">
-				<div class="-cx-PRIVATE-Footer__main -cx-PRIVATE-Footer__slim"
-					style="max-width: 600px;" data-reactid=".0.3.0">
-					<nav class="-cx-PRIVATE-Footer__nav" role="navigation"
-						data-reactid=".0.3.0.0">
-					</nav>
-					<span class="-cx-PRIVATE-Footer__copyright" data-reactid=".0.3.0.1">©
-						2015 Kostagram</span>
+			<footer class="-cx-PRIVATE-Shell__footer" role="contentinfo">
+				<div class="-cx-PRIVATE-Footer__main -cx-PRIVATE-Footer__slim" style="max-width: 600px;">
+					<nav class="-cx-PRIVATE-Footer__nav" role="navigation"></nav>
+					<span class="-cx-PRIVATE-Footer__copyright">© 2015 Kostagram</span>
 				</div>
 			</footer>
-			<noscript data-reactid=".0.4"></noscript>
+			<noscript></noscript>
 		</section>
 	</span>
 </body>
