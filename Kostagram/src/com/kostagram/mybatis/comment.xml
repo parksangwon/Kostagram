@@ -18,7 +18,7 @@
 		select photo_comment.content, member.nickname, member.email, member.profile_img, photo_comment.seq_photo
 		from photo_comment, member
 		where photo_comment.seq_photo = #{seq_photo} and photo_comment.email = member.email
-		order by photo_comment.reg_date desc
+		order by photo_comment.reg_date asc
 	</select>
 
 </mapper>
