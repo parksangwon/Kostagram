@@ -22,6 +22,87 @@
 				.live(
 						"pageshow",
 						function(event) {
+							//비밀번호 변경 시작							
+							$('#changebutton').click(function() {								
+					
+								var nowpass = $('[data-role=content] #nowpass');
+								var changepass1 = $('[data-role=content] #changepass1');
+								var changepass2 = $('[data-role=content] #changepass2');
+								var resultMessage = $(".alert-red");
+								
+								var message = $('[data-role=content] #message');
+								if (nowpass.val() == "") {
+									message
+											.text("현재 비밀번호를 입력해주세요");
+									nowpass.focus();
+									return false;
+								}
+								
+								else if (nowpass.val().length < 4
+										|| nowpass.val().length > 20  ) {
+									message
+											.text("비밀번호는 4자 이상 20자 이하 입니다.");
+									nowpass.focus();
+									return false;
+								}
+																	
+								if (changepass1.val() == "") {
+									message
+											.text("새 비밀번호를 입력해주세요");
+									nowpass.focus();
+									return false;
+								}
+								
+								if (changepass2.val() == "") {
+									message
+											.text("새 비밀번호를 입력해주세요");
+									nowpass.focus();
+									return false;
+								}
+								
+								else if (changepass1.val().length < 4
+										|| changepass1.val().length > 20 ||changepass2.val().length < 4
+										|| changepass2.val().length > 20  ) {
+									message
+											.text("비밀번호는 4자 이상 20자 이하 입니다.");
+									return false;
+								}
+								
+								if(changepass1.val() != changepass2.val())
+									{
+										message.text("새 비밀번호가 서로 다릅니다.")
+										return false;
+									}
+								
+								var nowpw = $('#nowpass').val();
+								var changepw = $('#changepass1').val();
+								
+								$.ajax({
+									type: 'POST',
+									url: 'ajaxpwupdate',
+									dataType: 'text',
+									data:{nowpw:nowpw, changepw:changepw} ,
+									success:function(text) {
+										if (text === "updateSuccess") {
+											resultMessage.text("성공적으로 비밀번호가 변경되었습니다.");
+											resultMessage.css("color", "#468847");
+											resultMessage.css("background-color", "#dff0d8");
+											resultMessage.css("border-color", "#d6e9c6");
+					
+										} 
+										else if(text === "updateFail"){
+											resultMessage.text("비밀번호 변경 실패 . 입력하신 현재 비밀번호가 일치하지 않습니다");
+											resultMessage.css("color", "red");
+											resultMessage.css("background-color", "#dff0d8");
+											resultMessage.css("border-color", "#d6e9c6");
+										}
+										}
+								});
+								
+					
+						});
+						//비밀번호 변경 끝
+						
 							// emailcheck 시작
 							if (this.id == "loginform") {
 							} else if (this.id == "emailCheck") {
