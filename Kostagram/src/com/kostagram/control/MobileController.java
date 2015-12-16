@@ -23,6 +23,7 @@ import com.kostagram.service.beans.CommentVO;
 import com.kostagram.service.beans.ConversationVO;
 import com.kostagram.service.beans.HashtagVO;
 import com.kostagram.service.beans.LikeVO;
+import com.kostagram.service.beans.LocationVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.UserInfoVO;
@@ -32,6 +33,7 @@ import com.kostagram.service.dao.ConversationDAO;
 import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.HashtagDAO;
 import com.kostagram.service.dao.LikeDAO;
+import com.kostagram.service.dao.LocationDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.ReportDAO;
 import com.kostagram.service.dao.UserInfoDAO;
@@ -66,6 +68,9 @@ public class MobileController {
 	
 	@Autowired
 	private LikeDAO likeDao;
+	
+	@Autowired
+	private LocationDAO locationDao;
 
 	// 타임 라인 (메인)
 	@RequestMapping("/")
@@ -922,4 +927,74 @@ public class MobileController {
 			return "mobile/usernotfound";
 		}
 	}
+	
+	// 비밀번호 변경하기
+		@RequestMapping(value = "/ajaxpwupdate")
+		public void pwupdateUpdate(HttpServletRequest request,HttpServletResponse response,
+				HttpSession session, Model model) throws IOException{
+			// 로그인을 안한 상태면 로그인 페이지로 강제이동
+			
+			
+			String email = (String) session.getAttribute("email");
+			String nowpw = (String)request.getParameter("nowpw");
+			String changepw = (String)request.getParameter("changepw");
+			
+			System.out.println(email);
+			System.out.println(nowpw);
+			System.out.println(changepw);
+			
+			PrintWriter out = response.getWriter();
+
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+
+			System.out.println("ㅎㅇ");
+			UserInfoVO userInfoVO = userInfoDao.findPass(new UserInfoVO(email));	
+			System.out.println(userInfoVO);
+			if (nowpw.equals(userInfoVO.getPass())) {
+				
+				userInfoVO.setPass(changepw);
+				boolean result = userInfoDao.pwUpdate(userInfoVO);
+				
+				if(result)
+				{
+					System.out.println(result);
+					out.print("updateSuccess");
+					System.out.println("성공");
+					
+				}
+							
+			}
+			
+			else 
+			{
+				out.print("updateFail");
+			}
+		}
+
+	//포토맵 페이지 가기
+	    @RequestMapping("/photomap")
+	    public String report(LocationVO location,HttpSession session, Model model) {
+	    	
+	    	if (session == null || session.getAttribute("email") == null
+					|| session.getAttribute("loginYn") == null
+					|| session.getAttribute("loginYn").equals("N")) {
+				return "mobile/login";
+			}
+	    	
+	    	
+	    String email = (String) session.getAttribute("email");
+	    UserInfoVO user = new UserInfoVO(email);
+	    
+	    System.out.println(email);
+	    
+	    List<HashMap> locationList = locationDao.findPhotoMap(user);
+	    model.addAttribute("locationList", locationList);
+	    
+	    
+		return "mobile/photoMap";
+	    }
+	
+	
 }
