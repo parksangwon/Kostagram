@@ -25,4 +25,14 @@
 		resultType="com.kostagram.service.beans.HashtagVO">
 		select * from hashtag where hashtag like '%'||#{hashtag}||'%'
 	</select>
+	
+	<select id="selectHashtag" parameterType="string"
+		resultType="com.kostagram.service.beans.PhotoInfoVO">
+		select photo.email, a.seq_photo
+		from photo,
+		(
+		  select seq_photo from photo_hash_tag where hashtag = #{hashtag}
+		) a
+		where a.seq_photo=photo.seq_photo
+	</select>
 </mapper>
