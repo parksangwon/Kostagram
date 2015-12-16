@@ -74,13 +74,13 @@
 							{
 						
 				%>
-						<td align="left" width="15%"><a href="./detail"><img src="/Kostagram/personalImg/profile.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a></td>
+						<td align="left" width="15%"><a href="/Kostagram/m/<%= from_nickname %>"><img src="/Kostagram/personalImg/profile.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a></td>
 				<%
 							}
 							else
 							{
 				%>
-						<td align="left" width="15%"><a href="./detail"><img src="/Kostagram/personalImg/<%=from_email %>/profile.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a></td>
+						<td align="left" width="15%"><a href="/Kostagram/m/<%= from_nickname %>"><img src="/Kostagram/personalImg/<%=from_email %>/profile.jpg" width="40" style="-webkit-border-radius: 100px; border-radius: 100px;"/></a></td>
 				<%
 							}
 				%>
