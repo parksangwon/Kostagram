@@ -12,7 +12,7 @@
 /* A
 -----------------------------------------------------------------------------------------------------------*/
 
-/* 占쎈엘占쎈쐭獄쏉옙*/
+/* �뜝�럥�뿕�뜝�럥�맠�뛾�룊�삕*/
 .ui-bar-a {
 	/* border: 1px solid 		#2A2A2A {a-bar-border}; */
 	/*background: #030091 /*{a-bar-background-color}*/;
@@ -26,7 +26,7 @@
 	background-image:      -o-linear-gradient(#517fa4, #306088);
 	background-image:         linear-gradient(#517fa4, #306088);
 }
-/* 占쎈엘占쎈쐭獄쏉옙*/
+/* �뜝�럥�뿕�뜝�럥�맠�뛾�룊�삕*/
 .ui-bar-a, 
 .ui-bar-a input, 
 .ui-bar-a select, 
@@ -70,7 +70,7 @@
 	background-image:         linear-gradient(top, #021A63 0%, #4374D9 44%, #6799FF 58%, #B2CCFF 87%, #D9E5FF 100%);	
 } */
 
-/* login.jsp 占쎈뻻占쎌삂*/
+/* login.jsp �뜝�럥六삣뜝�럩�굚*/
 #loginform {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -90,8 +90,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* login.jsp 占쎄국 */
-/* emailcheck.jsp 占쎈뻻占쎌삂*/
+/* login.jsp �뜝�럡援� */
+/* emailcheck.jsp �뜝�럥六삣뜝�럩�굚*/
 #emailCheck {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -111,8 +111,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* emailcheck.jsp 占쎄국*/
-/* usercheck.jsp 占쎈뻻占쎌삂*/
+/* emailcheck.jsp �뜝�럡援�*/
+/* usercheck.jsp �뜝�럥六삣뜝�럩�굚*/
 #userCheck {
 	color: #bdbdbd;
 	text-shadow: none;
@@ -132,8 +132,8 @@
 	font-weight: normal;
 	background-image: none;
 }
-/* usercheck.jsp 占쎄국*/
-/* chatting.jsp 占쎈뻻占쎌삂 */
+/* usercheck.jsp �뜝�럡援�*/
+/* chatting.jsp �뜝�럥六삣뜝�럩�굚 */
 #someone {
 	position: relative;
 	background: #e0e0e0;
@@ -173,8 +173,8 @@
 	border-width: 5px;
 	margin-top: -5px;
 }
-/* chatting.jsp 占쎄국 */
-/* userpage.jsp 占쎈뻻占쎌삂 */
+/* chatting.jsp �뜝�럡援� */
+/* userpage.jsp �뜝�럥六삣뜝�럩�굚 */
 .myPhotoListByGrid {
 	padding: 0.0em;
 	overflow: hidden;
@@ -203,7 +203,7 @@
 	padding-left: 0.1em;
 	padding-right: 0.1em;
 }
-/* userpage.jsp 占쎄국 */
+/* userpage.jsp �뜝�럡援� */
 
 .ui-body-a input,
 .ui-body-a select,
@@ -232,7 +232,7 @@
     color: #2489CE {a-body-link-visited};
 } */
 
-/* 甕곌쑵�뱣占쎈퓠 筌띾뜆�뒭占쎈뮞�몴占� 占쎈툧占쎌궞占쎌죬占쎌뱽占쎈르 */
+/* �뵓怨뚯뫓占쎈괏�뜝�럥�뱺 嶺뚮씭�쐠占쎈뮡�뜝�럥裕욑옙紐닷뜝占� �뜝�럥�닱�뜝�럩沅욃뜝�럩二у뜝�럩諭썲뜝�럥瑜� */
 .ui-btn-up-a {
 	border: 1px solid #8c8c8c /*{a-bup-border}*/;
 	/* background: #030091 {a-bup-background-color}; */
@@ -246,7 +246,7 @@
 	background-image:      -o-linear-gradient(#517fa4, #306088);
 	background-image:         linear-gradient(#517fa4, #306088);
 }
-/* 甕곌쑵�뱣占쎈퓠 筌띾뜆�뒭占쎈뮞�몴占� 占쎈툧占쎌궞占쎌죬占쎌뱽占쎈르 */
+/* �뵓怨뚯뫓占쎈괏�뜝�럥�뱺 嶺뚮씭�쐠占쎈뮡�뜝�럥裕욑옙紐닷뜝占� �뜝�럥�닱�뜝�럩沅욃뜝�럩二у뜝�럩諭썲뜝�럥瑜� */
 
 .ui-btn-hover-a {
 	border: 1px solid #8c8c8c /*{a-bhover-border}*/;
@@ -299,7 +299,7 @@ a.ui-link-inherit {
 
 /* button inner top highlight
 -----------------------------------------------------------------------------------------------------------*/
-/* 甕곌쑵�뱣, 占쎈쳳占쎄숲獄쏉옙(占쎌넦筌욑옙筌뤴뫀�뀮野껋쥙�벉) */
+/* �뵓怨뚯뫓占쎈괏, �뜝�럥爾녑뜝�럡�댉�뛾�룊�삕(�뜝�럩�꽗嶺뚯쉻�삕嶺뚮ㅄ維�占쎈���뇦猿뗭쪠占쎈쾳) */
 
 /*  .ui-btn-inner {
 	background-color: #000000;
@@ -1271,7 +1271,7 @@ Built by David Kaneda and maintained by Jonathan Stark.
 
 .ui-select .ui-btn { opacity: 1; }
 
-/* Fixes #2588 占쏙옙 When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select占쎈뇻ncluding 占쎌릥nherit占쎌빁占쎈뉜ithout explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
+/* Fixes #2588 �뜝�룞�삕 When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select�뜝�럥�눤ncluding �뜝�럩由쩸herit�뜝�럩鍮곩뜝�럥�돏ithout explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
 .ui-select .ui-btn select { cursor: pointer; -webkit-appearance: button; left: 0; top:0; width: 100%;  min-height: 1.5em; min-height: 100%; height: 3em; max-height: 100%; opacity: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; filter: alpha(opacity=0); z-index: 2; }
 
 .ui-select .ui-disabled { opacity: .3; }
@@ -1553,3 +1553,22 @@ span.ui-slider-label-b { right: -100%;  margin-left: -1px }
 	text-decoration: none;
 }
 
+		div[id="photomap"] {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+ 
+         #photomapcontent{
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+ 
+        #map {
+            height: 100%;
+            width: 100%;
+            padding: 0px;
+        }
