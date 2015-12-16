@@ -54,4 +54,8 @@
 		FROM PHOTO
 		WHERE EMAIL = #{email}
 	</select>
+	
+	<select id="getArticleByPhotoId" parameterType="String" resultType="com.kostagram.service.beans.PhotoInfoVO">
+		select * from photo where seq_photo = #{pid}
+	</select>
 </mapper>
