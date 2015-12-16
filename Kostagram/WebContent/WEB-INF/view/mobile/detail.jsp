@@ -61,7 +61,7 @@
 								<img src='/Kostagram/personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />
 						<%	} else {
 						%>
-								<img src='/Kostagram/personalImg/"<%= email %>/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />
+								<img src='/Kostagram/personalImg/<%= email %>/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />
 						<%	} %>
 							
 							</td>
