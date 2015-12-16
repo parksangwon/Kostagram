@@ -58,4 +58,12 @@
 	<select id="getArticleByPhotoId" parameterType="String" resultType="com.kostagram.service.beans.PhotoInfoVO">
 		select * from photo where seq_photo = #{pid}
 	</select>
+	
+	<select id="getUserInformation" parameterType="string"
+		resultType="hashmap">
+		select photo.email, member.profile_img, member.nickname, photo.reg_date
+		from photo, member
+		where seq_photo = #{seq_photo}
+		and photo.email = member.email
+	</select>
 </mapper>
