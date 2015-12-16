@@ -1,7 +1,21 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="com.kostagram.service.beans.PhotoInfoVO"%>
+<%@page import="com.kostagram.service.beans.ArticleVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	ArrayList<ArticleVO> myPhotoList = (ArrayList<ArticleVO>)request.getAttribute("myPhotoList");
+	String seq_photo = (String)request.getAttribute("seq_photo");
+	String photoNickname = (String)request.getAttribute("nickname");
+	String profile = (String)request.getAttribute("profile_img");
+	String email = (String)request.getAttribute("email");
+	Date reg_date = (Date)request.getAttribute("reg_date");
+	ArticleVO article = myPhotoList.get(0);
+	/* PhotoInfoVO photo = article.getPhoto(); */
+%>
 <title>Kostagram</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
@@ -36,113 +50,125 @@
 				</table>
 			</div>
 
-		<div>
-			<table width="100%">
-				<tr>
-					<td width="60"><image src="./image/test.jpg" width="60"
-							style="-webkit-border-radius: 100px; 
-								border-radius: 100px;" /></td>
-					<td align="left"><a href="#"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">닉네임</a></td>
-					<td align="right"><a href="#"><image
-								src="./image/follow.jpg" width="80" /></a></td>
-				</tr>
-			</table>
-		</div>
-
-		<div>
-			<table width="100%" cellpadding="0" cellspacing="0">
-				<tr>
-					<td width="100%" colspan="2"><image src="./image/test.jpg"
-							width="100%" /></td>
-				</tr>
-				<tr>
-					<td align="left"><a href="#"><image
-								src="./image/icon/heart.png" width="25" /></a>&nbsp;&nbsp;<a
-						href="#"><image src="./image/icon/chat_bubble.png" width="25" /></a></td>
-					<td align="right"><a href="#"><image
-								src="./image/icon/warning.png" width="25" /></a></td>
-				</tr>
-			</table>
-		</div>
-		<div>
-			<table>
-				<tr>
-					<%
-						// 좋아요 부분, 좋아요가 5개 이하이면 아이디를, 초과되면 갯수를
-						ArrayList likelist = new ArrayList();
-						for (int i = 0; i < 5; i++) {
-							likelist.add(i);
-						}
-
-						if (likelist.size() < 6) {
+					
+			<div class='article'>
+				<div class='photoHeader'>
+					<table width='100%'>
+						<tr>
+							<td width='60'>
+						<%
+							if (profile == null) {
+						%>
+								<img src='/Kostagram/personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />
+						<%	} else {
+						%>
+								<img src='/Kostagram/personalImg/"<%= email %>"/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />
+						<%	} %>
+							
+							</td>
+							<td align='left'><a href='/Kostagram/m/"<%= photoNickname %>' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>
+							<%= photoNickname %></a></td>
+							<td align='right' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>
+						<%
+							long uploadTime = System.currentTimeMillis() - reg_date.getTime();
+							if ( uploadTime/(1000*60*60*24*7) != 0 ) {
+						%>	<%= uploadTime/(1000*60*60*24*7)%> 주 전
+						<%	} else if (uploadTime/(1000*60*60*24) != 0 ) {
+						%>	<%= uploadTime/(1000*60*60*24)%> 일 전
+						<% 	} else if ( uploadTime/(1000*60*60) != 0 ) {
+						%>	<%= uploadTime/(1000*60*60)%> 분 전
+						<%  } else if ( uploadTime/(1000*60) != 0 ) {
+						%>	<%= uploadTime/(1000*60)%> 초 전
+						<%  } else if ( uploadTime/(1000*30) != 0 ) {
+						%>	방금	<% } %>
+							</td>
+						</tr>
+						</table>
+					</div>
+					
+					<div class='photoArea'>
+						<table width='100%' cellpadding='0' cellspacing='0'>
+							<tr>
+								<td width='100%' colspan='2'>
+									<img src='/Kostagram/personalImg/<%= email%>/<%= seq_photo%>.jpg' width='100%' />
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class='CMTnLIK' style='padding: 0px 5px 0px 5px'>
+						<table>
+							<tr>
+								<td align='left'><img src='./image/icon/heart.png' width='25' />
+								</td>
+								<td align='left'>
+									<a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a>
+								</td>
+								<td align='right'><a href='./report?pid="<%= seq_photo%>"'>
+									<img src='./image/icon/warning.png' width='25' /></a>
+								</td>
+							</tr>
+						</table>
+					<hr/>
+					
+					<table>
+						<tr>
+						<%
+							List<HashMap> likeList = article.getLikeList();
+							if (likeList.size() < 6) {
+						%>
+							<td>
+								<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥
+						<%
+								if (likeList.size() == 0) {
+						%>		좋아요
+						<%		}
+								for (int j = 0; j < likeList.size(); j++) {
+									HashMap like = likeList.get(j);
+									String cmtNickname = (String) like.get("NICKNAME");
+									out.print(cmtNickname);
+								}
+						%>
+								</a>
+							</td>
+						<%		} else {
+						%>
+							<td>
+								<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥
+								<%= likeList.size()%> 개
+								</a>
+							</td>
+						</tr>
+					<% 
+								}
+								List<HashMap> commentList = article.getCommentList();
+								if (commentList != null && commentList.size() > 0) {
+									if (commentList.size() > 6) {
 					%>
-					<td><a href="#"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">♥
-							<%
-						for (int i = 0; i < likelist.size(); i++) {
-					%> <%=likelist.get(i)%> <%
- 	}
- %>
-					</a></td>
-					<%
-						} else {
+						<tr>
+							<td>
+								<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 더보기</a>
+							</td>
+						</tr>
+					<%			}
+									for (int j = 0; j < commentList.size(); j++) {
+										HashMap comment = commentList.get(j);
+										String nickname = (String) comment.get("NICKNAME");
+										String content = (String) comment.get("CONTENT");
 					%>
-					<td><a href="#"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">♥
-							<%=likelist.size()%>개
-					</a></td>
-					<%
-						}
+						<tr>
+							<td>
+								<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>
+								<%= nickname%></a> <%= content%>
+							</td>
+						</tr>
+					<% 
+									}
+								}
 					%>
-				</tr>
-
-				<tr>
-					<td><a href="#"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;">아이디</a>
-						게시글 내용</td>
-				</tr>
-				<tr>
-					<%
-						// 댓글 시작
-						// 임시로 댓글 리스트 추가
-						ArrayList replylist = new ArrayList();
-						for (int i = 0; i < 4; i++) {
-							replylist.add(i);
-						}
-
-						if (replylist != null && replylist.size() >= 0) {
-							if (likelist.size() > 3) {
-					%>
-				
-				<tr>
-					<td><a href="#"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;">댓글
-							더보기</a></td>
-				</tr>
-				<%
-					}
-						for (int i = 0; i < 4; i++) {
-				%>
-				<tr>
-					<td><a href="#"
-						style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%=replylist.get(i)%></a>
-						댓글</td>
-				</tr>
-				<%
-					}
-					}
-
-					else {
-					}
-				%>
-			</table>
-		</div>
-
-		<div>
-			<a href="#"
-				style="text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;">댓글
-				달기</a>
+					</table>
+				</div>
+			<div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a>
+			</div>
 		</div>
 
 		<div data-role="footer" data-position="fixed">
@@ -161,6 +187,5 @@
 				</ul>
 			</div>
 		</div>
-
 	</div>
 </body>
