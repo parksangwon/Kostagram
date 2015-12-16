@@ -2,6 +2,7 @@ package com.kostagram.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -491,7 +492,23 @@ public class MobileController {
 	}
 
 	@RequestMapping("/detail")
-	public String detail() {
+	public String detail(HttpServletRequest request, Model model) {
+		String seq_photo = request.getParameter("pid");
+		List<HashMap> userInfo = photoInfoDao.getUserInformation(seq_photo);
+
+		String email = (String)userInfo.get(0).get("EMAIL");
+		String profile_img = (String)userInfo.get(0).get("PROFILE_IMG");
+		String nickname = (String)userInfo.get(0).get("NICKNAME");
+		Date reg_date = (Date)userInfo.get(0).get("REG_DATE");
+		
+		ArrayList<ArticleVO> myPhotoList = photoInfoDao.getPhotoInfo(seq_photo);
+		System.out.println("DETAIL CONTROLLER : " + myPhotoList);
+		model.addAttribute("seq_photo", seq_photo);
+		model.addAttribute("email", email);
+		model.addAttribute("profile_img", profile_img);
+		model.addAttribute("nickname", nickname);
+		model.addAttribute("reg_date", reg_date);
+		model.addAttribute("myPhotoList", myPhotoList);
 		return "mobile/detail";
 	}
 
