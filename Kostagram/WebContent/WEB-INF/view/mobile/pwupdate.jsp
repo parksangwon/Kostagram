@@ -3,7 +3,7 @@
 <%@ page import="java.util.*"%>
 
 
-<title>jQuery Mobile</title>
+<title>비밀번호 변경</title>
 <meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -14,8 +14,10 @@
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
 
+
+
 <body>
-	<div id="pwupdate" data-role="page" data-theme="a">
+	<div data-role="page" data-theme="a">
 		
 		<div data-role="header" data-theme="a">
 			<table width="100%">
@@ -25,10 +27,10 @@
 								src="./image/icon/back.png" width="20"
 								style="padding-left:10px;" /></a> <span
 						style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
-							비밀번호 변경 </span></td>
-					<td align="right"><a href=""><img
-							src="./image/icon/tick.png" width="20"
-							style="padding-right: 10px;" /></a></td>
+							비밀번호 변경 </span>
+						<td>
+							<input type="submit" value="변경" id="changebutton">
+						</td>
 				</tr>
 			</table>
 		</div>
@@ -39,17 +41,22 @@
 				<p><font color="blue">&nbsp;&nbsp;&nbsp; 비밀번호를 재 설정 합니다.</font></p>
 				<tr>
 					<td height="60"><img src="./image/icon/lock.png"></td>
-					<td width="99%"><input type="text" placeholder="현재 비밀번호" /></td>
+					<td width="99%"><input type="password" id="nowpass" placeholder="현재 비밀번호" /></td>
 				</tr>
 				<tr>
 					<td height="60"><img src="./image/icon/lock.png"></td>
-					<td width="99%"><input type="text" placeholder="새 비밀번호" /></td>
+					<td width="99%"><input type="password" id="changepass1" placeholder="새 비밀번호" /></td>
 				</tr>
 				<tr>
 					<td height="60"><img src="./image/icon/lock.png"></td>
-					<td width="99%"><input type="text" placeholder="새 비밀번호 다시 입력" /></td>
+					<td width="99%"><input type="password" id="changepass2" placeholder="새 비밀번호 다시 입력" /></td>
 				</tr>
 			</table>
+			
+			<p align="center" id="message" style="color: red"></p>
+			<div id="alerts" class="alerts">
+				<p id="alert-red" class="alert-red"></p>
+			</div>
 
 		</div>
 
