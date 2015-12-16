@@ -492,6 +492,10 @@
 												success:function(data){
 													$('#search_resultArea').empty();
 													$('#search_hashtag > #search_resultArea').html(data);
+													$('.result_hashtag').click(function() {
+														var selectValue = trim($(this).text());
+														$.mobile.changePage("/Kostagram/m/hashtag/"+selectValue);
+													});					
 												},
 												error:function() {
 													alert("error");
@@ -504,6 +508,29 @@
 								});
 							}
 							// search_hashtag 끝
+							// search_result 시작
+							else if (this.id == "search_result") {
+								$(document).ready(function(){
+									var search_hashtag = $('input:hidden[name=hashtag]');
+									var selectValue = search_hashtag.val();
+									if(selectValue!=null && selectValue!="") {
+										$.ajax({
+											type:'POST',
+											url:'../ajaxselect_hashtag',
+											dataType:'text',
+											data:{select_hashtag:selectValue},
+											success:function(data){
+												$('#photoArea').empty();
+												$('#search_result > #photoArea').html(data);	
+											},
+											error:function() {
+												alert("error");
+											}
+										});
+									}
+								});
+							}
+							// search_result 끝
 							else if (this.id == "report") {
 								$('#reportBtn > ul > li a').each(function() {
 									$(this).click(function(){
