@@ -22,6 +22,7 @@ import com.kostagram.service.beans.ActivityVO;
 import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.CommentVO;
 import com.kostagram.service.beans.ConversationVO;
+import com.kostagram.service.beans.FollowVO;
 import com.kostagram.service.beans.HashtagVO;
 import com.kostagram.service.beans.LikeVO;
 import com.kostagram.service.beans.LocationVO;
@@ -930,29 +931,7 @@ public class MobileController {
 		return "/mobile/comment2";
 	}
 	
-	@RequestMapping("/{nickname}")
-	public String userpage(@PathVariable String nickname, Model model) {
-
-		UserInfoVO user = new UserInfoVO();
-		user.setNickname(nickname);
-
-		user = userInfoDao.findNickname(user);
-		
-		if (user != null) {
-			model.addAttribute("email", user.getEmail());
-			model.addAttribute("nickname", user.getNickname());
-			model.addAttribute("profile", user.getProfile_img());
-			model.addAttribute("message", user.getMessage());
-			model.addAttribute("photoCnt", photoInfoDao.countMyPhoto(user));
-			model.addAttribute("followerCnt", followDao.getMyFollower(user));
-			model.addAttribute("followingCnt", followDao.getMyFollowing(user));
 	
-			return "mobile/userpage";
-		} else {
-			model.addAttribute("nickname", nickname);
-			return "mobile/usernotfound";
-		}
-	}
 	
 	// 비밀번호 변경하기
 		@RequestMapping(value = "/ajaxpwupdate")
@@ -1021,6 +1000,90 @@ public class MobileController {
 	    
 		return "mobile/photoMap";
 	    }
+	    
+	    @RequestMapping(value = "/userpage")
+		public void follow(HttpSession session, HttpServletResponse response, HttpServletRequest request)
+				throws IOException {
+			String email =(String) session.getAttribute("email");
+			String to_email = (String) request.getParameter("to_email");
+			String from_email = email;
+			String followState = (String) request.getParameter("followState");
+
+			FollowVO follow = new FollowVO();
+			follow.setTo_email(to_email);
+			follow.setFrom_email(from_email);
+			
+			PrintWriter out = response.getWriter();
+			
+			System.out.println(followState);
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("text/html");
+			response.setHeader("Cache-Control", "no-cache");
+			
+			if (followState.equals("UF")) {
+				System.out.println(followState);
+				if (followDao.insert(follow)) {
+					out.print("following");
+				} else {
+					out.print("팔로잉중에 실패하였습니다.");
+				}
+			} else if (followState.equals("F")) {
+				System.out.println("followStata는 F...");
+				if (followDao.delete(follow.getTo_email())) {
+					out.print("follow");
+				} else {
+					out.print("팔로우중에 실패하였습니다.");
+				}
+			}
+			
+			
+		}
+		
+		
+		@RequestMapping("/{nickname}")
+		public String userpage(@PathVariable String nickname, HttpSession session,Model model) {
+
+			UserInfoVO user = new UserInfoVO();
+			user.setNickname(nickname);
+			FollowVO follow = new FollowVO();
+			
+			String check="N";
+			
+			user = userInfoDao.findNickname(user);
+			
+			
+			if (user != null) {
+				model.addAttribute("email", user.getEmail());
+				model.addAttribute("nickname", user.getNickname());
+				model.addAttribute("profile", user.getProfile_img());
+				model.addAttribute("message", user.getMessage());
+				model.addAttribute("photoCnt", photoInfoDao.countMyPhoto(user));
+				model.addAttribute("followerCnt", followDao.getMyFollower(user));
+				model.addAttribute("followingCnt", followDao.getMyFollowing(user));
+				
+				if (((String) session.getAttribute("nickname")).equals(nickname)) {
+					check = "Y";
+					model.addAttribute("check", check);
+				}
+				// 로그인은 했는데 자기자신이 아니고
+				else {
+					follow.setFrom_email((String) session.getAttribute("email"));
+					follow.setTo_email(user.getEmail());
+					follow = followDao.check(follow);
+					if (follow == null) {
+						check = "FN";
+					}
+
+					model.addAttribute("check", check);
+				}
+				
+				
+				return "mobile/userpage";
+			} else {
+				model.addAttribute("nickname", nickname);
+				return "mobile/usernotfound";
+			}
+		}
 	
 	
 }
