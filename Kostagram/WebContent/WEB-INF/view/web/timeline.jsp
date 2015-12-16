@@ -6082,7 +6082,7 @@ transform
 								</div>
 								<div class="-cx-PRIVATE-PostInfo__root -cx-PRIVATE-Post__mediaInfo">
 							<%
-								List<HashMap> likeList = article.getLikeList();
+									List<HashMap> likeList = article.getLikeList();
 							%>
 									<section class="-cx-PRIVATE-PostInfo__likesAndTimestamp -cx-PRIVATE-PostInfo__likesAndTimestampStackedVariant">
 										<div class="-cx-PRIVATE-PostInfo__likesInfo -cx-PRIVATE-PostLikers__root">
@@ -6144,6 +6144,43 @@ transform
 							%>
 											</h1>
 										</li>
+										
+							<%
+									List<HashMap> commentList = article.getCommentList();
+									
+									if ( commentList != null && commentList.size() > 0 ) {
+										for ( int j = 0; j < commentList.size(); j++ ) {
+											HashMap comment = commentList.get(j);
+							%>
+											<li><a href='./<%= comment.get("NICKNAME")%>'><%= comment.get("NICKNAME")%> </a>
+							<%
+											String cmtContent = (String)comment.get("CONTENT");
+											
+											if ( cmtContent != null ) {
+												StringTokenizer stk = new StringTokenizer(cmtContent);
+												while(stk.hasMoreTokens()) {
+													String token = stk.nextToken();
+													if ( token.startsWith("#") ) {
+							%>
+														<a href='./hashtag/<%= token.substring(1) %>'><%= token %></a>
+							<%
+													} else if ( token.startsWith("@") ) {
+							%>
+														<a href='./<%= token.substring(1) %>'><%= token %></a>
+							<%
+													} else {
+							%>
+														<%= token %>
+							<%
+													}
+												}
+							%>
+											</li>
+							<%
+											}
+										}
+									}
+							%>
 									</ul>
 									<section class="-cx-PRIVATE-PostInfo__feedback -cx-PRIVATE-PostInfo__feedbackStackedVariant">
 										<a class="-cx-PRIVATE-PostInfo__likeButton -cx-PRIVATE-LikeButton__root -cx-PRIVATE-Util__hideText coreSpriteHeartOpen" href="#" role="button">좋아요</a>
