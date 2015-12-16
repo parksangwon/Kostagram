@@ -530,31 +530,25 @@
 							
 							//comment (댓글)
 							else if (this.id == "comment") {
-								alert("comment에 들어옴");
+								
 								$('#submit').click(function() {
-														
-									alert("Aaa");
 									var comment_val = $('input:text[name=comment]').val();
-									
 									var seq_photo_val=$('#seq_photo').val();
-									
-									
+
 									$.ajax({
 										type:'POST',
 										url:'ajaxcomment',
-										dataType:'text',
+										dataType:'html',
 										data:{content:comment_val, seq_photo:seq_photo_val},
-										success:function(text){
-											alert("success 시작");
-												location.reload();
-											alert("success 끝");
+										success:function(html){
+											$('#rrresultMessage').html(html);
 										},
-										error:function() {
-											alert("error");
+										error:function() {	
 										}
 									});
 								});
 							}//댓글 끝
+							
 							
 						});
 		// login 시작
