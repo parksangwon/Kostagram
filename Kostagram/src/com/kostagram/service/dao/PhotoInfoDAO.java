@@ -16,5 +16,4 @@ public interface PhotoInfoDAO {
 	public List<PhotoInfoVO> getMyPhotoList(UserInfoVO user);
 	public ArrayList<ArticleVO> getMyPhotoListForArticle(UserInfoVO user);
 	public int countMyPhoto(UserInfoVO user);
-	public ArticleVO getArticleByPhotoId(String pid);
 }
