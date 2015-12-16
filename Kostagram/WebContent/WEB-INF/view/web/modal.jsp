@@ -20,7 +20,32 @@
 		$('#articleModal').css('display', 'none' );
 		
 	}
-	
+</script>
+<script>
+//comment (댓글)
+
+	$(function() {	
+		$('#submit').click(function() {
+			var comment_val = $('input:text[name=comment]').val();
+			var seq_photo_val = $('input:hidden[name=seq_photo]').val();
+			 $('input:text[name=comment]').val("");
+			if(trim(comment_val) != ""){
+				$.ajax({
+					type:'POST',
+					url:'ajaxgetArticleModal',
+					 dataType:'html',
+					data: {content:comment_val, seq_photo:seq_photo_val},
+					success:function(html){
+						$('#ccomment').empty();
+						$('#ccomment').html(html);
+					},
+					error:function() {	
+					}
+				});
+			}
+		});
+	});
+//댓글 끝
 </script>
 <%
 	ArticleVO article = (ArticleVO) request.getAttribute("article");
@@ -28,13 +53,18 @@
 	PhotoInfoVO photo = article.getPhoto();
 	List<HashMap> likeList = article.getLikeList();
 	List<HashMap> commentList = article.getCommentList();
+
+	String seq_photo = photo.getSeq_photo();
+
 %>
 <div class="modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: flex; padding-right: 17px;">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
+			<form method="POST">
+				<input type="hidden" value="<%=seq_photo%>" id="seq_photo" name="seq_photo">
 			<div class="modal-header">
 
-				<table border="1">
+				<table border="0">
 					<tr>
 						<td>
 <%
@@ -66,25 +96,30 @@
 			</div>
 			<div class="modal-body">
 				<img src='./personalImg/<%= userInfo.get("EMAIL")%>/<%= photo.getSeq_photo()%>.jpg' />
-				<ul>
-<%
-				for ( int i = 0; i < commentList.size(); i++ ) {
-					HashMap comment = commentList.get(i);
-%>
-					<li><a href='/Kostagram/<%= comment.get("NICKNAME") %>' ><%= comment.get("NICKNAME") %></a> <%= comment.get("CONTENT") %></li>
-<%
-				}
-%>
-				</ul>
+				<div id="ccomment">
+					<ul>
+	<%
+					if ( commentList != null && commentList.size() > 0 ) {
+						for ( int i = 0; i < commentList.size(); i++ ) {
+							HashMap comment = commentList.get(i);
+	%>
+						<li><a href='/Kostagram/<%= comment.get("NICKNAME") %>' ><%= comment.get("NICKNAME") %></a> <%= comment.get("CONTENT") %></li>
+	<%
+						}	
+					}
+	%>
+					</ul>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<table border="0">
 					<tr>
-						<td width="90%"><input type="text" id="comment" name="comment" style="width:750px;"/></td>
-						<td><input type="submit" value="댓글 남기기" ></td>
+						<td width="90%"><input type="text" id="comment" name="comment" style="width:95%;"/></td>
+						<td><input type="button" value="댓글 남기기" id="submit" name="submit"></td>
 					</tr>
 				</table>
 			</div>
+			</form>
 		</div>
 	</div>
 </div>
