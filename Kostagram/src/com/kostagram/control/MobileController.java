@@ -2,7 +2,7 @@ package com.kostagram.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -471,7 +471,7 @@ public class MobileController {
 					PhotoInfoVO photo = select_result.get(i);
 					String seq_photo = photo.getSeq_photo();
 					String email = photo.getEmail();
-					out.print("<li><a href='./detail?pid=" + seq_photo
+					out.print("<li><a href='../detail?pid=" + seq_photo
 							+ "'><img src='/Kostagram/personalImg/" + email + "/"
 							+ seq_photo + ".jpg'/></a></li>");
 				}
@@ -575,7 +575,7 @@ public class MobileController {
 				for (int i = 0; i < myPhotoList.size(); i++) {
 					PhotoInfoVO photo = myPhotoList.get(i);
 					String seq_photo = photo.getSeq_photo();
-					out.print("<li><a href='./detail?pid=" + seq_photo
+					out.print("<li><a href='../detail?pid=" + seq_photo
 							+ "'><img src='../personalImg/" + email + "/"
 							+ seq_photo + ".jpg' alt='" + seq_photo
 							+ "' /></a></li>");
