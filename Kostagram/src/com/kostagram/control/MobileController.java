@@ -884,10 +884,12 @@ public class MobileController {
 	@RequestMapping("/comment")
 	public String comment(@RequestParam String pid, Model model, CommentVO comment) {
 
+		System.out.println("pid = " +pid);
 		// DB에서 정보 가져오기.
 		List<HashMap> commentList = commentDao.getCommentByPhotoId(pid);
-		
+		System.out.println("controller commentList = "+commentList);
 		model.addAttribute("commentList", commentList);
+		model.addAttribute("pid", pid);
 		return "mobile/comment";
 	}
 	
@@ -900,6 +902,7 @@ public class MobileController {
 		String email = (String)session.getAttribute("email");
 		String content = (String)request.getParameter("comment");
 		
+		System.out.println("seq_photo = "+seq_photo);
 		commentVO.setEmail(email);
 		System.out.println(commentVO);
 		boolean result = commentDao.insert(commentVO);
