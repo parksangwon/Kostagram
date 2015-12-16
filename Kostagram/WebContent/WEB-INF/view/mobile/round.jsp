@@ -49,18 +49,31 @@
 						<%
 							int count=0;
 							for (HashMap round_profile : round_profileList) {
-									if(count==4){
-										break;
-									}
-									String email = (String) round_profile.get("EMAIL");
-									String profile = (String) round_profile.get("PROFILE_IMG");
-									System.out.println(email);
-									count++;
-						%> <a href="./detail"><img
-							src="/Kostagram/personalImg/<%= email%>/profile.jpg" width="40"
-							style="-webkit-border-radius: 100px; border-radius: 100px;" /></a> <%
+								if(count==4){
+									break;
+								}
+								String email = (String) round_profile.get("EMAIL");
+								String profile = (String) round_profile.get("PROFILE_IMG");
+								String nick_name = (String) round_profile.get("NICKNANE");
+								System.out.println(email);
+								count++;
+								if(profile!=null && profile!="")
+								{
+						%>
+									<a href="/Kostagram/m/<%= nick_name%>"><img
+									src="/Kostagram/personalImg/<%= email%>/profile.jpg" width="40"
+									style="-webkit-border-radius: 100px; border-radius: 100px;" /></a>
+						<%
+								}
+								else {
+						%>
+									<a href="/Kostagram/m/<%= nick_name%>"><img
+									src="/Kostagram/personalImg/profile.jpg" width="40"
+									style="-webkit-border-radius: 100px; border-radius: 100px;" /></a> 
+						<%
+				 				}
 					 		}
-					 	}
+						}
 					 %>
 					</td>
 				</table>
@@ -78,13 +91,12 @@
 									String profile = (String) round.get("PROFILE");
 						%>
 						<li><a href="./detail?pid=<%=seq_photo%>"><img
-								src="../personalImg/<%=email%>/<%=seq_photo%>.jpg"
-								alt="<%=seq_photo%>" /></a></li>
+								src="../personalImg/<%=email%>/<%=seq_photo%>.jpg"/></a></li>
 						<%
 								}
 							} else {
 						%>
-						<span>팔로우를 추가해 주세요.</span>
+						<li>팔로우를 추가해 주세요.</li>
 						<%
 							}
 						%>
