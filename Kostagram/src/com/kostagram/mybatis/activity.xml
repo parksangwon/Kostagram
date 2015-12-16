@@ -49,14 +49,18 @@
 	</select>
 	
 	<select id="round_profileList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
-		select distinct e.email, g.profile_img
-		from photo e, member g,
-			(select b.to_email
-			 from follow b,
-				(select a.to_email
-				 from follow a
-				 where a.from_email = #{email})d
-			 where  not d.to_email = b.to_email and not b.to_email=#{email}) f
-		where e.email = f.to_email and not g.profile_img='null'
+		select member.email, member.profile_img
+		from
+		(
+		  select follow.to_email
+		  from
+		  (
+		    select to_email
+		    from member, follow
+		    where member.email = follow.from_email and member.email = #{email}
+		  ) a, follow
+		  where a.to_email = follow.from_email and follow.to_email != #{email}
+		) b, member
+		where b.to_email = member.email
 	</select>
 </mapper>
