@@ -350,7 +350,9 @@
 										}
 									});
 								});
-							} else if (this.id == "reportPage") {
+							}// profileupdate끝
+							
+							else if (this.id == "reportPage") {
 								$('#reportPage #report').click(function(){
 									$.ajax({
 										type: 'POST',
@@ -366,7 +368,7 @@
 									});
 								});
 							}
-							// profileupdate끝
+							
 							// search_people 시작
 							else if (this.id == "search_people") {
 								
@@ -451,17 +453,20 @@
 								$('#submit').click(function() {
 														
 									alert("Aaa");
-									var commentValue = $('#comment').val();
+									var comment_val = $('input:text[name=comment]').val();
 									
-									var  resultMessage= $('#resultMessage');
+									var seq_photo_val=$('#seq_photo').val();
+									
 									
 									$.ajax({
 										type:'POST',
 										url:'ajaxcomment',
 										dataType:'text',
-										data:{comment:commentValue},
+										data:{content:comment_val, seq_photo:seq_photo_val},
 										success:function(text){
-											
+											alert("refresh1");
+												location.reload();
+											alert("refresh2");
 										},
 										error:function() {
 											alert("error");
