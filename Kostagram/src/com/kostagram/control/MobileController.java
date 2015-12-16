@@ -575,7 +575,7 @@ public class MobileController {
 				for (int i = 0; i < myPhotoList.size(); i++) {
 					PhotoInfoVO photo = myPhotoList.get(i);
 					String seq_photo = photo.getSeq_photo();
-					out.print("<li><a href='../detail?pid=" + seq_photo
+					out.print("<li><a href='./detail?pid=" + seq_photo
 							+ "'><img src='../personalImg/" + email + "/"
 							+ seq_photo + ".jpg' alt='" + seq_photo
 							+ "' /></a></li>");
