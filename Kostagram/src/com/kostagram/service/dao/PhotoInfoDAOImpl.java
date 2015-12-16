@@ -93,4 +93,22 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 		return sqlSession.selectOne("photoInfo.countMyPhoto", user);
 	}
 
+	@Override
+	public ArticleVO getArticleByPhotoId(String pid) {
+		ArticleVO article = null;
+		PhotoInfoVO photo = sqlSession.selectOne("photoInfo.getArticleByPhotoId", pid);
+		
+		if ( photo != null ) {
+			HashMap userInfo = sqlSession.selectOne("userInfo.getProfileNicknameEmail", photo);
+			List<HashMap> commentList = sqlSession.selectList("comment.getCommentByPhotoId", photo.getSeq_photo());
+		    List<HashMap> likeList = sqlSession.selectList("like.getLikeByPhotoId", photo);
+		    
+		    article = new ArticleVO();
+		    article.setUserInfo(userInfo);
+		    article.setPhoto(photo);
+		    article.setLikeList(likeList);
+		    article.setCommentList(commentList);
+		}
+	    return article;
+	}
 }
