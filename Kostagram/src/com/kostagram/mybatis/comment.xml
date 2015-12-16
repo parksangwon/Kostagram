@@ -2,11 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="comment">
 	<insert id="insert" parameterType="com.kostagram.service.beans.CommentVO">
-
 		insert into
-		member values
+		photo_comment values
 		(to_char(sysdate,'YYYYMMDDHHMISS')||lpad(seq_comment.nextval, 16, 0),
-		#{seq_photo}, #{comment}, #{email}, sysdate, 'Y')
+		#{seq_photo}, #{content}, #{email}, sysdate, 'Y')
 	</insert>
 
 	<delete id="delete" parameterType="com.kostagram.service.beans.CommentVO">
@@ -16,9 +15,10 @@
 
 	<select id="getCommentByPhotoId" parameterType="String"
 		resultType="java.util.HashMap">
-		select photo_comment.content, member.nickname, member.email, member.profile_img
+		select photo_comment.content, member.nickname, member.email, member.profile_img, photo_comment.seq_photo
 		from photo_comment, member
 		where photo_comment.seq_photo = #{seq_photo} and photo_comment.email = member.email
 		order by photo_comment.reg_date desc
 	</select>
+
 </mapper>
