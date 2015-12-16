@@ -78,7 +78,7 @@
 							style="-webkit-border-radius: 100px; border-radius: 100px; padding: 1em" /></td>
 						<td align="center"><%=photoCnt%><br>게시물</td>
 						<td align="center"><%=followingCnt%><br> 팔로잉</td>
-						<td align="center"><%=followerCnt%><br> 팔로워</td>
+						<td align="center" ><span id="abc"><%=followerCnt%></span><br> 팔로워</td>
 					</tr>
 
 
@@ -90,7 +90,7 @@
 						<td align="center" colspan="3"
 							onclick="$.mobile.changePage('./profileupdate')">
 
-							<button>프로필 편집</button>
+							<a>프로필 편집</a>
 						</td>
 					</tr>
 					<%
@@ -131,8 +131,7 @@
 						src="./image/icon/grid.png" width="20" /></td>
 					<td align="center" class="getPhotoList" value="list"><img
 						src="./image/icon/stamp.png" width="20" /></td>
-					<td align="center"><img src="./image/icon/pin.png" width="20" />
-					</td>
+					<td align="center"><a href="/Kostagram/m/photomap"><img src="./image/icon/pin.png" width="20" /></a></td>
 					<td align="center"><a href="/Kostagram/m/likenotice"><img
 							src="./image/icon/bookmark.png" width="20" /></a></td>
 				</tr>
