@@ -27,6 +27,7 @@ import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.ActivityDAO;
+import com.kostagram.service.dao.CommentDAO;
 import com.kostagram.service.dao.ConversationDAO;
 import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.HashtagDAO;
@@ -59,6 +60,9 @@ public class MobileController {
 	
 	@Autowired
 	private HashtagDAO hashtagDao;
+	
+	@Autowired
+	private CommentDAO commentDao;
 	
 	@Autowired
 	private LikeDAO likeDao;
@@ -841,16 +845,48 @@ public class MobileController {
 	@RequestMapping("/comment")
 	public String comment(@RequestParam String pid, Model model, CommentVO comment) {
 		
-		System.out.println(pid);
-		//CommentVO comment = new CommentVO(pid);
 
 		// DB에서 정보 가져오기.
-		//List<CommentVO> commentList = commentDao.getCommentByPhotoId(pid);
+		List<HashMap> commentList = commentDao.getCommentByPhotoId(pid);
 		
-		
-		
-		model.addAttribute("pid", pid);
+		model.addAttribute("commentList", commentList);
 		return "mobile/comment";
+	}
+	
+	@RequestMapping("/ajaxcomment")
+	public void comment(UserInfoVO userInfoVO, HttpSession session,
+			HttpServletResponse response, Model model) throws IOException {
+		String nickname = (String) session.getAttribute("nickname");
+
+		PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-cache");
+
+		UserInfoVO findUserVO = new UserInfoVO();
+		findUserVO.setNickname(userInfoVO.getNickname());
+
+		findUserVO = userInfoDao.findNickname(findUserVO);
+
+		System.out.println("select :" + userInfoVO);
+		if (userInfoVO.getNickname() == null
+				|| findUserVO.getNickname().equals(nickname)) {
+			userInfoVO.setUpdatenickname(nickname);
+			boolean result = userInfoDao.update(userInfoVO);
+			if (result) {
+				out.print("updateSuccess");
+
+				session.removeAttribute("nickname");
+				session.setAttribute("nickname", userInfoVO.getNickname());
+
+			} else
+
+			{
+				out.print("updateFail");
+			}
+		} else {
+			out.print("nicknameduplication");
+		}
 	}
 	
 	@RequestMapping("/{nickname}")
