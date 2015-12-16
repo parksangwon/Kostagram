@@ -70,14 +70,14 @@
 						<%
 							if (from_profile == null) {
 						%>
-						<td align="left" width="15%"><a href="./detail"><img
+						<td align="left" width="15%"><a href="/Kostagram/m/<%= from_nickname %>"><img
 								src="/Kostagram/personalImg/profile.jpg" width="40"
 								style="-webkit-border-radius: 100px; border-radius: 100px;" /></a></td>
 						<%
 							} else {
 						%>
-						<td align="left" width="15%"><a href="./detail"><img
-								src="/Kostagram/personalImg/<%=from_email%>/<%=from_profile%>.jpg"
+						<td align="left" width="15%"><a href="/Kostagram/m/<%= from_nickname %>"><img
+								src="/Kostagram/personalImg/<%= from_email%>/<%= from_profile%>"
 								width="40"
 								style="-webkit-border-radius: 100px; border-radius: 100px;" /></a></td>
 						<%
