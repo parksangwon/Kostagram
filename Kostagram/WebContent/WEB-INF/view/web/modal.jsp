@@ -95,25 +95,38 @@
 				</table>
 			</div>
 			<div class="modal-body">
-				<img src='./personalImg/<%= userInfo.get("EMAIL")%>/<%= photo.getSeq_photo()%>.jpg' />
-				<div id="ccomment">
-					<ul>
-	<%
-					if ( commentList != null && commentList.size() > 0 ) {
-						for ( int i = 0; i < commentList.size(); i++ ) {
-							HashMap comment = commentList.get(i);
-	%>
-						<li><a href='/Kostagram/<%= comment.get("NICKNAME") %>' ><%= comment.get("NICKNAME") %></a> <%= comment.get("CONTENT") %></li>
-	<%
-						}	
-					}
-	%>
-					</ul>
+				<div align="center">
+				<img src='./personalImg/<%= userInfo.get("EMAIL")%>/<%= photo.getSeq_photo()%>.jpg' width="600" />
 				</div>
+				<table border="1">
+					<tr>
+						<td width="130"></td>
+					
+						
+						<td>
+							<p><b><h4>좋아요 000개</h4></b></p>
+							<div id="ccomment">
+								<ul>
+				<%
+								if ( commentList != null && commentList.size() > 0 ) {
+									for ( int i = 0; i < commentList.size(); i++ ) {
+										HashMap comment = commentList.get(i);
+				%>
+									<li><a href='/Kostagram/<%= comment.get("NICKNAME") %>' ><%= comment.get("NICKNAME") %></a> <%= comment.get("CONTENT") %></li>
+				<%
+									}	
+								}
+				%>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</table>
 			</div>
 			<div class="modal-footer">
 				<table border="0">
 					<tr>
+						<td><img src="./m/image/icon/heart.png">&nbsp;&nbsp;&nbsp;</td>
 						<td width="90%"><input type="text" id="comment" name="comment" style="width:95%;"/></td>
 						<td><input type="button" value="댓글 남기기" id="submit" name="submit"></td>
 					</tr>
