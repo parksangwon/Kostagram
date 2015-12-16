@@ -83,12 +83,12 @@
 						<%
 							}
 						%>
-						<td width="70%"><a href="#"
+						<td width="70%"><a href="/Kostagram/m/<%= from_nickname %>"
 							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%=from_nickname%></a>님이
-							<a href="#"
+							<a href="/Kostagram/m/<%= to_nickname %>"
 							style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%=to_nickname%></a>님의
 							사진<%=kind%><%=comment%></td>
-						<td align="right" width="15%"><a href="./detail"><img
+						<td align="right" width="15%"><a href="./detail?pid=<%= seq_photo%>"><img
 								src="/Kostagram/personalImg/<%=to_email%>/<%=seq_photo%>.jpg"
 								width="40" /></a></td>
 					</tr>
