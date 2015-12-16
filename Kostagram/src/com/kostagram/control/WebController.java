@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kostagram.mail.Mail;
 import com.kostagram.mail.MailService;
 import com.kostagram.service.beans.ArticleVO;
+import com.kostagram.service.beans.CommentVO;
 import com.kostagram.service.beans.FollowVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.SearchVO;
 import com.kostagram.service.beans.UserInfoVO;
+import com.kostagram.service.dao.CommentDAO;
 import com.kostagram.service.dao.FollowDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.ReportDAO;
@@ -44,6 +46,8 @@ public class WebController {
 	private FollowDAO followDao;
 	@Autowired
 	private MailService mailService;
+	@Autowired
+	private CommentDAO commentDao;
 	@Autowired
 	private Mail mail;
     @Autowired
@@ -386,6 +390,30 @@ public class WebController {
     	model.addAttribute("article", article);
     	
     	return "web/modal";
+    }
+    
+    @RequestMapping("/ajaxgetArticleModal")
+    public String ajaxgetArticleModal(Model model, CommentVO commentVO, HttpSession session, HttpServletRequest request) {
+    	ArticleVO article = null;
+    	
+    	String email = (String)session.getAttribute("email");
+    	String content = (String)request.getParameter("content");
+    	String seq_photo = (String)request.getParameter("seq_photo");
+    	System.out.println("seq_photo = "+seq_photo+" content = "+content+" email = "+email);
+    	
+    	commentVO.setEmail(email);
+    	commentVO.setSeq_photo(seq_photo);
+    	commentVO.setContent(content);
+    	
+    	boolean result = commentDao.insert(commentVO);
+    	
+    	if ( seq_photo != null ) {
+    		article = photoInfoDao.getArticleByPhotoId(seq_photo);
+    	}
+    	
+    	model.addAttribute("article", article);
+    	
+    	return "web/modal2";
     }
     
     @RequestMapping(value = "/{nickname}")
