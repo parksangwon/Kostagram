@@ -15,17 +15,13 @@
 <%
 	List<HashMap> commentList = (List<HashMap>)request.getAttribute("commentList");
 	
-	String seq_photo = "";
+	System.out.println("commentList = "+commentList);
+	String seq_photo = (String)request.getAttribute("pid");
 	String session_email = (String)session.getAttribute("email");
-	if (commentList.size() != 0)
-	{
-		HashMap comment2 = (HashMap)commentList.get(0);
-		seq_photo = (String)comment2.get("SEQ_PHOTO");
-	}
 %>
 	<div id="comment" data-role="page" data-theme="a">
 		<form method="POST" accept-charset="utf-8">
-			<input type="hidden" value="<%=seq_photo%>" id="seq_photo">
+			<input type="hidden" value="<%=seq_photo%>" id="seq_photo" name="seq_photo">
 			<inpyt type="hidden" value="<%= session_email %>" id="session_email1" name="session_email1">
 			<div data-role="header">
 				<table>
