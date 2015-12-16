@@ -16,93 +16,14 @@
 <script src="js/common.js"></script>
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
 <script type="text/javascript">
 	$(function() {
 		$("[data-role=page]")
 				.live(
 						"pageshow",
-						function(event) {
-							//비밀번호 변경 시작							
-							$('#changebutton').click(function() {								
-					
-								var nowpass = $('[data-role=content] #nowpass');
-								var changepass1 = $('[data-role=content] #changepass1');
-								var changepass2 = $('[data-role=content] #changepass2');
-								var resultMessage = $(".alert-red");
-								
-								var message = $('[data-role=content] #message');
-								if (nowpass.val() == "") {
-									message
-											.text("현재 비밀번호를 입력해주세요");
-									nowpass.focus();
-									return false;
-								}
-								
-								else if (nowpass.val().length < 4
-										|| nowpass.val().length > 20  ) {
-									message
-											.text("비밀번호는 4자 이상 20자 이하 입니다.");
-									nowpass.focus();
-									return false;
-								}
-																	
-								if (changepass1.val() == "") {
-									message
-											.text("새 비밀번호를 입력해주세요");
-									nowpass.focus();
-									return false;
-								}
-								
-								if (changepass2.val() == "") {
-									message
-											.text("새 비밀번호를 입력해주세요");
-									nowpass.focus();
-									return false;
-								}
-								
-								else if (changepass1.val().length < 4
-										|| changepass1.val().length > 20 ||changepass2.val().length < 4
-										|| changepass2.val().length > 20  ) {
-									message
-											.text("비밀번호는 4자 이상 20자 이하 입니다.");
-									return false;
-								}
-								
-								if(changepass1.val() != changepass2.val())
-									{
-										message.text("새 비밀번호가 서로 다릅니다.")
-										return false;
-									}
-								
-								var nowpw = $('#nowpass').val();
-								var changepw = $('#changepass1').val();
-								
-								$.ajax({
-									type: 'POST',
-									url: 'ajaxpwupdate',
-									dataType: 'text',
-									data:{nowpw:nowpw, changepw:changepw} ,
-									success:function(text) {
-										if (text === "updateSuccess") {
-											resultMessage.text("성공적으로 비밀번호가 변경되었습니다.");
-											resultMessage.css("color", "#468847");
-											resultMessage.css("background-color", "#dff0d8");
-											resultMessage.css("border-color", "#d6e9c6");
-					
-										} 
-										else if(text === "updateFail"){
-											resultMessage.text("비밀번호 변경 실패 . 입력하신 현재 비밀번호가 일치하지 않습니다");
-											resultMessage.css("color", "red");
-											resultMessage.css("background-color", "#dff0d8");
-											resultMessage.css("border-color", "#d6e9c6");
-										}
-										}
-								});
-								
-					
-						});
-						//비밀번호 변경 끝
-						
+						function(event) {													
 							// emailcheck 시작
 							if (this.id == "loginform") {
 							} else if (this.id == "emailCheck") {
@@ -613,6 +534,129 @@
 									}
 								});
 							}//댓글 끝
+							
+							//포토맵 시작
+							else if(this.id =="photomap")
+								{
+								alert("photomap에 들어옴");
+								
+								var locations = eval($('#locations').val());
+								
+							    var map = new google.maps.Map(document.getElementById('map'), {
+							      zoom: 10,
+							      center: new google.maps.LatLng(37.47883, 126.880715),
+							      mapTypeId: google.maps.MapTypeId.ROADMAP
+							    });
+							    var infowindow = new google.maps.InfoWindow();
+								
+							    var marker, i;
+								
+							  	
+							    for (i = 0; i < locations.length; i++) {
+							      marker = new google.maps.Marker({
+							        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+							        map: map
+							      });
+
+							      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+							        return function() {
+							          infowindow.setContent("<Center>" +locations[i][0]+"</CENTER>" +"<br><img src='../personalImg/" + locations[i][5]+ "/" + locations[i][4].toString() + ".jpg' width=100%> <br> <Center><font size=1> 총 " + locations[i][3] + "개의 사진이 있습니다.</font></CENTER>");
+							          infowindow.open(map, marker);
+							        }
+							      })(marker, i));
+							    }
+							}
+							//포토맵 끝
+							
+							//비밀번호 변경 시작
+							else if(this.id =="pwupdate")
+								{
+								
+								
+								$('#changebutton').click(function() {								
+					
+								var nowpass = $('[data-role=content] #nowpass');
+								var changepass1 = $('[data-role=content] #changepass1');
+								var changepass2 = $('[data-role=content] #changepass2');
+								var resultMessage = $(".alert-red");
+								
+								var message = $('[data-role=content] #message');
+								if (nowpass.val() == "") {
+									message
+											.text("현재 비밀번호를 입력해주세요");
+									nowpass.focus();
+									return false;
+								}
+								
+								else if (nowpass.val().length < 4
+										|| nowpass.val().length > 20  ) {
+									message
+											.text("비밀번호는 4자 이상 20자 이하 입니다.");
+									nowpass.focus();
+									return false;
+								}
+																	
+								if (changepass1.val() == "") {
+									message
+											.text("새 비밀번호를 입력해주세요");
+									nowpass.focus();
+									return false;
+								}
+								
+								if (changepass2.val() == "") {
+									message
+											.text("새 비밀번호를 입력해주세요");
+									nowpass.focus();
+									return false;
+								}
+								
+								else if (changepass1.val().length < 4
+										|| changepass1.val().length > 20 ||changepass2.val().length < 4
+										|| changepass2.val().length > 20  ) {
+									message
+											.text("비밀번호는 4자 이상 20자 이하 입니다.");
+									return false;
+								}
+								
+								if(changepass1.val() != changepass2.val())
+									{
+										message.text("새 비밀번호가 서로 다릅니다.")
+										return false;
+									}
+								
+								var nowpw = $('#nowpass').val();
+								var changepw = $('#changepass1').val();
+								
+								$.ajax({
+									type: 'POST',
+									url: 'ajaxpwupdate',
+									dataType: 'text',
+									data:{nowpw:nowpw, changepw:changepw} ,
+									success:function(text) {
+										if (text === "updateSuccess") {
+											resultMessage.text("성공적으로 비밀번호가 변경되었습니다.");
+											resultMessage.css("color", "#468847");
+											resultMessage.css("background-color", "#dff0d8");
+											resultMessage.css("border-color", "#d6e9c6");
+											message
+											.text("");
+					
+										} 
+										else if(text === "updateFail"){
+											resultMessage.text("비밀번호 변경 실패 . 입력하신 현재 비밀번호가 일치하지 않습니다");
+											resultMessage.css("color", "red");
+											resultMessage.css("background-color", "#dff0d8");
+											resultMessage.css("border-color", "#d6e9c6");
+											message
+											.text("");
+										}
+										}
+									});
+									
+						
+							});							
+							}
+							//비밀번호 변경 끝
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
