@@ -596,7 +596,7 @@
 								$('#submit').click(function() {
 									var comment_val = $('input:text[name=comment]').val();
 									var seq_photo_val=$('input:hidden[name=seq_photo]').val();
-
+									 $('input:text[name=comment]').val("");
 									if(trim(comment_val) != ""){
 										$.ajax({
 											type:'POST',
