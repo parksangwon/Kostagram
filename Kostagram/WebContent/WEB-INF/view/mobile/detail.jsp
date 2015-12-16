@@ -14,7 +14,6 @@
 	String email = (String)request.getAttribute("email");
 	Date reg_date = (Date)request.getAttribute("reg_date");
 	ArticleVO article = myPhotoList.get(0);
-	/* PhotoInfoVO photo = article.getPhoto(); */
 %>
 <title>Kostagram</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -62,7 +61,7 @@
 								<img src='/Kostagram/personalImg/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />
 						<%	} else {
 						%>
-								<img src='/Kostagram/personalImg/"<%= email %>"/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />
+								<img src='/Kostagram/personalImg/"<%= email %>/profile.jpg' width='60' id='profileImg' style='-webkit-border-radius: 100px; border-radius: 100px;' />
 						<%	} %>
 							
 							</td>
