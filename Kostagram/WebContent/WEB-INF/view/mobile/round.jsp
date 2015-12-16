@@ -54,20 +54,20 @@
 								}
 								String email = (String) round_profile.get("EMAIL");
 								String profile = (String) round_profile.get("PROFILE_IMG");
-								String nick_name = (String) round_profile.get("NICKNANE");
+								String nickname = (String) round_profile.get("NICKNAME");
 								System.out.println(email);
 								count++;
 								if(profile!=null && profile!="")
 								{
 						%>
-									<a href="/Kostagram/m/<%= nick_name%>"><img
+									<a href="/Kostagram/m/<%= nickname%>"><img
 									src="/Kostagram/personalImg/<%= email%>/profile.jpg" width="40"
 									style="-webkit-border-radius: 100px; border-radius: 100px;" /></a>
 						<%
 								}
 								else {
 						%>
-									<a href="/Kostagram/m/<%= nick_name%>"><img
+									<a href="/Kostagram/m/<%= nickname%>"><img
 									src="/Kostagram/personalImg/profile.jpg" width="40"
 									style="-webkit-border-radius: 100px; border-radius: 100px;" /></a> 
 						<%
