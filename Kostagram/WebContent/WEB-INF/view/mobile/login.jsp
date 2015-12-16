@@ -205,11 +205,66 @@
 												$('#photoArea').empty();
 											}
 											$('#timeline > #photoArea').html(data);	
+											$('#timeline > #photoArea #heartBtn').each(function(){
+												
+												
+												$(this).click(function(){
+													
+													alert("클릭됨");
+													
+													var test = $(this);
+													var state;
+													var seq_photo = test.attr('value');	
+													var src = $(this).attr('src');
+													if(src==='m/image/icon/heart.png')
+													{
+														state = "unlike";
+														src = 'm/image/icon/heart2.png';
+													}
+													else
+													{
+														state= "like";
+														src ='m/image/icon/heart.png';
+													}
+													alert("클릭됨2");
+													$.ajax({
+														type : 'POST',
+														url : 'm/like',
+														dataType : 'text',
+														data : {
+															state : state ,
+															seq_photo : seq_photo
+														},
+														success : function(
+																text){
+															alert("클릭됨3");
+															if ( text === "like") {
+															     test.attr('src', src);
+															     alert("좋아요 성공");
+												     		} else if ( text === "unlike" ) {
+															     test.attr('src', src);
+															     alert("좋아요 해제");
+													      	} else if ( text === "fail" ) {
+															     alert("업데이트도중 error");
+															}
+															
+														},
+														error : function() {
+															alert("error");
+														}
+													});
+													
+													
+												});
+												
+											});
 										},
 										error : function() {
 											alert("error");
 										}
 									});
+									
+								
 								});
 							}
 							// usercheck 끝
