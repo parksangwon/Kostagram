@@ -371,6 +371,41 @@
 											alert("error");
 										}
 									});
+									
+
+									$('#followBtn').click(function(){
+										
+									var followState = $('#followBtn').val();
+									var email = $('input:hidden[name=userpage_email]').val();
+										
+									$.ajax({
+							    			type:'POST',
+							    			url:'userpage',
+							    			dataType:'html',
+							    			data:{
+							    				from_email: <%=(String) session.getAttribute("email")%>,
+							    				to_email: email,
+												followState : followState
+										},
+										success : function(html) {
+											
+											
+
+											if (text === "following") {
+												
+												$('#followBtn').attr("value", "F");
+												
+
+											} else if (text === 'follow') {
+												
+												$('#followBtn').attr("value", "UF");
+											}
+										},
+
+										error : function() {
+											alert("error");											}
+									});
+								});
 								});
 								$('#userpage .getPhotoList').each(function(){
 									$(this).click(function(){
