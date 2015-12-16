@@ -40,7 +40,7 @@
 			</div>
 	
 			<div data-rol="content">
-				<table border="0">
+				<p id="rrresultMessage"><table border="0">
 			<%
 				if (commentList != null && commentList.size() > 0)
 				{
@@ -73,14 +73,8 @@
 						}
 				}
 			%>
-					
-					<Tr>
-						<Td colspan="2"><center>
-							<font color="red"><p id="resultMessage">ssss</p></font>
-						</center></Td>
-					</Tr>
 							
-				</table>
+				</table></p>
 			</div>
 			
 			<div data-role="footer" data-position="fixed">
