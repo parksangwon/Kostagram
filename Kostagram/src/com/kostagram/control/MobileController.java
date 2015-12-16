@@ -978,9 +978,11 @@ public class MobileController {
 			}
 		}
 
-	//포토맵 페이지 가기
+		//포토맵 페이지 가기
 	    @RequestMapping("/photomap")
-	    public String report(LocationVO location,HttpSession session, Model model) {
+	    public String report(LocationVO location,HttpSession session,
+	    		Model model,HttpServletRequest request,HttpServletResponse response) 
+	    		throws IOException {
 	    	
 	    	if (session == null || session.getAttribute("email") == null
 					|| session.getAttribute("loginYn") == null
@@ -988,15 +990,16 @@ public class MobileController {
 				return "mobile/login";
 			}
 	    	
-	    	
+	    PrintWriter out = response.getWriter();	
+	    
 	    String email = (String) session.getAttribute("email");
 	    UserInfoVO user = new UserInfoVO(email);
 	    
 	    System.out.println(email);
-	    
 	    List<HashMap> locationList = locationDao.findPhotoMap(user);
 	    model.addAttribute("locationList", locationList);
 	    
+	    	
 	    
 		return "mobile/photoMap";
 	    }
