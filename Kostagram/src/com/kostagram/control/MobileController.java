@@ -234,7 +234,7 @@ public class MobileController {
 					}
 				}
 				out.print(
-						"</table></div><div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
+						"</table></div><div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='./m/comment?pid="+seq_photo+"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
 			}
 		} else {
 			out.print("<br/><span>소중한 순간을 포착하여 공유해보세요</span>");
@@ -849,7 +849,6 @@ public class MobileController {
 	
 	@RequestMapping("/comment")
 	public String comment(@RequestParam String pid, Model model, CommentVO comment) {
-		
 
 		// DB에서 정보 가져오기.
 		List<HashMap> commentList = commentDao.getCommentByPhotoId(pid);
@@ -858,8 +857,9 @@ public class MobileController {
 		return "mobile/comment";
 	}
 	
+	
 	@RequestMapping("/ajaxcomment")
-	public void comment(CommentVO commentVO, HttpSession session, HttpServletRequest request,
+	public String comment(CommentVO commentVO, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response, Model model) throws IOException {
 		
 		String seq_photo = (String)request.getParameter("seq_photo");
@@ -869,39 +869,11 @@ public class MobileController {
 		commentVO.setEmail(email);
 		System.out.println(commentVO);
 		boolean result = commentDao.insert(commentVO);
-		
-		PrintWriter out = response.getWriter();
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html");
-		response.setHeader("Cache-Control", "no-cache");
 
-		
-		
-		
 		List<HashMap> commentList = commentDao.getCommentByPhotoId(seq_photo);
 		
 		model.addAttribute("commentList", commentList);
-		/*findUserVO = userInfoDao.findNickname(findUserVO);
-
-		System.out.println("select :" + userInfoVO);
-		if (userInfoVO.getNickname() == null
-				|| findUserVO.getNickname().equals(nickname)) {
-			userInfoVO.setUpdatenickname(nickname);
-			boolean result = userInfoDao.update(userInfoVO);
-			if (result) {
-				out.print("updateSuccess");
-
-				session.removeAttribute("nickname");
-				session.setAttribute("nickname", userInfoVO.getNickname());
-
-			} else
-
-			{
-				out.print("updateFail");
-			}
-		} else {
-			out.print("nicknameduplication");
-		}*/
+		return "/mobile/comment2";
 	}
 	
 	@RequestMapping("/{nickname}")
