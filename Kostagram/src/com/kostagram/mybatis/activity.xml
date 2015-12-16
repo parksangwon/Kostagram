@@ -49,7 +49,7 @@
 	</select>
 	
 	<select id="round_profileList" parameterType="com.kostagram.service.beans.ActivityVO" resultType="java.util.HashMap">
-		select member.email, member.profile_img
+		select member.email, member.nickname, member.profile_img
 		from
 		(
 		  select follow.to_email
