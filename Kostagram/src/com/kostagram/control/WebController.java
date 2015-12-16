@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kostagram.mail.Mail;
@@ -373,6 +372,19 @@ public class WebController {
     boolean result = reportDao.delete2(report);
     
 	return "redirect:report";
+    }
+    
+    @RequestMapping("/getArticleModal")
+    public String getArticleModal(@RequestParam String pid, Model model) {
+    	
+    	ArticleVO article = null;
+    	
+    	if ( pid != null ) {
+    		article = photoInfoDao.getArticleByPhotoId(pid);
+    	}
+    	model.addAttribute("article", article);
+    	
+    	return "web/modal";
     }
     
     @RequestMapping(value = "/{nickname}")
