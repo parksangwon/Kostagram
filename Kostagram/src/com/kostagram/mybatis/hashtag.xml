@@ -37,7 +37,7 @@
 		a.seq_photo=photo.seq_photo
 	</select>
 
-	<select id="searchHashtagList" parameterType="comkostagram.service.beans.HashtagVO"
+	<select id="searchHashtagList" parameterType="com.kostagram.service.beans.HashtagVO"
 		resultType="hashmap">
 		select HASHTAG, COUNT(SEQ_PHOTO) COUNT
 		from photo_hash_tag
