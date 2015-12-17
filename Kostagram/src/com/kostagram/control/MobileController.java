@@ -1044,12 +1044,24 @@ public class MobileController {
 		
 	    
 	    @RequestMapping("/myfollower")
-		public String myfollower() {
+		public String myfollower(HttpSession session, Model model) {
+	    	
+	    	String email = (String)session.getAttribute("email");
+	    	
+    		List<HashMap> myfollower = followDao.getMyFollowerNickname(email);
+    		
+    		model.addAttribute("myfollower", myfollower);
 			return "mobile/myfollower";
 		}
 	    
 	    @RequestMapping("/myfollowing")
-		public String myfollowing() {
+		public String myfollowing(HttpSession session, Model model) {
+	    	
+	    	String email = (String)session.getAttribute("email");
+	    	
+    		List<HashMap> myfollowing = followDao.getMyFollowingNickname(email);
+	    		
+    		model.addAttribute("myfollowing", myfollowing);
 			return "mobile/myfollowing";
 		}
 		
