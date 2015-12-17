@@ -23,6 +23,11 @@ public class PhotoInfoDAOImpl implements PhotoInfoDAO {
 
 	return false;
     }
+    @Override
+    public PhotoInfoVO myseqPhoto(String email)
+    {
+    	return sqlSession.selectOne("photoInfo.myseqphoto", email);
+    }
 
     @Override
     public boolean delete(PhotoInfoVO photo) {
