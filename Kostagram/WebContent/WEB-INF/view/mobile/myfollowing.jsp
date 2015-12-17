@@ -1,12 +1,12 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
-
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	List<HashMap> myfollowing = (List<HashMap>)request.getAttribute("myfollowing");
+	List<HashMap> myfollowing = (List<HashMap>) request.getAttribute("myfollowing");
 %>
-	
+
 <title>Kostagram</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
@@ -27,71 +27,89 @@
 								src="./image/icon/back.png" width="20"
 								style="padding-left:10px;" /></a> <span
 						style="height: 35px; font-size: 20px; color: #ffffff; line-height: 35px; text-align: left; background-color: transparent; border: 0px; text-shadow: 0px 0px 0px black; padding-left: 5px;">
-							 팔로잉 </span></td>
+							팔로잉 </span></td>
 				</tr>
 			</table>
 		</div>
 
 		<div data-role="content">
 			<table width="100%" border="0">
-			<%
-				if (myfollowing != null && myfollowing.size() > 0) {
-					for ( HashMap following : myfollowing )
-					{
-						String nickname = (String)following.get("NICKNAME");
-						String email = (String)following.get("EMAIL");
-						String profile = (String)following.get("PROFILE_IMG");
-						
-					
-			%>
-					<tr>
-			<%
-						if(profile == null)
-						{
-			%>
-							<td ><img src="/Kostagram/personalImg/profile.jpg" width="55"></td>
-			<%
+				<%
+					if (myfollowing != null && myfollowing.size() > 0) {
+						for (HashMap following : myfollowing) {
+							String nickname = (String) following.get("NICKNAME");
+							String email = (String) following.get("EMAIL");
+							String profile = (String) following.get("PROFILE_IMG");
+							Date check = (Date) following.get("REG_DATE");
+				%>
+				<tr>
+					<%
+						if (profile == null) {
+					%>
+					<td><img src="/Kostagram/personalImg/profile.jpg" width="55"></td>
+					<%
+						} else {
+					%>
+					<td><img src="/Kostagram/personalImg/<%=email%>/profile.jpg"
+						width="55"></td>
+					<%
 						}
-						else
-						{
-			%>
-							<td><img src="/Kostagram/personalImg/<%=email %>/profile.jpg" width="55"></td>
-			<%	
-						}
-			%>
-							<td width="55%"><%= nickname %><br>
+					%>
+							<td width="55%"><%=nickname%><br></td>
+					<%
+							if (!email.equals((String)session.getAttribute("email"))) {
+								
+							
+					%>
+							<td>
+					<%
+								if (check == null || check.equals("null")) {
+					%> 			<a class="follow" value="UF" data-email="<%= email%>"> 팔로우</a> <%
+								} else {
+					%> 			<a class="follow" value="F" style="color: green"  data-email="<%= email%>">팔로잉</a> <%
+								}
+					%>
 							</td>
-							<td ><a href="#"><img src=image/following.jpg></a>
-							</td>
+					<% 
+							}
+					%>
+							
+							
 					</tr>
-			<%
+				<%
+						}
+					} else {
+				%>
+				<br>
+				<div align="center">팔로잉이 없습니다.</div>
+				<%
 					}
-				} else
-				{
-			%>
-					 <br><div align="center">팔로잉이 없습니다.</div>
-			<%
-				}
-			%>
-				</table>
-				<hr>
+				%>
+
+			</table>
+			<hr>
 		</div>
 
 		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
-					<li><a href="/Kostagram/m/"><img src="/Kostagram/m/image/icon/house.png"
-							width="20" /></a></li>
-					<li><a href="/Kostagram/m/round"><img src="/Kostagram/m/image/icon/search.png"
-							width="20" /></a></li>
-					<li><a href="#"><img src="/Kostagram/m/image/icon/camera.png"
-							width="20" /></a></li>
-					<li><a href="/Kostagram/m/mynews"><img src="/Kostagram/m/image/icon/info.png"
-							width="20" /></a></li>
-					<li><a href='/Kostagram/m/<%= session.getAttribute("nickname")%>'><img src="/Kostagram/m/image/icon/user.png"
-							width="20" /></a></li>
+					<li><a href="/Kostagram/m/"><img
+							src="/Kostagram/m/image/icon/house.png" width="20" /></a></li>
+					<li><a href="/Kostagram/m/round"><img
+							src="/Kostagram/m/image/icon/search.png" width="20" /></a></li>
+					<li><a href="#"><img
+							src="/Kostagram/m/image/icon/camera.png" width="20" /></a></li>
+					<li><a href="/Kostagram/m/mynews"><img
+							src="/Kostagram/m/image/icon/info.png" width="20" /></a></li>
+					<li><a
+						href='/Kostagram/m/<%=session.getAttribute("nickname")%>'><img
+							src="/Kostagram/m/image/icon/user.png" width="20" /></a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 </body>
+
+
+
+
