@@ -296,18 +296,12 @@
 
 									$('#followBtn').click(function(){
 										
-										alert("aa")
 										
 										
 										var followState = $('#followBtn').attr('value');
-										alert(followState);
-										
-										
-										
-										
-										
+
 										var email = $('input:hidden[name=userpage_email]').val();
-										alert("aaa");	
+										
 											$.ajax({
 									    			type:'POST',
 									    			url:'userpage',
@@ -322,6 +316,7 @@
 													if (text === "following") {
 														$('#followBtn').text("팔로잉");
 														$('#followBtn').attr("value", "F");
+														$('#followBtn').css("color","green");
 														var follower = $('#abc').text();
 														var plus = (follower*1)+1;
 														$('#abc').text(plus);
@@ -329,6 +324,7 @@
 													} else if (text === 'follow') {
 														$('#followBtn').text("팔로우");
 														$('#followBtn').attr("value", "UF");
+														$('#followBtn').css("color","#2489CE");
 														var follower = $('#abc').text();
 														var minus = (follower*1)-1;
 														$('#abc').text(minus);
