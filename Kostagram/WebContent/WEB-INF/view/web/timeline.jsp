@@ -6023,7 +6023,6 @@ transform
 }
 </style>
 <script>
-
 $(function(){
 	$('.-cx-PRIVATE-PostInfo__optionsButton').each(function() {
 		$(this).click(function(){
@@ -6047,11 +6046,59 @@ $(function(){
 					}
 				});
 			}
+			
+		});
+	});
+	
+	
+	$('#heart').each(function() {
+		$(this).click(function(){
+			alert("좋아요 버튼 누름");
+			var state;
+			var pid = $('input:hidden[name=likeseq_photo]').attr("value");
+			var src = $("#heart").attr('src');
+			
+			if (src==='/Kostagram/m/image/icon/heart.png')
+			{
+				state = "unlike";
+				src = '/Kostagram/m/image/icon/heart2.png';
+			}
+			else
+			{
+				state= "like";
+				src ='/Kostagram/m/image/icon/heart.png';
+			}
+			alert(state);
+			$.ajax({
+				type : 'POST',
+				url : 'likeit',
+				dataType : 'text',
+				data : {
+					state : state ,
+					seq_photo : pid
+				},
+				success : function(text){
+					alert("성공");
+					if ( text === "like") {
+						$("#heart").attr('src', src);
+						 
+					} else if ( text === "unlike" ) {
+						$("#heart").attr('src', src);
+						 
+					} else if ( text === "fail" ) {
+						 
+					}
+					 
+				},
+				error : function() {
+					alert("error");
+				}
+			});		
 		});
 	});
 });
-
 </script>
+
 </head>
 <body>
 	<span id="react-root" aria-hidden="false">
@@ -6062,11 +6109,13 @@ $(function(){
 						<div>
 							<%
 								if (articleList == null || articleList.size() == 0) {
-							
+									
 								} else {
+									
 									for (int i = 0; i < articleList.size(); i++) {
 										ArticleVO article = articleList.get(i);
 										HashMap userInfo = article.getUserInfo();
+										
 							%>
 							<article class="-cx-PRIVATE-FeedPage__post -cx-PRIVATE-Post__root -cx-PRIVATE-Post__feed">
 								<header class="-cx-PRIVATE-Post__header">
@@ -6217,8 +6266,9 @@ $(function(){
 								</div>
 									</ul>
 									<section class="-cx-PRIVATE-PostInfo__feedback -cx-PRIVATE-PostInfo__feedbackStackedVariant">
-										<a class="-cx-PRIVATE-PostInfo__likeButton -cx-PRIVATE-LikeButton__root -cx-PRIVATE-Util__hideText coreSpriteHeartOpen" href="#" role="button">좋아요</a>
+										<img id="heart" src="/Kostagram/m/image/icon/heart.png" >
 										<form class="-cx-PRIVATE-PostInfo__commentCreator" method="POST">
+											<input type="hidden" name="likeseq_photo" value="<%= photo.getSeq_photo()%>">
 											<table> 
 												<tr>
 													<td width="430">
