@@ -22,12 +22,14 @@ import com.kostagram.mail.MailService;
 import com.kostagram.service.beans.ArticleVO;
 import com.kostagram.service.beans.CommentVO;
 import com.kostagram.service.beans.FollowVO;
+import com.kostagram.service.beans.LikeVO;
 import com.kostagram.service.beans.PhotoInfoVO;
 import com.kostagram.service.beans.ReportVO;
 import com.kostagram.service.beans.SearchVO;
 import com.kostagram.service.beans.UserInfoVO;
 import com.kostagram.service.dao.CommentDAO;
 import com.kostagram.service.dao.FollowDAO;
+import com.kostagram.service.dao.LikeDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.ReportDAO;
 import com.kostagram.service.dao.SearchDAO;
@@ -48,6 +50,8 @@ public class WebController {
 	private MailService mailService;
 	@Autowired
 	private CommentDAO commentDao;
+	@Autowired
+	private LikeDAO likeDao;
 	@Autowired
 	private Mail mail;
     @Autowired
@@ -441,6 +445,37 @@ public class WebController {
     	
     	return "web/timelinecomment";
     }
+    
+    
+    @RequestMapping("/likeit")
+	public void like(HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
+		String email = (String) session.getAttribute("email");
+		String state = (String) req.getParameter("state");
+		String seq_photo = (String) req.getParameter("seq_photo");
+		
+		System.out.println("LIKE CONTROLLER : " + email + "/" + state + "/" + seq_photo);
+		PrintWriter out = res.getWriter();
+		
+		LikeVO like = new LikeVO();
+		
+		like.setEmail(email);
+		like.setSeq_photo(seq_photo);
+		
+		System.out.println(like);
+		System.out.println(state);
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html");
+		res.setHeader("Cache-Control", "no-cache");
+		
+		if (state.equals("unlike")) {
+			boolean result = likeDao.insert(like);
+				
+		} else if (state.equals("like")) {
+			boolean result = likeDao.delete(like);
+		}
+			
+	}
+    
     
     @RequestMapping(value = "/{nickname}")
 	public String userPage(@PathVariable String nickname, HttpSession session, Model model) {
