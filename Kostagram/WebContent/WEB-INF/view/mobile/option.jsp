@@ -3,6 +3,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no" />
+<%
+	String email = "";
+	if (request.getAttribute("email") != null) {
+	email = (String) request.getAttribute("email");
+}
+%>
+
 <TITLE>Kostagram</TITLE>
 
 <script src="jquery-mobile/jquery-1.6.4.js"></script>
@@ -37,7 +44,7 @@
 						</tr>
 						<tr>
 							<td>
-								<a href="/Kostagram/m/findphonenumber">연락처로 친구 찾기</a>
+								<a href="/Kostagram/m/findphonenumber?email=<%=email%>">연락처로 친구 찾기</a>
 							</td>
 						</tr>
 						<tr>
