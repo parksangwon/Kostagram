@@ -412,40 +412,38 @@ public class MobileController {
 	
 
 	@RequestMapping("/like")
-		public void like(HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
-			String email = (String) session.getAttribute("email");
-			String state = (String) req.getParameter("state");
-			String seq_photo = (String) req.getParameter("seq_photo");
-			
-			System.out.println("aaaaa:"+state);
-			
-			PrintWriter out = res.getWriter();
-			
-			LikeVO like = new LikeVO();
-			like.setEmail(email);
-			like.setSeq_photo(seq_photo);
-			
-			
-			System.out.println(like);
-			res.setCharacterEncoding("utf-8");
-			res.setContentType("text/html");
-			res.setHeader("Cache-Control", "no-cache");
-			
-			if (state.equals("unlike")) {
-				if (likeDao.insert(like)){
-					out.print("like");
-				} else {
-					out.print("fail");
-				}
-			} else if (state.equals("like")) {
-				if (likeDao.delete(like)) {
-					out.print("unlike");
-				} else {
-					out.print("fail");
-				}
+	public void like(HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
+		String email = (String) session.getAttribute("email");
+		String state = (String) req.getParameter("state");
+		String seq_photo = (String) req.getParameter("seq_photo");
+		
+		System.out.println("LIKE CONTROLLER : " + email + "/" + state + "/" + seq_photo);
+		PrintWriter out = res.getWriter();
+		
+		LikeVO like = new LikeVO();
+		like.setEmail(email);
+		like.setSeq_photo(seq_photo);
+		
+		System.out.println(like);
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html");
+		res.setHeader("Cache-Control", "no-cache");
+		
+		if (state.equals("unlike")) {
+			if (likeDao.insert(like)){
+				out.print("like");
+			} else {
+				out.print("fail");
 			}
-			
+		} else if (state.equals("like")) {
+			if (likeDao.delete(like)) {
+				out.print("unlike");
+			} else {
+				out.print("fail");
+			}
 		}
+			
+	}
 	
 
 	@RequestMapping("/search_people")
