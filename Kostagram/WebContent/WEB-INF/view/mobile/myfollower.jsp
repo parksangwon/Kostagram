@@ -37,6 +37,7 @@
 		<div data-role="content">
 			<table width="100%" border="0">
 				<%
+					
 					if (myfollower != null && myfollower.size() > 0) {
 						for (HashMap follower : myfollower) {
 							String nickname = (String) follower.get("NICKNAME");
@@ -67,15 +68,17 @@
 								if (check == null || check.equals("null")) {
 					%> 			<a class="follow" value="UF" data-email="<%= email%>"> 팔로우</a> <%
 								} else {
-					%> 			<a class="follow" value="F" style="color: green"  data-email="<%= email%>">팔로잉</a> <%
+					%> 			<a class="follow" value="F"  data-email="<%= email%>">팔로잉</a> <%
 								}
 					%>
+					
 							</td>
-					<% 
-							}
+					<%		
+						}
+					
 					%>
 							
-							
+					
 					</tr>
 				<%
 						}
