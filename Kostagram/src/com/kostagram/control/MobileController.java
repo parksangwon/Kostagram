@@ -1160,9 +1160,8 @@ public class MobileController {
 	    @RequestMapping(value = "/userpage")
 		public void follow(HttpSession session, HttpServletResponse response, HttpServletRequest request)
 				throws IOException {
-			String email =(String) session.getAttribute("email");
+			String from_email = (String) session.getAttribute("email");
 			String to_email = (String) request.getParameter("to_email");
-			String from_email = email;
 			String followState = (String) request.getParameter("followState");
 
 			FollowVO follow = new FollowVO();
@@ -1176,6 +1175,8 @@ public class MobileController {
 			response.setContentType("text/html");
 			response.setHeader("Cache-Control", "no-cache");
 			
+			
+			System.out.println(followState);
 			if (followState.equals("UF")) {
 				System.out.println(followState);
 				if (followDao.insert(follow)) {
@@ -1195,12 +1196,13 @@ public class MobileController {
 			
 		}
 		
-	    
 	    @RequestMapping("/myfollower")
-		public String myfollower(@RequestParam String email, HttpSession session, Model model) {
-	    	
+		public String myfollower(@RequestParam String email,HttpServletResponse response, HttpServletRequest request, HttpSession session, Model model) 
+				throws IOException {
+
 	    	String pageEmail = email;
 	    	String sessionEmail = (String)session.getAttribute("email");
+	    	
 	    	HashMap map = new HashMap();
 	    	map.put("pageEmail", pageEmail);
 	    	map.put("sessionEmail", sessionEmail);
@@ -1208,9 +1210,10 @@ public class MobileController {
     		List<HashMap> myfollower = followDao.getMyFollowerNickname(map);
     		
     		model.addAttribute("myfollower", myfollower);
-			return "mobile/myfollower";
+    		
+    		return "mobile/myfollower";
 		}
-	    
+
 	    @RequestMapping("/myfollowing")
 		public String myfollowing(@RequestParam String email, HttpSession session, Model model) {
 
