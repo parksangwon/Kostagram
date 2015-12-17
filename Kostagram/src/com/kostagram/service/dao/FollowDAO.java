@@ -12,6 +12,6 @@ public interface FollowDAO {
     public FollowVO check(FollowVO follow);
 	public int getMyFollowing(UserInfoVO user);
 	public int getMyFollower(UserInfoVO user);
-	public List<HashMap> getMyFollowingNickname(String email);
-	public List<HashMap> getMyFollowerNickname(String email);
+	public List<HashMap> getMyFollowingNickname(HashMap hashmap);
+	public List<HashMap> getMyFollowerNickname(HashMap hashmap);
 }

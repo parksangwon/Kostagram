@@ -46,13 +46,13 @@ public class FollowDAOImpl implements FollowDAO {
 	}
 
 	@Override
-	public List<HashMap> getMyFollowingNickname(String email) {
-		return sqlSession.selectList("follow.getMyFollowingNickname", email);
+	public List<HashMap> getMyFollowingNickname(HashMap hashmap) {
+		return sqlSession.selectList("follow.getMyFollowingNickname", hashmap);
 	}
 
 	@Override
-	public List<HashMap> getMyFollowerNickname(String email) {
-		return sqlSession.selectList("follow.getMyFollowerNickname", email);
+	public List<HashMap> getMyFollowerNickname(HashMap hashmap) {
+		return sqlSession.selectList("follow.getMyFollowerNickname", hashmap);
 	}
 	
 }
