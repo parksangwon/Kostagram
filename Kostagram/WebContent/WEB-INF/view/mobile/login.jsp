@@ -195,7 +195,8 @@
 															});
 												});
 							}
-							
+							// usercheck 끝
+							// timeline 시작
 							else if (this.id == 'timeline') {
 								$(document).ready(function(){
 									$.ajax({
@@ -228,6 +229,24 @@
 														state= "like";
 														src ='m/image/icon/heart.png';
 													}
+													
+													setTimeout(function() {
+														$.ajax({
+															type : 'POST',
+															url : 'm/likelist',
+															dataType : 'text',
+															data : {
+																seq_photo:seq_photo
+															},
+															success : function(data){
+																$('#timeline #photoArea #photoList #article'+seq_photo+' #CMTnLIK'+seq_photo+' #'+seq_photo).empty();
+																$('#timeline #photoArea #photoList #article'+seq_photo+' #CMTnLIK'+seq_photo+' #'+seq_photo).html(data);	
+															},
+															error : function() {
+																alert("error");
+															}
+														});
+													}, 250);
 													
 													$.ajax({
 														type : 'POST',
@@ -269,7 +288,7 @@
 								
 								});
 							}
-							// usercheck 끝
+							// timeline 끝
 							// detail 시작
 							else if(this.id == 'detail') {
 								$(document).ready(function(){
