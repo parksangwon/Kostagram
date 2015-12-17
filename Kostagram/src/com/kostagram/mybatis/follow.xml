@@ -31,7 +31,7 @@
 	</select>
 	
 	<select id="getMyFollowerNickname" parameterType="string" resultType="hashmap">
-		select email, nickname
+		select email, nickname, profile_img
 		from
 		(
 		  select from_email
@@ -42,14 +42,14 @@
 	</select>
 	
 	<select id="getMyFollowingNickname" parameterType="string" resultType="hashmap">
-		select email, nickname
+		select email, nickname, profile_img
 		from
 		(
 		  select to_email
 		  from follow
 		  where from_email = #{email}
 		), member
-		where from_email = member.email
+		where to_email = member.email
 	</select>
 
 </mapper>
