@@ -27,5 +27,40 @@
 
    </select>
    
-
+   <select id="searchLocation" parameterType="string" resultType="java.util.HashMap">
+   select location, to_Char(lat) lat, to_Char(lon) lon, reg_date, photo_cnt
+   from location
+   where location like '%'||#{location}||'%'
+   </select>
+   
+   <select id="selectLocation" parameterType="string"
+		resultType="com.kostagram.service.beans.PhotoInfoVO">
+		select photo.email, a.seq_photo
+		from photo,
+		(
+		  select seq_photo from photo where location_name = #{location}
+		) a
+		where a.seq_photo=photo.seq_photo
+	</select>
+	
+	<select id="selectLocationMap" resultType="java.util.HashMap">
+	select e.*, to_Char(f.lat) lat, to_Char(f.lon) lon
+	from
+	(
+		select c.*, to_Char(d.email) email
+		from 
+		(
+			SELECT location, to_char(count(seq_photo)) count, to_char(max(seq_photo)) seq_photo
+			FROM 
+			(
+				select a.location,a.lat,a.lon, b.seq_photo
+				from location a, photo b
+				WHERE a.location = b.location_name
+			)
+			group by location
+		) c, photo d
+		where c.seq_photo = d.seq_photo
+	) e, location f
+	where e.location = f.location
+   </select>
 </mapper>
