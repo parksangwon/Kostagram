@@ -299,7 +299,6 @@
 											},
 											success : function(
 													text){
-												alert(text);
 												if ( text === "like") {
 												     test.attr('src', src);
 												     
