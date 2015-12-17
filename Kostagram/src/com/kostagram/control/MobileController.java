@@ -257,14 +257,15 @@ public class MobileController {
 				
 				if (likeList.size() < 6) {
 					out.print(
-							"<td><div id='" + seq_photo +"'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
+							"<td><div id='" + seq_photo +"'><span style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ </span>");
 					if (likeList.size() == 0) {
 						out.print("좋아요");
 					}
 					for (int j = 0; j < likeList.size(); j++) {
 						HashMap like = likeList.get(j);
 						String likeNickname = (String) like.get("NICKNAME");
-						out.print(likeNickname);
+						out.print("<a href='/Kostagram/m/" + likeNickname + "' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879;font-weight: normal;'>");
+						out.print(likeNickname + " </a>");
 						if ( j != likeList.size() - 1 ) {
 							out.print(", ");
 						}
@@ -293,9 +294,9 @@ public class MobileController {
 						String nickname = (String) comment.get("NICKNAME");
 						String content = (String) comment.get("CONTENT");
 						out.print(
-								"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+								"<tr><td><a href='/Kostagram/m/"+ nickname + "' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 						out.print(nickname);
-						out.print("</a>" + content + "</td></tr>");
+						out.print("</a> " + content + "</td></tr>");
 					}
 				}
 				out.print(
@@ -751,7 +752,7 @@ public class MobileController {
 					String seq_photo = photo.getSeq_photo();
 
 					out.print(
-							"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
+							"<div class='article id='article"+seq_photo+"'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
 
 					HashMap userInfo = article.getUserInfo();
 					String photoNickname = (String) userInfo.get("NICKNAME");
@@ -784,33 +785,48 @@ public class MobileController {
 					}
 					
 					out.print(
-							"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
-					out.print("<img src='../personalImg/" + email + "/"
-							+ seq_photo + ".jpg' width='100%' />");// 올린 사진
-					out.print(
-							"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><img src='./image/icon/heart.png' width='25' />");
-					out.print(
-							"</td><td align='left'><a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./report?pid="+seq_photo+"'>");
-					out.print(
-							"<img src='./image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
-
+							"</td></tr></table></div><div class='photoArea' id='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
+					out.print("<img src='/Kostagram/personalImg/" + email + "/" + seq_photo
+							+ ".jpg' width='100%' />");// 올린 사진
+					
 					List<HashMap> likeList = article.getLikeList();
+					String likeYn = "heart";
+					if (likeList.size() != 0) {
+						for ( int j = 0; j < likeList.size(); j++ ) {
+							HashMap like = likeList.get(j);
+							if (email.equals((String)like.get("EMAIL"))) {
+								likeYn = "heart2";
+							}
+						}
+					}
+					out.print(
+							"</td></tr></table></div><div class='CMTnLIK' id='CMTnLIK"+seq_photo+"'' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href'#'><img src='/Kostagram/m/image/icon/"+likeYn+".png' id='heartBtn' width='25' value='"+seq_photo+"'/></a>");
+					out.print(
+							"</td><td align='left'><a href='/Kostagram/m/comment?pid="+seq_photo+"'><img src='/Kostagram/m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"' >");
+					out.print(
+							"<img src='/Kostagram/m/image/icon/warning.png' width='25' /></a></td></tr></table><hr/><table><tr>");
+			
+					
 					if (likeList.size() < 6) {
 						out.print(
-								"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
+								"<td><div id='" + seq_photo +"'><span style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ </span>");
 						if (likeList.size() == 0) {
 							out.print("좋아요");
 						}
 						for (int j = 0; j < likeList.size(); j++) {
 							HashMap like = likeList.get(j);
-							String cmtNickname = (String) like.get("NICKNAME");
-							out.print(cmtNickname);
+							String likeNickname = (String) like.get("NICKNAME");
+							out.print("<a href='/Kostagram/m/" + likeNickname + "' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879;font-weight: normal;'>");
+							out.print(likeNickname + " </a>");
+							if ( j != likeList.size() - 1 ) {
+								out.print(", ");
+							}
 						}
-						out.print("</a></td>");
+						out.print("</a></div></td>");
 					} else {
 						out.print(
-								"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
-						out.print(likeList.size() + "개</a></td></tr>");
+								"<td><div id='" + seq_photo +"'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
+						out.print(likeList.size() + "개</a></div></td></tr>");
 					}
 					if (photo.getContent() != null) {
 						out.print(
@@ -818,7 +834,7 @@ public class MobileController {
 						out.print("닉네임");
 						out.print("</a>" + photo.getContent() + "</td></tr>");
 					}
-
+			
 					List<HashMap> commentList = article.getCommentList();
 					if (commentList != null && commentList.size() > 0) {
 						if (commentList.size() > 6) {
@@ -830,13 +846,13 @@ public class MobileController {
 							String nickname = (String) comment.get("NICKNAME");
 							String content = (String) comment.get("CONTENT");
 							out.print(
-									"<tr><td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
+									"<tr><td><a href='/Kostagram/m/"+ nickname + "' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>");
 							out.print(nickname);
 							out.print("</a> " + content + "</td></tr>");
 						}
 					}
 					out.print(
-							"</table></div><div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div>");
+							"</table></div><div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='/Kostagram/m/comment?pid="+seq_photo+"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a></div></div><br/>");
 				}
 			}  else {
 				out.print("<span>소중한 순간을 포착하여 공유해보세요</span>");
