@@ -391,8 +391,6 @@ public class WebController {
     	
     	if ( pid != null ) {
     		article = photoInfoDao.getArticleByPhotoId(pid);
-    		/*like.setEmail((String)session.getAttribute("email"));
-    		like.setSeq_photo(pid);*/
     	}
     	
     	List<HashMap> likeList = article.getLikeList();
@@ -406,11 +404,8 @@ public class WebController {
 			}
 		}
 		
-    	/*HashMap likeList = (HashMap) likeDao.check(like);
-    	model.addAttribute("likeList", likeList);*/
     	model.addAttribute("article", article);
     	model.addAttribute("likeYn", likeYn);
-    	
     	
     	return "web/modal";
     }
