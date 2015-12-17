@@ -270,6 +270,54 @@
 								});
 							}
 							// usercheck 끝
+							// detail 시작
+							else if(this.id == 'detail') {
+								$(document).ready(function(){
+									$('#heartBtn').click(function(){
+										var test = $('#heartBtn');
+										var state;
+										var seq_photo = test.attr('value');	
+										var src = test.attr('src');
+										if(src==='/Kostagram/m/image/icon/heart.png')
+										{
+											state = "unlike";
+											src = '/Kostagram/m/image/icon/heart2.png';
+										}
+										else
+										{
+											state= "like";
+											src ='/Kostagram/m/image/icon/heart.png';
+										}
+										
+										$.ajax({
+											type : 'POST',
+											url : 'like',
+											dataType : 'text',
+											data : {
+												state : state ,
+												seq_photo : seq_photo
+											},
+											success : function(
+													text){
+												alert(text);
+												if ( text === "like") {
+												     test.attr('src', src);
+												     
+									     		} else if ( text === "unlike" ) {
+												     test.attr('src', src);
+												     
+										      	} else if ( text === "fail" ) {
+												     
+												}
+											},
+											error : function() {
+												alert("error");
+											}
+										});
+									});
+								}); 
+							}
+							// detail 끝
 							else if (this.id == 'userpage') {
 								// 버튼마다 ajax통신 다르게
 								$(document).ready(function(){
