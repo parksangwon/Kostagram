@@ -1,5 +1,6 @@
 package com.kostagram.service.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kostagram.service.beans.HashtagVO;
@@ -11,4 +12,5 @@ public interface HashtagDAO {
     public List<HashtagVO> findHashtagList(HashtagVO token);
     public List<HashtagVO> searchHashtag(HashtagVO hashtag);
     public List<PhotoInfoVO> selectHashtag(String hashtag);
+    public List<HashMap> searchHashtagList(HashtagVO hashtag);
 }
