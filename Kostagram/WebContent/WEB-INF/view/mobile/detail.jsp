@@ -176,7 +176,7 @@
 					%>
 						<tr>
 							<td>
-								<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>
+								<a href='/Kostagram/m/<%= nickname%>' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>
 								<%= nickname%></a> <%= content%>
 							</td>
 						</tr>
