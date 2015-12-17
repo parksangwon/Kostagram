@@ -61,7 +61,7 @@
 			<%
 						}
 			%>
-						<td> <a><%=nickname %></a></td>
+						<td> <a href="/Kostagram/m/<%= nickname%>" style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;"><%=nickname %></a></td>
 						<td width="100%"><%= content %></td>
 					</tr>
 			<%
