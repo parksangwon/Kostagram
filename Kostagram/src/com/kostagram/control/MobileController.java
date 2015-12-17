@@ -452,17 +452,17 @@ public class MobileController {
 		res.setHeader("Cache-Control", "no-cache");
 		
 		out.print("<span style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ </span>");
-		System.out.println("LIKELIST : " + likeList);
+		System.out.println("LIKELIST : " + likeList + " LIKELIST.SIZE() : " + likeList.size());
 		if(likeList.size()<=6) {
+			if(likeList.size()==0) {
+				out.print("<span style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>좋아요 </span>");
+			}
 			for(int i=0; i<likeList.size(); i++) {
 				String nickname = (String)likeList.get(i).get("NICKNAME");
 				System.out.println("FOR 문 안의 NICKNAME : " + nickname);
 				out.print("<a href='/Kostagram/m/"+ nickname +"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>" + nickname + " </a>");
 			}
-		} else if(likeList.size()==0) {
-			out.print("<span style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>좋아요 </span>");
-		}
-			else {
+		} else {
 			out.print("<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879;	font-weight: normal;'>" + likeList.size() + "개</a>");
 		}
 			
