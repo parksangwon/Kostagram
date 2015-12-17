@@ -384,14 +384,33 @@ public class WebController {
     }
     
     @RequestMapping("/getArticleModal")
-    public String getArticleModal(@RequestParam String pid, Model model) {
+    public String getArticleModal(@RequestParam String pid, Model model, HttpSession session, LikeVO like) {
     	
+    	String email = (String)session.getAttribute("email");
     	ArticleVO article = null;
     	
     	if ( pid != null ) {
     		article = photoInfoDao.getArticleByPhotoId(pid);
+    		/*like.setEmail((String)session.getAttribute("email"));
+    		like.setSeq_photo(pid);*/
     	}
+    	
+    	List<HashMap> likeList = article.getLikeList();
+		String likeYn = "heart";
+		if (likeList.size() != 0) {
+			for ( int j = 0; j < likeList.size(); j++ ) {
+				HashMap like2 = likeList.get(j);
+				if (email.equals((String)like2.get("EMAIL"))) {
+					likeYn = "heart2";
+				}
+			}
+		}
+		
+    	/*HashMap likeList = (HashMap) likeDao.check(like);
+    	model.addAttribute("likeList", likeList);*/
     	model.addAttribute("article", article);
+    	model.addAttribute("likeYn", likeYn);
+    	
     	
     	return "web/modal";
     }
