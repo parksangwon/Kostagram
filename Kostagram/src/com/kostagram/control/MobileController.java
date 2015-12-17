@@ -1042,6 +1042,16 @@ public class MobileController {
 			
 		}
 		
+	    
+	    @RequestMapping("/myfollower")
+		public String myfollower() {
+			return "mobile/myfollower";
+		}
+	    
+	    @RequestMapping("/myfollowing")
+		public String myfollowing() {
+			return "mobile/myfollowing";
+		}
 		
 		@RequestMapping("/{nickname}")
 		public String userpage(@PathVariable String nickname, HttpSession session,Model model) {
