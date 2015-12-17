@@ -288,7 +288,21 @@
 											state= "like";
 											src ='/Kostagram/m/image/icon/heart.png';
 										}
-										
+										setTimeout(function() {
+											$.ajax({
+												type : 'POST',
+												url : 'likelist',
+												dataType : 'text',
+												data : {seq_photo:seq_photo},
+												success : function(data){
+													$('#likeArea').empty();
+													$('#detail #article #CMTnLIK #likeArea').html(data);	
+												},
+												error : function() {
+													alert("error");
+												}
+											});
+										}, 250);
 										$.ajax({
 											type : 'POST',
 											url : 'like',

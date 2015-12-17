@@ -52,7 +52,7 @@
 			</div>
 
 					
-			<div class='article'>
+			<div class='article' id="article" >
 				<div class='photoHeader'>
 					<table width='100%'>
 						<tr>
@@ -108,7 +108,7 @@
 							}
 						}
 					%>
-					<div class='CMTnLIK' style='padding: 0px 5px 0px 5px'>
+					<div class='CMTnLIK' id ="CMTnLIK" style='padding: 0px 5px 0px 5px'>
 						<table>
 							<tr>
 							
@@ -131,7 +131,7 @@
 							if (likeList.size() < 6) {
 						%>
 							<td>
-								<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥
+								<div id="likeArea" style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥
 						<%
 								if (likeList.size() == 0) {
 						%>		좋아요
@@ -147,7 +147,7 @@
 						<%
 								}
 						%>
-								</a>
+								</div>
 							</td>
 						<%		} else {
 						%>
