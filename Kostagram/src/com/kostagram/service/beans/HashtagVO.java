@@ -9,6 +9,10 @@ public class HashtagVO {
 	public HashtagVO() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public HashtagVO(String hashtag) {
+		this.hashtag = hashtag;
+	}
 	public HashtagVO(String hashtag, long photo_cnt, Date reg_date) {
 		super();
 		this.hashtag = hashtag;
