@@ -416,6 +416,32 @@ public class WebController {
     	return "web/modal2";
     }
     
+    @RequestMapping("/ajaxtimelinecomment")
+    public String ajaxtimelinecomment(Model model, CommentVO commentVO, HttpSession session, HttpServletRequest request) {
+    	ArticleVO article = null;
+    	
+    	String email = (String)session.getAttribute("email");
+    	String content = (String)request.getParameter("content");
+    	String seq_photo = (String)request.getParameter("seq_photo");
+    	System.out.println("seq_photo = "+seq_photo+" content = "+content+" email = "+email);
+    	
+    	commentVO.setEmail(email);
+    	commentVO.setSeq_photo(seq_photo);
+    	commentVO.setContent(content);
+    	
+    	System.out.println("commentVO = "+commentVO);
+    	
+    	boolean result = commentDao.insert(commentVO);
+    	
+    	if ( seq_photo != null ) {
+    		article = photoInfoDao.getArticleByPhotoId(seq_photo);
+    	}
+    	
+    	model.addAttribute("article", article);
+    	
+    	return "web/timelinecomment";
+    }
+    
     @RequestMapping(value = "/{nickname}")
 	public String userPage(@PathVariable String nickname, HttpSession session, Model model) {
 		UserInfoVO user = new UserInfoVO();
