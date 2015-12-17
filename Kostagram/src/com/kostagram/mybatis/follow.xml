@@ -29,5 +29,27 @@
 		FROM FOLLOW
 		WHERE FROM_EMAIL = #{email}
 	</select>
+	
+	<select id="getMyFollowerNickname" parameterType="string" resultType="hashmap">
+		select email, nickname
+		from
+		(
+		  select from_email
+		  from follow
+		  where to_email = #{email}
+		), member
+		where from_email = member.email
+	</select>
+	
+	<select id="getMyFollowingNickname" parameterType="string" resultType="hashmap">
+		select email, nickname
+		from
+		(
+		  select to_email
+		  from follow
+		  where from_email = #{email}
+		), member
+		where from_email = member.email
+	</select>
 
 </mapper>
