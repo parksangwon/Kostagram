@@ -50,15 +50,10 @@
 <script>
 	function likeit()
 	{
-		alert("좋아요 누름");
-		
 		var state;
 		var button = $('#heart');
 		var src = $("#heart").attr('src');
 		var seq_photo = $('input:hidden[name=seq_photo]').val();
-		
-		alert(src);
-		alert(seq_photo);
 		
 		if (src==='/Kostagram/m/image/icon/heart.png')
 		{
@@ -80,9 +75,7 @@
 				seq_photo : seq_photo
 			},
 			success : function(text){
-				alert("ddddd");
-				
-				alert(text);
+
 				if ( text === "like") {
 					$("#heart").attr('src', src);
 				     
