@@ -47,6 +47,48 @@
 	});
 //댓글 끝
 </script>
+<script>
+	function likeit()
+	{
+		alert("좋아요 누름");
+		
+		var state;
+		var button = $('#heart');
+		var src = $("#heart").attr('src');
+		var seq_photo = $('input:hidden[name=seq_photo]').val();
+		
+		alert(src);
+		alert(seq_photo);
+		
+		if (src==='m/image/icon/heart.png')
+		{
+			state = "unlike";
+			src = 'm/image/icon/heart2.png';
+		}
+		else
+		{
+			state= "like";
+			src ='m/image/icon/heart.png';
+		}
+		
+		$.ajax({
+			type : 'POST',
+			url : 'likeit',
+			dataType : 'text',
+			data : {
+				state : state ,
+				seq_photo : seq_photo
+			},
+			success : function(text){
+				alert("ddddd");
+				 
+			},
+			error : function() {
+				alert("error");
+			}
+		});		
+	}
+</script>
 <%
 	ArticleVO article = (ArticleVO) request.getAttribute("article");
 	HashMap userInfo = article.getUserInfo();
@@ -55,6 +97,8 @@
 	List<HashMap> commentList = article.getCommentList();
 
 	String seq_photo = photo.getSeq_photo();
+	
+	System.out.println("likeList = " +likeList);
 
 %>
 <div class="modal fade bs-example-modal-md in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: flex; padding-right: 17px;">
@@ -123,7 +167,7 @@
 			<div class="modal-footer">
 				<table border="0">
 					<tr>
-						<td><img src="./m/image/icon/heart.png">&nbsp;&nbsp;&nbsp;</td>
+						<td><img id="heart" src="./m/image/icon/heart.png" onclick="likeit()">&nbsp;&nbsp;&nbsp;</td>
 						<td width="90%"><input type="text" id="comment" name="comment" style="width:95%;"/></td>
 						<td><input type="button" value="댓글 남기기" id="submit" name="submit"></td>
 					</tr>
