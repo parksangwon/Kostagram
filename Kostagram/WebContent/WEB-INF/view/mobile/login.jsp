@@ -962,7 +962,7 @@
 										var button = $(this);
 										var followState = $(this).attr('value');
 										var email = $(this).data('email');
-										alert("followState : " + followState + " / email : " + email);
+										
 										$.ajax({
 							    			type:'POST',
 							    			url:'userpage',
@@ -973,7 +973,7 @@
 												followState : followState
 											},
 											success : function(text) {
-												alert(button.data('email'));
+												
 												if (text === "following") {
 													button.text("팔로잉");
 													button.attr("value", "F");
@@ -1002,7 +1002,7 @@
 										var button = $(this);
 										var followState = $(this).attr('value');
 										var email = $(this).data('email');
-										alert("followState : " + followState + " / email : " + email);
+										
 										$.ajax({
 							    			type:'POST',
 							    			url:'userpage',
@@ -1014,7 +1014,7 @@
 											},
 											success : function(text) {
 												
-												alert(button.data('email'));
+												
 												if (text === "following") {
 													button.text("팔로잉");
 													button.attr("value", "F");
@@ -1038,12 +1038,12 @@
 							
 							$('.follow').each(function(){
 								$(this).click(function(){
-									alert("aa");
+									
 									
 									var button = $(this);
 									var followState = $(this).attr('value');
 									var email = $(this).data('email');
-									alert("followState : " + followState + " / email : " + email);
+									
 									$.ajax({
 						    			type:'POST',
 						    			url:'userpage',
@@ -1055,7 +1055,7 @@
 										},
 										success : function(text) {
 											
-											alert(button.data('email'));
+											
 											if (text === "following") {
 												button.text("팔로잉");
 												button.attr("value", "F");
