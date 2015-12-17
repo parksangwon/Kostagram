@@ -199,7 +199,7 @@ public class MobileController {
 				String seq_photo = photo.getSeq_photo();
 		
 				out.print(
-						"<div class='article'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
+						"<div class='article' id='article"+seq_photo+"'><div class='photoHeader'><table width='100%'><tr><td width='60'>");
 		
 				HashMap userInfo = article.getUserInfo();
 				String photoNickname = (String) userInfo.get("NICKNAME");
@@ -233,7 +233,7 @@ public class MobileController {
 				}
 				
 				out.print(
-						"</td></tr></table></div><div class='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
+						"</td></tr></table></div><div class='photoArea' id='photoArea'><table width='100%' cellpadding='0' cellspacing='0'><tr><td width='100%' colspan='2'>");
 				out.print("<img src='personalImg/" + photoEmail + "/" + seq_photo
 						+ ".jpg' width='100%' />");// 올린 사진
 				
@@ -248,7 +248,7 @@ public class MobileController {
 					}
 				}
 				out.print(
-						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href'#'><img src='m/image/icon/"+likeYn+".png' id='heartBtn' width='25' value='"+seq_photo+"'/></a>");
+						"</td></tr></table></div><div class='CMTnLIK' id='CMTnLIK"+seq_photo+"'' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href'#'><img src='m/image/icon/"+likeYn+".png' id='heartBtn' width='25' value='"+seq_photo+"'/></a>");
 				out.print(
 						"</td><td align='left'><a href='./m/comment?pid="+seq_photo+"'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"' >");
 				out.print(
@@ -257,7 +257,7 @@ public class MobileController {
 				
 				if (likeList.size() < 6) {
 					out.print(
-							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
+							"<td><div id='" + seq_photo +"'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
 					if (likeList.size() == 0) {
 						out.print("좋아요");
 					}
@@ -269,11 +269,11 @@ public class MobileController {
 							out.print(", ");
 						}
 					}
-					out.print("</a></td>");
+					out.print("</a></div></td>");
 				} else {
 					out.print(
-							"<td><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥");
-					out.print(likeList.size() + "개</a></td></tr>");
+							"<td><div id='" + seq_photo +"'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ ");
+					out.print(likeList.size() + "개</a></div></td></tr>");
 				}
 				if (photo.getContent() != null) {
 					out.print(
@@ -451,7 +451,7 @@ public class MobileController {
 		res.setContentType("text/html");
 		res.setHeader("Cache-Control", "no-cache");
 		
-		out.print("♥");
+		out.print("<span style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>♥ </span>");
 		System.out.println("LIKELIST : " + likeList);
 		if(likeList.size()<=6) {
 			for(int i=0; i<likeList.size(); i++) {
@@ -459,7 +459,10 @@ public class MobileController {
 				System.out.println("FOR 문 안의 NICKNAME : " + nickname);
 				out.print("<a href='/Kostagram/m/"+ nickname +"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>" + nickname + " </a>");
 			}
-		} else {
+		} else if(likeList.size()==0) {
+			out.print("<span style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>좋아요 </span>");
+		}
+			else {
 			out.print("<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879;	font-weight: normal;'>" + likeList.size() + "개</a>");
 		}
 			
