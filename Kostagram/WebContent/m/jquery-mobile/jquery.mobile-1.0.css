@@ -1559,14 +1559,28 @@ span.ui-slider-label-b { right: -100%;  margin-left: -1px }
             margin: 0px;
             padding: 0px;
         }
- 
+ 		
+ 		div[id="searchplace_result"] {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        
          #photomapcontent{
             height: 100%;
             width: 100%;
             margin: 0px;
             padding: 0px;
         }
- 
+ 		
+ 		#mapArea{
+            height: 50%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        
         #map {
             height: 100%;
             width: 100%;
