@@ -54,7 +54,14 @@
 	</update>
 	
 	<select id="findFriend" parameterType="com.kostagram.service.beans.UserInfoVO"
-		resultType="com.kostagram.service.beans.UserInfoVO">
-		select * from member
+		resultType="hashmap">
+		select email, nickname, profile_img, b.reg_date
+		from
+		(
+		select *
+		from member
+		where mobile is not null
+		)a, follow b
+		where a.email = b.to_email(+) and b.from_email(+) = 'admin@kostagram.com'
 	</select>
 </mapper>
