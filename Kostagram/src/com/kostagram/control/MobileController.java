@@ -185,7 +185,7 @@ public class MobileController {
 					}
 				}
 				out.print(
-						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><img src='m/image/icon/"+likeYn+".png' id='heartBtn' width='25' value='"+seq_photo+"'/>");
+						"</td></tr></table></div><div class='CMTnLIK' style='padding: 0px 5px 0px 5px'><table><tr><td align='left'><a href'#'><img src='m/image/icon/"+likeYn+".png' id='heartBtn' width='25' value='"+seq_photo+"'/></a>");
 				out.print(
 						"</td><td align='left'><a href='./m/comment?pid="+seq_photo+"'><img src='m/image/icon/chat_bubble.png' width='25' /></a></td><td align='right'><a href='./m/report?pid="+seq_photo+"' >");
 				out.print(
@@ -200,8 +200,8 @@ public class MobileController {
 					}
 					for (int j = 0; j < likeList.size(); j++) {
 						HashMap like = likeList.get(j);
-						String cmtNickname = (String) like.get("NICKNAME");
-						out.print(cmtNickname);
+						String likeNickname = (String) like.get("NICKNAME");
+						out.print(likeNickname);
 						if ( j != likeList.size() - 1 ) {
 							out.print(", ");
 						}
