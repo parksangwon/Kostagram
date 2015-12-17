@@ -440,7 +440,31 @@ public class MobileController {
 			
 	}
 	
-
+	@RequestMapping("/likelist")
+	public void likelist(HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
+		String seq_photo = (String) req.getParameter("seq_photo");
+		
+		PrintWriter out = res.getWriter();
+		
+		List<HashMap> likeList = likeDao.getLikeByPhotoId(seq_photo);
+		res.setCharacterEncoding("utf-8");
+		res.setContentType("text/html");
+		res.setHeader("Cache-Control", "no-cache");
+		
+		out.print("♥");
+		System.out.println("LIKELIST : " + likeList);
+		if(likeList.size()<=6) {
+			for(int i=0; i<likeList.size(); i++) {
+				String nickname = (String)likeList.get(i).get("NICKNAME");
+				System.out.println("FOR 문 안의 NICKNAME : " + nickname);
+				out.print("<a href='/Kostagram/m/"+ nickname +"' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>" + nickname + " </a>");
+			}
+		} else {
+			out.print("<a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879;	font-weight: normal;'>" + likeList.size() + "개</a>");
+		}
+			
+	}
+	
 	@RequestMapping("/search_people")
 	public String search_people() {
 		return "mobile/search_people";

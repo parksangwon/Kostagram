@@ -39,6 +39,11 @@ public class LikeDAOImpl implements LikeDAO {
 		return sqlSession.selectList("like.getILikeitPhotoId", email);
 	}
 	
+	@Override
+	public List<HashMap> getLikeByPhotoId(String seq_photo) {
+		return sqlSession.selectList("like.getLikeByPhotoId", seq_photo);
+	}
+	
 	
 	
 
