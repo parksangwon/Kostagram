@@ -4,7 +4,7 @@
 	<insert id="insert" parameterType="com.kostagram.service.beans.CommentVO">
 		insert into
 		photo_comment values
-		(to_char(sysdate,'YYYYMMDDHHMISS')||lpad(seq_comment.nextval, 16, 0),
+		(to_char(sysdate,'YYYYMMDDHH24MISS')||lpad(seq_comment.nextval, 16, 0),
 		#{seq_photo}, #{content}, #{email}, sysdate, 'Y')
 	</insert>
 
