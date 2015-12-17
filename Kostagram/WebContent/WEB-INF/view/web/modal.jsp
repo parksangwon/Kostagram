@@ -102,6 +102,7 @@
 </script>
 <%
 	ArticleVO article = (ArticleVO) request.getAttribute("article");
+	String likeYn = (String)request.getAttribute("likeYn");
 	HashMap userInfo = article.getUserInfo();
 	PhotoInfoVO photo = article.getPhoto();
 	List<HashMap> likeList = article.getLikeList();
@@ -178,7 +179,7 @@
 			<div class="modal-footer">
 				<table border="0">
 					<tr>
-						<td><img id="heart" src="/Kostagram/m/image/icon/heart.png" onclick="likeit()">&nbsp;&nbsp;&nbsp;</td>
+						<td><img id="heart" src="/Kostagram/m/image/icon/<%=likeYn %>.png" onclick="likeit()">&nbsp;&nbsp;&nbsp;</td>
 						<td width="90%"><input type="text" id="comment" name="comment" style="width:95%;"/></td>
 						<td><input type="button" value="댓글 남기기" id="submit" name="submit"></td>
 					</tr>
