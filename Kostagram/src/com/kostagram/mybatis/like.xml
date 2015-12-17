@@ -23,4 +23,16 @@
 		where likeit.seq_photo = #{seq_photo} and member.email = likeit.email
 		order by likeit.reg_date desc
 	</select>
+	
+	<select id="getILikeitPhotoId" parameterType="string"
+		resultType="java.util.HashMap">
+		select photo.email to_email, a.*
+		from photo, (
+		  select member.nickname, member.email from_email, likeit.seq_photo
+		  from likeit, member
+		  where member.email = likeit.email and member.email = #{email}
+		  order by likeit.reg_date desc
+		) a
+		where photo.seq_photo = a.seq_photo
+	</select>
 </mapper>
