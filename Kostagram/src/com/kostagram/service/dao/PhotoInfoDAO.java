@@ -20,4 +20,5 @@ public interface PhotoInfoDAO {
 	public ArticleVO getArticleByPhotoId(String pid);
 	public List<HashMap> getUserInformation(String seq_photo);
 	public ArrayList<ArticleVO> getPhotoInfo(String seq_photo);
+	public PhotoInfoVO myseqPhoto(String email);
 }
