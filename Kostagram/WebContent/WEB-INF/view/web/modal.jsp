@@ -18,7 +18,7 @@
 	{
 		$('#articleModal').empty();
 		$('#articleModal').css('display', 'none' );
-		
+		$('body').css('overflow', 'auto');
 	}
 </script>
 <script>
@@ -57,8 +57,8 @@
 	String seq_photo = photo.getSeq_photo();
 
 %>
-<div class="modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: flex; padding-right: 17px;">
-	<div class="modal-dialog modal-lg">
+<div class="modal fade bs-example-modal-md in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: flex; padding-right: 17px;">
+	<div class="modal-dialog modal-md">
 		<div class="modal-content">
 			<form method="POST">
 				<input type="hidden" value="<%=seq_photo%>" id="seq_photo" name="seq_photo">
@@ -96,15 +96,12 @@
 			</div>
 			<div class="modal-body">
 				<div align="center">
-				<img src='./personalImg/<%= userInfo.get("EMAIL")%>/<%= photo.getSeq_photo()%>.jpg' width="600" />
+				<img src='./personalImg/<%= userInfo.get("EMAIL")%>/<%= photo.getSeq_photo()%>.jpg' width="400" />
 				</div>
 				<table border="1">
 					<tr>
-						<td width="130"></td>
-					
-						
 						<td>
-							<p><b><h4>좋아요 000개</h4></b></p>
+							<p><b><h5>좋아요 000개</h5></b></p>
 							<div id="ccomment">
 								<ul>
 				<%

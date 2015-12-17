@@ -6145,6 +6145,7 @@ $(function(){
 				success: function(data) {
 			    	$('#articleModal').append(data);
 			    	$('#articleModal').css('display', 'block');
+			    	$('body').css('overflow', 'hidden');
 				},
 				error: function() {
 					alert("error");
