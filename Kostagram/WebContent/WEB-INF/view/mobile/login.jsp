@@ -865,6 +865,84 @@
 									     }
 									}
 								}
+							else if (this.id == 'myfollower') {
+								$('.follow').each(function(){
+									$(this).click(function(){
+										
+										var button = $(this);
+										var followState = $(this).attr('value');
+										var email = $(this).data('email');
+										alert("followState : " + followState + " / email : " + email);
+										$.ajax({
+							    			type:'POST',
+							    			url:'userpage',
+							    			dataType:'text',
+							    			data:{
+							    				from_email: <%=(String) session.getAttribute("email")%>,
+							    				to_email: email,
+												followState : followState
+											},
+											success : function(text) {
+												alert(button.data('email'));
+												if (text === "following") {
+													button.text("팔로잉");
+													button.attr("value", "F");
+													button.css("color","green");
+													
+												} else if (text === 'follow') {
+													button.text("팔로우");
+													button.attr("value", "UF");
+													button.css("color","#2489CE");
+												}
+											},
+	
+											error : function() {
+												alert("error");											}
+										});
+									});
+								});
+							}
+							//팔로워 목록 보기 끝
+							
+							//팔로잉 목록 보기 시작
+							else if (this.id == 'myfollowing') {
+								$('.follow').each(function(){
+									$(this).click(function(){
+										
+										var button = $(this);
+										var followState = $(this).attr('value');
+										var email = $(this).data('email');
+										alert("followState : " + followState + " / email : " + email);
+										$.ajax({
+							    			type:'POST',
+							    			url:'userpage',
+							    			dataType:'text',
+							    			data:{
+							    				from_email: <%=(String) session.getAttribute("email")%>,
+							    				to_email: email,
+												followState : followState
+											},
+											success : function(text) {
+												
+												alert(button.data('email'));
+												if (text === "following") {
+													button.text("팔로잉");
+													button.attr("value", "F");
+													button.css("color","green");
+													
+												} else if (text === 'follow') {
+													button.text("팔로우");
+													button.attr("value", "UF");
+													button.css("color","#2489CE");
+												}
+											},
+	
+											error : function() {
+												alert("error");											}
+										});
+									});
+								});
+							}
 							//fileform 끝
 						});
 		// login 시작
