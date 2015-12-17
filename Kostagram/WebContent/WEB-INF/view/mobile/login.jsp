@@ -730,6 +730,81 @@
 							});							
 							}
 							//비밀번호 변경 끝
+							//파일 폼시작
+							else if(this.id == "fileForm")
+								{
+									$('#btn-upload').click(function(){
+										 var form = new FormData(document.getElementById('uploadForm'));
+										    $.ajax({
+										      url: "upload",
+										      data: form,
+										      dataType: 'text',
+										      processData: false,
+										      contentType: false,
+										      type: 'POST',
+										      success: function (response) {
+										      },
+										      error: function (jqXHR) {
+										      }
+										    });
+									});
+									
+									$('#btn-gps').click(function(){
+										geoLocation();
+									});
+									function readURL(input) 
+									{
+								    	if (input.files && input.files[0])
+								    	{
+								        	var reader = new FileReader();
+								            reader.onload = function (e) 
+								            {
+								            	$('#blah').attr('src', e.target.result);
+								            }
+								            reader.readAsDataURL(input.files[0]);
+								        }
+								  	}
+										
+									$('#fileId').change(function() {
+										readURL(this);
+									});
+									
+									function geoLocation()
+									{
+									     if (navigator.geolocation)
+									          navigator.geolocation.getCurrentPosition(showPosition,showError);
+									     else
+									          alert('이 브라우저는 위치정보 기능이 지원되지 않습니다.');
+									}
+
+									function showPosition(position)
+									{
+									     var latitude = position.coords.latitude;
+									     var longitude = position.coords.longitude;
+									     $('#lat').val(latitude);
+									     $('#lon').val(longitude);
+									     
+									}
+
+									function showError(error)
+									{
+									     switch (error.code)
+									     {
+									          case error.PERMISSION_DENIED:
+									               alert('User denied the request for Geolocation.');
+									               break;
+									          case error.POSITION_UNAVAILABLE:
+									               alert('Location information is unavailable.');
+									               break;
+									          case error.TIMEOUT:
+									               alert('The request to get user location timed out.');
+									               break;
+									          case error.UNKNOWN_ERROR:
+									               alert('An unknown error occurred.');
+									     }
+									}
+								}
+							//fileform 끝
 						});
 		// login 시작
 		$('#loginBtn').click(function() {
