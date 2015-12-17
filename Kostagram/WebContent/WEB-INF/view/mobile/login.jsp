@@ -16,7 +16,7 @@
 <script src="js/common.js"></script>
 <link href="jquery-mobile/jquery.mobile-1.0.css" rel="stylesheet"
 	type="text/css" />
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 <script type="text/javascript">
 	$(function() {
@@ -473,6 +473,37 @@
 								});
 							}
 							// search_hashtag 끝
+							// search_place 시작
+							else if (this.id == "search_place") {
+								
+								$("#input_place").keydown(function(){
+									setTimeout(function() {
+										var searchValue = trim($('#input_place').val());
+										if(searchValue!=null && searchValue!="") {
+											$.ajax({
+												type:'POST',
+												url:'ajaxsearch_place',
+												dataType:'text',
+												data:{input_place:searchValue},
+												success:function(data){
+													$('#search_resultArea').empty();
+													$('#search_place > #search_resultArea').html(data);
+													$('.result_place').click(function() {
+														var selectValue = trim($(this).text());
+														$.mobile.changePage("/Kostagram/m/place/"+selectValue);
+													});		
+												},
+												error:function() {
+													alert("error");
+												}
+											});
+										} else {
+											$('#search_resultArea').empty();
+										}
+									}, 250);
+								});
+							}
+							// search_place 끝
 							// search_result 시작
 							else if (this.id == "search_result") {
 								$(document).ready(function(){
@@ -496,30 +527,63 @@
 								});
 							}
 							// search_result 끝
-							else if (this.id == "report") {
-								$('#reportBtn > ul > li a').each(function() {
-									$(this).click(function(){
-										var reportValue = $(this).attr("value");
-										var reportPid = $('#report > input:hidden[name=reportPid]').val();
+							// searchplace_result 시작
+							else if (this.id == "searchplace_result") {
+								$(document).ready(function(){
+									var lat = $('input:hidden[name=lat]');
+									var latValue = lat.val();
+									var lon = $('input:hidden[name=lon]');
+									var lonValue = lon.val();
+									var locations = eval($('#locations').val());
+									var map = new google.maps.Map(document.getElementById('map'),
+										{
+											zoom : 10,
+											center : new google.maps.LatLng(latValue, lonValue),
+											mapTypeId : google.maps.MapTypeId.ROADMAP
+										});
+									var infowindow = new google.maps.InfoWindow();
+									var marker, i;
+									for (i = 0; i < locations.length; i++) {
+										marker = new google.maps.Marker({
+											position : new google.maps.LatLng(locations[i][1], locations[i][2]), map : map});
+										google.maps.event.addListener(marker, 'click', (function(marker, i)
+												{return function() {infowindow.setContent("<Center>"
+													+ locations[i][0]
+													+ "</CENTER>"
+													+ "<br><img src='../../personalImg/"
+													+ locations[i][5]
+													+ "/"
+													+ locations[i][4]
+															.toString()
+													+ ".jpg' width=80%> <br> <Center><font size=1> 총 "
+													+ locations[i][3]
+													+ "개의 사진이 있습니다.</font></CENTER>");
+													infowindow.open(map, marker);}
+												})
+										(marker, i));
+									}
+									var search_place = $('input:hidden[name=place]');
+									var selectValue = search_place.val();
+									if (selectValue != null && selectValue != "") {
 										$.ajax({
-											type: 'POST',
-											url: 'reportphoto',
-											dataType: 'text',
-											data: {
-												rid: reportValue,
-												pid: reportPid
+											type : 'POST',
+											url : '../ajaxselect_place',
+											dataType : 'text',
+											data : {
+												select_place : selectValue
 											},
-											success: function(data) {
-												alert("성공적으로 신고가 접수되었습니다. 게시물이 부적합한지 확인 후 게시물을 삭제하도록 하겠습니다.");
+											success : function(data) {
+													$('#photoArea').empty();
+													$('#searchplace_result > #photoArea').html(data);
 											},
-											error: function() {
+											error : function() {
 												alert("error");
 											}
 										});
-									});
+									}
 								});
 							}
-							
+							// searchplace_result 끝
 							//comment (댓글)
 							else if (this.id == "comment") {
 								

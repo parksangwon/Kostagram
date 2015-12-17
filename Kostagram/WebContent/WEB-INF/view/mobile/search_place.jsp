@@ -14,13 +14,12 @@
 
 <body>
 	<div id="search_place" data-role="page" data-theme="a">
-	
 		<div data-role="header">
 			<table class="search">
 				<tr>
 					<td><img src="./image/icon/search.png" width="20"
 							style="padding-left:10px;" /></td>
-					<td><input type="text" placeholder="장소 검색"
+					<td><input type="text" id="input_place" name="input_place" placeholder="장소 검색"
 						style="width: 300px; height: 35px; font-size: 15px; line-height: 35px; text-align: left; background-color: transparent; border: 0px; -webkit-border-radius: 0px; border-radius: 0px; box-shadow: 0 0 0px; text-shadow: 0px 0px;">
 					</td>
 				</tr>
@@ -35,13 +34,11 @@
 					<li><a href="search_place" data-transition="fade">장소 검색</a></li>
 				</ul>
 			</div>
-			<div>
-				<ul data-insert="true">
-					<li>장소 검색</li>
-				</ul>
-			</div>
 		</div>
-
+		
+		<div id="search_resultArea">
+		</div>
+		
 		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar" class="ui-btn-active">
 				<ul>
