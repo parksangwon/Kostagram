@@ -53,7 +53,7 @@
 		where email= #{email}
 	</update>
 	
-	<select id="findFriend" parameterType="com.kostagram.service.beans.UserInfoVO"
+	<select id="findFriend" parameterType="hashmap"
 		resultType="hashmap">
 		select email, nickname, profile_img, b.reg_date
 		from
@@ -62,6 +62,6 @@
 		from member
 		where mobile is not null
 		)a, follow b
-		where a.email = b.to_email(+) and b.from_email(+) = 'admin@kostagram.com'
+		where a.email = b.to_email(+) and b.from_email(+) = #{sessionEmail}
 	</select>
 </mapper>
