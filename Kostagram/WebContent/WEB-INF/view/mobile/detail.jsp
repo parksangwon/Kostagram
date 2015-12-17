@@ -8,6 +8,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	ArrayList<ArticleVO> myPhotoList = (ArrayList<ArticleVO>)request.getAttribute("myPhotoList");
+	String loginEmail = (String)session.getAttribute("email");
 	String seq_photo = (String)request.getAttribute("seq_photo");
 	String photoNickname = (String)request.getAttribute("nickname");
 	String profile = (String)request.getAttribute("profile_img");
@@ -95,10 +96,23 @@
 							</tr>
 						</table>
 					</div>
+					<%
+						List<HashMap> likeCheck = article.getLikeList();
+						String likeYn = "heart";
+						if (likeCheck.size() != 0) {
+							for ( int j = 0; j < likeCheck.size(); j++ ) {
+								HashMap like = likeCheck.get(j);
+								if (loginEmail.equals((String)like.get("EMAIL"))) {
+									likeYn = "heart2";
+								}
+							}
+						}
+					%>
 					<div class='CMTnLIK' style='padding: 0px 5px 0px 5px'>
 						<table>
 							<tr>
-								<td align='left'><img src='./image/icon/heart.png' width='25' />
+							
+								<td align='left'><a href'#'><img src='/Kostagram/m/image/icon/<%= likeYn%>.png' id='heartBtn' width='25' value=<%= seq_photo %> /></a>
 								</td>
 								<td align='left'>
 									<a href='./comment?pid=<%=seq_photo %>'><img src='./image/icon/chat_bubble.png' width='25'/></a>
@@ -125,7 +139,12 @@
 								for (int j = 0; j < likeList.size(); j++) {
 									HashMap like = likeList.get(j);
 									String cmtNickname = (String) like.get("NICKNAME");
-									out.print(cmtNickname);
+						%>
+									<a href='/Kostagram/m/<%= cmtNickname %>' style="text-decoration: none; 
+									text-shadow: 0px 0px 0px; 
+									color: #004879; 
+									font-weight: normal;"><%= cmtNickname + " "%></a>
+						<%
 								}
 						%>
 								</a>
