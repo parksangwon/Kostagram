@@ -112,7 +112,7 @@
 						<table>
 							<tr>
 							
-								<td align='left'><a href'#'><img src='/Kostagram/m/image/icon/<%= likeYn%>.png' id='heartBtn' width='25' value=<%= seq_photo %> /></a>
+								<td align='left'><img src='/Kostagram/m/image/icon/<%= likeYn%>.png' id='heartBtn' width='25' value=<%= seq_photo %> />
 								</td>
 								<td align='left'>
 									<a href='./comment?pid=<%=seq_photo %>'><img src='./image/icon/chat_bubble.png' width='25'/></a>
