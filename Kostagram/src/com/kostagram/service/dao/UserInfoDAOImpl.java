@@ -79,8 +79,8 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     }
     
     @Override
-    public List<UserInfoVO> findFriend(UserInfoVO user) {
-	return sqlSession.selectList("userInfo.findFriend", user);
+    public List<HashMap> findFriend(HashMap hashmap) {
+	return sqlSession.selectList("userInfo.findFriend", hashmap);
     }
 
 }
