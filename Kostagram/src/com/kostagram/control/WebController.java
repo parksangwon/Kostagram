@@ -468,11 +468,25 @@ public class WebController {
 		res.setHeader("Cache-Control", "no-cache");
 		
 		if (state.equals("unlike")) {
+			if (likeDao.insert(like)){
+				out.print("like");
+			} else {
+				out.print("fail");
+			}
+		} else if (state.equals("like")) {
+			if (likeDao.delete(like)) {
+				out.print("unlike");
+			} else {
+				out.print("fail");
+			}
+		}
+		
+		/*if (state.equals("unlike")) {
 			boolean result = likeDao.insert(like);
 				
 		} else if (state.equals("like")) {
 			boolean result = likeDao.delete(like);
-		}
+		}*/
 			
 	}
     
