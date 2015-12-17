@@ -28,7 +28,6 @@ public class ImgChage {
        public void change(String originalFile, String changeFile){
              String imgResdFile = originalFile;
              String imgWriteFile = changeFile+".jpg";
-             System.out.println("?? 실행 안되는거 같은데?");
              try {
                     // img = ImageIO.read( new File(fName));
                     FileInputStream fis = new FileInputStream(imgResdFile);
