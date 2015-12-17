@@ -132,9 +132,6 @@ public class MobileController {
     public void uploadFile(HttpSession session, HttpServletRequest req, MultipartHttpServletRequest request) {
         Iterator<String> itr =  request.getFileNames();
         
-        System.out.println(request.getParameter("content"));
-        System.out.println(request.getParameter("lat"));
-        System.out.println(request.getParameter("lon"));
         String email = (String)session.getAttribute("email");
         
         PhotoInfoVO pivo = new PhotoInfoVO();
@@ -145,14 +142,12 @@ public class MobileController {
 
         if(photoInfoDao.insert(pivo))
         {
-        	System.out.println("¼º°øÀû");
         	pivo = photoInfoDao.myseqPhoto(email);
         	String fileName = pivo.getSeq_photo();
         	String subfileName = fileName;
         	String path = req.getSession().getServletContext().getRealPath("/personalImg/"+email);
-            
-            System.out.println(path);
-            if(itr.hasNext()) {
+        	
+        	if(itr.hasNext()) {
                 MultipartFile mpf = request.getFile(itr.next());
                 String originalFileName = mpf.getOriginalFilename();
                 
