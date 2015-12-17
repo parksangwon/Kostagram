@@ -94,12 +94,14 @@
 					%>
 						<li>
 							<a href="./detail?pid=<%=seq_photo%>"><img src="../personalImg/<%=email%>/<%=seq_photo%>.jpg"/></a></li>
+					<%	}
+					%>
 					</ul>
 				</div>
 			</div>
-			
-					<%	} 
-					} else { %>
+			<% 	}
+					
+				else { %>
 			<div align="center">
 				팔로우를 추가해주세욜.
 			</div>
