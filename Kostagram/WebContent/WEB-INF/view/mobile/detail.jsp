@@ -167,7 +167,7 @@
 					%>
 					</table>
 				</div>
-			<div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='#' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a>
+			<div class='addCmt' style='padding: 0px 5px 40px 5px'><a href='./comment?pid=<%=seq_photo %>' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #353535; font-weight: normal;'>댓글 달기</a>
 			</div>
 		</div>
 
