@@ -60,6 +60,7 @@ public class WebController {
 	@RequestMapping("/")
 	public String goToMainPage(HttpSession session, Model model) {
 		// 로그인 세션 확인 후 로그인이 안되어 있으면 로그인 페이지
+		ArticleVO article = null;
 		if (session == null || session.getAttribute("loginYn") == null || session.getAttribute("loginYn").equals("N")
 				|| session.getAttribute("email") == null) {
 
@@ -70,13 +71,31 @@ public class WebController {
 		System.out.println("-- WebController call / --");
 		System.out.println("session(email) : " + session.getAttribute("email"));
 		//
-
+		
 		String email = (String) session.getAttribute("email");
 		ArrayList<ArticleVO> timeline = photoInfoDao.getTimeline(new UserInfoVO(email));
 		UserInfoVO user = userInfoDao.findEmail(new UserInfoVO((String) session.getAttribute("email")));
-
+		
+		/*if ( pid != null ) {
+    		article = photoInfoDao.getArticleByPhotoId(pid);
+    	}
+		
+		List<HashMap> likeList = article.getLikeList();
+		String likeYn = "heart";
+		if (likeList.size() != 0) {
+			for ( int j = 0; j < likeList.size(); j++ ) {
+				HashMap like2 = likeList.get(j);
+				if (email.equals((String)like2.get("EMAIL"))) {
+					likeYn = "heart2";
+				}
+			}
+		}
+		model.addAttribute("likeYn", likeYn);*/
+		
+		
 		model.addAttribute("nickname", user.getNickname());
 		model.addAttribute("timeline", timeline);
+		
 
 		return "web/timeline";
 	}
@@ -475,8 +494,6 @@ public class WebController {
 		like.setEmail(email);
 		like.setSeq_photo(seq_photo);
 		
-		System.out.println(like);
-		System.out.println(state);
 		res.setCharacterEncoding("utf-8");
 		res.setContentType("text/html");
 		res.setHeader("Cache-Control", "no-cache");
@@ -494,14 +511,6 @@ public class WebController {
 				out.print("fail");
 			}
 		}
-		
-		/*if (state.equals("unlike")) {
-			boolean result = likeDao.insert(like);
-				
-		} else if (state.equals("like")) {
-			boolean result = likeDao.delete(like);
-		}*/
-			
 	}
     
     
