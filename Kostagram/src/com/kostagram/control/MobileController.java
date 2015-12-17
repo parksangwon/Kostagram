@@ -1,10 +1,12 @@
 package com.kostagram.control;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kostagram.service.beans.ActivityVO;
 import com.kostagram.service.beans.ArticleVO;
@@ -39,6 +45,7 @@ import com.kostagram.service.dao.LocationDAO;
 import com.kostagram.service.dao.PhotoInfoDAO;
 import com.kostagram.service.dao.ReportDAO;
 import com.kostagram.service.dao.UserInfoDAO;
+import com.kostagram.imgchange.ImgChage;
 
 @Controller
 @RequestMapping("/m")
@@ -112,6 +119,67 @@ public class MobileController {
 		} else {
 			out.print("loginFail");
 		}
+	}
+	
+	@RequestMapping("/write")
+	public String filePage()
+	{
+		return "mobile/fileForm";
+	}
+	
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @ResponseBody
+    public void uploadFile(HttpSession session, HttpServletRequest req, MultipartHttpServletRequest request) {
+        Iterator<String> itr =  request.getFileNames();
+        
+        System.out.println(request.getParameter("content"));
+        System.out.println(request.getParameter("lat"));
+        System.out.println(request.getParameter("lon"));
+        String email = (String)session.getAttribute("email");
+        
+        PhotoInfoVO pivo = new PhotoInfoVO();
+        
+        pivo.setContent(request.getParameter("content"));
+        pivo.setEmail((String)session.getAttribute("email"));
+        pivo.setLocation_name("가산디지털단지 코스타");
+
+        if(photoInfoDao.insert(pivo))
+        {
+        	System.out.println("성공적");
+        	pivo = photoInfoDao.myseqPhoto(email);
+        	String fileName = pivo.getSeq_photo();
+        	String subfileName = fileName;
+        	String path = req.getSession().getServletContext().getRealPath("/personalImg/"+email);
+            
+            System.out.println(path);
+            if(itr.hasNext()) {
+                MultipartFile mpf = request.getFile(itr.next());
+                String originalFileName = mpf.getOriginalFilename();
+                
+                int i = originalFileName.indexOf(".");
+                fileName += originalFileName.substring(i);
+                
+                try {
+                	File file = new File(path+"/"+fileName);
+                	mpf.transferTo(file);
+                	
+                	ImgChage imgchange = new ImgChage();
+                	imgchange.change(path+"/"+fileName, path+"/"+subfileName);
+                	
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                }
+            } else {
+            }
+        }
+        
+    }
+	
+	@RequestMapping("/gps")
+	public String searchLocation()
+	{
+		return "mobile/location";
 	}
 
 	@RequestMapping("/timeline")
