@@ -60,15 +60,15 @@
 		alert(src);
 		alert(seq_photo);
 		
-		if (src==='m/image/icon/heart.png')
+		if (src==='/Kostagram/m/image/icon/heart.png')
 		{
 			state = "unlike";
-			src = 'm/image/icon/heart2.png';
+			src = '/Kostagram/m/image/icon/heart2.png';
 		}
 		else
 		{
 			state= "like";
-			src ='m/image/icon/heart.png';
+			src ='/Kostagram/m/image/icon/heart.png';
 		}
 		
 		$.ajax({
@@ -81,6 +81,17 @@
 			},
 			success : function(text){
 				alert("ddddd");
+				
+				alert(text);
+				if ( text === "like") {
+					$("#heart").attr('src', src);
+				     
+	     		} else if ( text === "unlike" ) {
+	     			$("#heart").attr('src', src);
+				     
+		      	} else if ( text === "fail" ) {
+				     
+				}
 				 
 			},
 			error : function() {
@@ -167,7 +178,7 @@
 			<div class="modal-footer">
 				<table border="0">
 					<tr>
-						<td><img id="heart" src="./m/image/icon/heart.png" onclick="likeit()">&nbsp;&nbsp;&nbsp;</td>
+						<td><img id="heart" src="/Kostagram/m/image/icon/heart.png" onclick="likeit()">&nbsp;&nbsp;&nbsp;</td>
 						<td width="90%"><input type="text" id="comment" name="comment" style="width:95%;"/></td>
 						<td><input type="button" value="댓글 남기기" id="submit" name="submit"></td>
 					</tr>
