@@ -6025,7 +6025,7 @@ transform
 <script>
 
 $(function(){
-	$('.commentBtn').each(function() {
+	$('.-cx-PRIVATE-PostInfo__optionsButton').each(function() {
 		$(this).click(function(){
 			
 			var pid = $(this).data('photo');
@@ -6225,7 +6225,7 @@ $(function(){
 														<input class="-cx-PRIVATE-PostInfo__commentCreatorInput" placeholder="댓글 달기..." type="text" value="" id="c<%= photo.getSeq_photo()%>">
 													</td>
 													<td>
-														<input class="commentBtn" type="button" value="확인 " name="submit" data-photo="<%= photo.getSeq_photo()%>">
+														<input class="-cx-PRIVATE-PostInfo__optionsButton" type="button" value="확인 " name="submit" data-photo="<%= photo.getSeq_photo()%>">
 													</td>
 												</tr>
 											</table>
