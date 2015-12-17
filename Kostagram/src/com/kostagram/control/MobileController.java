@@ -491,7 +491,76 @@ public class MobileController {
 	public String search_place() {
 		return "mobile/search_place";
 	}
-
+	
+	@RequestMapping("/ajaxsearch_place")
+	public void ajaxsearchplace(UserInfoVO userInfoVO, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response, Model model) throws IOException {
+		String input_place = (String)request.getParameter("input_place");
+		System.out.println("SEARCH_PLACE CONTROLLER : " + input_place);
+		PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-cache");	
+		     
+		List<HashMap> search_result = locationDao.searchLocation(input_place);
+		System.out.println("SEARCH_PLACE RESULT : " + search_result);
+		if(search_result!=null && search_result.size()>=1) {
+			out.print("<table class='search_result'>");
+			for (int i = 0; i < search_result.size(); i++) {
+				String place = (String)search_result.get(i).get("LOCATION");
+				out.print("<tr><td align='left' style='padding-left: 15px;'>#<span class='result_place' style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>" + place + "</span></tr>");
+			}
+			out.print("</table>");
+		} else {
+			out.print("<table class='search_result'>");
+			out.print("<tr><td align='left' style='padding-left: 15px;'>검색결과가 없습니닭</td></tr>");
+			out.print("</table>");
+		}
+	}
+	
+	@RequestMapping("/ajaxselect_place")
+	public void ajaxselectplace(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+		String place = (String)request.getParameter("select_place");
+		System.out.println("SELECT_PLACE CONTROLLER : " + place);
+		PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
+		response.setHeader("Cache-Control", "no-cache");
+		
+		List<PhotoInfoVO> select_result = locationDao.selectPlace(place);
+		System.out.println("CONTROLLER select_result : " + select_result);
+		if(select_result!=null && select_result.size()>=1) {
+			out.print("<div id='photoList'>");
+			if (select_result != null && select_result.size() > 0) {
+				out.print("<ul class='myPhotoListByGrid'>");
+				for (int i = 0; i < select_result.size(); i++) {
+					PhotoInfoVO photo = select_result.get(i);
+					String seq_photo = photo.getSeq_photo();
+					String email = photo.getEmail();
+					out.print("<li><a href='../detail?pid=" + seq_photo
+							+ "'><img src='/Kostagram/personalImg/" + email + "/"
+							+ seq_photo + ".jpg'/></a></li>");
+				}
+				out.print("</ul>");
+			}
+		}
+	}
+	
+	@RequestMapping("/place/{select_place}")
+	public String place(@PathVariable String select_place, Model model) throws Exception{
+		String place = new String(select_place.getBytes("8859_1"), "utf-8");
+		List<HashMap> search_result = locationDao.searchLocation(place);
+		List<HashMap> locationList = locationDao.selectLocationMap();
+		String lat = (String)search_result.get(0).get("LAT");
+		String lon = (String)search_result.get(0).get("LON");
+		
+		model.addAttribute("lat", lat);
+		model.addAttribute("lon", lon);
+		model.addAttribute("place", place);
+		model.addAttribute("locationList", locationList);
+		return "mobile/searchplace_result";
+	}
+	
 	@RequestMapping("/detail")
 	public String detail(HttpServletRequest request, Model model) {
 		String seq_photo = request.getParameter("pid");
