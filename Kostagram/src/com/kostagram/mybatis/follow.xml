@@ -30,26 +30,46 @@
 		WHERE FROM_EMAIL = #{email}
 	</select>
 	
-	<select id="getMyFollowerNickname" parameterType="string" resultType="hashmap">
-		select email, nickname, profile_img
+	<select id="getMyFollowerNickname" parameterType="hashmap" resultType="hashmap">
+		select c.*, member.profile_img
 		from
 		(
-		  select from_email
-		  from follow
-		  where to_email = #{email}
-		), member
-		where from_email = member.email
+		  select email, nickname, reg_date
+		  from
+		  (
+		    select email, nickname
+		    from
+		    (
+		      select from_email
+		      from follow
+		      where to_email = #{pageEmail}
+		    ), member
+		    where from_email = member.email
+		  )a, follow b
+		  where a.email = b.to_email(+) and b.from_email(+) = #{sessionEmail}
+		)c, member
+		where c.email = member.email
 	</select>
 	
-	<select id="getMyFollowingNickname" parameterType="string" resultType="hashmap">
-		select email, nickname, profile_img
+	<select id="getMyFollowingNickname" parameterType="hashmap" resultType="hashmap">
+		select c.*, member.profile_img
 		from
 		(
-		  select to_email
-		  from follow
-		  where from_email = #{email}
-		), member
-		where to_email = member.email
+		  select email, nickname, reg_date
+		  from
+		  (
+		    select email, nickname
+		    from
+		    (
+		      select to_email
+		      from follow
+		      where from_email = #{pageEmail}
+		    ), member
+		    where to_email = member.email
+		  )a, follow b
+		  where a.email = b.to_email(+) and b.from_email(+) = #{sessionEmail}
+		)c, member
+		where c.email = member.email
 	</select>
 
 </mapper>
