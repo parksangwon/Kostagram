@@ -923,15 +923,22 @@ public class MobileController {
 	}
 
 	@RequestMapping("/findphonenumber")
-	public String findphonenumber(UserInfoVO userInfoVO, Model model) {
+	public String findphonenumber(UserInfoVO userInfoVO,@RequestParam String email, HttpSession session, Model model) {
 		
-		UserInfoVO findUserVO = new UserInfoVO();
-		List<UserInfoVO> userinfo = userInfoDao.findFriend(findUserVO);
+		String pageEmail = email;
+    	String sessionEmail = (String)session.getAttribute("email");
+    	
+    	HashMap map = new HashMap();
+    	map.put("pageEmail", pageEmail);
+    	map.put("sessionEmail", sessionEmail);
+    	
+		List<HashMap> userinfo = userInfoDao.findFriend(map);
 		
 		model.addAttribute("userinfo", userinfo);
-		System.out.println(userinfo);
+		
 		return "mobile/findphonenumber";
 	}
+
 
 	// 비밀번호 변경 페이지 가기
 	@RequestMapping("/pwupdate")
