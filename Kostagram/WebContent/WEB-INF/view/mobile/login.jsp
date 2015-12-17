@@ -432,6 +432,77 @@
 											success : function(data){
 												$('#photoArea').empty();
 												$('#userpage > #photoArea').html(data);
+												$('#userpage > #photoArea #heartBtn').each(function(){
+													
+													
+													$(this).click(function(){
+														
+														
+														
+														var test = $(this);
+														var state;
+														var seq_photo = test.attr('value');	
+														var src = $(this).attr('src');
+														if(src==='/Kostagram/m/image/icon/heart.png')
+														{
+															state = "unlike";
+															src = '/Kostagram/m/image/icon/heart2.png';
+														}
+														else
+														{
+															state= "like";
+															src ='/Kostagram/m/image/icon/heart.png';
+														}
+														
+														setTimeout(function() {
+															$.ajax({
+																type : 'POST',
+																url : '/Kostagram/m/likelist',
+																dataType : 'text',
+																data : {
+																	seq_photo:seq_photo
+																},
+																success : function(data){
+																	$('#'+seq_photo).empty();
+																	$('#'+seq_photo).html(data);	
+																},
+																error : function() {
+																	alert("error");
+																}
+															});
+														}, 250);
+														
+														$.ajax({
+															type : 'POST',
+															url : '/Kostagram/m/like',
+															dataType : 'text',
+															data : {
+																state : state ,
+																seq_photo : seq_photo
+															},
+															success : function(
+																	text){
+																
+																if ( text === "like") {
+																     test.attr('src', src);
+																     
+													     		} else if ( text === "unlike" ) {
+																     test.attr('src', src);
+																     
+														      	} else if ( text === "fail" ) {
+																     
+																}
+																
+															},
+															error : function() {
+																alert("error");
+															}
+														});
+														
+														
+													});
+													
+												});
 											},
 											error : function() {
 												alert("error");
