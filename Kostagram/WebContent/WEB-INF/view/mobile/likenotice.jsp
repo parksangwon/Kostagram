@@ -39,21 +39,14 @@
 							// 활동 리스트
 							if (mylikeList != null && mylikeList.size() > 0) {
 								for ( HashMap like : mylikeList ) {
-									String readyn = (String)like.get("READYN");
 									String seq_photo = (String)like.get("SEQ_PHOTO");
-									String kind = (String)like.get("KIND");
-									String to_nickname = (String)like.get("TO_NICKNAME");
-									String from_nickname = (String)like.get("FROM_NICKNAME");
 									String to_email = (String)like.get("TO_EMAIL");
 									String from_email = (String)like.get("FROM_EMAIL");
-									if(kind.equals("L"))
-									{
 						%>
 						<li>
-										<a href="./detail?pid=<%= seq_photo%>"><img src="../personalImg/<%= from_email%>/<%= seq_photo%>.jpg" alt="<%= seq_photo%>"/></a>
+							<a href="./detail?pid=<%= seq_photo%>"><img src="../personalImg/<%= to_email%>/<%= seq_photo%>.jpg"/></a>
 						</li>
 						<%
-									}
 								}
 						%>
 					</ul>
