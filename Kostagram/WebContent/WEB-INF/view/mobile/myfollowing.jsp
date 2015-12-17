@@ -69,7 +69,7 @@
 				} else
 				{
 			%>
-					 <br><div align="center">팔로워가 없습니다.</div>
+					 <br><div align="center">팔로잉이 없습니다.</div>
 			<%
 				}
 			%>
