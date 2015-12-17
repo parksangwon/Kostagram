@@ -10,4 +10,5 @@ public interface LikeDAO {
 	public boolean delete(LikeVO like);
 	public HashMap check(LikeVO like);
 	public List<HashMap> getILikeitPhotoId(String email);
+	public List<HashMap> getLikeByPhotoId(String seq_photo);
 }
