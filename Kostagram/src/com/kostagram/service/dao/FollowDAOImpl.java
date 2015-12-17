@@ -1,6 +1,7 @@
 package com.kostagram.service.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,16 @@ public class FollowDAOImpl implements FollowDAO {
 	@Override
 	public int getMyFollower(UserInfoVO user) {
 		return sqlSession.selectOne("follow.getMyFollower", user);
+	}
+
+	@Override
+	public List<HashMap> getMyFollowingNickname(String email) {
+		return sqlSession.selectList("follow.getMyFollowingNickname", email);
+	}
+
+	@Override
+	public List<HashMap> getMyFollowerNickname(String email) {
+		return sqlSession.selectList("follow.getMyFollowerNickname", email);
 	}
 	
 }
