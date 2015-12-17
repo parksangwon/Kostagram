@@ -3,8 +3,17 @@
 <mapper namespace="photoInfo">
 	<insert id="insert" parameterType="com.kostagram.service.beans.PhotoInfoVO">
 		<!-- insert into person values (person_seq.nextval, #{name}, #{age}, #{job}) -->
+		INSERT INTO PHOTO values (to_char(sysdate,'YYYYMMDDHH24MISS')||lpad(seq_photo.nextval, 16, '0'), #{email}, #{location_name}, #{content}, sysdate, sysdate, 'Y')
+		
 	</insert>
-
+	<select id="myseqphoto" parameterType="String" resultType="com.kostagram.service.beans.PhotoInfoVO">
+		SELECT SEQ_PHOTO
+		FROM PHOTO
+<![CDATA[ 
+		WHERE EMAIL = #{email} AND DISPYN = 'Y' AND ROWNUM <= 1
+]]>
+		ORDER BY SEQ_PHOTO DESC
+	</select>
 	<!-- 내가 좋아요 한 이미지 불러오기 -->
 	<select id="selectList" parameterType="com.kostagram.service.beans.UserInfoVO" resultType="com.kostagram.service.beans.PhotoInfoVO">
 		SELECT * 
