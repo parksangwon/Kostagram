@@ -19,6 +19,10 @@
 
 <title>Kostagram</title>
 
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="m/js/common.js"></script>
+
 <script src="//instagramstatic-a.akamaihd.net/bluebar/9308ef9/scripts/webfont.js" type="text/javascript" async=""></script>
 
 <style type="text/css">
@@ -6018,6 +6022,36 @@ transform
 	}
 }
 </style>
+<script>
+
+$(function(){
+	$('.commentBtn').each(function() {
+		$(this).click(function(){
+			
+			var pid = $(this).data('photo');
+			var comment = $('#c'+pid).val();
+			
+			if(trim(comment) != ""){
+				$.ajax({
+					type: 'POST',
+					url: 'ajaxtimelinecomment',
+					data:{
+						content:comment,
+						seq_photo:pid
+					},
+					success:function(){
+						location.reload();
+					},
+					error:function(){
+						alert("error");
+					}
+				});
+			}
+		});
+	});
+});
+
+</script>
 </head>
 <body>
 	<span id="react-root" aria-hidden="false">
@@ -6028,9 +6062,7 @@ transform
 						<div>
 							<%
 								if (articleList == null || articleList.size() == 0) {
-							%>
-			
-							<%
+							
 								} else {
 									for (int i = 0; i < articleList.size(); i++) {
 										ArticleVO article = articleList.get(i);
@@ -6144,10 +6176,10 @@ transform
 							%>
 											</h1>
 										</li>
-										
+								<div id="ccomment">
 							<%
 									List<HashMap> commentList = article.getCommentList();
-									
+								
 									if ( commentList != null && commentList.size() > 0 ) {
 										for ( int j = 0; j < commentList.size(); j++ ) {
 											HashMap comment = commentList.get(j);
@@ -6180,12 +6212,23 @@ transform
 											}
 										}
 									}
+									
 							%>
+								</div>
 									</ul>
 									<section class="-cx-PRIVATE-PostInfo__feedback -cx-PRIVATE-PostInfo__feedbackStackedVariant">
 										<a class="-cx-PRIVATE-PostInfo__likeButton -cx-PRIVATE-LikeButton__root -cx-PRIVATE-Util__hideText coreSpriteHeartOpen" href="#" role="button">좋아요</a>
-										<form class="-cx-PRIVATE-PostInfo__commentCreator">
-											<input class="-cx-PRIVATE-PostInfo__commentCreatorInput" placeholder="댓글 달기..." type="text" value="">
+										<form class="-cx-PRIVATE-PostInfo__commentCreator" method="POST">
+											<table> 
+												<tr>
+													<td width="430">
+														<input class="-cx-PRIVATE-PostInfo__commentCreatorInput" placeholder="댓글 달기..." type="text" value="" id="c<%= photo.getSeq_photo()%>">
+													</td>
+													<td>
+														<input class="commentBtn" type="button" value="확인 " name="submit" data-photo="<%= photo.getSeq_photo()%>">
+													</td>
+												</tr>
+											</table>
 										</form>
 										<button class="-cx-PRIVATE-PostInfo__optionsButton coreSpriteEllipsis -cx-PRIVATE-Util__hideText">옵션 더 보기</button>
 									</section>
