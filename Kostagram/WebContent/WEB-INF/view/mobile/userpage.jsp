@@ -77,8 +77,8 @@
 							src="../personalImg/<%=profile%>"
 							style="-webkit-border-radius: 100px; border-radius: 100px; padding: 1em" /></td>
 						<td align="center"><%=photoCnt%><br>게시물</td>
-						<td align="center"><%=followingCnt%><br><a href="#"> 팔로잉</a></td>
-						<td align="center" ><span id="abc"><%=followerCnt%></span><br><a href="#"> 팔로워</a></td>
+						<td align="center" ><span id="abc"><%=followerCnt%></span><br><a href="/Kostagram/m/myfollower"> 팔로워</a></td>
+						<td align="center"><%=followingCnt%><br><a href="/Kostagram/m/myfollowing"> 팔로잉</a></td>
 					</tr>
 
 
