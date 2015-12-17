@@ -78,31 +78,34 @@
 					</td>
 				</table>
 			</div>
-
+			
+			
+			<%
+				if (roundList != null && roundList.size() > 0) {
+			%>
 			<div id="photoArea">
-				<div id='photoList'>
+				<div id='photoList' align="center">
 					<ul class='myPhotoListByGrid'>
-						<%
-							// 활동 리스트
-							if (roundList != null && roundList.size() > 0) {
-								for (HashMap round : roundList) {
-									String seq_photo = (String) round.get("SEQ_PHOTO");
-									String email = (String) round.get("EMAIL");
-									String profile = (String) round.get("PROFILE");
-						%>
-						<li><a href="./detail?pid=<%=seq_photo%>"><img
-								src="../personalImg/<%=email%>/<%=seq_photo%>.jpg"/></a></li>
-						<%
-								}
-							} else {
-						%>
-						<li>팔로우를 추가해 주세요.</li>
-						<%
-							}
-						%>
+					<%
+						for (HashMap round : roundList) {
+							String seq_photo = (String) round.get("SEQ_PHOTO");
+							String email = (String) round.get("EMAIL");
+							String profile = (String) round.get("PROFILE");
+					%>
+						<li>
+							<a href="./detail?pid=<%=seq_photo%>"><img src="../personalImg/<%=email%>/<%=seq_photo%>.jpg"/></a></li>
 					</ul>
 				</div>
 			</div>
+			
+					<%	} 
+					} else { %>
+			<div align="center">
+				팔로우를 추가해주세욜.
+			</div>
+			<%
+					}
+			%>
 		</div>
 
 		<div data-role="footer" data-position="fixed">
