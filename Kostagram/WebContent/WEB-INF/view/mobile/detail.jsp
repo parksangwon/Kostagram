@@ -14,6 +14,7 @@
 	String email = (String)request.getAttribute("email");
 	Date reg_date = (Date)request.getAttribute("reg_date");
 	ArticleVO article = myPhotoList.get(0);
+
 %>
 <title>Kostagram</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -100,7 +101,7 @@
 								<td align='left'><img src='./image/icon/heart.png' width='25' />
 								</td>
 								<td align='left'>
-									<a href='#'><img src='./image/icon/chat_bubble.png' width='25' /></a>
+									<a href='./comment?pid=<%=seq_photo %>'><img src='./image/icon/chat_bubble.png' width='25'/></a>
 								</td>
 								<td align='right'><a href='./report?pid="<%= seq_photo%>"'>
 									<img src='./image/icon/warning.png' width='25' /></a>
