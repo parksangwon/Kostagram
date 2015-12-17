@@ -124,7 +124,7 @@ public class MobileController {
 	@RequestMapping("/write")
 	public String filePage()
 	{
-		return "mobile/fileForm";
+		return "mobile/fileform";
 	}
 	
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
