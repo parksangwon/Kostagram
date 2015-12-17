@@ -1,5 +1,6 @@
 package com.kostagram.service.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -44,4 +45,9 @@ public class HashtagDAOImpl implements HashtagDAO {
     public List<PhotoInfoVO> selectHashtag(String hashtag) {
     	return sqlSession.selectList("hashtag.selectHashtag", hashtag);
     }
+
+	@Override
+	public List<HashMap> searchHashtagList(HashtagVO hashtag) {
+		return sqlSession.selectList("hashtag.searchHashtagList", hashtag);
+	}
 }
