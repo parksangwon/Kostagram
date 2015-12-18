@@ -30,9 +30,7 @@
 		var newPw2 = $("#id_new_password2").val();
 		var resultMessage = $(".alert-red");
 
-		alert(oldPw);
-		alert(newPw1);
-		alert(newPw2);
+		
 
 		$.ajax({
 			type : 'POST',
@@ -44,7 +42,7 @@
 				newPw2 : newPw2
 			},
 			success : function(text) {
-				alert(text);
+				
 				$('.alerts').show();
 				if (text === "updateSuccess") {
 					resultMessage.text("성공적으로 비밀번호가 변경되었습니다.");
