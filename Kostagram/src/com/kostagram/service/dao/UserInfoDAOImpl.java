@@ -31,6 +31,15 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     	
 	return false;
     }
+    
+    @Override
+    public boolean updateProfileImg(UserInfoVO user) {
+    	int update =  sqlSession.update("userInfo.updateProfileImg", user);
+    	if(update == 1)
+    		return true;
+    	
+    	return false;
+    }
 
     @Override
     public UserInfoVO findEmail(UserInfoVO user) {
