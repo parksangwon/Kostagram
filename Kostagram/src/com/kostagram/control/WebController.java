@@ -353,7 +353,8 @@ public class WebController {
 		res.setHeader("Cache-Control", "no-cache");
 
 		if (findedUser != null) {
-			mail.setContent("비밀번호는 " + findedUser.getPass() + " 입니다. 비밀번호 확인후 비밀번호를 꼭! 확인해주세요 ");
+			mail.setContent("비밀번호는 " + findedUser.getPass() + " 입니다.   "
+					+ " 비밀번호 확인후 비밀번호를 꼭! 확인해주세요 ");
 			mail.setReceiver(findedUser.getEmail());
 			mail.setSubject(findedUser.getNickname() + "님 비밀번호 찾기 메일입니다.");
 			boolean result = mailService.SendEmail(mail);
