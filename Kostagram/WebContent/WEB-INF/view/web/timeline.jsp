@@ -10,7 +10,6 @@
 <%
 	ArrayList<ArticleVO> articleList = (ArrayList<ArticleVO>) request.getAttribute("timeline");
 	String nickname = (String) request.getParameter("nickname");
-	String email = (String)session.getAttribute("email");
 %>
 
 <html>
@@ -6052,12 +6051,11 @@ $(function(){
 	});
 	
 	
-	$('#heart').each(function() {
+	$('.heart').each(function() {
 		$(this).click(function(){
-			alert("좋아요 버튼 누름");
 			var state;
 			var pid = $('input:hidden[name=likeseq_photo]').attr("value");
-			var src = $("#heart").attr('src');
+			var src = $(".heart").attr('src');
 			
 			if (src==='/Kostagram/m/image/icon/heart.png')
 			{
@@ -6069,7 +6067,6 @@ $(function(){
 				state= "like";
 				src ='/Kostagram/m/image/icon/heart.png';
 			}
-			alert(state);
 			$.ajax({
 				type : 'POST',
 				url : 'likeit',
@@ -6079,12 +6076,11 @@ $(function(){
 					seq_photo : pid
 				},
 				success : function(text){
-					alert("성공");
 					if ( text === "like") {
-						$("#heart").attr('src', src);
+						$(".heart").attr('src', src);
 						 
 					} else if ( text === "unlike" ) {
-						$("#heart").attr('src', src);
+						$(".heart").attr('src', src);
 						 
 					} else if ( text === "fail" ) {
 						 
@@ -6165,15 +6161,6 @@ $(function(){
 								<div class="-cx-PRIVATE-PostInfo__root -cx-PRIVATE-Post__mediaInfo">
 							<%
 									List<HashMap> likeList = article.getLikeList();
-									String likeYn = "heart";
-									if (likeList.size() != 0) {
-										for ( int j = 0; j < likeList.size(); j++ ) {
-											HashMap like = likeList.get(j);
-											if (email.equals((String)like.get("EMAIL"))) {
-												likeYn = "heart2";
-											}
-										}
-									}
 							%>
 									<section class="-cx-PRIVATE-PostInfo__likesAndTimestamp -cx-PRIVATE-PostInfo__likesAndTimestampStackedVariant">
 										<div class="-cx-PRIVATE-PostInfo__likesInfo -cx-PRIVATE-PostLikers__root">
@@ -6276,7 +6263,7 @@ $(function(){
 								</div>
 									</ul>
 									<section class="-cx-PRIVATE-PostInfo__feedback -cx-PRIVATE-PostInfo__feedbackStackedVariant">
-										<img id="heart" src="/Kostagram/m/image/icon/<%=likeYn %>.png" >
+										<img class="heart" src="/Kostagram/m/image/icon/heart.png" >
 										<form class="-cx-PRIVATE-PostInfo__commentCreator" method="POST">
 											<input type="hidden" name="likeseq_photo" value="<%= photo.getSeq_photo()%>">
 											<table> 
