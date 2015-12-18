@@ -3,11 +3,14 @@ package com.kostagram.control;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -132,13 +135,47 @@ public class MobileController {
     public void uploadFile(HttpSession session, HttpServletRequest req, MultipartHttpServletRequest request) {
         Iterator<String> itr =  request.getFileNames();
         
-        String email = (String)session.getAttribute("email");
+        //String hashtag = request.getParameter("hashtag");
         
+        
+        String email = (String)session.getAttribute("email");
+        String content = request.getParameter("content");   
+        String location = request.getParameter("location");
+        /*
+        double lat = Double.parseDouble(request.getParameter("lat"));
+        double lon = Double.parseDouble(request.getParameter("lon"));
+      	*/
+        
+        Hashtable hashTag = new Hashtable();
+        
+        
+        StringTokenizer tokenGet = new StringTokenizer(content, " \n");
+        int count = 0;
+        while(tokenGet.hasMoreTokens())
+		{
+			String token = tokenGet.nextToken();
+			
+			if((token.startsWith("#") || token.startsWith("@")) && token.length()>1)
+			{
+				StringTokenizer tokenCheck = new StringTokenizer(token, "#@");
+			
+				while(tokenCheck.hasMoreTokens())
+				{
+					String saveToken = tokenCheck.nextToken();
+					
+					hashTag.put("tag"+count, saveToken);
+					count++;
+				}
+				
+			}
+		}
+		
         PhotoInfoVO pivo = new PhotoInfoVO();
         
-        pivo.setContent(request.getParameter("content"));
+        pivo.setContent(content);
         pivo.setEmail((String)session.getAttribute("email"));
-        pivo.setLocation_name("가산디지털단지 코스타");
+        pivo.setLocation_name(location);
+        
 
         if(photoInfoDao.insert(pivo))
         {
@@ -165,17 +202,96 @@ public class MobileController {
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 }
-            } else {
             }
+        	
+        	if(hashTag.size()>0)
+    		{
+    			for(int i =0; i<hashTag.size(); i++)
+    			{
+    				String str = (String) hashTag.get("tag"+i);
+    				if(hashtagDao.insert(str))
+    				{
+    					HashtagVO hvo = new HashtagVO();
+    					hvo.setSeq_photo(subfileName);
+    					hvo.setHashtag(str);
+    					if(hashtagDao.insert(hvo))
+    					{
+    						
+    					}
+    				}
+    			}
+    		}
+        	
         }
         
     }
 	
-	@RequestMapping("/gps")
-	public String searchLocation()
+	@RequestMapping("/location")
+	public void searchLocation(LocationVO locationvo,HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException
 	{
-		return "mobile/location";
+		List<HashMap> lm = locationDao.selectVicinityLocation(locationvo);
+		response.setCharacterEncoding("utf-8");
+
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/xml");
+		response.setHeader("Cache-Control", "no-cache");
+		out.println("<LOCATIONLIST>");
+		if(lm.size()==0)
+		{	
+			out.println("<LOCATION>");
+			out.println("<NAME>2KM안에 위치없음</NAME>");
+			out.println("<DISTANCE></DISTANCE>");
+			out.println("</LOCATION>");
+			out.println("<LOCATION>");
+			out.println("<NAME>현재위치 추가하기</NAME>");
+			out.println("<DISTANCE></DISTANCE>");
+			out.println("</LOCATION>");
+		}
+		for(int i=0; i < lm.size(); i++)
+		{
+			HashMap hm = (HashMap)lm.get(i);
+
+			String location = (String)hm.get("LOCATION");
+			String distance = String.valueOf(hm.get("DISTANCE")).substring(0,5);
+			out.println("<LOCATION>");
+			out.println("<NAME>" + location + "</NAME>");
+			out.println("<DISTANCE>" + distance+"km" + "</DISTANCE>");
+			out.println("</LOCATION>");
+		}
+		
+		out.println("</LOCATIONLIST>");
+		out.close();
 	}
+	
+	@RequestMapping("/locationinsert")
+	public void locationinsert(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		String location = request.getParameter("location");
+		double lat = Double.parseDouble(request.getParameter("lat"));
+		double lon = Double.parseDouble(request.getParameter("lon"));
+	
+		LocationVO locationvo = new LocationVO();
+		locationvo.setLocation_name(location);
+		locationvo.setLat(lat);
+		locationvo.setLon(lon);
+		
+		response.setCharacterEncoding("utf-8");
+
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/xml");
+		response.setHeader("Cache-Control", "no-cache");
+		
+		if(locationDao.insert(locationvo))
+		{
+			out.print("success");
+		}
+		else
+		{
+			out.print("fail");
+		}
+		
+	}
+	
 
 	@RequestMapping("/timeline")
 	public void getTimeline(HttpSession session, HttpServletResponse res) throws IOException {
