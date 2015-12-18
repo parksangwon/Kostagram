@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="file" id="fileId" name="file-data"/>
+						<input type="file" id="fileId" name="file-data" capture="camera"/>
 					</td>
 				</tr>
 				<tr>
