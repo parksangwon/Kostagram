@@ -14,4 +14,5 @@ public interface LocationDAO {
 	public List<HashMap> searchLocation(String location);
 	public List<PhotoInfoVO> selectPlace(String location);
 	public List<HashMap> selectLocationMap();
+	public List<HashMap> selectVicinityLocation(LocationVO locationvo);
 }
