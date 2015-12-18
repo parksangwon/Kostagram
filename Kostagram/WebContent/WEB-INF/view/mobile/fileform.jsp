@@ -33,7 +33,7 @@
 			<table>
 				<tr>
 					<td width="30%">
-						<img id="blah" src="../personalImg/admin@kostagram.com/Tulips.jpg" width="100%"/><br>
+						<img id="blah" src="" width="100%"/><br>
 					</td>
 				</tr>
 				<tr>
@@ -43,12 +43,28 @@
 				</tr>
 				<tr>
 					<td>
-						<textarea rows="100%" cols="" style="height:50px;" class="infotext" placeholder="설명 쓰기..." name="content"></textarea>
+						<textarea rows="100%" cols="" style="height:70px;" class="infotext" placeholder="설명 쓰기..." name="content"></textarea>
 					</td>
-				</tr>			
+				</tr>
+				
+				<tr>
+					<td>
+						<a href="" data-role="button" id="btn-gps"><img height="20px"  src="./image/icon/pin.png">위치추가</a>
+					</td>
+				</tr>
+				
+				<tr>
+					<td id="locationtd">
+						<select id="location" name="location">
+							<option>위치 선택안함</option>
+							
+						</select>
+					</td>
+				</tr>
+						
 			</table>
 				<hr>		
-			<a href="" data-role="button" id="btn-gps"><img height="20px"  src="./image/icon/pin.png">위치추가</a>
+			
 			
 			<input type="hidden" value="" id="lat" name="lat">
 			<input type="hidden" value="" id="lon" name="lon">
