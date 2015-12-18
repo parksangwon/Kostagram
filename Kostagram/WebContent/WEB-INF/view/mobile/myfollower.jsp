@@ -66,7 +66,7 @@
 							<td>
 					<%
 								if (check == null || check.equals("null")) {
-					%> 			<a class="follow" value="UF" style="color: green" data-email="<%= email%>"> 팔로우</a> <%
+					%> 			<a class="follow" value="UF"  data-email="<%= email%>"> 팔로우</a> <%
 								} else {
 					%> 			<a class="follow" value="F"  style="color: green" data-email="<%= email%>">팔로잉</a> <%
 								}
