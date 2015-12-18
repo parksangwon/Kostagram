@@ -6,6 +6,7 @@
 
 
 <%
+	String email = (String) session.getAttribute("email");
 	List<PhotoInfoVO> myPhotoList = (List)request.getAttribute("myPhotoList");
 	String check = (String) request.getAttribute("check");
 %>
@@ -6211,6 +6212,8 @@ $(function(){
 							<h1 class="-cx-PRIVATE-ProfilePage__username">${nickname}</h1>
 
 							<%
+							if(email!=null)
+							{
 								if (check == "Y") {
 							%>
 
@@ -6235,6 +6238,8 @@ $(function(){
 							<%
 								}
 								}
+							}
+							else{}
 							%>
 
 
