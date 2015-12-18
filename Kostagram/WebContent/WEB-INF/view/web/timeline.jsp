@@ -10,6 +10,7 @@
 <%
 	ArrayList<ArticleVO> articleList = (ArrayList<ArticleVO>) request.getAttribute("timeline");
 	String nickname = (String) request.getParameter("nickname");
+	String email = (String)session.getAttribute("email");
 %>
 
 <html>
@@ -6164,6 +6165,15 @@ $(function(){
 								<div class="-cx-PRIVATE-PostInfo__root -cx-PRIVATE-Post__mediaInfo">
 							<%
 									List<HashMap> likeList = article.getLikeList();
+									String likeYn = "heart";
+									if (likeList.size() != 0) {
+										for ( int j = 0; j < likeList.size(); j++ ) {
+											HashMap like = likeList.get(j);
+											if (email.equals((String)like.get("EMAIL"))) {
+												likeYn = "heart2";
+											}
+										}
+									}
 							%>
 									<section class="-cx-PRIVATE-PostInfo__likesAndTimestamp -cx-PRIVATE-PostInfo__likesAndTimestampStackedVariant">
 										<div class="-cx-PRIVATE-PostInfo__likesInfo -cx-PRIVATE-PostLikers__root">
@@ -6266,7 +6276,7 @@ $(function(){
 								</div>
 									</ul>
 									<section class="-cx-PRIVATE-PostInfo__feedback -cx-PRIVATE-PostInfo__feedbackStackedVariant">
-										<img id="heart" src="/Kostagram/m/image/icon/heart.png" >
+										<img id="heart" src="/Kostagram/m/image/icon/<%=likeYn %>.png" >
 										<form class="-cx-PRIVATE-PostInfo__commentCreator" method="POST">
 											<input type="hidden" name="likeseq_photo" value="<%= photo.getSeq_photo()%>">
 											<table> 
