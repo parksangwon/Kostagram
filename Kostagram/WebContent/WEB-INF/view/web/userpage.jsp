@@ -6158,7 +6158,7 @@ $(function(){
 		$.ajax({
    			type:'POST',
    			url:'userpage',
-   			dataType:'json',
+   			dataType:'text',
    			data:{
    				from_email:'<%=(String) session.getAttribute("email")%>',
 				to_email : '${email}',
@@ -6177,6 +6177,7 @@ $(function(){
 				}
 			},
 			error : function() {
+				
 				location.href = "/Kostagram";
 			}
 		});
