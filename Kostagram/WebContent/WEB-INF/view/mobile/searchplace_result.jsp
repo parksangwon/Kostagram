@@ -80,7 +80,7 @@
 							width="20" /></a></li>
 					<li><a href="/Kostagram/m/round"><img src="/Kostagram/m/image/icon/search.png"
 							width="20" /></a></li>
-					<li><a href="#"><img src="/Kostagram/m/image/icon/camera.png"
+					<li><a href="/Kostagram/m/write"><img src="/Kostagram/m/image/icon/camera.png"
 							width="20" /></a></li>
 					<li><a href="/Kostagram/m/mynews"><img src="/Kostagram/m/image/icon/info.png"
 							width="20" /></a></li>
