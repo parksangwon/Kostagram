@@ -52,6 +52,12 @@
 								<a href="/Kostagram/m/pwupdate" style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>비밀번호 변경</a>
 							</Td>
 						</tr>
+						<tr>
+							<Td>
+								<a href="/Kostagram/m/profileimgupdate" style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>프로필 이미지 변경</a>
+							</Td>
+						</tr>
+						
 						</tr>
 						<tr>
 							<Td><input type="button" onclick="location.href='./logout'"
