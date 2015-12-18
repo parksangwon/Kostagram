@@ -902,7 +902,7 @@
 										      contentType: false,
 										      type: 'POST',
 										      success: function (response) {
-										    	  location.href="/Kostagram/m/"+'<%=session.getAttribute("nickname")%>';
+										    	  alert('글이 성공적으로 등록되었습니다.');
 										      },
 										      error: function (jqXHR) {
 										    	  alert('글 등록도중 에러가 발생하였습니다.');
