@@ -6,6 +6,15 @@ public class HashtagVO {
 	private String hashtag;
 	private long photo_cnt;
 	private Date reg_date;
+	private String seq_photo;
+	
+	
+	public String getSeq_photo() {
+		return seq_photo;
+	}
+	public void setSeq_photo(String seq_photo) {
+		this.seq_photo = seq_photo;
+	}
 	public HashtagVO() {
 		// TODO Auto-generated constructor stub
 	}
