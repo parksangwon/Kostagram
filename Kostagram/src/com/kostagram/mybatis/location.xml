@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="location">
   <insert id="insert" parameterType="com.kostagram.service.beans.LocationVO">
-      insert into person values (person_seq.nextval, #{name}, #{age}, #{job})
+      insert into location values (#{location_name}, #{lat}, #{lon}, sysdate, 0)
    </insert>
    
    <select id="findPhotoMap" parameterType="com.kostagram.service.beans.UserInfoVO" resultType="java.util.HashMap">
@@ -62,5 +62,25 @@
 		where c.seq_photo = d.seq_photo
 	) e, location f
 	where e.location = f.location
+   </select>
+   
+   <select id="selectVicinityLocation" parameterType="com.kostagram.service.beans.LocationVO" resultType="java.util.HashMap">
+   	SELECT A.LOCATION, A.DISTANCE
+		FROM(
+		      SELECT
+		            LOCATION,
+		            6371 * ACOS(
+		                COS( #{lat} * 0.017453293 )
+		                * COS( LAT * 0.017453293 )
+		                * COS( (LON * 0.017453293) - (#{lon} * 0.017453293))
+		                + SIN( #{lat} * 0.017453293 )
+		                * SIN( LAT * 0.017453293 )
+		            ) AS DISTANCE
+		        FROM
+		            LOCATION
+		    )A
+		<![CDATA[ 
+		WHERE A.DISTANCE<2 AND ROWNUM <= 30
+		]]>
    </select>
 </mapper>
