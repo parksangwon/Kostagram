@@ -762,7 +762,6 @@
 							//포토맵 시작
 							else if(this.id =="photomap")
 								{
-								alert("photomap에 들어옴");
 								
 								var locations = eval($('#locations').val());
 								
