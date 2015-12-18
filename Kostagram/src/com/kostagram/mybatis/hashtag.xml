@@ -17,11 +17,6 @@
 		INSERT INTO PHOTO_HASH_TAG
 		VALUES(#{seq_photo}, #{hashtag})
 	</insert>
-
-	<insert id="insert" parameterType="com.kostagram.service.beans.HashtagVO">
-		insert into hashtag values
-		(#{hashtag}, #{photo_cnt}, #{reg_date})
-	</insert>
  
 	<update id="update" parameterType="com.kostagram.service.beans.HashtagVO">
 		update hashtag
