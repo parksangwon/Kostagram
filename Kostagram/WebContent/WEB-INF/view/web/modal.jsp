@@ -150,7 +150,34 @@
 				<table border="1">
 					<tr>
 						<td>
-							<p><b><h5>좋아요 000개</h5></b></p>
+				<%
+							if (likeList.size() < 6) {
+								if (likeList.size() == 0) {
+				%>
+									<span style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'> 좋아요♥ </span>
+				<%
+								}
+								for (int j = 0; j < likeList.size(); j++) {
+									HashMap like = likeList.get(j);
+									String likeNickname = (String) like.get("NICKNAME");
+				%>
+									<a href="/Kostagram/<%=likeNickname%>" style="text-decoration: none; text-shadow: 0px 0px 0px; color: #004879;font-weight: normal;"> <%=likeNickname%> </a>
+				
+				<%
+									if ( j != likeList.size() - 1 ) {
+				%>
+									,
+				<%
+										
+									}
+								}
+							}
+							else{
+				%>
+									<%= likeList.size() %> 개
+				<%			
+							}
+				%>
 							<div id="ccomment">
 								<ul>
 				<%
