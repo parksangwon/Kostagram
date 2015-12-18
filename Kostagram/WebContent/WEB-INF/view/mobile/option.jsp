@@ -39,17 +39,17 @@
 					<table width="90%" border="0">
 						<tr>
 							<td>
-								<a href="/Kostagram/m/profileupdate">프로필 수정</a>
+								<a href="/Kostagram/m/profileupdate" style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>프로필 수정</a>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<a href="/Kostagram/m/findphonenumber?email=<%=email%>">연락처로 친구 찾기</a>
+								<a href="/Kostagram/m/findphonenumber?email=<%=email%>" style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>연락처로 친구 찾기</a>
 							</td>
 						</tr>
 						<tr>
 							<Td>
-								<a href="/Kostagram/m/pwupdate">비밀번호 변경</a>
+								<a href="/Kostagram/m/pwupdate" style='text-decoration: none; text-shadow: 0px 0px 0px; color: #004879; font-weight: normal;'>비밀번호 변경</a>
 							</Td>
 						</tr>
 						</tr>
