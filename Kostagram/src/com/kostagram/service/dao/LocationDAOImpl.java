@@ -42,4 +42,10 @@ public class LocationDAOImpl implements LocationDAO {
 		return sqlSession.selectList("location.selectLocationMap");
 	}
 	
+	@Override
+	public List<HashMap> selectVicinityLocation(LocationVO locationvo)
+	{
+		return sqlSession.selectList("location.selectVicinityLocation", locationvo);
+	}
+	
 }
