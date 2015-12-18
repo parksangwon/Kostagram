@@ -1169,6 +1169,7 @@ public class MobileController {
 				return "mobile/login";
 			}
 	    	
+	    	
 	    PrintWriter out = response.getWriter();	
 	    
 	    String email = (String) session.getAttribute("email");
@@ -1176,11 +1177,10 @@ public class MobileController {
 	    
 	    System.out.println(email);
 	    List<HashMap> locationList = locationDao.findPhotoMap(user);
+	    System.out.println("PHOTOMAP CONTROLLER : " + locationList);
 	    model.addAttribute("locationList", locationList);
 	    
-	    	
-	    
-		return "mobile/photoMap";
+		return "mobile/photomap";
 	    }
 	    
 	    @RequestMapping(value = "/userpage")
