@@ -522,7 +522,40 @@ public class MobileController {
 		return "mobile/round";
 	}
 	
+	@RequestMapping("/profileimgupdate")
+	public String profileimgupdate(HttpSession session, ActivityVO activityVO,
+			Model model) {
+		String email = (String) session.getAttribute("email");
+		System.out.println(email);
+		UserInfoVO user = new UserInfoVO(email);
+		
+		// DB에서 정보 가져오기.
+		// mynewsList메소드 실행
+		List<PhotoInfoVO> myPhotoList = photoInfoDao.getMyPhotoList(user);
+		System.out.println(myPhotoList);
+		// jsp에서 꺼낼수 잇게 보내줌
+		model.addAttribute("myPhotoList", myPhotoList);
+		return "mobile/profileimgupdate";
+	}
+	
+	@RequestMapping("/profileimgupdateaction")
+	public String profileimgupdateaction(HttpSession session, Model model, HttpServletRequest request) {
+		String seq_photo = request.getParameter("pid");
+		String update_seq_photo = seq_photo+".jpg";
+		System.out.println(update_seq_photo);
+		
+		String nickname = (String) session.getAttribute("nickname");
+		
+		UserInfoVO user = new UserInfoVO();
+		user.setNickname(nickname);
+		user.setProfile_img(update_seq_photo);
 
+		boolean update = userInfoDao.updateProfileImg(user);
+		System.out.println(update);
+		
+		return "mobile/userpage";
+	}
+	
 	@RequestMapping("/like")
 	public void like(HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
 		String email = (String) session.getAttribute("email");
