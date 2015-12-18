@@ -15,8 +15,15 @@ public class HashtagDAOImpl implements HashtagDAO {
     private SqlSession sqlSession;
     
     @Override
-    public Boolean insert(HashtagVO hashtag) {
+    public Boolean insert(String hashtag) {
 	int result = sqlSession.insert("hashtag.insert", hashtag);
+	if ( result == 1 )
+	    return true;
+	return null;
+    }
+    @Override
+    public Boolean insert(HashtagVO hashtagvo) {
+	int result = sqlSession.insert("hashtag.insertphotohash", hashtagvo);
 	if ( result == 1 )
 	    return true;
 	return null;
