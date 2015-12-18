@@ -883,7 +883,16 @@
 							//파일 폼시작
 							else if(this.id == "fileForm")
 								{
+									$('#locationtd').hide();
 									$('#btn-upload').click(function(){
+										 var fileId = $('#fileId').val();
+										 
+										 if(fileId=="")
+										 {
+											 alert("사진을 꼭 선택하여 주세요");
+											 return false;
+										 }
+										 
 										 var form = new FormData(document.getElementById('uploadForm'));
 										    $.ajax({
 										      url: "upload",
@@ -893,8 +902,10 @@
 										      contentType: false,
 										      type: 'POST',
 										      success: function (response) {
+										    	  location.href="/Kostagram/m/"+'<%=session.getAttribute("nickname")%>';
 										      },
 										      error: function (jqXHR) {
+										    	  alert('글 등록도중 에러가 발생하였습니다.');
 										      }
 										    });
 									});
@@ -933,6 +944,76 @@
 									     var longitude = position.coords.longitude;
 									     $('#lat').val(latitude);
 									     $('#lon').val(longitude);
+
+									     $.ajax({
+												type: 'POST',
+												url: 'location',
+												dataType: 'xml',
+												data:{lat:latitude, lon:longitude} ,
+												success:function(response) {
+													$(response).find('LOCATION').each(function(){
+														var nextNode = $(this).find('NAME').text();
+														var nextNode2 = $(this).find('DISTANCE').text();
+														
+														var cell = $("<OPTION class='selectnode' value='"+nextNode+"'>").text(nextNode+'('+nextNode2+')');
+														
+														if(nextNode=='2KM안에 위치없음')
+														{
+															$('#location').change(function() {
+																
+																if($(this).val()!== '현재위치 추가하기')
+																{
+																	return false;
+																}
+																else
+																{
+																	locationadd();	
+																}
+																
+															});
+															
+															function locationadd()
+															{
+																var location = prompt("위치를 입력하세요");
+																if(location=="")
+																{
+																	alert("위치 추가시 빈공간을 입력할수 없습니다");
+																	return locationadd();
+																}
+																else if(!location)
+																	{
+																		return;
+																	}
+																else
+																{
+																$.ajax({
+																	type: 'POST',
+																	url: 'locationinsert',
+																	dataType: 'text',
+																	data:{location:location, lat:latitude, lon:longitude} ,
+																	success:function(text) {
+																		if (text === "success") {
+																			$('.selectnode').remove();
+																			var add = $("<OPTION value='"+location+"'>").text(location);
+																			$('#location').append(add);
+																			
+																		} 
+																		else if(text === "fail"){
+																			alert("추가하는 도중 에러가 발생하였습니다.");
+																		}
+																		}
+																	});
+																}
+															}
+															
+														}
+														$('.selectnode').remove();
+														$('#location').append(cell);
+														$('#locationtd').show();
+														
+													});
+													}
+												});
 									     
 									}
 
@@ -953,6 +1034,8 @@
 									               alert('An unknown error occurred.');
 									     }
 									}
+									
+									
 								}
 							else if (this.id == 'myfollower') {
 								$('.follow').each(function(){
@@ -1075,6 +1158,7 @@
 						}
 							//fileform 끝
 						});
+		
 		// login 시작
 		$('#loginBtn').click(function() {
 			var idInput = $('input:text[name=nickname]');
